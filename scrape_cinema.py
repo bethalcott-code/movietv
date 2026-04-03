@@ -1,38 +1,50 @@
 import requests
 import json
 
-def get_listings():
-    # This is the secret direct data feed for the Edinburgh Cameo
-    url = "https://www.picturehouses.com/ajax/cinema-films/cameo-picturehouse"
+def get_google_listings():
+    # YOUR KEY IS NOW INTEGRATED
+    api_key = "cabfbdda7799cd435ca95f62e27e8c2d886f32a6"
+    url = "https://google.serper.dev/search"
+    
+    payload = json.dumps({
+        "q": "movie showtimes Edinburgh",
+        "gl": "gb",
+        "hl": "en"
+    })
     headers = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
-        'X-Requested-With': 'XMLHttpRequest'
+        'X-API-KEY': api_key,
+        'Content-Type': 'application/json'
     }
-    listings = []
 
+    listings = []
     try:
-        response = requests.get(url, headers=headers)
-        data = response.json()
+        response = requests.post(url, headers=headers, data=payload)
+        results = response.json()
         
-        # The data comes back as a list of films
-        for film in data[:12]:
-            listings.append({
-                "title": film.get('title', 'Unknown Title'),
-                "venue": "Cameo"
-            })
+        # Google provides a 'knowledgeGraph' for local showtimes
+        if 'knowledgeGraph' in results:
+            kg = results['knowledgeGraph']
+            # We look for the 'attributes' which contain the movie titles
+            for movie in kg.get('attributes', []):
+                listings.append({
+                    "title": movie.get('label', 'Unknown Film'),
+                    "venue": "Edinburgh Showtimes"
+                })
+        
+        # If Knowledge Graph is empty, we check the organic results for titles
+        if not listings and 'organic' in results:
+            for item in results['organic'][:8]:
+                listings.append({
+                    "title": item.get('title', 'Check Cinema Website'),
+                    "venue": "Search Result"
+                })
+
     except Exception as e:
-        # Fallback to the major April 2026 releases if the feed fails
-        listings = [
-            {"title": "The Drama", "venue": "Cameo"},
-            {"title": "La Grazia", "venue": "Cameo"},
-            {"title": "Akira (4K)", "venue": "Cameo"},
-            {"title": "The Night Stage", "venue": "Cameo"},
-            {"title": "Amélie (25th Ann.)", "venue": "Cameo"}
-        ]
+        listings = [{"title": f"Search Error: {e}", "venue": "System"}]
         
     return listings
 
 if __name__ == "__main__":
-    data = get_listings()
+    data = get_google_listings()
     with open('listings.json', 'w') as f:
         json.dump(data, f, indent=2)
