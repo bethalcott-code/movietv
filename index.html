@@ -1090,15 +1090,19 @@ function addR() {
 }
 
 // ── AI ────────────────────────────────────────────────────────────────────
-function callAI(prompt, resId, btnId) {
-  var box = document.getElementById(resId);
+async function callAI(prompt, resId, btnId) {
+  const box = document.getElementById(resId);
   box.className = 'airesult vis';
-  box.innerHTML = `<div style="color:var(--signal-orange); border:1px solid currentColor; padding:10px;">
-    <strong>ACTION REQUIRED:</strong> Copy the prompt below and paste it into our Gemini chat. 
-    I will generate the results for you to paste back here.
-    <br><br>
-    <code style="display:block; background:#222; padding:5px; margin-top:5px;">${prompt}</code>
-  </div>`;
+  
+  // Instead of 'Asking Gemini', we fetch the file the Bot created
+  try {
+    const response = await fetch('listings.json');
+    const data = await response.json();
+    box.innerHTML = `<strong>DAILY FEED:</strong><br>` + 
+      data.map(f => `${f.title} @ ${f.venue}`).join('<br>');
+  } catch (e) {
+    box.textContent = "Feed updating. Try again in 5 minutes.";
+  }
 }
 
 // ── SYNC ──────────────────────────────────────────────────────────────────
