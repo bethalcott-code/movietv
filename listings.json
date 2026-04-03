@@ -1,38 +1,34 @@
 [
   {
-    "title": "The Cameo",
-    "venue": "Edinburgh"
-  },
-  {
-    "title": "Dominion Cinema",
-    "venue": "Dominion"
-  },
-  {
     "title": "Edinburgh Omni Centre Lux Cinema",
-    "venue": "Edinburgh"
+    "venue": "Vue (Omni)"
+  },
+  {
+    "title": "The Cameo",
+    "venue": "Cameo"
   },
   {
     "title": "Luxury Cinema Edinburgh",
-    "venue": "Edinburgh"
+    "venue": "Everyman"
+  },
+  {
+    "title": "Vue Omni Centre (Greenside Place, Edinburgh)",
+    "venue": "Vue (Omni)"
   },
   {
     "title": "Edinburgh Film Guide",
     "venue": "Edinburgh"
   },
   {
-    "title": "Edinburgh cinema listings information",
-    "venue": "Edinburgh"
-  },
-  {
-    "title": "Home",
+    "title": "Now Playing",
     "venue": "Dominion"
   },
   {
-    "title": "Filmhouse Cinema",
-    "venue": "Filmhouse"
+    "title": "The Cameo, Edinburgh",
+    "venue": "Cameo"
   },
   {
-    "title": "Tickets & Showtimes for every Film Showing in Edinburgh",
-    "venue": "Edinburgh"
+    "title": "Vue Edinburgh Omni Centre",
+    "venue": "Vue (Omni)"
   }
 ]
