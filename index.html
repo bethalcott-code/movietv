@@ -156,3 +156,187 @@ main { padding: 14px 14px 80px; }
 
 .card-title { font-family: 'IBM Plex Mono', monospace; font-size: .9rem; font-weight: 700; }
 .card-actions { display: flex; gap: 8px; margin-top: 10px; border-top: 1px solid var(--paper); padding-top: 8px; }
+
+.airesult {
+  background: var(--ink2);
+  color: #FFFFFF;
+  padding: 15px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: .7rem;
+  display: none;
+  margin-top: 10px;
+  border-left: 4px solid var(--signal-orange);
+}
+.airesult.vis { display: block; }
+
+.chip { font-family: 'IBM Plex Mono', monospace; font-size: .52rem; padding: 4px 8px; border: 1px solid var(--paper3); background: transparent; color: var(--ink3); cursor: pointer; margin-bottom: 4px; }
+.chip.on { background: var(--ink); color: #FFFFFF; }
+.filters { display: flex; gap: 4px; flex-wrap: wrap; margin-bottom: 15px; }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div>
+    <div class="htitle">The Queue</div>
+    <div class="hsub">B &amp; K &mdash; Edinburgh &mdash; 2026</div>
+  </div>
+  <div class="who-toggle">
+    <button class="wb on" id="btn-b">B</button>
+    <button class="wb" id="btn-k">K</button>
+  </div>
+</div>
+
+<div class="tabbar" id="tabbar">
+  <button class="tabitem on" data-tab="queue">Queue</button>
+  <button class="tabitem" data-tab="library">Library</button>
+  <button class="tabitem" data-tab="cinema">Cinema</button>
+  <button class="tabitem" data-tab="recs">Recs</button>
+</div>
+
+<main>
+<div id="sec-queue" class="sec on">
+  <div class="addform">
+    <input type="text" id="qt" placeholder="Title...">
+    <input type="number" id="qy" placeholder="Year">
+    <select id="qc">
+        <option value="">Genre</option>
+        <option value="arthouse">Arthouse</option>
+        <option value="newwave">French New Wave</option>
+        <option value="nordic">Nordic / Bergman</option>
+        <option value="nazi">Anti-Nazi / WWII</option>
+    </select>
+    <button class="addbtn" id="qadd-btn">+ Add to Queue</button>
+  </div>
+  <div class="filters" id="qfilters">
+    <button class="chip on" data-fk="status" data-fv="all">All</button>
+    <button class="chip" data-fk="status" data-fv="queued">Queued</button>
+    <button class="chip" data-fk="status" data-fv="watched">Watched</button>
+  </div>
+  <div class="cardlist" id="qcards"></div>
+</div>
+
+<div id="sec-cinema" class="sec">
+  <p style="font-size:.7rem; color:var(--ink3); margin-bottom:10px;">Automated Edinburgh listings via GitHub Actions.</p>
+  <button class="gbtn" id="cinbtn">Fetch Daily Listings</button>
+  <div id="cinres" class="airesult"></div>
+</div>
+
+<div id="sec-recs" class="sec">
+    <p style="font-size:.7rem; color:var(--ink3); margin-bottom:10px;">Manual Selection (Paste from Gemini)</p>
+    <div id="recres" class="airesult vis">Copy recommendations from our chat into your Queue above.</div>
+</div>
+</main>
+
+<script>
+var LSQ = 'tq_q8', LSR = 'tq_r8';
+var WHO = 'me';
+var F = { status: 'all' };
+
+// ── DATA CONFIGURATION ──
+const API_KEY = "$2a$10$Lldb6jiELPRlGenC3mNPze71KWmcCM6a4IBBYvmEyoWi9s3maquL6"; 
+const BIN_ID = "69d0467c856a682189f95eec";             
+const JSONBIN_URL = `https://api.jsonbin.io/v3/b/${BIN_ID}`;
+
+// ── SYNC LOGIC ──
+async function ld() {
+  try {
+    const response = await fetch(JSONBIN_URL + "/latest", { headers: { "X-Master-Key": API_KEY } });
+    const data = await response.json();
+    const cloudData = data.record; 
+    localStorage.setItem(LSQ, JSON.stringify(cloudData.q || []));
+    return cloudData;
+  } catch (e) {
+    return { q: JSON.parse(localStorage.getItem(LSQ) || '[]'), r: [] };
+  }
+}
+
+async function svd(d) {
+  localStorage.setItem(LSQ, JSON.stringify(d.q));
+  await fetch(JSONBIN_URL, {
+    method: 'PUT',
+    headers: { "Content-Type": "application/json", "X-Master-Key": API_KEY },
+    body: JSON.stringify(d)
+  });
+}
+
+// ── RENDER ──
+async function renderQ() {
+  const d = await ld();
+  let items = d.q;
+  if (F.status !== 'all') items = items.filter(i => i.status === F.status);
+
+  const cards = document.getElementById('qcards');
+  cards.innerHTML = items.map(item => `
+    <div class="qcard ${item.status === 'watched' ? '' : 'acc'}">
+      <div class="card-title">${item.title}</div>
+      <div style="font-size:.6rem; color:var(--ink3)">${item.year || ''} • ${item.who === 'me' ? 'B' : 'K'}</div>
+      <div class="card-actions">
+        <button class="chip" onclick="toggleStatus(${item.id})">${item.status}</button>
+        <button class="chip" style="color:var(--signal-orange)" onclick="removeItem(${item.id})">Remove</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+// ── ACTIONS ──
+async function addQ() {
+  const t = document.getElementById('qt').value;
+  if (!t) return;
+  const d = await ld();
+  d.q.unshift({ id: Date.now(), title: t, year: document.getElementById('qy').value, who: WHO, status: 'queued' });
+  await svd(d);
+  document.getElementById('qt').value = '';
+  renderQ();
+}
+
+async function toggleStatus(id) {
+    const d = await ld();
+    const i = d.q.find(x => x.id === id);
+    i.status = i.status === 'queued' ? 'watched' : 'queued';
+    await svd(d);
+    renderQ();
+}
+
+async function removeItem(id) {
+    const d = await ld();
+    d.q = d.q.filter(x => x.id !== id);
+    await svd(d);
+    renderQ();
+}
+
+// ── CINEMA AUTOMATION ──
+document.getElementById('cinbtn').addEventListener('click', async function() {
+    const box = document.getElementById('cinres');
+    box.className = 'airesult loading vis';
+    box.innerHTML = 'FETCHING FROM GITHUB...';
+    try {
+        const response = await fetch('listings.json');
+        const data = await response.json();
+        box.className = 'airesult vis';
+        box.innerHTML = `<strong>EDINBURGH LISTINGS:</strong><br><br>` + 
+            data.map(f => `• ${f.title} (${f.venue})`).join('<br>');
+    } catch (e) {
+        box.innerHTML = "Feed empty. Run 'Daily Cinema Update' on GitHub.";
+    }
+});
+
+// ── INIT ──
+window.addEventListener('load', () => {
+    renderQ();
+    document.getElementById('btn-b').onclick = () => { WHO='me'; document.getElementById('btn-b').className='wb on'; document.getElementById('btn-k').className='wb'; };
+    document.getElementById('btn-k').onclick = () => { WHO='partner'; document.getElementById('btn-k').className='wb on'; document.getElementById('btn-b').className='wb'; };
+    document.getElementById('qadd-btn').onclick = addQ;
+    
+    document.querySelectorAll('.tabitem').forEach(t => {
+        t.onclick = (e) => {
+            document.querySelectorAll('.tabitem').forEach(x => x.classList.remove('on'));
+            document.querySelectorAll('.sec').forEach(x => x.classList.remove('on'));
+            e.target.classList.add('on');
+            document.getElementById('sec-' + e.target.dataset.tab).classList.add('on');
+        };
+    });
+});
+</script>
+</body>
+</html>
