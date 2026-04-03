@@ -1,0 +1,23 @@
+name: Daily Cinema Update
+on:
+  schedule:
+    - cron: '0 3 * * *' # Runs at 3 AM daily
+  workflow_dispatch: # Allows you to run it manually
+
+jobs:
+  update-data:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch Listings
+        run: |
+          # This is where the 'Automation' happens.
+          # For now, it puts a 'Service Active' message into your file.
+          echo '[{"title": "Automated Feed Active", "venue": "Check back at 9AM"}]' > listings.json
+      - name: Commit and Push
+        run: |
+          git config --global user.name 'CinemaBot'
+          git config --global user.body 'bot@github.com'
+          git add listings.json
+          git commit -m "Update listings" || exit 0
+          git push
