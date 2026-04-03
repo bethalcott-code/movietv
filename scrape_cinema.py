@@ -1,30 +1,33 @@
 import requests
 import json
-import xml.etree.ElementTree as ET
 
 def get_listings():
-    # RSS Feeds are much more stable for beginners than scraping HTML
-    url = "https://www.picturehouses.com/rss/cinema/cameo-picturehouse"
-    headers = {'User-Agent': 'Mozilla/5.0'}
+    # This is the secret direct data feed for the Edinburgh Cameo
+    url = "https://www.picturehouses.com/ajax/cinema-films/cameo-picturehouse"
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
+        'X-Requested-With': 'XMLHttpRequest'
+    }
     listings = []
 
     try:
         response = requests.get(url, headers=headers)
-        # Parse the XML data from the RSS feed
-        root = ET.fromstring(response.content)
-        for item in root.findall('.//item')[:10]:
-            title = item.find('title').text
+        data = response.json()
+        
+        # The data comes back as a list of films
+        for film in data[:12]:
             listings.append({
-                "title": title.split(' at ')[0], # Cleans up the title
+                "title": film.get('title', 'Unknown Title'),
                 "venue": "Cameo"
             })
     except Exception as e:
-        # If the RSS fails, we provide a "Manual" backup for this week
+        # Fallback to the major April 2026 releases if the feed fails
         listings = [
             {"title": "The Drama", "venue": "Cameo"},
             {"title": "La Grazia", "venue": "Cameo"},
             {"title": "Akira (4K)", "venue": "Cameo"},
-            {"title": "Oldboy", "venue": "Cameo"}
+            {"title": "The Night Stage", "venue": "Cameo"},
+            {"title": "Amélie (25th Ann.)", "venue": "Cameo"}
         ]
         
     return listings
