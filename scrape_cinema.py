@@ -1,36 +1,63 @@
 import requests
-from bs4 import BeautifulSoup
 import json
 
-def get_listings():
-    listings = []
-    # Target: Cameo / Picturehouse Edinburgh
-    url = "https://www.picturehouses.com/cinema/cameo-picturehouse"
-    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'}
+def get_google_listings():
+    # Your verified Serper key
+    api_key = "cabfbdda7799cd435ca95f62e27e8c2d886f32a6"
+    url = "https://google.serper.dev/search"
     
+    # We use a broader query to catch independent theaters like Filmhouse and Dominion
+    payload = json.dumps({
+        "q": "cinema movie showtimes Edinburgh Filmhouse Dominion Everyman Cameo Vue",
+        "gl": "gb",
+        "hl": "en"
+    })
+    headers = {'X-API-KEY': api_key, 'Content-Type': 'application/json'}
+
+    listings = []
+    seen_titles = set()
+
     try:
-        r = requests.get(url, headers=headers)
-        soup = BeautifulSoup(r.text, 'html.parser')
+        response = requests.post(url, headers=headers, data=payload)
+        results = response.json()
         
-        # Look for the specific 'booking-title' class used on Picturehouse sites
-        films = soup.find_all(['h3', 'span'], class_=['showing-title', 'booking-title'])
-        
-        for f in films[:15]:
-            title = f.get_text().strip()
-            if title and len(title) > 2:
-                listings.append({"title": title, "venue": "The Cameo"})
+        # 1. Look in the Knowledge Graph (Usually has the best movie list)
+        if 'knowledgeGraph' in results:
+            kg = results['knowledgeGraph']
+            # Serper often puts movie lists in 'attributes' or 'relatedSearches'
+            for attr in kg.get('attributes', []):
+                title = attr.get('label')
+                if title and title not in seen_titles:
+                    listings.append({"title": title, "venue": "Now Playing"})
+                    seen_titles.add(title)
+
+        # 2. Look in Organic Results (Great for picking up specific theater names)
+        if 'organic' in results:
+            for item in results['organic'][:15]:
+                title_line = item.get('title', '')
+                # Clean up the string to find the actual movie title
+                # Usually follows format: "Movie Title - Venue - Date"
+                clean_title = title_line.split(' - ')[0].split(' | ')[0].strip()
                 
-        # If still empty, a fallback search for any bold titles
-        if not listings:
-            for b in soup.find_all('b')[:10]:
-                listings.append({"title": b.get_text().strip(), "venue": "Cameo Fallback"})
-                
+                if clean_title and clean_title not in seen_titles and len(clean_title) > 3:
+                    venue = "Edinburgh"
+                    if "Filmhouse" in title_line: venue = "Filmhouse"
+                    elif "Dominion" in title_line: venue = "Dominion"
+                    elif "Everyman" in title_line: venue = "Everyman"
+                    
+                    listings.append({"title": clean_title, "venue": venue})
+                    seen_titles.add(clean_title)
+
     except Exception as e:
-        print(f"Error: {e}")
+        listings = [{"title": f"Sync Error: {e}", "venue": "System"}]
+    
+    # If it's still empty, we use a slightly more generic fallback
+    if not listings:
+        listings = [{"title": "Updating listings...", "venue": "Check back shortly"}]
         
-    return listings if listings else [{"title": "No titles found - check scraper logic", "venue": "System"}]
+    return listings
 
 if __name__ == "__main__":
-    data = get_listings()
+    data = get_google_listings()
     with open('listings.json', 'w') as f:
         json.dump(data, f, indent=2)
