@@ -2,13 +2,12 @@ import requests
 import json
 
 def get_google_listings():
-    # Your verified Serper key
     api_key = "cabfbdda7799cd435ca95f62e27e8c2d886f32a6"
     url = "https://google.serper.dev/search"
     
-    # We use a broader query to catch independent theaters like Filmhouse and Dominion
+    # We target specific venue names in the query
     payload = json.dumps({
-        "q": "cinema movie showtimes Edinburgh Filmhouse Dominion Everyman Cameo Vue",
+        "q": "showtimes today at Cameo Edinburgh, Filmhouse, Dominion, Everyman Edinburgh, Vue Omni",
         "gl": "gb",
         "hl": "en"
     })
@@ -21,39 +20,31 @@ def get_google_listings():
         response = requests.post(url, headers=headers, data=payload)
         results = response.json()
         
-        # 1. Look in the Knowledge Graph (Usually has the best movie list)
-        if 'knowledgeGraph' in results:
-            kg = results['knowledgeGraph']
-            # Serper often puts movie lists in 'attributes' or 'relatedSearches'
-            for attr in kg.get('attributes', []):
-                title = attr.get('label')
-                if title and title not in seen_titles:
-                    listings.append({"title": title, "venue": "Now Playing"})
-                    seen_titles.add(title)
-
-        # 2. Look in Organic Results (Great for picking up specific theater names)
+        # We look at the organic links because they often contain the Venue + Title
         if 'organic' in results:
-            for item in results['organic'][:15]:
+            for item in results['organic'][:20]:
                 title_line = item.get('title', '')
-                # Clean up the string to find the actual movie title
-                # Usually follows format: "Movie Title - Venue - Date"
-                clean_title = title_line.split(' - ')[0].split(' | ')[0].strip()
+                snippet = item.get('snippet', '').lower()
                 
-                if clean_title and clean_title not in seen_titles and len(clean_title) > 3:
-                    venue = "Edinburgh"
-                    if "Filmhouse" in title_line: venue = "Filmhouse"
-                    elif "Dominion" in title_line: venue = "Dominion"
-                    elif "Everyman" in title_line: venue = "Everyman"
-                    
+                # Logic to identify the venue from the link title or description
+                venue = "Edinburgh"
+                if "cameo" in title_line.lower() or "cameo" in snippet: venue = "Cameo"
+                elif "filmhouse" in title_line.lower() or "filmhouse" in snippet: venue = "Filmhouse"
+                elif "dominion" in title_line.lower() or "dominion" in snippet: venue = "Dominion"
+                elif "everyman" in title_line.lower() or "everyman" in snippet: venue = "Everyman"
+                elif "vue" in title_line.lower() or "vue" in snippet: venue = "Vue (Omni)"
+
+                # Extract the movie title (usually before the first dash or pipe)
+                clean_title = title_line.split(' - ')[0].split(' | ')[0].split(': ')[-1].strip()
+                
+                # Add to list if it's a unique movie for that venue
+                unique_key = f"{clean_title}-{venue}"
+                if len(clean_title) > 3 and unique_key not in seen_titles:
                     listings.append({"title": clean_title, "venue": venue})
-                    seen_titles.add(clean_title)
+                    seen_titles.add(unique_key)
 
     except Exception as e:
-        listings = [{"title": f"Sync Error: {e}", "venue": "System"}]
-    
-    # If it's still empty, we use a slightly more generic fallback
-    if not listings:
-        listings = [{"title": "Updating listings...", "venue": "Check back shortly"}]
+        listings = [{"title": f"Search Error: {e}", "venue": "System"}]
         
     return listings
 
