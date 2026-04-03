@@ -1092,37 +1092,13 @@ function addR() {
 // ── AI ────────────────────────────────────────────────────────────────────
 function callAI(prompt, resId, btnId) {
   var box = document.getElementById(resId);
-  var btn = btnId ? document.getElementById(btnId) : null;
-  if (btn) btn.disabled = true;
-  box.className = 'airesult loading vis';
-  box.innerHTML = '<div class="spin"></div>&nbsp;Searching...';
-
-  fetch('https://api.anthropic.com/v1/messages', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      model: 'claude-sonnet-4-20250514',
-      max_tokens: 1200,
-      tools: [{ type: 'web_search_20250305', name: 'web_search' }],
-      messages: [{ role: 'user', content: prompt }]
-    })
-  })
-  .then(function(r) { return r.json(); })
-  .then(function(data) {
-    var text = data.content
-      .filter(function(b) { return b.type === 'text'; })
-      .map(function(b) { return b.text; })
-      .join('\n');
-    box.className = 'airesult vis';
-    box.textContent = text || 'No results returned.';
-  })
-  .catch(function() {
-    box.className = 'airesult vis';
-    box.textContent = 'Could not connect. Check your internet connection and try again.';
-  })
-  .finally(function() {
-    if (btn) btn.disabled = false;
-  });
+  box.className = 'airesult vis';
+  box.innerHTML = `<div style="color:var(--signal-orange); border:1px solid currentColor; padding:10px;">
+    <strong>ACTION REQUIRED:</strong> Copy the prompt below and paste it into our Gemini chat. 
+    I will generate the results for you to paste back here.
+    <br><br>
+    <code style="display:block; background:#222; padding:5px; margin-top:5px;">${prompt}</code>
+  </div>`;
 }
 
 // ── SYNC ──────────────────────────────────────────────────────────────────
