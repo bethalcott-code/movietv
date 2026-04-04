@@ -1,1259 +1,1955 @@
-	
-0	
-title	"Jeanne Dielman, 23 quai du Commerce, 1080 Bruxelles"
-year	1975
-director	"Chantal Akerman"
-tags	
-0	"Criterion"
-1	"Arthouse"
-2	"S&S #1"
-desc	"Three days in the life of a Brussels housewife. The greatest film ever made according to Sight & Sound 2022."
-source	"Sight & Sound 2022"
-1	
-title	"Vertigo"
-year	1958
-director	"Alfred Hitchcock"
-tags	
-0	"Thriller"
-1	"Classic"
-2	"S&S Top 5"
-desc	"Hitchcock's most personal film. A retired detective becomes obsessed with a woman he is hired to follow."
-source	"Sight & Sound 2022"
-2	
-title	"Citizen Kane"
-year	1941
-director	"Orson Welles"
-tags	
-0	"Classic"
-1	"Criterion"
-2	"S&S Top 5"
-desc	"The rise and fall of a media magnate. Formally revolutionary and still stunning."
-source	"Sight & Sound 2022"
-3	
-title	"Tokyo Story"
-year	1953
-director	"Yasujiro Ozu"
-tags	
-0	"World Cinema"
-1	"Japanese"
-2	"S&S Top 5"
-3	"Criterion"
-desc	"Elderly parents visit their adult children in Tokyo. Devastating in its quietness."
-source	"Sight & Sound 2022"
-4	
-title	"In the Mood for Love"
-year	2000
-director	"Wong Kar-wai"
-tags	
-0	"World Cinema"
-1	"Arthouse"
-2	"S&S Top 5"
-3	"Criterion"
-desc	"Two neighbours in 1962 Hong Kong suspect their spouses are having an affair. Exquisitely made."
-source	"Sight & Sound 2022"
-5	
-title	"2001: A Space Odyssey"
-year	1968
-director	"Stanley Kubrick"
-tags	
-0	"Sci-Fi"
-1	"Classic"
-2	"S&S Top 10"
-desc	"Humanity's evolution from apes to astronauts. The monolith. HAL. Still unmatched."
-source	"Sight & Sound 2022"
-6	
-title	"Beau Travail"
-year	1999
-director	"Claire Denis"
-tags	
-0	"Arthouse"
-1	"French"
-2	"S&S Top 10"
-3	"Criterion"
-desc	"Foreign Legion soldiers in Djibouti. Denis at her most hypnotic."
-source	"Sight & Sound 2022"
-7	
-title	"Mulholland Drive"
-year	2001
-director	"David Lynch"
-tags	
-0	"Arthouse"
-1	"Thriller"
-2	"S&S Top 10"
-desc	"An aspiring actress and an amnesiac woman investigate a mystery in Hollywood."
-source	"Sight & Sound 2022"
-8	
-title	"Singin' in the Rain"
-year	1952
-director	"Stanley Donen, Gene Kelly"
-tags	
-0	"Classic"
-1	"Musical"
-2	"S&S Top 10"
-desc	"Hollywood transitions to talking pictures. The best musical ever made."
-source	"Sight & Sound 2022"
-9	
-title	"Man with a Movie Camera"
-year	1929
-director	"Dziga Vertov"
-tags	
-0	"Silent"
-1	"Documentary"
-2	"S&S Top 10"
-3	"Criterion"
-desc	"A day in Soviet cities, edited into a manifesto for pure cinema."
-source	"Sight & Sound 2022"
-10	
-title	"Sunrise: A Song of Two Humans"
-year	1927
-director	"F.W. Murnau"
-tags	
-0	"Silent"
-1	"German Expressionism"
-2	"BFI Top 10"
-desc	"A farmer is tempted to murder his wife. One of the most beautiful films ever shot."
-source	"BFI / Sight & Sound"
-11	
-title	"The Passion of Joan of Arc"
-year	1928
-director	"Carl Theodor Dreyer"
-tags	
-0	"Silent"
-1	"Nordic"
-2	"Criterion"
-3	"BFI Top 10"
-desc	"Joan's trial and execution in close-up. Maria Falconetti's face. Nothing else like it."
-source	"BFI / Sight & Sound"
-12	
-title	"Rules of the Game"
-year	1939
-director	"Jean Renoir"
-tags	
-0	"French"
-1	"Classic"
-2	"Criterion"
-3	"BFI Top 10"
-desc	"A weekend house party exposes the rot of French bourgeois society."
-source	"BFI / Sight & Sound"
-13	
-title	"Battleship Potemkin"
-year	1925
-director	"Sergei Eisenstein"
-tags	
-0	"Silent"
-1	"Classic"
-2	"Criterion"
-desc	"The 1905 mutiny and the Odessa Steps sequence. The film that invented editing."
-source	"BFI"
-14	
-title	"L'Atalante"
-year	1934
-director	"Jean Vigo"
-tags	
-0	"French"
-1	"Classic"
-2	"Criterion"
-desc	"Newlyweds on a canal barge. Romantic, surreal, heartbreaking."
-source	"BFI / Sight & Sound"
-15	
-title	"The Red Shoes"
-year	1948
-director	"Michael Powell, Emeric Pressburger"
-tags	
-0	"British"
-1	"Powell & Pressburger"
-2	"Classic"
-3	"Criterion"
-desc	"A ballerina torn between love and art. Overwhelming Technicolor. One of the great British films."
-source	"BFI"
-16	
-title	"A Matter of Life and Death"
-year	1946
-director	"Michael Powell, Emeric Pressburger"
-tags	
-0	"British"
-1	"Powell & Pressburger"
-2	"Classic"
-3	"Criterion"
-desc	"A pilot survives a jump without a parachute and is put on trial in heaven."
-source	"BFI"
-17	
-title	"The Life and Death of Colonel Blimp"
-year	1943
-director	"Michael Powell, Emeric Pressburger"
-tags	
-0	"British"
-1	"Powell & Pressburger"
-2	"Classic"
-3	"Anti-Nazi"
-4	"Criterion"
-desc	"A British soldier's career across three wars. Churchill tried to ban it."
-source	"BFI"
-18	
-title	"Black Narcissus"
-year	1947
-director	"Michael Powell, Emeric Pressburger"
-tags	
-0	"British"
-1	"Powell & Pressburger"
-2	"Classic"
-3	"Criterion"
-desc	"Nuns establish a convent in the Himalayas. Repression and hysteria at altitude."
-source	"BFI"
-19	
-title	"The Tales of Hoffmann"
-year	1951
-director	"Michael Powell, Emeric Pressburger"
-tags	
-0	"British"
-1	"Powell & Pressburger"
-2	"Classic"
-desc	"Offenbach's opera filmed as pure cinematic spectacle."
-source	"BFI"
-20	
-title	"L'Avventura"
-year	1960
-director	"Michelangelo Antonioni"
-tags	
-0	"Italian"
-1	"Arthouse"
-2	"Criterion"
-3	"S&S Top 20"
-desc	"A woman disappears on a Sicilian island. Her companion and lover search for her without urgency."
-source	"Sight & Sound"
-21	
-title	"La Dolce Vita"
-year	1960
-director	"Federico Fellini"
-tags	
-0	"Italian"
-1	"Classic"
-2	"Criterion"
-desc	"A tabloid journalist drifts through Roman high society. Overwhelming and magnificent."
-source	"BFI"
-22	
-title	"8½"
-year	1963
-director	"Federico Fellini"
-tags	
-0	"Italian"
-1	"Arthouse"
-2	"Criterion"
-3	"S&S Top 10"
-desc	"A film director retreats into fantasy while trying to make a film."
-source	"Sight & Sound"
-23	
-title	"Rome, Open City"
-year	1945
-director	"Roberto Rossellini"
-tags	
-0	"Italian"
-1	"Anti-Nazi"
-2	"Criterion"
-3	"Neorealism"
-desc	"The Italian Resistance in Nazi-occupied Rome. Shot on the streets immediately after liberation."
-source	"BFI"
-24	
-title	"Bicycle Thieves"
-year	1948
-director	"Vittorio De Sica"
-tags	
-0	"Italian"
-1	"Neorealism"
-2	"Criterion"
-3	"S&S Top 20"
-desc	"A man and his son search Rome for a stolen bicycle. The heart of neorealism."
-source	"Sight & Sound"
-25	
-title	"The Leopard"
-year	1963
-director	"Luchino Visconti"
-tags	
-0	"Italian"
-1	"Classic"
-2	"Criterion"
-desc	"A Sicilian aristocrat navigates the Risorgimento. Burt Lancaster gives the performance of his life."
-source	"BFI / Criterion"
-26	
-title	"Rocco and His Brothers"
-year	1960
-director	"Luchino Visconti"
-tags	
-0	"Italian"
-1	"Criterion"
-2	"Drama"
-desc	"A family migrates from the south to Milan. Five brothers, one tragedy."
-source	"Criterion"
-27	
-title	"The Gospel According to St. Matthew"
-year	1964
-director	"Pier Paolo Pasolini"
-tags	
-0	"Italian"
-1	"Arthouse"
-2	"Criterion"
-desc	"Christ's life shot with non-actors in southern Italy. Austere and devastating."
-source	"Criterion / BFI"
-28	
-title	"Breathless"
-year	1960
-director	"Jean-Luc Godard"
-tags	
-0	"French New Wave"
-1	"Criterion"
-2	"Classic"
-desc	"A small-time thief goes on the run in Paris. Invented modern cinema grammar."
-source	"BFI / Criterion"
-29	
-title	"The 400 Blows"
-year	1959
-director	"François Truffaut"
-tags	
-0	"French New Wave"
-1	"Criterion"
-2	"Classic"
-desc	"A misunderstood Parisian boy's descent into delinquency. Autobiographical and heartbreaking."
-source	"BFI / Criterion"
-30	
-title	"Cleo from 5 to 7"
-year	1962
-director	"Agnès Varda"
-tags	
-0	"French New Wave"
-1	"Criterion"
-2	"Arthouse"
-desc	"A pop singer awaits the results of a cancer test. Real time. Paris in 1962."
-source	"Criterion / BFI"
-31	
-title	"Pierrot le Fou"
-year	1965
-director	"Jean-Luc Godard"
-tags	
-0	"French New Wave"
-1	"Criterion"
-desc	"A man leaves his wife and runs away with his babysitter. Genre exploded into primary colours."
-source	"Criterion"
-32	
-title	"The Umbrellas of Cherbourg"
-year	1964
-director	"Jacques Demy"
-tags	
-0	"French"
-1	"Musical"
-2	"Criterion"
-3	"Classic"
-desc	"Every word sung. A love story broken by the Algerian War."
-source	"Criterion / BFI"
-33	
-title	"Mon Oncle"
-year	1958
-director	"Jacques Tati"
-tags	
-0	"French"
-1	"Comedy"
-2	"Criterion"
-3	"Jacques Tati"
-desc	"Tati's Monsieur Hulot struggles with modern suburban life. Gentle, precise, hilarious."
-source	"Criterion / BFI"
-34	
-title	"Playtime"
-year	1967
-director	"Jacques Tati"
-tags	
-0	"French"
-1	"Comedy"
-2	"Criterion"
-3	"Jacques Tati"
-desc	"Hulot lost in a glass-and-steel Paris. The most expensive French film ever made. A masterwork."
-source	"Criterion / BFI"
-35	
-title	"Traffic"
-year	1971
-director	"Jacques Tati"
-tags	
-0	"French"
-1	"Comedy"
-2	"Criterion"
-3	"Jacques Tati"
-desc	"Hulot drives a camper van to an Amsterdam car show. Tati's farewell to cinema."
-source	"Criterion"
-36	
-title	"Wild Strawberries"
-year	1957
-director	"Ingmar Bergman"
-tags	
-0	"Nordic"
-1	"Criterion"
-2	"Classic"
-3	"Bergman"
-desc	"An elderly professor drives to collect an honorary degree and confronts his life."
-source	"BFI / Criterion"
-37	
-title	"The Seventh Seal"
-year	1957
-director	"Ingmar Bergman"
-tags	
-0	"Nordic"
-1	"Criterion"
-2	"Classic"
-3	"Bergman"
-desc	"A knight plays chess with Death during the Black Plague."
-source	"BFI / Criterion"
-38	
-title	"Persona"
-year	1966
-director	"Ingmar Bergman"
-tags	
-0	"Nordic"
-1	"Arthouse"
-2	"Criterion"
-3	"Bergman"
-4	"S&S Top 10"
-desc	"An actress stops speaking. Her nurse begins to lose herself. Identity dissolves."
-source	"Sight & Sound / Criterion"
-39	
-title	"Scenes from a Marriage"
-year	1973
-director	"Ingmar Bergman"
-tags	
-0	"Nordic"
-1	"Criterion"
-2	"Bergman"
-3	"TV"
-desc	"A marriage's disintegration over six episodes. Liv Ullmann and Erland Josephson. Devastating."
-source	"Criterion / BFI"
-40	
-title	"The Mirror"
-year	1975
-director	"Andrei Tarkovsky"
-tags	
-0	"World Cinema"
-1	"Arthouse"
-2	"Criterion"
-desc	"Memories, dreams, newsreel. Tarkovsky's most personal film."
-source	"Sight & Sound"
-41	
-title	"Stalker"
-year	1979
-director	"Andrei Tarkovsky"
-tags	
-0	"World Cinema"
-1	"Sci-Fi"
-2	"Criterion"
-3	"S&S Top 10"
-desc	"A guide leads two men through a forbidden zone to a room that grants wishes."
-source	"Sight & Sound / Criterion"
-42	
-title	"Day of Wrath"
-year	1943
-director	"Carl Theodor Dreyer"
-tags	
-0	"Nordic"
-1	"Criterion"
-2	"Classic"
-3	"Anti-Nazi"
-desc	"A young woman accused of witchcraft in 17th century Denmark. Made under Nazi occupation."
-source	"Criterion / BFI"
-43	
-title	"Fanny and Alexander"
-year	1982
-director	"Ingmar Bergman"
-tags	
-0	"Nordic"
-1	"Criterion"
-2	"Bergman"
-3	"Classic"
-desc	"A bourgeois Swedish family at Christmas. Bergman's farewell to cinema. Glorious."
-source	"Criterion / BFI"
-44	
-title	"Metropolis"
-year	1927
-director	"Fritz Lang"
-tags	
-0	"German Expressionism"
-1	"Silent"
-2	"Classic"
-3	"Sci-Fi"
-desc	"A dystopian future city. Workers underground, elites above. Lang's vision is still overwhelming."
-source	"BFI / Criterion"
-45	
-title	"Nosferatu"
-year	1922
-director	"F.W. Murnau"
-tags	
-0	"German Expressionism"
-1	"Silent"
-2	"Horror"
-3	"Classic"
-desc	"The original vampire film. Max Schreck's shadow on the wall."
-source	"BFI"
-46	
-title	"M"
-year	1931
-director	"Fritz Lang"
-tags	
-0	"German"
-1	"Classic"
-2	"Thriller"
-3	"Criterion"
-desc	"A child murderer is hunted by both police and criminals. Lang's masterpiece."
-source	"BFI / Criterion"
-47	
-title	"The Marriage of Maria Braun"
-year	1979
-director	"Rainer Werner Fassbinder"
-tags	
-0	"German"
-1	"New German Cinema"
-2	"Criterion"
-desc	"A woman's survival in postwar West Germany. Fassbinder's most accessible film."
-source	"Criterion"
-48	
-title	"Paris, Texas"
-year	1984
-director	"Wim Wenders"
-tags	
-0	"German"
-1	"Arthouse"
-2	"Criterion"
-3	"Classic"
-desc	"A man emerges from the desert and tries to reconnect with his family."
-source	"Criterion / BFI"
-49	
-title	"Pather Panchali"
-year	1955
-director	"Satyajit Ray"
-tags	
-0	"World Cinema"
-1	"Indian"
-2	"Criterion"
-3	"S&S Top 20"
-desc	"A Bengali family in rural poverty. The first of the Apu Trilogy. Ray's debut."
-source	"Sight & Sound / Criterion"
-50	
-title	"Seven Samurai"
-year	1954
-director	"Akira Kurosawa"
-tags	
-0	"World Cinema"
-1	"Japanese"
-2	"Criterion"
-3	"Classic"
-desc	"Seven samurai defend a village. The template for the action film."
-source	"BFI / Criterion"
-51	
-title	"Rashomon"
-year	1950
-director	"Akira Kurosawa"
-tags	
-0	"World Cinema"
-1	"Japanese"
-2	"Criterion"
-3	"Classic"
-desc	"Four accounts of a murder in a forest. Truth is relative. Still radical."
-source	"BFI / Criterion"
-52	
-title	"Yi Yi"
-year	2000
-director	"Edward Yang"
-tags	
-0	"World Cinema"
-1	"Taiwanese"
-2	"Criterion"
-3	"S&S Top 10"
-desc	"A Taipei family across three generations over one year. Three hours of perfection."
-source	"Sight & Sound / Criterion"
-53	
-title	"A Brighter Summer Day"
-year	1991
-director	"Edward Yang"
-tags	
-0	"World Cinema"
-1	"Taiwanese"
-2	"Criterion"
-desc	"A teenager in 1960s Taipei navigates gang violence and first love. Four hours. Magnificent."
-source	"Criterion"
-54	
-title	"In the Heat of the Sun"
-year	1994
-director	"Jiang Wen"
-tags	
-0	"World Cinema"
-1	"Chinese"
-2	"Arthouse"
-desc	"A teenager's summer in Cultural Revolution Beijing. Memory, desire, heat."
-source	"New Yorker"
-55	
-title	"Close-Up"
-year	1990
-director	"Abbas Kiarostami"
-tags	
-0	"World Cinema"
-1	"Iranian"
-2	"Criterion"
-3	"S&S Top 20"
-desc	"A man impersonates a famous director and is put on trial. Documentary and fiction merge."
-source	"Sight & Sound / Criterion"
-56	
-title	"A Separation"
-year	2011
-director	"Asghar Farhadi"
-tags	
-0	"World Cinema"
-1	"Iranian"
-2	"Drama"
-desc	"An Iranian couple's separation becomes a legal and moral crisis. Oscar winner."
-source	"Guardian / NYT"
-57	
-title	"Parasite"
-year	2019
-director	"Bong Joon-ho"
-tags	
-0	"World Cinema"
-1	"Korean"
-2	"Thriller"
-3	"Drama"
-desc	"A poor family infiltrates a wealthy household. Genre-defying. Palme d'Or and Best Picture."
-source	"Guardian / NYT"
-58	
-title	"Memories of Murder"
-year	2003
-director	"Bong Joon-ho"
-tags	
-0	"World Cinema"
-1	"Korean"
-2	"Thriller"
-3	"Crime"
-desc	"South Korea's first serial killer investigation. One of the great crime films."
-source	"Guardian / Criterion"
-59	
-title	"The Spy Who Came in from the Cold"
-year	1965
-director	"Martin Ritt"
-tags	
-0	"Spy"
-1	"Cold War"
-2	"British"
-3	"Thriller"
-desc	"A burnt-out British agent is sent on one last mission. John le Carré adaptation. The anti-Bond."
-source	"BFI"
-60	
-title	"The Conversation"
-year	1974
-director	"Francis Ford Coppola"
-tags	
-0	"Thriller"
-1	"Spy"
-2	"Classic"
-3	"Criterion"
-desc	"A surveillance expert becomes paranoid about a recording he has made."
-source	"BFI / Criterion"
-61	
-title	"Three Days of the Condor"
-year	1975
-director	"Sydney Pollack"
-tags	
-0	"Spy"
-1	"Thriller"
-2	"Classic"
-desc	"A CIA analyst goes on the run after his colleagues are killed."
-source	"BFI"
-62	
-title	"The Lives of Others"
-year	2006
-director	"Florian Henckel von Donnersmarck"
-tags	
-0	"Spy"
-1	"Anti-Nazi"
-2	"German"
-3	"Drama"
-desc	"A Stasi officer surveils a playwright in East Germany and begins to change. Oscar winner."
-source	"Guardian / NYT"
-63	
-title	"Tinker Tailor Soldier Spy"
-year	2011
-director	"Tomas Alfredson"
-tags	
-0	"Spy"
-1	"Cold War"
-2	"British"
-3	"Thriller"
-desc	"George Smiley hunts a mole in British intelligence. Gary Oldman. Immaculate."
-source	"Guardian"
-64	
-title	"The Day of the Jackal"
-year	1973
-director	"Fred Zinnemann"
-tags	
-0	"Spy"
-1	"Thriller"
-2	"Classic"
-3	"British"
-desc	"A professional assassin plans to kill De Gaulle. The procedural thriller at its peak."
-source	"BFI"
-65	
-title	"Come and See"
-year	1985
-director	"Elem Klimov"
-tags	
-0	"Anti-Nazi"
-1	"WWII"
-2	"World Cinema"
-3	"S&S Top 10"
-desc	"The Nazi massacre of Belarussian villages seen through a boy's eyes. The most devastating war film."
-source	"Sight & Sound"
-66	
-title	"The Battle of Algiers"
-year	1966
-director	"Gillo Pontecorvo"
-tags	
-0	"Anti-Nazi"
-1	"Anti-Colonial"
-2	"World Cinema"
-3	"Criterion"
-desc	"The Algerian independence movement. Shot like a documentary. Still taught at war colleges."
-source	"BFI / Criterion"
-67	
-title	"Army of Shadows"
-year	1969
-director	"Jean-Pierre Melville"
-tags	
-0	"Anti-Nazi"
-1	"French"
-2	"Resistance"
-3	"Criterion"
-desc	"The French Resistance with no heroics. Melville survived the occupation. This is what it was."
-source	"Criterion / Guardian"
-68	
-title	"Schindler's List"
-year	1993
-director	"Steven Spielberg"
-tags	
-0	"Anti-Nazi"
-1	"WWII"
-2	"Drama"
-3	"Classic"
-desc	"Oskar Schindler saves over a thousand Jewish lives during the Holocaust."
-source	"BFI / NYT"
-69	
-title	"The Great Dictator"
-year	1940
-director	"Charlie Chaplin"
-tags	
-0	"Anti-Nazi"
-1	"Classic"
-2	"Comedy"
-desc	"Chaplin plays both Hitler and a Jewish barber. His speech at the end still lands."
-source	"BFI"
-70	
-title	"Casablanca"
-year	1942
-director	"Michael Curtiz"
-tags	
-0	"Anti-Nazi"
-1	"Classic"
-2	"Resistance"
-3	"Romance"
-desc	"Rick's Cafe, Ilsa, and the underground railroad out of Nazi-occupied Morocco."
-source	"BFI"
-71	
-title	"Au Revoir les Enfants"
-year	1987
-director	"Louis Malle"
-tags	
-0	"Anti-Nazi"
-1	"French"
-2	"Resistance"
-3	"Drama"
-desc	"A French Catholic school hides Jewish children during the occupation. Autobiographical."
-source	"Guardian / Criterion"
-72	
-title	"Europa Europa"
-year	1990
-director	"Agnieszka Holland"
-tags	
-0	"Anti-Nazi"
-1	"WWII"
-2	"Drama"
-desc	"A Jewish boy survives the war by passing as a member of the Hitler Youth."
-source	"Guardian"
-73	
-title	"The Conformist"
-year	1970
-director	"Bernardo Bertolucci"
-tags	
-0	"Anti-Nazi"
-1	"Italian"
-2	"Criterion"
-3	"Arthouse"
-desc	"A man joins Mussolini's secret police and is sent to kill his mentor."
-source	"Criterion / BFI"
-74	
-title	"Hiroshima Mon Amour"
-year	1959
-director	"Alain Resnais"
-tags	
-0	"Anti-Nazi"
-1	"French New Wave"
-2	"Criterion"
-3	"Arthouse"
-desc	"A French actress and a Japanese architect remember their wartime losses."
-source	"Criterion / BFI"
-75	
-title	"Double Indemnity"
-year	1944
-director	"Billy Wilder"
-tags	
-0	"Film Noir"
-1	"Classic"
-2	"Criterion"
-desc	"An insurance salesman and a housewife plan to kill her husband. The platonic noir."
-source	"BFI / Criterion"
-76	
-title	"Sunset Boulevard"
-year	1950
-director	"Billy Wilder"
-tags	
-0	"Film Noir"
-1	"Classic"
-2	"Criterion"
-desc	"A screenwriter becomes trapped by a faded silent film star."
-source	"BFI / Criterion"
-77	
-title	"Out of the Past"
-year	1947
-director	"Jacques Tourneur"
-tags	
-0	"Film Noir"
-1	"Classic"
-2	"Criterion"
-desc	"A former private eye is dragged back into his past. Robert Mitchum. The definitive noir."
-source	"Criterion / BFI"
-78	
-title	"In a Lonely Place"
-year	1950
-director	"Nicholas Ray"
-tags	
-0	"Film Noir"
-1	"Classic"
-2	"Criterion"
-desc	"A volatile screenwriter is suspected of murder. Humphrey Bogart's best performance."
-source	"Criterion"
-79	
-title	"Laura"
-year	1944
-director	"Otto Preminger"
-tags	
-0	"Film Noir"
-1	"Classic"
-desc	"A detective investigating a murder falls in love with the victim's portrait."
-source	"BFI"
-80	
-title	"Slow Horses"
-year	2022
-director	"James Hawes et al."
-tags	
-0	"TV"
-1	"Spy"
-2	"British"
-3	"Prestige TV"
-4	"Apple TV+"
-5	"Streaming"
-desc	"MI5's dumping ground for failed spies. Gary Oldman as Jackson Lamb. Best spy TV since The Americans."
-source	"Guardian / NYT"
-streaming	"Apple TV+"
-81	
-title	"The Wire"
-year	2002
-director	"David Simon et al."
-tags	
-0	"TV"
-1	"Crime"
-2	"Drama"
-3	"Prestige TV"
-4	"Classic TV"
-desc	"The Baltimore drug trade, police, politics, education, press. Five seasons. The standard."
-source	"Guardian / NYT"
-82	
-title	"The Americans"
-year	2013
-director	"Joe Weisberg et al."
-tags	
-0	"TV"
-1	"Spy"
-2	"Cold War"
-3	"Drama"
-4	"Prestige TV"
-desc	"Soviet spies living as an ordinary American couple. The best spy show ever made."
-source	"Guardian / NYT"
-83	
-title	"I May Destroy You"
-year	2020
-director	"Michaela Coel"
-tags	
-0	"TV"
-1	"British"
-2	"Drama"
-3	"Prestige TV"
-4	"BBC"
-5	"Streaming"
-6	"iPlayer"
-desc	"A writer processes sexual assault. The most original British TV in a decade."
-source	"Guardian / NYT"
-streaming	"BBC iPlayer"
-84	
-title	"Chernobyl"
-year	2019
-director	"Johan Renck"
-tags	
-0	"TV"
-1	"Drama"
-2	"Prestige TV"
-3	"Historical"
-4	"Sky"
-desc	"The 1986 nuclear disaster and cover-up. Five episodes. Almost unbearable. Brilliant."
-source	"Guardian / NYT"
-85	
-title	"This Is Going to Hurt"
-year	2022
-director	"Tom Shankland"
-tags	
-0	"TV"
-1	"British"
-2	"Drama"
-3	"Prestige TV"
-4	"BBC"
-5	"iPlayer"
-desc	"A junior doctor in the NHS. Ben Whishaw. Blackly funny and devastating."
-source	"Guardian"
-streaming	"BBC iPlayer"
-86	
-title	"Detectorists"
-year	2014
-director	"Mackenzie Crook"
-tags	
-0	"TV"
-1	"British"
-2	"Comedy"
-3	"Prestige TV"
-4	"BBC"
-5	"iPlayer"
-desc	"Two metal detectorists in rural Essex. The most quietly perfect British comedy."
-source	"Guardian / BFI"
-streaming	"BBC iPlayer"
-87	
-title	"Line of Duty"
-year	2012
-director	"Jed Mercurio"
-tags	
-0	"TV"
-1	"British"
-2	"Thriller"
-3	"Crime"
-4	"Prestige TV"
-5	"iPlayer"
-desc	"An anti-corruption unit investigates bent coppers. Series 1-5 are unmissable."
-source	"Guardian"
-streaming	"BBC iPlayer"
-88	
-title	"Fleabag"
-year	2016
-director	"Harry Bradbeer"
-tags	
-0	"TV"
-1	"British"
-2	"Comedy"
-3	"Drama"
-4	"Prestige TV"
-5	"Prime Video"
-6	"Streaming"
-desc	"A woman breaks the fourth wall while her life falls apart. Phoebe Waller-Bridge."
-source	"Guardian / NYT"
-streaming	"Prime Video"
-89	
-title	"Succession"
-year	2018
-director	"Jesse Armstrong et al."
-tags	
-0	"TV"
-1	"Drama"
-2	"Prestige TV"
-3	"Satire"
-desc	"A media dynasty tears itself apart. The defining TV drama of the 2020s."
-source	"Guardian / NYT"
-90	
-title	"Years and Years"
-year	2019
-director	"Simon Cellan Jones"
-tags	
-0	"TV"
-1	"British"
-2	"Drama"
-3	"Prestige TV"
-4	"BBC"
-5	"iPlayer"
-desc	"A Manchester family navigates fifteen years of near-future Britain."
-source	"Guardian"
-streaming	"BBC iPlayer"
-91	
-title	"Shogun"
-year	2024
-director	"Rachel Kondo, Cian de Buitléar"
-tags	
-0	"TV"
-1	"Drama"
-2	"Prestige TV"
-3	"Historical"
-4	"Disney+"
-5	"Streaming"
-desc	"A 16th century English sailor becomes embroiled in Japanese feudal politics."
-source	"Guardian / NYT"
-streaming	"Disney+"
-92	
-title	"Portrait of a Lady on Fire"
-year	2019
-director	"Céline Sciamma"
-tags	
-0	"French"
-1	"Arthouse"
-2	"Contemporary"
-3	"Drama"
-desc	"A painter falls in love with her subject on a remote island. Austere and passionate."
-source	"Guardian / NYT / S&S"
-93	
-title	"The Zone of Interest"
-year	2023
-director	"Jonathan Glazer"
-tags	
-0	"Anti-Nazi"
-1	"Arthouse"
-2	"Contemporary"
-3	"S&S"
-4	"Drama"
-desc	"The Auschwitz commandant and his family live their normal life adjacent to the camp."
-source	"Guardian / S&S / NYT"
-94	
-title	"All We Imagine as Light"
-year	2024
-director	"Payal Kapadia"
-tags	
-0	"World Cinema"
-1	"Indian"
-2	"Contemporary"
-3	"Arthouse"
-4	"S&S #1 2024"
-desc	"Two nurses in Mumbai. The first Indian film in Cannes competition in 30 years. S&S Film of the Year."
-source	"Sight & Sound 2024"
-95	
-title	"Aftersun"
-year	2022
-director	"Charlotte Wells"
-tags	
-0	"British"
-1	"Contemporary"
-2	"Arthouse"
-3	"Drama"
-desc	"A daughter revisits memories of a holiday with her father. Haunting and exquisitely made."
-source	"Guardian / NYT"
-96	
-title	"The Worst Person in the World"
-year	2021
-director	"Joachim Trier"
-tags	
-0	"Nordic"
-1	"Contemporary"
-2	"Arthouse"
-3	"Drama"
-desc	"A Norwegian woman in her thirties tries to figure out her life. Funny, sad, real."
-source	"Guardian / NYT"
-97	
-title	"Drive My Car"
-year	2021
-director	"Ryusuke Hamaguchi"
-tags	
-0	"World Cinema"
-1	"Japanese"
-2	"Arthouse"
-3	"Contemporary"
-4	"S&S Top 5"
-desc	"A theatre director processes grief while rehearsing Chekhov. Three hours. Unmissable."
-source	"Sight & Sound / Guardian"
-98	
-title	"Tár"
-year	2022
-director	"Todd Field"
-tags	
-0	"Drama"
-1	"Arthouse"
-2	"Contemporary"
-3	"Music"
-desc	"A female conductor at the height of her powers faces cancellation."
-source	"Guardian / NYT / S&S"
-99	
-title	"La Chimera"
-year	2023
-director	"Alice Rohrwacher"
-tags	
-0	"Italian"
-1	"Arthouse"
-2	"Contemporary"
-desc	"A British archaeologist in 1980s Italy digs for Etruscan tombs with a band of thieves."
-source	"Sight & Sound 2024 / Guardian"
-100	
-title	"Nickel Boys"
-year	2024
-director	"RaMell Ross"
-tags	
-0	"Drama"
-1	"Contemporary"
-2	"Anti-Racist"
-3	"S&S 2024"
-desc	"A reform school in Jim Crow Florida. Told entirely in first-person POV."
-source	"Sight & Sound 2024"
-101	
-title	"Anora"
-year	2024
-director	"Sean Baker"
-tags	
-0	"Contemporary"
-1	"Drama"
-2	"Palme d'Or"
-desc	"A sex worker marries a Russian oligarch's son. Screwball turns into something else entirely."
-source	"Sight & Sound 2024 / Guardian"
-102	
-title	"Daft Punk Unchained"
-year	2015
-director	"Hervé Martin-Delpierre"
-tags	
-0	"Documentary"
-1	"Music"
-2	"Synthesizers"
-3	"Electronic Music"
-desc	"The full story of Daft Punk's rise. Rare footage and interviews."
-source	"Guardian"
-103	
-title	"Krautrock: The Rebirth of Germany"
-year	2009
-director	"Ben Whalley"
-tags	
-0	"Documentary"
-1	"Music"
-2	"Synthesizers"
-3	"Electronic Music"
-4	"German"
-desc	"BBC documentary on Can, Kraftwerk, Neu! and the invention of electronic music."
-source	"BFI / BBC"
-104	
-title	"Kraftwerk and the Electronic Revolution"
-year	2008
-director	"various"
-tags	
-0	"Documentary"
-1	"Music"
-2	"Synthesizers"
-3	"Electronic Music"
-4	"German"
-desc	"The story of Kraftwerk's influence on every strand of modern music."
-source	"BBC"
-105	
-title	"I Dream of Wires"
-year	2014
-director	"Robert Fantinatto"
-tags	
-0	"Documentary"
-1	"Music"
-2	"Synthesizers"
-3	"Modular"
-desc	"The history of modular synthesizers. Essential for synth obsessives."
-source	"Cult Doc"
-106	
-title	"808"
-year	2015
-director	"Alexander Dunn"
-tags	
-0	"Documentary"
-1	"Music"
-2	"Synthesizers"
-3	"Electronic Music"
-desc	"The Roland TR-808 drum machine and its influence on popular music."
-source	"Guardian"
-107	
-title	"Forbidden Planet"
-year	1956
-director	"Fred M. Wilcox"
-tags	
-0	"Sci-Fi"
-1	"Classic"
-2	"Synthesizers"
-3	"Electronic Music"
-desc	"Landmark sci-fi with the first entirely electronic film score by Louis and Bebe Barron."
-source	"BFI"
-108	
-title	"Blade Runner"
-year	1982
-director	"Ridley Scott"
-tags	
-0	"Sci-Fi"
-1	"Synthesizers"
-2	"Classic"
-3	"Criterion"
-desc	"Vangelis's synthesizer score is as essential as the visuals. A film and a sound."
-source	"BFI / Criterion"
-109	
-title	"Certified Copy"
-year	2010
-director	"Abbas Kiarostami"
-tags	
-0	"Arthouse"
-1	"Italian"
-2	"World Cinema"
-3	"New Yorker"
-4	"Criterion"
-desc	"A writer and a woman debate the nature of copies and originals in Tuscany."
-source	"New Yorker / Criterion"
-110	
-title	"Uncle Boonmee Who Can Recall His Past Lives"
-year	2010
-director	"Apichatpong Weerasethakul"
-tags	
-0	"World Cinema"
-1	"Arthouse"
-2	"New Yorker"
-3	"Criterion"
-4	"Palme d'Or"
-desc	"A dying man in a Thai jungle is visited by ghosts. Palme d'Or. Strange and beautiful."
-source	"New Yorker / Criterion"
-111	
-title	"The Turin Horse"
-year	2011
-director	"Béla Tarr"
-tags	
-0	"World Cinema"
-1	"Arthouse"
-2	"New Yorker"
-3	"Criterion"
-desc	"The last film by Béla Tarr. A horse refuses to move. Seven days until the end of the world."
-source	"New Yorker / S&S"
-112	
-title	"Stories We Tell"
-year	2012
-director	"Sarah Polley"
-tags	
-0	"Documentary"
-1	"New Yorker"
-2	"Canadian"
-3	"Arthouse"
-desc	"Sarah Polley investigates her own family's secrets. Form and content are inseparable."
-source	"New Yorker / Guardian"
-113	
-title	"The Favourite"
-year	2018
-director	"Yorgos Lanthimos"
-tags	
-0	"British"
-1	"Drama"
-2	"Black Comedy"
-3	"New Yorker"
-4	"Arthouse"
-desc	"Three women fight for control of Queen Anne's court. Olivia Colman. Vicious and hilarious."
-source	"New Yorker / Guardian"
+[
+  {
+    "title": "Jeanne Dielman, 23 quai du Commerce, 1080 Bruxelles",
+    "year": 1975,
+    "director": "Chantal Akerman",
+    "tags": [
+      "Criterion",
+      "Arthouse",
+      "S&S #1"
+    ],
+    "desc": "Three days in the life of a Brussels housewife. The greatest film ever made according to Sight & Sound 2022.",
+    "source": "Sight & Sound 2022"
+  },
+  {
+    "title": "Vertigo",
+    "year": 1958,
+    "director": "Alfred Hitchcock",
+    "tags": [
+      "Thriller",
+      "Classic",
+      "S&S Top 5"
+    ],
+    "desc": "Hitchcock's most personal film. A retired detective becomes obsessed with a woman he is hired to follow.",
+    "source": "Sight & Sound 2022"
+  },
+  {
+    "title": "Citizen Kane",
+    "year": 1941,
+    "director": "Orson Welles",
+    "tags": [
+      "Classic",
+      "Criterion",
+      "S&S Top 5"
+    ],
+    "desc": "The rise and fall of a media magnate. Formally revolutionary and still stunning.",
+    "source": "Sight & Sound 2022"
+  },
+  {
+    "title": "Tokyo Story",
+    "year": 1953,
+    "director": "Yasujiro Ozu",
+    "tags": [
+      "World Cinema",
+      "Japanese",
+      "S&S Top 5",
+      "Criterion"
+    ],
+    "desc": "Elderly parents visit their adult children in Tokyo. Devastating in its quietness.",
+    "source": "Sight & Sound 2022"
+  },
+  {
+    "title": "In the Mood for Love",
+    "year": 2000,
+    "director": "Wong Kar-wai",
+    "tags": [
+      "World Cinema",
+      "Arthouse",
+      "S&S Top 5",
+      "Criterion"
+    ],
+    "desc": "Two neighbours in 1962 Hong Kong suspect their spouses are having an affair. Exquisitely made.",
+    "source": "Sight & Sound 2022"
+  },
+  {
+    "title": "2001: A Space Odyssey",
+    "year": 1968,
+    "director": "Stanley Kubrick",
+    "tags": [
+      "Sci-Fi",
+      "Classic",
+      "S&S Top 10"
+    ],
+    "desc": "Humanity's evolution from apes to astronauts. The monolith. HAL. Still unmatched.",
+    "source": "Sight & Sound 2022"
+  },
+  {
+    "title": "Beau Travail",
+    "year": 1999,
+    "director": "Claire Denis",
+    "tags": [
+      "Arthouse",
+      "French",
+      "S&S Top 10",
+      "Criterion"
+    ],
+    "desc": "Foreign Legion soldiers in Djibouti. Denis at her most hypnotic.",
+    "source": "Sight & Sound 2022"
+  },
+  {
+    "title": "Mulholland Drive",
+    "year": 2001,
+    "director": "David Lynch",
+    "tags": [
+      "Arthouse",
+      "Thriller",
+      "S&S Top 10"
+    ],
+    "desc": "An aspiring actress and an amnesiac woman investigate a mystery in Hollywood.",
+    "source": "Sight & Sound 2022"
+  },
+  {
+    "title": "Singin' in the Rain",
+    "year": 1952,
+    "director": "Stanley Donen, Gene Kelly",
+    "tags": [
+      "Classic",
+      "Musical",
+      "S&S Top 10"
+    ],
+    "desc": "Hollywood transitions to talking pictures. The best musical ever made.",
+    "source": "Sight & Sound 2022"
+  },
+  {
+    "title": "Man with a Movie Camera",
+    "year": 1929,
+    "director": "Dziga Vertov",
+    "tags": [
+      "Silent",
+      "Documentary",
+      "S&S Top 10",
+      "Criterion"
+    ],
+    "desc": "A day in Soviet cities, edited into a manifesto for pure cinema.",
+    "source": "Sight & Sound 2022"
+  },
+  {
+    "title": "Sunrise: A Song of Two Humans",
+    "year": 1927,
+    "director": "F.W. Murnau",
+    "tags": [
+      "Silent",
+      "German Expressionism",
+      "BFI Top 10"
+    ],
+    "desc": "A farmer is tempted to murder his wife. One of the most beautiful films ever shot.",
+    "source": "BFI / Sight & Sound"
+  },
+  {
+    "title": "The Passion of Joan of Arc",
+    "year": 1928,
+    "director": "Carl Theodor Dreyer",
+    "tags": [
+      "Silent",
+      "Nordic",
+      "Criterion",
+      "BFI Top 10"
+    ],
+    "desc": "Joan's trial and execution in close-up. Maria Falconetti's face. Nothing else like it.",
+    "source": "BFI / Sight & Sound"
+  },
+  {
+    "title": "Rules of the Game",
+    "year": 1939,
+    "director": "Jean Renoir",
+    "tags": [
+      "French",
+      "Classic",
+      "Criterion",
+      "BFI Top 10"
+    ],
+    "desc": "A weekend house party exposes the rot of French bourgeois society.",
+    "source": "BFI / Sight & Sound"
+  },
+  {
+    "title": "Battleship Potemkin",
+    "year": 1925,
+    "director": "Sergei Eisenstein",
+    "tags": [
+      "Silent",
+      "Classic",
+      "Criterion"
+    ],
+    "desc": "The 1905 mutiny and the Odessa Steps sequence. The film that invented editing.",
+    "source": "BFI"
+  },
+  {
+    "title": "L'Atalante",
+    "year": 1934,
+    "director": "Jean Vigo",
+    "tags": [
+      "French",
+      "Classic",
+      "Criterion"
+    ],
+    "desc": "Newlyweds on a canal barge. Romantic, surreal, heartbreaking.",
+    "source": "BFI / Sight & Sound"
+  },
+  {
+    "title": "The Red Shoes",
+    "year": 1948,
+    "director": "Michael Powell, Emeric Pressburger",
+    "tags": [
+      "British",
+      "Powell & Pressburger",
+      "Classic",
+      "Criterion"
+    ],
+    "desc": "A ballerina torn between love and art. Overwhelming Technicolor. One of the great British films.",
+    "source": "BFI"
+  },
+  {
+    "title": "A Matter of Life and Death",
+    "year": 1946,
+    "director": "Michael Powell, Emeric Pressburger",
+    "tags": [
+      "British",
+      "Powell & Pressburger",
+      "Classic",
+      "Criterion"
+    ],
+    "desc": "A pilot survives a jump without a parachute and is put on trial in heaven.",
+    "source": "BFI"
+  },
+  {
+    "title": "The Life and Death of Colonel Blimp",
+    "year": 1943,
+    "director": "Michael Powell, Emeric Pressburger",
+    "tags": [
+      "British",
+      "Powell & Pressburger",
+      "Classic",
+      "Anti-Nazi",
+      "Criterion"
+    ],
+    "desc": "A British soldier's career across three wars. Churchill tried to ban it.",
+    "source": "BFI"
+  },
+  {
+    "title": "Black Narcissus",
+    "year": 1947,
+    "director": "Michael Powell, Emeric Pressburger",
+    "tags": [
+      "British",
+      "Powell & Pressburger",
+      "Classic",
+      "Criterion"
+    ],
+    "desc": "Nuns establish a convent in the Himalayas. Repression and hysteria at altitude.",
+    "source": "BFI"
+  },
+  {
+    "title": "The Tales of Hoffmann",
+    "year": 1951,
+    "director": "Michael Powell, Emeric Pressburger",
+    "tags": [
+      "British",
+      "Powell & Pressburger",
+      "Classic"
+    ],
+    "desc": "Offenbach's opera filmed as pure cinematic spectacle.",
+    "source": "BFI"
+  },
+  {
+    "title": "L'Avventura",
+    "year": 1960,
+    "director": "Michelangelo Antonioni",
+    "tags": [
+      "Italian",
+      "Arthouse",
+      "Criterion",
+      "S&S Top 20"
+    ],
+    "desc": "A woman disappears on a Sicilian island. Her companion and lover search for her without urgency.",
+    "source": "Sight & Sound"
+  },
+  {
+    "title": "La Dolce Vita",
+    "year": 1960,
+    "director": "Federico Fellini",
+    "tags": [
+      "Italian",
+      "Classic",
+      "Criterion"
+    ],
+    "desc": "A tabloid journalist drifts through Roman high society. Overwhelming and magnificent.",
+    "source": "BFI"
+  },
+  {
+    "title": "8½",
+    "year": 1963,
+    "director": "Federico Fellini",
+    "tags": [
+      "Italian",
+      "Arthouse",
+      "Criterion",
+      "S&S Top 10"
+    ],
+    "desc": "A film director retreats into fantasy while trying to make a film.",
+    "source": "Sight & Sound"
+  },
+  {
+    "title": "Rome, Open City",
+    "year": 1945,
+    "director": "Roberto Rossellini",
+    "tags": [
+      "Italian",
+      "Anti-Nazi",
+      "Criterion",
+      "Neorealism"
+    ],
+    "desc": "The Italian Resistance in Nazi-occupied Rome. Shot on the streets immediately after liberation.",
+    "source": "BFI"
+  },
+  {
+    "title": "Bicycle Thieves",
+    "year": 1948,
+    "director": "Vittorio De Sica",
+    "tags": [
+      "Italian",
+      "Neorealism",
+      "Criterion",
+      "S&S Top 20"
+    ],
+    "desc": "A man and his son search Rome for a stolen bicycle. The heart of neorealism.",
+    "source": "Sight & Sound"
+  },
+  {
+    "title": "The Leopard",
+    "year": 1963,
+    "director": "Luchino Visconti",
+    "tags": [
+      "Italian",
+      "Classic",
+      "Criterion"
+    ],
+    "desc": "A Sicilian aristocrat navigates the Risorgimento. Burt Lancaster gives the performance of his life.",
+    "source": "BFI / Criterion"
+  },
+  {
+    "title": "Rocco and His Brothers",
+    "year": 1960,
+    "director": "Luchino Visconti",
+    "tags": [
+      "Italian",
+      "Criterion",
+      "Drama"
+    ],
+    "desc": "A family migrates from the south to Milan. Five brothers, one tragedy.",
+    "source": "Criterion"
+  },
+  {
+    "title": "The Gospel According to St. Matthew",
+    "year": 1964,
+    "director": "Pier Paolo Pasolini",
+    "tags": [
+      "Italian",
+      "Arthouse",
+      "Criterion"
+    ],
+    "desc": "Christ's life shot with non-actors in southern Italy. Austere and devastating.",
+    "source": "Criterion / BFI"
+  },
+  {
+    "title": "Breathless",
+    "year": 1960,
+    "director": "Jean-Luc Godard",
+    "tags": [
+      "French New Wave",
+      "Criterion",
+      "Classic"
+    ],
+    "desc": "A small-time thief goes on the run in Paris. Invented modern cinema grammar.",
+    "source": "BFI / Criterion"
+  },
+  {
+    "title": "The 400 Blows",
+    "year": 1959,
+    "director": "François Truffaut",
+    "tags": [
+      "French New Wave",
+      "Criterion",
+      "Classic"
+    ],
+    "desc": "A misunderstood Parisian boy's descent into delinquency. Autobiographical and heartbreaking.",
+    "source": "BFI / Criterion"
+  },
+  {
+    "title": "Cleo from 5 to 7",
+    "year": 1962,
+    "director": "Agnès Varda",
+    "tags": [
+      "French New Wave",
+      "Criterion",
+      "Arthouse"
+    ],
+    "desc": "A pop singer awaits the results of a cancer test. Real time. Paris in 1962.",
+    "source": "Criterion / BFI"
+  },
+  {
+    "title": "Pierrot le Fou",
+    "year": 1965,
+    "director": "Jean-Luc Godard",
+    "tags": [
+      "French New Wave",
+      "Criterion"
+    ],
+    "desc": "A man leaves his wife and runs away with his babysitter. Genre exploded into primary colours.",
+    "source": "Criterion"
+  },
+  {
+    "title": "The Umbrellas of Cherbourg",
+    "year": 1964,
+    "director": "Jacques Demy",
+    "tags": [
+      "French",
+      "Musical",
+      "Criterion",
+      "Classic"
+    ],
+    "desc": "Every word sung. A love story broken by the Algerian War.",
+    "source": "Criterion / BFI"
+  },
+  {
+    "title": "Mon Oncle",
+    "year": 1958,
+    "director": "Jacques Tati",
+    "tags": [
+      "French",
+      "Comedy",
+      "Criterion",
+      "Jacques Tati"
+    ],
+    "desc": "Tati's Monsieur Hulot struggles with modern suburban life. Gentle, precise, hilarious.",
+    "source": "Criterion / BFI"
+  },
+  {
+    "title": "Playtime",
+    "year": 1967,
+    "director": "Jacques Tati",
+    "tags": [
+      "French",
+      "Comedy",
+      "Criterion",
+      "Jacques Tati"
+    ],
+    "desc": "Hulot lost in a glass-and-steel Paris. The most expensive French film ever made. A masterwork.",
+    "source": "Criterion / BFI"
+  },
+  {
+    "title": "Traffic",
+    "year": 1971,
+    "director": "Jacques Tati",
+    "tags": [
+      "French",
+      "Comedy",
+      "Criterion",
+      "Jacques Tati"
+    ],
+    "desc": "Hulot drives a camper van to an Amsterdam car show. Tati's farewell to cinema.",
+    "source": "Criterion"
+  },
+  {
+    "title": "Wild Strawberries",
+    "year": 1957,
+    "director": "Ingmar Bergman",
+    "tags": [
+      "Nordic",
+      "Criterion",
+      "Classic",
+      "Bergman"
+    ],
+    "desc": "An elderly professor drives to collect an honorary degree and confronts his life.",
+    "source": "BFI / Criterion"
+  },
+  {
+    "title": "The Seventh Seal",
+    "year": 1957,
+    "director": "Ingmar Bergman",
+    "tags": [
+      "Nordic",
+      "Criterion",
+      "Classic",
+      "Bergman"
+    ],
+    "desc": "A knight plays chess with Death during the Black Plague.",
+    "source": "BFI / Criterion"
+  },
+  {
+    "title": "Persona",
+    "year": 1966,
+    "director": "Ingmar Bergman",
+    "tags": [
+      "Nordic",
+      "Arthouse",
+      "Criterion",
+      "Bergman",
+      "S&S Top 10"
+    ],
+    "desc": "An actress stops speaking. Her nurse begins to lose herself. Identity dissolves.",
+    "source": "Sight & Sound / Criterion"
+  },
+  {
+    "title": "Scenes from a Marriage",
+    "year": 1973,
+    "director": "Ingmar Bergman",
+    "tags": [
+      "Nordic",
+      "Criterion",
+      "Bergman",
+      "TV"
+    ],
+    "desc": "A marriage's disintegration over six episodes. Liv Ullmann and Erland Josephson. Devastating.",
+    "source": "Criterion / BFI"
+  },
+  {
+    "title": "The Mirror",
+    "year": 1975,
+    "director": "Andrei Tarkovsky",
+    "tags": [
+      "World Cinema",
+      "Arthouse",
+      "Criterion"
+    ],
+    "desc": "Memories, dreams, newsreel. Tarkovsky's most personal film.",
+    "source": "Sight & Sound"
+  },
+  {
+    "title": "Stalker",
+    "year": 1979,
+    "director": "Andrei Tarkovsky",
+    "tags": [
+      "World Cinema",
+      "Sci-Fi",
+      "Criterion",
+      "S&S Top 10"
+    ],
+    "desc": "A guide leads two men through a forbidden zone to a room that grants wishes.",
+    "source": "Sight & Sound / Criterion"
+  },
+  {
+    "title": "Day of Wrath",
+    "year": 1943,
+    "director": "Carl Theodor Dreyer",
+    "tags": [
+      "Nordic",
+      "Criterion",
+      "Classic",
+      "Anti-Nazi"
+    ],
+    "desc": "A young woman accused of witchcraft in 17th century Denmark. Made under Nazi occupation.",
+    "source": "Criterion / BFI"
+  },
+  {
+    "title": "Fanny and Alexander",
+    "year": 1982,
+    "director": "Ingmar Bergman",
+    "tags": [
+      "Nordic",
+      "Criterion",
+      "Bergman",
+      "Classic"
+    ],
+    "desc": "A bourgeois Swedish family at Christmas. Bergman's farewell to cinema. Glorious.",
+    "source": "Criterion / BFI"
+  },
+  {
+    "title": "Metropolis",
+    "year": 1927,
+    "director": "Fritz Lang",
+    "tags": [
+      "German Expressionism",
+      "Silent",
+      "Classic",
+      "Sci-Fi"
+    ],
+    "desc": "A dystopian future city. Workers underground, elites above. Lang's vision is still overwhelming.",
+    "source": "BFI / Criterion"
+  },
+  {
+    "title": "Nosferatu",
+    "year": 1922,
+    "director": "F.W. Murnau",
+    "tags": [
+      "German Expressionism",
+      "Silent",
+      "Horror",
+      "Classic"
+    ],
+    "desc": "The original vampire film. Max Schreck's shadow on the wall.",
+    "source": "BFI"
+  },
+  {
+    "title": "M",
+    "year": 1931,
+    "director": "Fritz Lang",
+    "tags": [
+      "German",
+      "Classic",
+      "Thriller",
+      "Criterion"
+    ],
+    "desc": "A child murderer is hunted by both police and criminals. Lang's masterpiece.",
+    "source": "BFI / Criterion"
+  },
+  {
+    "title": "The Marriage of Maria Braun",
+    "year": 1979,
+    "director": "Rainer Werner Fassbinder",
+    "tags": [
+      "German",
+      "New German Cinema",
+      "Criterion"
+    ],
+    "desc": "A woman's survival in postwar West Germany. Fassbinder's most accessible film.",
+    "source": "Criterion"
+  },
+  {
+    "title": "Paris, Texas",
+    "year": 1984,
+    "director": "Wim Wenders",
+    "tags": [
+      "German",
+      "Arthouse",
+      "Criterion",
+      "Classic"
+    ],
+    "desc": "A man emerges from the desert and tries to reconnect with his family.",
+    "source": "Criterion / BFI"
+  },
+  {
+    "title": "Pather Panchali",
+    "year": 1955,
+    "director": "Satyajit Ray",
+    "tags": [
+      "World Cinema",
+      "Indian",
+      "Criterion",
+      "S&S Top 20"
+    ],
+    "desc": "A Bengali family in rural poverty. The first of the Apu Trilogy. Ray's debut.",
+    "source": "Sight & Sound / Criterion"
+  },
+  {
+    "title": "Seven Samurai",
+    "year": 1954,
+    "director": "Akira Kurosawa",
+    "tags": [
+      "World Cinema",
+      "Japanese",
+      "Criterion",
+      "Classic"
+    ],
+    "desc": "Seven samurai defend a village. The template for the action film.",
+    "source": "BFI / Criterion"
+  },
+  {
+    "title": "Rashomon",
+    "year": 1950,
+    "director": "Akira Kurosawa",
+    "tags": [
+      "World Cinema",
+      "Japanese",
+      "Criterion",
+      "Classic"
+    ],
+    "desc": "Four accounts of a murder in a forest. Truth is relative. Still radical.",
+    "source": "BFI / Criterion"
+  },
+  {
+    "title": "Yi Yi",
+    "year": 2000,
+    "director": "Edward Yang",
+    "tags": [
+      "World Cinema",
+      "Taiwanese",
+      "Criterion",
+      "S&S Top 10"
+    ],
+    "desc": "A Taipei family across three generations over one year. Three hours of perfection.",
+    "source": "Sight & Sound / Criterion"
+  },
+  {
+    "title": "A Brighter Summer Day",
+    "year": 1991,
+    "director": "Edward Yang",
+    "tags": [
+      "World Cinema",
+      "Taiwanese",
+      "Criterion"
+    ],
+    "desc": "A teenager in 1960s Taipei navigates gang violence and first love. Four hours. Magnificent.",
+    "source": "Criterion"
+  },
+  {
+    "title": "In the Heat of the Sun",
+    "year": 1994,
+    "director": "Jiang Wen",
+    "tags": [
+      "World Cinema",
+      "Chinese",
+      "Arthouse"
+    ],
+    "desc": "A teenager's summer in Cultural Revolution Beijing. Memory, desire, heat.",
+    "source": "New Yorker"
+  },
+  {
+    "title": "Close-Up",
+    "year": 1990,
+    "director": "Abbas Kiarostami",
+    "tags": [
+      "World Cinema",
+      "Iranian",
+      "Criterion",
+      "S&S Top 20"
+    ],
+    "desc": "A man impersonates a famous director and is put on trial. Documentary and fiction merge.",
+    "source": "Sight & Sound / Criterion"
+  },
+  {
+    "title": "A Separation",
+    "year": 2011,
+    "director": "Asghar Farhadi",
+    "tags": [
+      "World Cinema",
+      "Iranian",
+      "Drama"
+    ],
+    "desc": "An Iranian couple's separation becomes a legal and moral crisis. Oscar winner.",
+    "source": "Guardian / NYT"
+  },
+  {
+    "title": "Parasite",
+    "year": 2019,
+    "director": "Bong Joon-ho",
+    "tags": [
+      "World Cinema",
+      "Korean",
+      "Thriller",
+      "Drama"
+    ],
+    "desc": "A poor family infiltrates a wealthy household. Genre-defying. Palme d'Or and Best Picture.",
+    "source": "Guardian / NYT"
+  },
+  {
+    "title": "Memories of Murder",
+    "year": 2003,
+    "director": "Bong Joon-ho",
+    "tags": [
+      "World Cinema",
+      "Korean",
+      "Thriller",
+      "Crime"
+    ],
+    "desc": "South Korea's first serial killer investigation. One of the great crime films.",
+    "source": "Guardian / Criterion"
+  },
+  {
+    "title": "The Spy Who Came in from the Cold",
+    "year": 1965,
+    "director": "Martin Ritt",
+    "tags": [
+      "Spy",
+      "Cold War",
+      "British",
+      "Thriller"
+    ],
+    "desc": "A burnt-out British agent is sent on one last mission. John le Carré adaptation. The anti-Bond.",
+    "source": "BFI"
+  },
+  {
+    "title": "The Conversation",
+    "year": 1974,
+    "director": "Francis Ford Coppola",
+    "tags": [
+      "Thriller",
+      "Spy",
+      "Classic",
+      "Criterion"
+    ],
+    "desc": "A surveillance expert becomes paranoid about a recording he has made.",
+    "source": "BFI / Criterion"
+  },
+  {
+    "title": "Three Days of the Condor",
+    "year": 1975,
+    "director": "Sydney Pollack",
+    "tags": [
+      "Spy",
+      "Thriller",
+      "Classic"
+    ],
+    "desc": "A CIA analyst goes on the run after his colleagues are killed.",
+    "source": "BFI"
+  },
+  {
+    "title": "The Lives of Others",
+    "year": 2006,
+    "director": "Florian Henckel von Donnersmarck",
+    "tags": [
+      "Spy",
+      "Anti-Nazi",
+      "German",
+      "Drama"
+    ],
+    "desc": "A Stasi officer surveils a playwright in East Germany and begins to change. Oscar winner.",
+    "source": "Guardian / NYT"
+  },
+  {
+    "title": "Tinker Tailor Soldier Spy",
+    "year": 2011,
+    "director": "Tomas Alfredson",
+    "tags": [
+      "Spy",
+      "Cold War",
+      "British",
+      "Thriller"
+    ],
+    "desc": "George Smiley hunts a mole in British intelligence. Gary Oldman. Immaculate.",
+    "source": "Guardian"
+  },
+  {
+    "title": "The Day of the Jackal",
+    "year": 1973,
+    "director": "Fred Zinnemann",
+    "tags": [
+      "Spy",
+      "Thriller",
+      "Classic",
+      "British"
+    ],
+    "desc": "A professional assassin plans to kill De Gaulle. The procedural thriller at its peak.",
+    "source": "BFI"
+  },
+  {
+    "title": "Come and See",
+    "year": 1985,
+    "director": "Elem Klimov",
+    "tags": [
+      "Anti-Nazi",
+      "WWII",
+      "World Cinema",
+      "S&S Top 10"
+    ],
+    "desc": "The Nazi massacre of Belarussian villages seen through a boy's eyes. The most devastating war film.",
+    "source": "Sight & Sound"
+  },
+  {
+    "title": "The Battle of Algiers",
+    "year": 1966,
+    "director": "Gillo Pontecorvo",
+    "tags": [
+      "Anti-Nazi",
+      "Anti-Colonial",
+      "World Cinema",
+      "Criterion"
+    ],
+    "desc": "The Algerian independence movement. Shot like a documentary. Still taught at war colleges.",
+    "source": "BFI / Criterion"
+  },
+  {
+    "title": "Army of Shadows",
+    "year": 1969,
+    "director": "Jean-Pierre Melville",
+    "tags": [
+      "Anti-Nazi",
+      "French",
+      "Resistance",
+      "Criterion"
+    ],
+    "desc": "The French Resistance with no heroics. Melville survived the occupation. This is what it was.",
+    "source": "Criterion / Guardian"
+  },
+  {
+    "title": "Schindler's List",
+    "year": 1993,
+    "director": "Steven Spielberg",
+    "tags": [
+      "Anti-Nazi",
+      "WWII",
+      "Drama",
+      "Classic"
+    ],
+    "desc": "Oskar Schindler saves over a thousand Jewish lives during the Holocaust.",
+    "source": "BFI / NYT"
+  },
+  {
+    "title": "The Great Dictator",
+    "year": 1940,
+    "director": "Charlie Chaplin",
+    "tags": [
+      "Anti-Nazi",
+      "Classic",
+      "Comedy"
+    ],
+    "desc": "Chaplin plays both Hitler and a Jewish barber. His speech at the end still lands.",
+    "source": "BFI"
+  },
+  {
+    "title": "Casablanca",
+    "year": 1942,
+    "director": "Michael Curtiz",
+    "tags": [
+      "Anti-Nazi",
+      "Classic",
+      "Resistance",
+      "Romance"
+    ],
+    "desc": "Rick's Cafe, Ilsa, and the underground railroad out of Nazi-occupied Morocco.",
+    "source": "BFI"
+  },
+  {
+    "title": "Au Revoir les Enfants",
+    "year": 1987,
+    "director": "Louis Malle",
+    "tags": [
+      "Anti-Nazi",
+      "French",
+      "Resistance",
+      "Drama"
+    ],
+    "desc": "A French Catholic school hides Jewish children during the occupation. Autobiographical.",
+    "source": "Guardian / Criterion"
+  },
+  {
+    "title": "Europa Europa",
+    "year": 1990,
+    "director": "Agnieszka Holland",
+    "tags": [
+      "Anti-Nazi",
+      "WWII",
+      "Drama"
+    ],
+    "desc": "A Jewish boy survives the war by passing as a member of the Hitler Youth.",
+    "source": "Guardian"
+  },
+  {
+    "title": "The Conformist",
+    "year": 1970,
+    "director": "Bernardo Bertolucci",
+    "tags": [
+      "Anti-Nazi",
+      "Italian",
+      "Criterion",
+      "Arthouse"
+    ],
+    "desc": "A man joins Mussolini's secret police and is sent to kill his mentor.",
+    "source": "Criterion / BFI"
+  },
+  {
+    "title": "Hiroshima Mon Amour",
+    "year": 1959,
+    "director": "Alain Resnais",
+    "tags": [
+      "Anti-Nazi",
+      "French New Wave",
+      "Criterion",
+      "Arthouse"
+    ],
+    "desc": "A French actress and a Japanese architect remember their wartime losses.",
+    "source": "Criterion / BFI"
+  },
+  {
+    "title": "Double Indemnity",
+    "year": 1944,
+    "director": "Billy Wilder",
+    "tags": [
+      "Film Noir",
+      "Classic",
+      "Criterion"
+    ],
+    "desc": "An insurance salesman and a housewife plan to kill her husband. The platonic noir.",
+    "source": "BFI / Criterion"
+  },
+  {
+    "title": "Sunset Boulevard",
+    "year": 1950,
+    "director": "Billy Wilder",
+    "tags": [
+      "Film Noir",
+      "Classic",
+      "Criterion"
+    ],
+    "desc": "A screenwriter becomes trapped by a faded silent film star.",
+    "source": "BFI / Criterion"
+  },
+  {
+    "title": "Out of the Past",
+    "year": 1947,
+    "director": "Jacques Tourneur",
+    "tags": [
+      "Film Noir",
+      "Classic",
+      "Criterion"
+    ],
+    "desc": "A former private eye is dragged back into his past. Robert Mitchum. The definitive noir.",
+    "source": "Criterion / BFI"
+  },
+  {
+    "title": "In a Lonely Place",
+    "year": 1950,
+    "director": "Nicholas Ray",
+    "tags": [
+      "Film Noir",
+      "Classic",
+      "Criterion"
+    ],
+    "desc": "A volatile screenwriter is suspected of murder. Humphrey Bogart's best performance.",
+    "source": "Criterion"
+  },
+  {
+    "title": "Laura",
+    "year": 1944,
+    "director": "Otto Preminger",
+    "tags": [
+      "Film Noir",
+      "Classic"
+    ],
+    "desc": "A detective investigating a murder falls in love with the victim's portrait.",
+    "source": "BFI"
+  },
+  {
+    "title": "Slow Horses",
+    "year": 2022,
+    "director": "James Hawes et al.",
+    "tags": [
+      "TV",
+      "Spy",
+      "British",
+      "Prestige TV",
+      "Apple TV+",
+      "Streaming"
+    ],
+    "desc": "MI5's dumping ground for failed spies. Gary Oldman as Jackson Lamb. Best spy TV since The Americans.",
+    "source": "Guardian / NYT",
+    "streaming": "Apple TV+"
+  },
+  {
+    "title": "The Wire",
+    "year": 2002,
+    "director": "David Simon et al.",
+    "tags": [
+      "TV",
+      "Crime",
+      "Drama",
+      "Prestige TV",
+      "Classic TV"
+    ],
+    "desc": "The Baltimore drug trade, police, politics, education, press. Five seasons. The standard.",
+    "source": "Guardian / NYT"
+  },
+  {
+    "title": "The Americans",
+    "year": 2013,
+    "director": "Joe Weisberg et al.",
+    "tags": [
+      "TV",
+      "Spy",
+      "Cold War",
+      "Drama",
+      "Prestige TV"
+    ],
+    "desc": "Soviet spies living as an ordinary American couple. The best spy show ever made.",
+    "source": "Guardian / NYT"
+  },
+  {
+    "title": "I May Destroy You",
+    "year": 2020,
+    "director": "Michaela Coel",
+    "tags": [
+      "TV",
+      "British",
+      "Drama",
+      "Prestige TV",
+      "BBC",
+      "Streaming",
+      "iPlayer"
+    ],
+    "desc": "A writer processes sexual assault. The most original British TV in a decade.",
+    "source": "Guardian / NYT",
+    "streaming": "BBC iPlayer"
+  },
+  {
+    "title": "Chernobyl",
+    "year": 2019,
+    "director": "Johan Renck",
+    "tags": [
+      "TV",
+      "Drama",
+      "Prestige TV",
+      "Historical",
+      "Sky"
+    ],
+    "desc": "The 1986 nuclear disaster and cover-up. Five episodes. Almost unbearable. Brilliant.",
+    "source": "Guardian / NYT"
+  },
+  {
+    "title": "This Is Going to Hurt",
+    "year": 2022,
+    "director": "Tom Shankland",
+    "tags": [
+      "TV",
+      "British",
+      "Drama",
+      "Prestige TV",
+      "BBC",
+      "iPlayer"
+    ],
+    "desc": "A junior doctor in the NHS. Ben Whishaw. Blackly funny and devastating.",
+    "source": "Guardian",
+    "streaming": "BBC iPlayer"
+  },
+  {
+    "title": "Detectorists",
+    "year": 2014,
+    "director": "Mackenzie Crook",
+    "tags": [
+      "TV",
+      "British",
+      "Comedy",
+      "Prestige TV",
+      "BBC",
+      "iPlayer"
+    ],
+    "desc": "Two metal detectorists in rural Essex. The most quietly perfect British comedy.",
+    "source": "Guardian / BFI",
+    "streaming": "BBC iPlayer"
+  },
+  {
+    "title": "Line of Duty",
+    "year": 2012,
+    "director": "Jed Mercurio",
+    "tags": [
+      "TV",
+      "British",
+      "Thriller",
+      "Crime",
+      "Prestige TV",
+      "iPlayer"
+    ],
+    "desc": "An anti-corruption unit investigates bent coppers. Series 1-5 are unmissable.",
+    "source": "Guardian",
+    "streaming": "BBC iPlayer"
+  },
+  {
+    "title": "Fleabag",
+    "year": 2016,
+    "director": "Harry Bradbeer",
+    "tags": [
+      "TV",
+      "British",
+      "Comedy",
+      "Drama",
+      "Prestige TV",
+      "Prime Video",
+      "Streaming"
+    ],
+    "desc": "A woman breaks the fourth wall while her life falls apart. Phoebe Waller-Bridge.",
+    "source": "Guardian / NYT",
+    "streaming": "Prime Video"
+  },
+  {
+    "title": "Succession",
+    "year": 2018,
+    "director": "Jesse Armstrong et al.",
+    "tags": [
+      "TV",
+      "Drama",
+      "Prestige TV",
+      "Satire"
+    ],
+    "desc": "A media dynasty tears itself apart. The defining TV drama of the 2020s.",
+    "source": "Guardian / NYT"
+  },
+  {
+    "title": "Years and Years",
+    "year": 2019,
+    "director": "Simon Cellan Jones",
+    "tags": [
+      "TV",
+      "British",
+      "Drama",
+      "Prestige TV",
+      "BBC",
+      "iPlayer"
+    ],
+    "desc": "A Manchester family navigates fifteen years of near-future Britain.",
+    "source": "Guardian",
+    "streaming": "BBC iPlayer"
+  },
+  {
+    "title": "Shogun",
+    "year": 2024,
+    "director": "Rachel Kondo, Cian de Buitléar",
+    "tags": [
+      "TV",
+      "Drama",
+      "Prestige TV",
+      "Historical",
+      "Disney+",
+      "Streaming"
+    ],
+    "desc": "A 16th century English sailor becomes embroiled in Japanese feudal politics.",
+    "source": "Guardian / NYT",
+    "streaming": "Disney+"
+  },
+  {
+    "title": "Portrait of a Lady on Fire",
+    "year": 2019,
+    "director": "Céline Sciamma",
+    "tags": [
+      "French",
+      "Arthouse",
+      "Contemporary",
+      "Drama"
+    ],
+    "desc": "A painter falls in love with her subject on a remote island. Austere and passionate.",
+    "source": "Guardian / NYT / S&S"
+  },
+  {
+    "title": "The Zone of Interest",
+    "year": 2023,
+    "director": "Jonathan Glazer",
+    "tags": [
+      "Anti-Nazi",
+      "Arthouse",
+      "Contemporary",
+      "S&S",
+      "Drama"
+    ],
+    "desc": "The Auschwitz commandant and his family live their normal life adjacent to the camp.",
+    "source": "Guardian / S&S / NYT"
+  },
+  {
+    "title": "All We Imagine as Light",
+    "year": 2024,
+    "director": "Payal Kapadia",
+    "tags": [
+      "World Cinema",
+      "Indian",
+      "Contemporary",
+      "Arthouse",
+      "S&S #1 2024"
+    ],
+    "desc": "Two nurses in Mumbai. The first Indian film in Cannes competition in 30 years. S&S Film of the Year.",
+    "source": "Sight & Sound 2024"
+  },
+  {
+    "title": "Aftersun",
+    "year": 2022,
+    "director": "Charlotte Wells",
+    "tags": [
+      "British",
+      "Contemporary",
+      "Arthouse",
+      "Drama"
+    ],
+    "desc": "A daughter revisits memories of a holiday with her father. Haunting and exquisitely made.",
+    "source": "Guardian / NYT"
+  },
+  {
+    "title": "The Worst Person in the World",
+    "year": 2021,
+    "director": "Joachim Trier",
+    "tags": [
+      "Nordic",
+      "Contemporary",
+      "Arthouse",
+      "Drama"
+    ],
+    "desc": "A Norwegian woman in her thirties tries to figure out her life. Funny, sad, real.",
+    "source": "Guardian / NYT"
+  },
+  {
+    "title": "Drive My Car",
+    "year": 2021,
+    "director": "Ryusuke Hamaguchi",
+    "tags": [
+      "World Cinema",
+      "Japanese",
+      "Arthouse",
+      "Contemporary",
+      "S&S Top 5"
+    ],
+    "desc": "A theatre director processes grief while rehearsing Chekhov. Three hours. Unmissable.",
+    "source": "Sight & Sound / Guardian"
+  },
+  {
+    "title": "Tár",
+    "year": 2022,
+    "director": "Todd Field",
+    "tags": [
+      "Drama",
+      "Arthouse",
+      "Contemporary",
+      "Music"
+    ],
+    "desc": "A female conductor at the height of her powers faces cancellation.",
+    "source": "Guardian / NYT / S&S"
+  },
+  {
+    "title": "La Chimera",
+    "year": 2023,
+    "director": "Alice Rohrwacher",
+    "tags": [
+      "Italian",
+      "Arthouse",
+      "Contemporary"
+    ],
+    "desc": "A British archaeologist in 1980s Italy digs for Etruscan tombs with a band of thieves.",
+    "source": "Sight & Sound 2024 / Guardian"
+  },
+  {
+    "title": "Nickel Boys",
+    "year": 2024,
+    "director": "RaMell Ross",
+    "tags": [
+      "Drama",
+      "Contemporary",
+      "Anti-Racist",
+      "S&S 2024"
+    ],
+    "desc": "A reform school in Jim Crow Florida. Told entirely in first-person POV.",
+    "source": "Sight & Sound 2024"
+  },
+  {
+    "title": "Anora",
+    "year": 2024,
+    "director": "Sean Baker",
+    "tags": [
+      "Contemporary",
+      "Drama",
+      "Palme d'Or"
+    ],
+    "desc": "A sex worker marries a Russian oligarch's son. Screwball turns into something else entirely.",
+    "source": "Sight & Sound 2024 / Guardian"
+  },
+  {
+    "title": "Daft Punk Unchained",
+    "year": 2015,
+    "director": "Hervé Martin-Delpierre",
+    "tags": [
+      "Documentary",
+      "Music",
+      "Synthesizers",
+      "Electronic Music"
+    ],
+    "desc": "The full story of Daft Punk's rise. Rare footage and interviews.",
+    "source": "Guardian"
+  },
+  {
+    "title": "Krautrock: The Rebirth of Germany",
+    "year": 2009,
+    "director": "Ben Whalley",
+    "tags": [
+      "Documentary",
+      "Music",
+      "Synthesizers",
+      "Electronic Music",
+      "German"
+    ],
+    "desc": "BBC documentary on Can, Kraftwerk, Neu! and the invention of electronic music.",
+    "source": "BFI / BBC"
+  },
+  {
+    "title": "Kraftwerk and the Electronic Revolution",
+    "year": 2008,
+    "director": "various",
+    "tags": [
+      "Documentary",
+      "Music",
+      "Synthesizers",
+      "Electronic Music",
+      "German"
+    ],
+    "desc": "The story of Kraftwerk's influence on every strand of modern music.",
+    "source": "BBC"
+  },
+  {
+    "title": "I Dream of Wires",
+    "year": 2014,
+    "director": "Robert Fantinatto",
+    "tags": [
+      "Documentary",
+      "Music",
+      "Synthesizers",
+      "Modular"
+    ],
+    "desc": "The history of modular synthesizers. Essential for synth obsessives.",
+    "source": "Cult Doc"
+  },
+  {
+    "title": "808",
+    "year": 2015,
+    "director": "Alexander Dunn",
+    "tags": [
+      "Documentary",
+      "Music",
+      "Synthesizers",
+      "Electronic Music"
+    ],
+    "desc": "The Roland TR-808 drum machine and its influence on popular music.",
+    "source": "Guardian"
+  },
+  {
+    "title": "Forbidden Planet",
+    "year": 1956,
+    "director": "Fred M. Wilcox",
+    "tags": [
+      "Sci-Fi",
+      "Classic",
+      "Synthesizers",
+      "Electronic Music"
+    ],
+    "desc": "Landmark sci-fi with the first entirely electronic film score by Louis and Bebe Barron.",
+    "source": "BFI"
+  },
+  {
+    "title": "Blade Runner",
+    "year": 1982,
+    "director": "Ridley Scott",
+    "tags": [
+      "Sci-Fi",
+      "Synthesizers",
+      "Classic",
+      "Criterion"
+    ],
+    "desc": "Vangelis's synthesizer score is as essential as the visuals. A film and a sound.",
+    "source": "BFI / Criterion"
+  },
+  {
+    "title": "Certified Copy",
+    "year": 2010,
+    "director": "Abbas Kiarostami",
+    "tags": [
+      "Arthouse",
+      "Italian",
+      "World Cinema",
+      "New Yorker",
+      "Criterion"
+    ],
+    "desc": "A writer and a woman debate the nature of copies and originals in Tuscany.",
+    "source": "New Yorker / Criterion"
+  },
+  {
+    "title": "Uncle Boonmee Who Can Recall His Past Lives",
+    "year": 2010,
+    "director": "Apichatpong Weerasethakul",
+    "tags": [
+      "World Cinema",
+      "Arthouse",
+      "New Yorker",
+      "Criterion",
+      "Palme d'Or"
+    ],
+    "desc": "A dying man in a Thai jungle is visited by ghosts. Palme d'Or. Strange and beautiful.",
+    "source": "New Yorker / Criterion"
+  },
+  {
+    "title": "The Turin Horse",
+    "year": 2011,
+    "director": "Béla Tarr",
+    "tags": [
+      "World Cinema",
+      "Arthouse",
+      "New Yorker",
+      "Criterion"
+    ],
+    "desc": "The last film by Béla Tarr. A horse refuses to move. Seven days until the end of the world.",
+    "source": "New Yorker / S&S"
+  },
+  {
+    "title": "Stories We Tell",
+    "year": 2012,
+    "director": "Sarah Polley",
+    "tags": [
+      "Documentary",
+      "New Yorker",
+      "Canadian",
+      "Arthouse"
+    ],
+    "desc": "Sarah Polley investigates her own family's secrets. Form and content are inseparable.",
+    "source": "New Yorker / Guardian"
+  },
+  {
+    "title": "The Favourite",
+    "year": 2018,
+    "director": "Yorgos Lanthimos",
+    "tags": [
+      "British",
+      "Drama",
+      "Black Comedy",
+      "New Yorker",
+      "Arthouse"
+    ],
+    "desc": "Three women fight for control of Queen Anne's court. Olivia Colman. Vicious and hilarious.",
+    "source": "New Yorker / Guardian"
+  },
+  {
+    "title": "Local Hero",
+    "year": 1983,
+    "director": "Bill Forsyth",
+    "tags": [
+      "Scottish",
+      "British",
+      "Comedy",
+      "Criterion"
+    ],
+    "desc": "An American oil company rep sent to buy a Scottish village falls under its spell. Perfect.",
+    "source": "BFI / Criterion"
+  },
+  {
+    "title": "Gregory's Girl",
+    "year": 1980,
+    "director": "Bill Forsyth",
+    "tags": [
+      "Scottish",
+      "British",
+      "Comedy",
+      "Classic"
+    ],
+    "desc": "A teenage boy falls for the girl who replaced him on the school football team. Glasgow, 1980.",
+    "source": "BFI"
+  },
+  {
+    "title": "Trainspotting",
+    "year": 1996,
+    "director": "Danny Boyle",
+    "tags": [
+      "Scottish",
+      "British",
+      "Drama",
+      "Classic"
+    ],
+    "desc": "Edinburgh heroin addicts. Danny Boyle at his most visceral. Defined 90s British cinema.",
+    "source": "BFI / Guardian"
+  },
+  {
+    "title": "Red Road",
+    "year": 2006,
+    "director": "Andrea Arnold",
+    "tags": [
+      "Scottish",
+      "British",
+      "Arthouse",
+      "Drama"
+    ],
+    "desc": "A CCTV operator in Glasgow becomes obsessed with a man she sees on screen.",
+    "source": "Guardian / BFI"
+  },
+  {
+    "title": "Ratcatcher",
+    "year": 1999,
+    "director": "Lynne Ramsay",
+    "tags": [
+      "Scottish",
+      "British",
+      "Arthouse",
+      "Drama"
+    ],
+    "desc": "A boy in 1970s Glasgow during the bin-workers' strike. Ramsay's debut. Devastating.",
+    "source": "Guardian / BFI / Criterion"
+  },
+  {
+    "title": "Morvern Callar",
+    "year": 2002,
+    "director": "Lynne Ramsay",
+    "tags": [
+      "Scottish",
+      "British",
+      "Arthouse",
+      "Drama"
+    ],
+    "desc": "A supermarket worker in a Highland town submits her dead boyfriend's novel as her own.",
+    "source": "Guardian / BFI"
+  },
+  {
+    "title": "Sunshine on Leith",
+    "year": 2013,
+    "director": "Dexter Fletcher",
+    "tags": [
+      "Scottish",
+      "British",
+      "Musical",
+      "Drama"
+    ],
+    "desc": "Two soldiers return to Edinburgh. Proclaimers jukebox musical. Genuinely moving.",
+    "source": "Guardian"
+  },
+  {
+    "title": "Braveheart",
+    "year": 1995,
+    "director": "Mel Gibson",
+    "tags": [
+      "Scottish",
+      "Historical",
+      "Drama"
+    ],
+    "desc": "William Wallace and the Wars of Scottish Independence. Historically absurd, cinematically overwhelming.",
+    "source": "BFI"
+  },
+  {
+    "title": "Rob Roy",
+    "year": 1995,
+    "director": "Michael Caton-Jones",
+    "tags": [
+      "Scottish",
+      "Historical",
+      "Drama"
+    ],
+    "desc": "Liam Neeson as Rob Roy MacGregor. Tim Roth's villain is one of the great screen monsters.",
+    "source": "Guardian"
+  },
+  {
+    "title": "The Wicker Man",
+    "year": 1973,
+    "director": "Robin Hardy",
+    "tags": [
+      "Scottish",
+      "Horror",
+      "Classic",
+      "British",
+      "Criterion"
+    ],
+    "desc": "A police sergeant investigates a missing girl on a remote Scottish island. Folk horror. Essential.",
+    "source": "BFI / Criterion"
+  },
+  {
+    "title": "Restless Natives",
+    "year": 1985,
+    "director": "Michael Hoffman",
+    "tags": [
+      "Scottish",
+      "Comedy",
+      "Cult"
+    ],
+    "desc": "Two Edinburgh boys become highway robbers on the tourist trail. Cloven Hoof and Wolfie. Beloved.",
+    "source": "Scottish cult"
+  },
+  {
+    "title": "Whisky Galore!",
+    "year": 1949,
+    "director": "Alexander Mackendrick",
+    "tags": [
+      "Scottish",
+      "British",
+      "Comedy",
+      "Classic",
+      "Ealing"
+    ],
+    "desc": "A ship full of whisky runs aground on a Scottish island during the war. Ealing at its best.",
+    "source": "BFI"
+  },
+  {
+    "title": "The 39 Steps",
+    "year": 1935,
+    "director": "Alfred Hitchcock",
+    "tags": [
+      "Scottish",
+      "British",
+      "Thriller",
+      "Classic",
+      "Spy"
+    ],
+    "desc": "A man wrongly accused of murder goes on the run across Scotland. Hitchcock's first masterpiece.",
+    "source": "BFI / Criterion"
+  },
+  {
+    "title": "Shallow Grave",
+    "year": 1994,
+    "director": "Danny Boyle",
+    "tags": [
+      "Scottish",
+      "British",
+      "Thriller",
+      "Drama"
+    ],
+    "desc": "Three Edinburgh flatmates discover their new lodger dead and his suitcase full of cash.",
+    "source": "Guardian / BFI"
+  },
+  {
+    "title": "I Know Where I'm Going!",
+    "year": 1945,
+    "director": "Powell and Pressburger",
+    "tags": [
+      "Scottish",
+      "British",
+      "Powell & Pressburger",
+      "Classic",
+      "Criterion"
+    ],
+    "desc": "A headstrong woman travels to the Hebrides to marry a rich man and gets more than she planned.",
+    "source": "BFI / Criterion"
+  },
+  {
+    "title": "Aguirre, the Wrath of God",
+    "year": 1972,
+    "director": "Werner Herzog",
+    "tags": [
+      "World Cinema",
+      "German",
+      "Arthouse",
+      "Criterion",
+      "Ebert Pick"
+    ],
+    "desc": "Conquistadors descend the Amazon. Klaus Kinski. Herzog against the jungle. Ebert Great Movie.",
+    "source": "RogerEbert.com / Criterion"
+  },
+  {
+    "title": "Ali: Fear Eats the Soul",
+    "year": 1974,
+    "director": "Rainer Werner Fassbinder",
+    "tags": [
+      "German",
+      "Arthouse",
+      "Drama",
+      "Ebert Pick",
+      "Criterion"
+    ],
+    "desc": "An elderly German cleaning woman falls in love with a Moroccan mechanic. Fassbinder. Ebert Great Movie.",
+    "source": "RogerEbert.com"
+  },
+  {
+    "title": "Apocalypse Now",
+    "year": 1979,
+    "director": "Francis Ford Coppola",
+    "tags": [
+      "Classic",
+      "Drama",
+      "War",
+      "Criterion",
+      "Ebert Pick"
+    ],
+    "desc": "Vietnam. Heart of Darkness. Brando. Sheen. Coppola's madness on screen. Ebert Great Movie.",
+    "source": "RogerEbert.com / Criterion"
+  },
+  {
+    "title": "The General",
+    "year": 1926,
+    "director": "Buster Keaton",
+    "tags": [
+      "Silent",
+      "Classic",
+      "Comedy",
+      "Criterion",
+      "Ebert Pick"
+    ],
+    "desc": "Buster Keaton drives a locomotive through the Civil War. The greatest silent comedy.",
+    "source": "RogerEbert.com / Criterion"
+  },
+  {
+    "title": "Ikiru",
+    "year": 1952,
+    "director": "Akira Kurosawa",
+    "tags": [
+      "World Cinema",
+      "Japanese",
+      "Drama",
+      "Criterion",
+      "Ebert Pick"
+    ],
+    "desc": "A bureaucrat learns he is dying and tries to do one good thing. Kurosawa's most human film.",
+    "source": "RogerEbert.com / Criterion"
+  },
+  {
+    "title": "Nashville",
+    "year": 1975,
+    "director": "Robert Altman",
+    "tags": [
+      "Classic",
+      "Drama",
+      "Music",
+      "Criterion",
+      "Ebert Pick"
+    ],
+    "desc": "24 characters intersect over five days at a country music festival. Altman's masterpiece.",
+    "source": "RogerEbert.com / Criterion"
+  },
+  {
+    "title": "Nights of Cabiria",
+    "year": 1957,
+    "director": "Federico Fellini",
+    "tags": [
+      "Italian",
+      "Criterion",
+      "Classic",
+      "Ebert Pick"
+    ],
+    "desc": "A Roman prostitute searches for love and dignity. Giulietta Masina's greatest performance.",
+    "source": "RogerEbert.com / Criterion"
+  },
+  {
+    "title": "The Third Man",
+    "year": 1949,
+    "director": "Carol Reed",
+    "tags": [
+      "British",
+      "Film Noir",
+      "Classic",
+      "Criterion",
+      "Spy",
+      "Ebert Pick"
+    ],
+    "desc": "Postwar Vienna. Harry Lime. The cuckoo clock speech. The greatest British thriller.",
+    "source": "RogerEbert.com / BFI / Criterion"
+  },
+  {
+    "title": "Ugetsu",
+    "year": 1953,
+    "director": "Kenji Mizoguchi",
+    "tags": [
+      "World Cinema",
+      "Japanese",
+      "Criterion",
+      "Classic",
+      "Ebert Pick"
+    ],
+    "desc": "Two peasants abandon their families for glory during civil war and pay the price. Ebert Great Movie.",
+    "source": "RogerEbert.com / Criterion"
+  },
+  {
+    "title": "Make Way for Tomorrow",
+    "year": 1937,
+    "director": "Leo McCarey",
+    "tags": [
+      "Classic",
+      "Drama",
+      "Film Noir",
+      "Chicago Reader"
+    ],
+    "desc": "An elderly couple is separated when their children won't take them in. Orson Welles called it the saddest film ever made.",
+    "source": "Chicago Reader"
+  },
+  {
+    "title": "His Girl Friday",
+    "year": 1940,
+    "director": "Howard Hawks",
+    "tags": [
+      "Classic",
+      "Comedy",
+      "Film Noir",
+      "Chicago Reader"
+    ],
+    "desc": "A newspaper editor tries to win back his ex-wife. The fastest dialogue in Hollywood history.",
+    "source": "Chicago Reader"
+  },
+  {
+    "title": "Late Spring",
+    "year": 1949,
+    "director": "Yasujiro Ozu",
+    "tags": [
+      "World Cinema",
+      "Japanese",
+      "Criterion",
+      "Chicago Reader"
+    ],
+    "desc": "A widower's daughter refuses to leave home. Ozu's most tender film.",
+    "source": "Chicago Reader / Criterion"
+  },
+  {
+    "title": "A Letter to Three Wives",
+    "year": 1949,
+    "director": "Joseph L. Mankiewicz",
+    "tags": [
+      "Classic",
+      "Drama",
+      "Film Noir",
+      "Chicago Reader"
+    ],
+    "desc": "Three women wonder which one of their husbands has run off with a local man-eater.",
+    "source": "Chicago Reader"
+  },
+  {
+    "title": "Master and Commander: The Far Side of the World",
+    "year": 2003,
+    "director": "Peter Weir",
+    "tags": [
+      "House Favourite",
+      "Drama",
+      "Historical",
+      "Classic"
+    ],
+    "desc": "Russell Crowe as Captain Aubrey pursuing a French frigate. Naval warfare, friendship, Darwin. Underseen masterpiece.",
+    "source": "House Favourite"
+  },
+  {
+    "title": "The Dish",
+    "year": 2000,
+    "director": "Rob Sitch",
+    "tags": [
+      "House Favourite",
+      "Comedy",
+      "Drama",
+      "Australian"
+    ],
+    "desc": "The Australian radio telescope that helped broadcast the Moon landing. Warm, funny, perfect.",
+    "source": "House Favourite"
+  },
+  {
+    "title": "Galaxy Quest",
+    "year": 1999,
+    "director": "Dean Parisot",
+    "tags": [
+      "House Favourite",
+      "Comedy",
+      "Sci-Fi"
+    ],
+    "desc": "Washed-up actors from a Star Trek-like show are mistaken for real space heroes. Genuinely great.",
+    "source": "House Favourite"
+  },
+  {
+    "title": "The Long Goodbye",
+    "year": 1973,
+    "director": "Robert Altman",
+    "tags": [
+      "Film Noir",
+      "Classic",
+      "Criterion",
+      "Chicago Reader",
+      "House Favourite"
+    ],
+    "desc": "Elliott Gould as Chandler's Philip Marlowe in 1970s LA. Altman deconstructs the genre lovingly.",
+    "source": "Chicago Reader / Criterion"
+  },
+  {
+    "title": "Withnail and I",
+    "year": 1987,
+    "director": "Bruce Robinson",
+    "tags": [
+      "British",
+      "Comedy",
+      "Classic",
+      "House Favourite",
+      "Cult"
+    ],
+    "desc": "Two unemployed actors spend a disastrous holiday in the Lake District. Dialogue you quote forever.",
+    "source": "BFI / Guardian"
+  },
+  {
+    "title": "Election",
+    "year": 1999,
+    "director": "Alexander Payne",
+    "tags": [
+      "Comedy",
+      "Drama",
+      "Classic",
+      "House Favourite"
+    ],
+    "desc": "Reese Witherspoon vs Matthew Broderick in a high school election. One of the great comedies.",
+    "source": "RogerEbert.com / Chicago Reader"
+  },
+  {
+    "title": "Gosford Park",
+    "year": 2001,
+    "director": "Robert Altman",
+    "tags": [
+      "British",
+      "Drama",
+      "Thriller",
+      "House Favourite",
+      "Arthouse"
+    ],
+    "desc": "A country house murder mystery. Altman with a British cast. The template for Downton Abbey.",
+    "source": "Guardian / RogerEbert.com"
+  }
+]
