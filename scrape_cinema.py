@@ -1,56 +1,39 @@
 import requests
 import json
+import os
 
-def get_google_listings():
-    api_key = "cabfbdda7799cd435ca95f62e27e8c2d886f32a6"
+# Securely pull the key from GitHub Secrets
+SERPER_KEY = os.getenv("SERPER_KEY") 
+
+def get_edinburgh_cinema():
     url = "https://google.serper.dev/search"
-    
-    # Targeting the specific Knowledge Graph showtimes for Edinburgh
     payload = json.dumps({
-        "q": "cinema movie showtimes Edinburgh today",
-        "gl": "gb",
-        "hl": "en",
-        "type": "search"
+        "q": "movies playing in Edinburgh today showtimes",
+        "gl": "gb", "hl": "en"
     })
-    headers = {'X-API-KEY': api_key, 'Content-Type': 'application/json'}
-
-    listings = []
-    seen = set()
+    headers = {'X-API-KEY': SERPER_KEY, 'Content-Type': 'application/json'}
 
     try:
-        response = requests.post(url, headers=headers, data=payload)
-        results = response.json()
+        res = requests.post(url, headers=headers, data=payload).json()
+        listings = []
+        if 'movies' in res:
+            for m in res['movies']:
+                for c in m.get('cinemas', []):
+                    # Standardizing ingredients for the UI
+                    listings.append({
+                        "venue": c.get('name', 'EDINBURGH').upper(),
+                        "title": m.get('name', 'UNKNOWN').upper(),
+                        "times": ", ".join(c.get('showtimes', [])[:5]),
+                        "tag": "LIVE",
+                        "url": c.get('link', '#')
+                    })
         
-        # 1. Pulling from the Knowledge Graph (Where Google lists the movies)
-        if 'knowledgeGraph' in results:
-            kg = results['knowledgeGraph']
-            # We look specifically for the list of films Google has 'plucked'
-            for attr in kg.get('attributes', []):
-                movie = attr.get('label')
-                if movie and movie not in seen:
-                    listings.append({"title": movie, "venue": "Now Playing (Various)"})
-                    seen.add(movie)
-
-        # 2. Hard-coded 'Fresh' Data for the Filmhouse (Scraping Backup)
-        # This ensures the Filmhouse classics show up even if Google is slow
-        arthouse = [
-            {"title": "Amélie (25th Anniv)", "venue": "Filmhouse"},
-            {"title": "The Drama", "venue": "Cameo/Filmhouse"},
-            {"title": "Akira (4K)", "venue": "Cameo"},
-            {"title": "Project Hail Mary", "venue": "Dominion"},
-            {"title": "Wuthering Heights", "venue": "Vue / Dominion"}
-        ]
-        
-        for film in arthouse:
-            if film["title"] not in seen:
-                listings.append(film)
-
+        # Save to the file the index.html reads
+        with open('listings.json', 'w') as f:
+            json.dump(listings[:30], f, indent=2)
+            
     except Exception as e:
-        listings = [{"title": f"Sync Error: {e}", "venue": "System"}]
-        
-    return listings
+        print(f"Update failed: {e}")
 
 if __name__ == "__main__":
-    data = get_google_listings()
-    with open('listings.json', 'w') as f:
-        json.dump(data, f, indent=2)
+    get_edinburgh_cinema()
