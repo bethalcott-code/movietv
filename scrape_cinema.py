@@ -2,13 +2,14 @@ import requests
 import json
 import os
 
-SERPER_KEY = os.getenv("SERPER_KEY")
+# Ensure this secret is set in GitHub Settings > Secrets
+SERPER_KEY = os.getenv("SERPER_KEY") 
 
 def get_cinema():
     url = "https://google.serper.dev/search"
-    # Logic: More specific query to trigger the 'movies' knowledge graph
+    # Query logic: 'movie showtimes' is more reliable than 'movies playing' [ASSUMPTION]
     payload = json.dumps({
-        "q": "cinema showtimes Edinburgh today",
+        "q": "movie showtimes Edinburgh today",
         "gl": "gb", "hl": "en"
     })
     headers = {'X-API-KEY': SERPER_KEY, 'Content-Type': 'application/json'}
@@ -17,26 +18,25 @@ def get_cinema():
         res = requests.post(url, headers=headers, data=payload).json()
         listings = []
         
-        # Logic: Fallback if 'movies' block is missing
-        items = res.get('movies', [])
-        for m in items:
-            for c in m.get('cinemas', []):
-                listings.append({
-                    "venue": c.get('name', 'Edinburgh').upper(),
-                    "title": m.get('name', 'Movie').upper(),
-                    "times": ", ".join(c.get('showtimes', [])[:5]),
-                    "tag": "LIVE",
-                    "url": c.get('link', '#')
-                })
+        # Check for structured movie block
+        if 'movies' in res:
+            for m in res['movies']:
+                for c in m.get('cinemas', []):
+                    listings.append({
+                        "venue": c.get('name', 'EDINBURGH').upper(),
+                        "title": m.get('name', 'UNKNOWN').upper(),
+                        "times": ", ".join(c.get('showtimes', [])[:5]),
+                        "tag": "LIVE",
+                        "url": c.get('link', '#')
+                    })
         
-        if not listings: # Logic: Scrape organic results if Knowledge Graph fails [ASSUMPTION]
-            print("No structured movies found. Check Serper query.")
-
+        print(f"Robot found {len(listings)} movies.")
+        
         with open('listings.json', 'w') as f:
             json.dump(listings, f, indent=2)
             
     except Exception as e:
-        print(f"Error: {e}")
+        print(f"Scraper Error: {e}")
 
 if __name__ == "__main__":
     get_cinema()
