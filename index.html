@@ -1,59 +1,68 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>THE QUEUE</title>
-    <style>
-        :root { --bg: #000; --text: #fff; --grey: #1a1a1a; --dim: #888; --green: #0f0; }
-        body { background: var(--bg); color: var(--text); font-family: -apple-system, sans-serif; margin: 0; padding: 20px; text-transform: uppercase; letter-spacing: 0.5px; }
-        header { border-bottom: 1px solid var(--grey); padding-bottom: 15px; margin-bottom: 20px; display: flex; justify-content: space-between; }
-        nav { display: flex; border-bottom: 1px solid var(--grey); margin-bottom: 25px; gap: 20px; }
-        nav button { background: none; border: none; color: var(--dim); padding: 10px 0; cursor: pointer; font-family: inherit; font-size: 11px; font-weight: bold; }
-        nav button.active { color: #fff; border-bottom: 2px solid #fff; }
-        .tab-content { display: none; } .tab-content.active { display: block; }
-        .row { border-bottom: 1px solid var(--grey); padding: 18px 0; display: flex; justify-content: space-between; align-items: center; }
-        .row a { color: #fff; text-decoration: none; font-weight: bold; font-size: 15px; display: block; margin-bottom: 4px; }
-        .meta { font-size: 9px; color: var(--dim); margin-bottom: 4px; display: block; }
-        .stream-tag { font-size: 9px; color: var(--green); font-weight: bold; letter-spacing: 1px; }
-        .add-btn { background: #fff; border: none; width: 30px; height: 30px; border-radius: 50%; font-size: 20px; cursor: pointer; }
-    </style>
-</head>
-<body>
-<header><div><strong>THE QUEUE</strong><br><small>EDINBURGH / 2026</small></div><div style="color:var(--green)">●</div></header>
-<nav>
-    <button onclick="tab('cinema')" id="b-cinema" class="active">Cinema</button>
-    <button onclick="tab('recs')" id="b-recs">Recs</button>
-    <button onclick="tab('queue')" id="b-queue">Queue</button>
-</nav>
-
-<div id="cinema" class="tab-content active"></div>
-<div id="recs" class="tab-content"></div>
-<div id="queue" class="tab-content"><div id="q-list"></div></div>
+<style>
+    :root { --bg: #E6E6E6; --text: #1A1A1A; --grey: #CCCCCC; --accent: #D12F2F; --white: #FFFFFF; }
+    body { background: var(--bg); color: var(--text); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; margin: 0; padding: 25px; letter-spacing: 0px; text-transform: none; }
+    header { border-bottom: 2px solid var(--text); padding-bottom: 10px; margin-bottom: 30px; display: flex; justify-content: space-between; align-items: flex-end; }
+    nav { display: flex; gap: 30px; margin-bottom: 30px; }
+    nav button { background: none; border: none; color: #999; padding: 5px 0; cursor: pointer; font-family: inherit; font-size: 14px; font-weight: 700; text-transform: uppercase; }
+    nav button.active { color: var(--text); border-bottom: 3px solid var(--accent); }
+    .row { border-bottom: 1px solid var(--grey); padding: 20px 0; display: flex; justify-content: space-between; align-items: center; }
+    .row a { color: var(--text); text-decoration: none; font-weight: 500; font-size: 16px; }
+    .meta { font-size: 11px; color: #666; text-transform: uppercase; margin-bottom: 4px; display: block; font-weight: 700; }
+    .add-btn { background: var(--text); color: var(--white); border: none; width: 32px; height: 32px; font-size: 20px; cursor: pointer; }
+    input { background: var(--white); border: 1px solid var(--grey); padding: 12px; font-family: inherit; width: 70%; }
+</style>
 
 <script>
     let myQueue = JSON.parse(localStorage.getItem('myQueue')) || [];
+    let currentData = []; // Logic: Temporarily store all fetched data for auto-matching
+
     function tab(id) {
         document.querySelectorAll('.tab-content, nav button').forEach(el => el.classList.remove('active'));
         document.getElementById(id).classList.add('active');
         document.getElementById('b-' + id).classList.add('active');
-        if(id === 'cinema') fetch('listings.json').then(r=>r.json()).then(d=>render(d, 'cinema', 'venue'));
-        if(id === 'recs') fetch('recommendations.json').then(r=>r.json()).then(d=>render(d, 'recs', 'source'));
+        
+        if(id === 'cinema') fetch('listings.json').then(r=>r.json()).then(d=> { currentData = d; render(d, 'cinema', 'venue'); });
+        if(id === 'recs') fetch('recommendations.json').then(r=>r.json()).then(d=> { currentData = d; render(d, 'recs', 'source'); });
         if(id === 'queue') renderQ();
     }
+
     function render(data, id, metaKey) {
         document.getElementById(id).innerHTML = data.map(i => `
             <div class="row">
                 <div>
-                    <span class="meta">${i[metaKey]} ${i.tag ? ` / ${i.tag}` : ''}</span>
+                    <span class="meta">${i[metaKey]} ${i.tag ? `| ${i.tag}` : ''}</span>
                     <a href="${i.url || '#'}" target="_blank">${i.title}</a>
-                    ${i.streaming ? `<span class="stream-tag">WATCH: ${i.streaming}</span>` : ''}
                 </div>
-                <button class="add-btn" onclick="add('${i.title.replace(/'/g, "\\'")}')">+</button>
+                <button class="add-btn" onclick="add('${i.title.replace(/'/g, "\\'")}', '${i[metaKey] || ''}', '${i.tag || ''}')">+</button>
             </div>`).join('');
     }
-    function add(t) { if(!myQueue.includes(t)) { myQueue.push(t); localStorage.setItem('myQueue',JSON.stringify(myQueue)); alert('ADDED'); } }
-    function renderQ() { document.getElementById('q-list').innerHTML = myQueue.map(t=>`<div class="row"><div>${t}</div></div>`).reverse().join(''); }
-    tab('cinema');
+
+    // Logic: Capture source/tag during add
+    function add(title, source = '', tag = '') {
+        if(!title) return;
+        
+        // Hard Fix: Auto-match manual entries against current data
+        if(!source) {
+            const match = currentData.find(item => item.title.toLowerCase() === title.toLowerCase());
+            source = match ? (match.source || match.venue) : 'Personal Entry';
+            tag = match ? (match.tag || '') : 'Manual';
+        }
+
+        const entry = { title, source, tag, added: new Date().toLocaleDateString() };
+        if(!myQueue.some(e => e.title === title)) {
+            myQueue.push(entry);
+            localStorage.setItem('myQueue', JSON.stringify(myQueue));
+            alert('Added to Library');
+        }
+    }
+
+    function renderQ() {
+        document.getElementById('q-list').innerHTML = myQueue.map(item => `
+            <div class="row">
+                <div>
+                    <span class="meta">${item.source} ${item.tag ? `| ${item.tag}` : ''} — Added ${item.added}</span>
+                    <a href="#">${item.title}</a>
+                </div>
+            </div>`).reverse().join('') || '<div class="row">Library Empty</div>';
+    }
 </script>
-</body>
-</html>
