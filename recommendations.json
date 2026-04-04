@@ -1,74 +1,65 @@
 [
   {
-    "title": "\u2018It\u2019s the year of gay Brazilian cruising!\u2019 The makers of Night Stage on public sex and their \u2018deranged erotic thriller\u2019",
+    "title": "Ghost Killer",
     "source": "The Guardian",
-    "url": "https://www.theguardian.com/film/2026/apr/03/interview-marcio-reolon-filip-matzembacher-night-stage-gay-brazilian",
-    "tag": "Awards"
+    "url": "https://www.theguardian.com/film/2026/mar/31/ghost-killer-review-fantastic-karate-chopping-and-gunslinging-in-in-supernatural-action-comedy",
+    "tag": "CRITIC PICK",
+    "streaming": "RENT/CINEMA ONLY"
+  },
+  {
+    "title": "They Will Kill You",
+    "source": "The Guardian",
+    "url": "https://www.theguardian.com/film/2026/mar/26/they-will-kill-you-movie-review",
+    "tag": "CRITIC PICK",
+    "streaming": "RENT/CINEMA ONLY"
+  },
+  {
+    "title": "Pretty Lethal",
+    "source": "The Guardian",
+    "url": "https://www.theguardian.com/film/2026/mar/25/pretty-lethal-review-ballerina-action-thriller",
+    "tag": "CRITIC PICK",
+    "streaming": "Amazon Prime Video, Amazon Prime Video with Ads"
   },
   {
     "title": "Mike & Nick & Nick & Alice",
     "source": "The Guardian",
     "url": "https://www.theguardian.com/film/2026/mar/24/mike-nick-nick-alice-review-vince-vaughn-comedy",
-    "tag": "Awards"
+    "tag": "CRITIC PICK",
+    "streaming": "Disney Plus"
   },
   {
     "title": "Project Hail Mary",
     "source": "The Guardian",
     "url": "https://www.theguardian.com/film/2026/mar/10/project-hail-mary-review-ryan-goslings-charm-carries-unserious-last-ditch-space-mission",
-    "tag": "Space/Science"
+    "tag": "CRITIC PICK",
+    "streaming": "RENT/CINEMA ONLY"
+  },
+  {
+    "title": "Ready or Not 2: Here I Come",
+    "source": "The Guardian",
+    "url": "https://www.theguardian.com/film/2026/mar/19/ready-or-not-2-here-i-come-review",
+    "tag": "CRITIC PICK",
+    "streaming": "RENT/CINEMA ONLY"
+  },
+  {
+    "title": "Reminders of Him",
+    "source": "The Guardian",
+    "url": "https://www.theguardian.com/film/2026/mar/11/reminders-of-him-review-colleen-hoover-movie",
+    "tag": "CRITIC PICK",
+    "streaming": "RENT/CINEMA ONLY"
   },
   {
     "title": "Undertone",
     "source": "The Guardian",
     "url": "https://www.theguardian.com/film/2026/jan/29/undertone-movie-review-podcast-horror",
-    "tag": "Awards"
+    "tag": "CRITIC PICK",
+    "streaming": "RENT/CINEMA ONLY"
   },
   {
-    "title": "Leonard Cohen\u2019s Manager Cleared of Financial Wrongdoing After 10-Day Trial",
+    "title": "\u2018Spaceballs\u2019 Sequel Set for April 2027 Release Date",
     "source": "Variety",
-    "url": "https://variety.com/2026/music/news/leonard-cohen-manager-cleared-financial-wrongdoing-1236706419/",
-    "tag": "Legacy/News"
-  },
-  {
-    "title": "23 Best New Movies Streaming in April: \u2018Marty Supreme,\u2019 \u2018Sir\u0101t,\u2019 \u2018No Other Choice,\u2019 \u2018Crime 101\u2019 and More",
-    "source": "Variety",
-    "url": "https://variety.com/lists/best-movies-streaming-april-2026/",
-    "tag": "Awards"
-  },
-  {
-    "title": "James Marsden Breaks Down \u2018Your Friends & Neighbors\u2019 Season 2 Premiere and Reveals the Secret to Playing a Charming Douchebag",
-    "source": "Variety",
-    "url": "https://variety.com/2026/tv/news/james-marsden-your-friends-and-neighbors-season-2-premiere-1236706333/",
-    "tag": "Space/Science"
-  },
-  {
-    "title": " It's official: NASA's Artemis 2 moon mission will break humanity's all-time distance record ",
-    "source": "Space.com",
-    "url": "https://www.space.com/space-exploration/artemis/its-official-nasas-artemis-2-moon-mission-will-break-humanitys-all-time-distance-record",
-    "tag": "Space/Science"
-  },
-  {
-    "title": " Astronauts on the ISS watched NASA's historic Artemis 2 launch from space ",
-    "source": "Space.com",
-    "url": "https://www.space.com/space-exploration/missions/astronauts-on-the-iss-watched-nasas-historic-artemis-2-launch-from-space",
-    "tag": "Space/Science"
-  },
-  {
-    "title": " 1st results from Blue Ghost lunar lander reveal how much we still don't know about the moon ",
-    "source": "Space.com",
-    "url": "https://www.space.com/space-exploration/launches-spacecraft/blue-ghost-lunar-lander-reveals-how-much-we-still-dont-know-about-the-moon",
-    "tag": "Space/Science"
-  },
-  {
-    "title": " Artemis 2 astronauts see Earth in the rear-view mirror | Space photo of the day for April 3, 2026 ",
-    "source": "Space.com",
-    "url": "https://www.space.com/space-exploration/artemis/artemis-2-astronauts-see-earth-in-the-rear-view-mirror-space-photo-of-the-day-for-april-3-2026",
-    "tag": "Space/Science"
-  },
-  {
-    "title": " NASA is sending astronauts back to the moon. Can you see the Artemis 4 landing sites from Earth? ",
-    "source": "Space.com",
-    "url": "https://www.space.com/stargazing/nasa-is-sending-astronauts-back-to-the-moon-can-you-see-the-artemis-4-landing-sites-from-earth",
-    "tag": "Space/Science"
+    "url": "https://variety.com/2026/film/news/spaceballs-sequel-april-2027-release-date-1236706690/",
+    "tag": "CRITIC PICK",
+    "streaming": "NOT ON STREAMING"
   }
 ]
