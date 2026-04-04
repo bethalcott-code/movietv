@@ -3,134 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>THE QUEUE | 2026</title>
+    <title>THE QUEUE</title>
     <style>
-        /* Dieter Rams Inspired Palette */
-        :root { 
-            --bg: #E6E6E6;      /* Warm functional grey */
-            --text: #1A1A1A;    /* Deep charcoal */
-            --grey: #CCCCCC;    /* Mid-tone border */
-            --accent: #D12F2F;  /* Signal Red */
-            --white: #FFFFFF; 
-        }
-
-        body { 
-            background: var(--bg); 
-            color: var(--text); 
-            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; 
-            margin: 0; 
-            padding: 30px; 
-            line-height: 1.4;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        header { 
-            border-bottom: 3px solid var(--text); 
-            padding-bottom: 15px; 
-            margin-bottom: 40px; 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: flex-end; 
-        }
-
+        :root { --bg: #E6E6E6; --text: #1A1A1A; --grey: #CCCCCC; --accent: #195DDC; --white: #FFFFFF; }
+        body { background: var(--bg); color: var(--text); font-family: "Helvetica Neue", Helvetica, sans-serif; margin: 0; padding: 30px; -webkit-font-smoothing: antialiased; }
+        header { border-bottom: 3px solid var(--text); padding-bottom: 10px; margin-bottom: 40px; display: flex; justify-content: space-between; align-items: flex-end; }
         .logo { font-weight: 900; font-size: 24px; letter-spacing: -1px; }
-        .sub-head { font-size: 11px; font-weight: 700; text-transform: uppercase; }
-
-        nav { display: flex; gap: 35px; margin-bottom: 40px; }
-        nav button { 
-            background: none; 
-            border: none; 
-            color: #999; 
-            padding: 8px 0; 
-            cursor: pointer; 
-            font-family: inherit; 
-            font-size: 13px; 
-            font-weight: 700; 
-            text-transform: uppercase; 
-            transition: color 0.2s;
-        }
+        nav { display: flex; gap: 30px; margin-bottom: 40px; }
+        nav button { background: none; border: none; color: #999; padding: 10px 0; cursor: pointer; font-family: inherit; font-size: 13px; font-weight: 700; text-transform: uppercase; }
         nav button.active { color: var(--text); border-bottom: 3px solid var(--accent); }
-
         .tab-content { display: none; max-width: 800px; }
         .tab-content.active { display: block; }
-
-        .row { 
-            border-bottom: 1px solid var(--grey); 
-            padding: 24px 0; 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-        }
-
-        .info-block { flex-grow: 1; padding-right: 20px; }
-        .row a { 
-            color: var(--text); 
-            text-decoration: none; 
-            font-weight: 600; 
-            font-size: 18px; 
-            display: block;
-            margin-bottom: 4px;
-        }
-
-        .meta { 
-            font-size: 10px; 
-            color: #666; 
-            text-transform: uppercase; 
-            font-weight: 700; 
-            margin-bottom: 6px; 
-            display: flex;
-            gap: 10px;
-        }
-
-        .stream-tag { 
-            font-size: 10px; 
-            color: var(--accent); 
-            font-weight: 700; 
-            display: block; 
-            margin-top: 6px; 
-        }
-
-        .add-btn { 
-            background: var(--text); 
-            color: var(--white); 
-            border: none; 
-            width: 36px; 
-            height: 36px; 
-            font-size: 22px; 
-            cursor: pointer; 
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: opacity 0.2s;
-        }
-        .add-btn:active { opacity: 0.6; }
-
-        /* Manual Add Section */
-        .manual-box { display: flex; gap: 10px; margin-bottom: 40px; background: var(--white); padding: 4px; border: 1px solid var(--grey); }
-        input { 
-            background: transparent; 
-            border: none; 
-            padding: 12px; 
-            font-family: inherit; 
-            flex-grow: 1; 
-            font-size: 14px; 
-            outline: none;
-        }
-        .manual-btn { background: var(--text); color: var(--white); border: none; padding: 0 20px; font-weight: 700; cursor: pointer; text-transform: uppercase; font-size: 11px; }
-
-        @media (max-width: 600px) {
-            body { padding: 20px; }
-            nav { gap: 15px; }
-        }
+        .row { border-bottom: 1px solid var(--grey); padding: 20px 0; display: flex; justify-content: space-between; align-items: center; }
+        .row a { color: var(--text); text-decoration: none; font-weight: 600; font-size: 17px; display: block; margin-bottom: 4px; }
+        .meta { font-size: 10px; color: #666; text-transform: uppercase; font-weight: 700; margin-bottom: 4px; display: block; }
+        .stream-tag { font-size: 10px; color: var(--accent); font-weight: 700; display: block; margin-top: 6px; }
+        .add-btn { background: var(--text); color: var(--white); border: none; width: 34px; height: 34px; font-size: 20px; cursor: pointer; }
+        .manual-box { display: flex; gap: 10px; margin-bottom: 30px; background: var(--white); padding: 5px; border: 1px solid var(--grey); }
+        input { background: transparent; border: none; padding: 10px; font-family: inherit; flex-grow: 1; outline: none; }
+        .add-manual-btn { background: var(--text); color: var(--white); border: none; padding: 0 20px; cursor: pointer; font-weight: 700; text-transform: uppercase; font-size: 11px; }
+        .desc { font-size: 12px; color: #444; text-transform: none; margin-top: 5px; max-width: 90%; }
     </style>
 </head>
 <body>
 
 <header>
-    <div>
-        <div class="logo">THE QUEUE</div>
-        <div class="sub-head">EDINBURGH — B & K — 2026</div>
-    </div>
+    <div><div class="logo">THE QUEUE</div><div style="font-size: 10px; font-weight:700;">EDINBURGH / 2026</div></div>
     <div id="status-dot" style="color: var(--accent); font-size: 18px;">●</div>
 </header>
 
@@ -142,92 +40,89 @@
 
 <div id="cinema" class="tab-content active"></div>
 <div id="recs" class="tab-content"></div>
-
 <div id="queue" class="tab-content">
     <div class="manual-box">
-        <input type="text" id="manual-input" placeholder="MANUAL ENTRY (TITLE)...">
-        <button class="manual-btn" onclick="addManual()">Add</button>
+        <input type="text" id="m-input" placeholder="MANUAL SEARCH (E.G. THE MARTIAN)">
+        <button class="add-manual-btn" onclick="verifyAndAdd()">Verify & Add</button>
     </div>
-    <div id="queue-list"></div>
+    <div id="q-list"></div>
 </div>
 
 <script>
-    // Logic: Persistent Storage & Data Matching
+    const TMDB_KEY = "eb7044678f7a620007e3d11387ccb51f";
     let myQueue = JSON.parse(localStorage.getItem('myQueue')) || [];
-    let currentPool = []; // Logic: Cache for cross-referencing sources
 
     function tab(id) {
         document.querySelectorAll('.tab-content, nav button').forEach(el => el.classList.remove('active'));
         document.getElementById(id).classList.add('active');
         document.getElementById('b-' + id).classList.add('active');
-
-        if(id === 'cinema') fetch('listings.json').then(r=>r.json()).then(d=> { currentPool = d; render(d, 'cinema', 'venue'); });
-        if(id === 'recs') fetch('recommendations.json').then(r=>r.json()).then(d=> { currentPool = d; render(d, 'recs', 'source'); });
+        if(id === 'cinema') fetch('listings.json').then(r=>r.json()).then(d=>render(d, 'cinema', 'venue'));
+        if(id === 'recs') fetch('recommendations.json').then(r=>r.json()).then(d=>render(d, 'recs', 'source'));
         if(id === 'queue') renderQ();
     }
 
     function render(data, id, metaKey) {
         document.getElementById(id).innerHTML = data.map(i => `
             <div class="row">
-                <div class="info-block">
-                    <span class="meta">
-                        <span>${i[metaKey]}</span>
-                        ${i.tag ? `<span style="color:var(--accent)">/ ${i.tag}</span>` : ''}
-                    </span>
+                <div style="flex-grow:1">
+                    <span class="meta">${i[metaKey]} ${i.tag ? `| ${i.tag}` : ''}</span>
                     <a href="${i.url || '#'}" target="_blank">${i.title}</a>
                     ${i.streaming ? `<span class="stream-tag">WATCH: ${i.streaming}</span>` : ''}
                 </div>
-                <button class="add-btn" onclick="addEntry('${i.title.replace(/'/g, "\\'")}', '${i[metaKey]}', '${i.tag || ''}')">+</button>
+                <button class="add-btn" onclick="directAdd('${i.title.replace(/'/g, "\\'")}', '${i[metaKey]}', '${i.streaming || ''}')">+</button>
             </div>`).join('');
     }
 
-    // Easy Logic: Add with metadata
-    function addEntry(title, source, tag) {
-        if(!myQueue.some(e => e.title === title)) {
-            myQueue.push({ title, source, tag, date: new Date().toLocaleDateString() });
-            save();
-        }
+    // Hard Fix Logic: Verify manual titles against TMDB
+    async function verifyAndAdd() {
+        const query = document.getElementById('m-input').value;
+        if(!query) return;
+        
+        try {
+            const sRes = await fetch(`https://api.themoviedb.org/3/search/multi?api_key=${TMDB_KEY}&query=${query}&region=GB`);
+            const sData = await sRes.json();
+            if(!sData.results.length) return alert("Not Found");
+
+            const item = sData.results[0];
+            const title = item.title || item.name;
+            const year = (item.release_date || item.first_air_date || "").split('-')[0];
+            const desc = item.overview ? item.overview.substring(0, 120) + "..." : "";
+            
+            // Get streaming
+            const pRes = await fetch(`https://api.themoviedb.org/3/${item.media_type}/${item.id}/watch/providers?api_key=${TMDB_KEY}`);
+            const pData = await pRes.json();
+            const uk = pData.results?.GB?.flatrate || [];
+            const stream = uk.length ? uk[0].provider_name : "Rent/Cinema";
+
+            const entry = { title: `${title} (${year})`, source: "Personal Search", streaming: stream, desc: desc, date: new Date().toLocaleDateString() };
+            myQueue.push(entry);
+            localStorage.setItem('myQueue', JSON.stringify(myQueue));
+            document.getElementById('m-input').value = '';
+            renderQ();
+        } catch(e) { alert("Verification Failed"); }
     }
 
-    // Hard Logic: Auto-match manual entry against Scraped Data
-    function addManual() {
-        const title = document.getElementById('manual-input').value;
-        if(!title) return;
-
-        // Logic: Search existing pool for a source match
-        const match = currentPool.find(item => item.title.toLowerCase().includes(title.toLowerCase()));
-        const source = match ? (match.source || match.venue) : "PERSONAL";
-        const tag = match ? (match.tag || "MATCHED") : "MANUAL";
-
-        addEntry(title, source, tag);
-        document.getElementById('manual-input').value = '';
+    function directAdd(t, s, stream) {
+        myQueue.push({ title: t, source: s, streaming: stream, date: new Date().toLocaleDateString() });
+        localStorage.setItem('myQueue', JSON.stringify(myQueue));
+        alert("Added");
     }
 
     function renderQ() {
-        document.getElementById('queue-list').innerHTML = myQueue.map(item => `
+        document.getElementById('q-list').innerHTML = myQueue.map(i => `
             <div class="row">
-                <div class="info-block">
-                    <span class="meta">${item.source} | ${item.tag} — ${item.date}</span>
-                    <a href="#">${item.title}</a>
+                <div style="flex-grow:1">
+                    <span class="meta">${i.source} | ADDED ${i.date}</span>
+                    <strong>${i.title}</strong>
+                    <div class="desc">${i.desc || ''}</div>
+                    <span class="stream-tag">WATCH: ${i.streaming}</span>
                 </div>
-                <button class="add-btn" style="background:#ccc" onclick="remove('${item.title}')">×</button>
-            </div>`).reverse().join('') || '<div class="row">LIBRARY EMPTY</div>';
+                <button class="add-btn" style="background:#ccc" onclick="remove('${i.title.replace(/'/g, "\\'")}')">×</button>
+            </div>`).reverse().join('') || '<div class="row">Library Empty</div>';
     }
 
-    function remove(t) {
-        myQueue = myQueue.filter(e => e.title !== t);
-        save();
-        renderQ();
-    }
-
-    function save() {
-        localStorage.setItem('myQueue', JSON.stringify(myQueue));
-        alert('SAVED TO LIBRARY');
-    }
-
-    // Initialize
+    function remove(t) { myQueue = myQueue.filter(e => e.title !== t); localStorage.setItem('myQueue', JSON.stringify(myQueue)); renderQ(); }
     tab('cinema');
 </script>
-
 </body>
 </html>
