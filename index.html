@@ -1,40 +1,149 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>THE QUEUE</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE QUEUE | 2026</title>
     <style>
-        :root { --bg: #E6E6E6; --text: #1A1A1A; --grey: #CCCCCC; --accent: #195DDC; --white: #FFFFFF; }
-        body { background: var(--bg); color: var(--text); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; margin: 0; padding: 30px; -webkit-font-smoothing: antialiased; }
-        header { border-bottom: 3px solid var(--text); padding-bottom: 12px; margin-bottom: 40px; display: flex; justify-content: space-between; align-items: flex-end; }
+        :root { 
+            --bg: #E6E6E6;      /* Matte Industrial Grey */
+            --text: #1A1A1A;    /* Charcoal */
+            --grey: #CCCCCC;    /* Divider Grey */
+            --accent: #195DDC;  /* 1960s IBM Blue */
+            --white: #FFFFFF; 
+        }
+
+        body { 
+            background: var(--bg); 
+            color: var(--text); 
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; 
+            margin: 0; 
+            padding: 30px; 
+            -webkit-font-smoothing: antialiased;
+        }
+
+        header { 
+            border-bottom: 3px solid var(--text); 
+            padding-bottom: 12px; 
+            margin-bottom: 40px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: flex-end; 
+        }
+
         .logo { font-weight: 900; font-size: 26px; letter-spacing: -1.5px; }
+        .sub-head { font-size: 11px; font-weight: 700; text-transform: uppercase; }
+
         nav { display: flex; gap: 30px; margin-bottom: 40px; }
-        nav button { background: none; border: none; color: #999; padding: 10px 0; cursor: pointer; font-family: inherit; font-size: 13px; font-weight: 700; text-transform: uppercase; }
+        nav button { 
+            background: none; 
+            border: none; 
+            color: #999; 
+            padding: 10px 0; 
+            cursor: pointer; 
+            font-family: inherit; 
+            font-size: 13px; 
+            font-weight: 700; 
+            text-transform: uppercase; 
+        }
         nav button.active { color: var(--text); border-bottom: 3px solid var(--accent); }
+
         .tab-content { display: none; max-width: 800px; }
         .tab-content.active { display: block; }
-        .row { border-bottom: 1px solid var(--grey); padding: 22px 0; display: flex; justify-content: space-between; align-items: center; }
-        .row a { color: var(--text); text-decoration: none; font-weight: 600; font-size: 18px; display: block; margin-bottom: 4px; }
-        .meta { font-size: 10px; color: #666; text-transform: uppercase; font-weight: 700; margin-bottom: 6px; display: block; }
-        .stream-tag { font-size: 10px; color: var(--accent); font-weight: 700; display: block; margin-top: 6px; }
-        .add-btn { background: var(--text); color: var(--white); border: none; width: 34px; height: 34px; font-size: 22px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
-        .search-container { display: flex; gap: 10px; margin-bottom: 30px; background: var(--white); padding: 5px; border: 1px solid var(--grey); }
-        input { background: transparent; border: none; padding: 12px; font-family: inherit; flex-grow: 1; outline: none; font-size: 14px; }
-        .search-btn { background: var(--text); color: var(--white); border: none; padding: 0 25px; font-weight: 700; cursor: pointer; text-transform: uppercase; font-size: 11px; }
+
+        .row { 
+            border-bottom: 1px solid var(--grey); 
+            padding: 22px 0; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+        }
+
+        .info-block { flex-grow: 1; padding-right: 20px; }
+        .row a { 
+            color: var(--text); 
+            text-decoration: none; 
+            font-weight: 600; 
+            font-size: 18px; 
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .meta { 
+            font-size: 10px; 
+            color: #666; 
+            text-transform: uppercase; 
+            font-weight: 700; 
+            margin-bottom: 6px; 
+            display: block;
+        }
+
+        .stream-tag { 
+            font-size: 10px; 
+            color: var(--accent); 
+            font-weight: 700; 
+            display: block; 
+            margin-top: 6px; 
+            letter-spacing: 0.5px;
+        }
+
+        .add-btn { 
+            background: var(--text); 
+            color: var(--white); 
+            border: none; 
+            width: 34px; 
+            height: 34px; 
+            font-size: 22px; 
+            cursor: pointer; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .search-container { 
+            display: flex; 
+            gap: 10px; 
+            margin-bottom: 30px; 
+            background: var(--white); 
+            padding: 5px; 
+            border: 1px solid var(--grey); 
+        }
+        input { 
+            background: transparent; 
+            border: none; 
+            padding: 12px; 
+            font-family: inherit; 
+            flex-grow: 1; 
+            outline: none; 
+            font-size: 14px;
+        }
+        .search-btn { 
+            background: var(--text); 
+            color: var(--white); 
+            border: none; 
+            padding: 0 25px; 
+            font-weight: 700; 
+            cursor: pointer; 
+            text-transform: uppercase; 
+            font-size: 11px; 
+        }
         .description { font-size: 13px; color: #444; margin-top: 6px; text-transform: none; line-height: 1.5; }
     </style>
 </head>
 <body>
 
 <header>
-    <div><div class="logo">THE QUEUE</div><div style="font-size: 11px; font-weight: 700; text-transform: uppercase;">B & K — Edinburgh — 2026</div></div>
+    <div>
+        <div class="logo">THE QUEUE</div>
+        <div class="sub-head">EDINBURGH — B & K — 2026</div>
+    </div>
     <div id="status-dot" style="color: var(--accent); font-size: 20px;">●</div>
 </header>
 
 <nav>
-    <button onclick="switchTab('cinema')" id="b-cinema" class="active">Cinema</button>
-    <button onclick="switchTab('recs')" id="b-recs">Recs</button>
-    <button onclick="switchTab('queue')" id="b-queue">Library</button>
+    <button onclick="tab('cinema')" id="b-cinema" class="active">Cinema</button>
+    <button onclick="tab('recs')" id="b-recs">Recs</button>
+    <button onclick="tab('queue')" id="b-queue">Library</button>
 </nav>
 
 <div id="cinema" class="tab-content active"></div>
@@ -42,8 +151,8 @@
 
 <div id="queue" class="tab-content">
     <div class="search-container">
-        <input type="text" id="m-input" placeholder="SEARCH TMDB (E.G. THE MARTIAN)">
-        <button class="search-btn" onclick="searchTMDB()">Verify & Add</button>
+        <input type="text" id="m-input" placeholder="SEARCH TITLE (E.G. THE MARTIAN)">
+        <button class="search-btn" onclick="verifyAndAdd()">Verify & Add</button>
     </div>
     <div id="q-list"></div>
 </div>
@@ -51,96 +160,94 @@
 <script>
     const KEY = "eb7044678f7a620007e3d11387ccb51f";
 
-    function switchTab(id) {
+    function tab(id) {
         document.querySelectorAll('.tab-content, nav button').forEach(el => el.classList.remove('active'));
         document.getElementById(id).classList.add('active');
         document.getElementById('b-' + id).classList.add('active');
         
-        if(id === 'cinema') fetch('listings.json').then(r=>r.json()).then(d=>renderList(d, 'cinema', 'venue'));
-        if(id === 'recs') fetch('recommendations.json').then(r=>r.json()).then(d=>renderList(d, 'recs', 'source'));
-        if(id === 'queue') renderLibrary();
+        if(id === 'cinema') fetch('listings.json').then(r=>r.json()).then(d=>render(d, 'cinema', 'venue'));
+        if(id === 'recs') fetch('recommendations.json').then(r=>r.json()).then(d=>render(d, 'recs', 'source'));
+        if(id === 'queue') renderQ();
     }
 
-    function renderList(data, containerId, metaKey) {
-        const container = document.getElementById(containerId);
-        container.innerHTML = data.map(i => {
-            const title = i.title.replace(/'/g, "\\'");
-            const source = (i[metaKey] || 'Source').replace(/'/g, "\\'");
-            const stream = (i.streaming || '').replace(/'/g, "\\'");
-            return `
+    function render(data, id, metaKey) {
+        document.getElementById(id).innerHTML = data.map(i => `
             <div class="row">
                 <div class="info-block">
                     <span class="meta">${i[metaKey]} ${i.tag ? `| ${i.tag}` : ''}</span>
                     <a href="${i.url || '#'}" target="_blank">${i.title}</a>
                     ${i.streaming ? `<span class="stream-tag">WATCH: ${i.streaming}</span>` : ''}
                 </div>
-                <button class="add-btn" onclick="addToLibrary('${title}', '${source}', '${stream}')">+</button>
-            </div>`;
-        }).join('');
+                <button class="add-btn" onclick="saveEntry('${i.title.replace(/'/g, "\\'")}', '${i[metaKey]}', '${i.streaming || ''}', '${i.url || ''}')">+</button>
+            </div>`).join('');
     }
 
-    async function searchTMDB() {
+    async function verifyAndAdd() {
         const query = document.getElementById('m-input').value;
         if(!query) return;
+        
         try {
-            const res = await fetch(`https://api.themoviedb.org/3/search/multi?api_key=${KEY}&query=${encodeURIComponent(query)}&region=GB`);
-            const data = await res.json();
-            if(!data.results?.length) return alert("No results found.");
+            const sRes = await fetch(`https://api.themoviedb.org/3/search/multi?api_key=${KEY}&query=${encodeURIComponent(query)}&region=GB`);
+            const sData = await sRes.json();
+            if(!sData.results || sData.results.length === 0) return alert("Title Not Found");
 
-            const item = data.results[0];
-            const title = item.title || item.name;
-            const year = (item.release_date || item.first_air_date || "").split('-')[0];
-            const type = item.media_type || (item.title ? 'movie' : 'tv');
+            const topHits = sData.results.slice(0, 3);
+            let selection = topHits[0];
 
-            const pRes = await fetch(`https://api.themoviedb.org/3/${type}/${item.id}/watch/providers?api_key=${KEY}`);
+            if (topHits.length > 1) {
+                const options = topHits.map((h, i) => `${i+1}: ${h.title || h.name} (${(h.release_date || h.first_air_date || "TBC").split('-')[0]})`).join('\n');
+                const choice = prompt(`Versions found:\n${options}`, "1");
+                if (choice && topHits[choice - 1]) selection = topHits[choice - 1];
+            }
+
+            const title = selection.title || selection.name;
+            const year = (selection.release_date || selection.first_air_date || "TBC").split('-')[0];
+            const desc = selection.overview ? selection.overview.substring(0, 140) + "..." : "";
+            const type = selection.media_type || (selection.title ? 'movie' : 'tv');
+            
+            const pRes = await fetch(`https://api.themoviedb.org/3/${type}/${selection.id}/watch/providers?api_key=${KEY}`);
             const pData = await pRes.json();
             const uk = pData.results?.GB?.flatrate || pData.results?.GB?.free || [];
-            const stream = uk.length ? uk[0].provider_name : "Rent/Cinema Only";
+            const stream = uk.length ? uk.map(p => p.provider_name).slice(0, 2).join(", ") : "Rent/Cinema Only";
 
-            addToLibrary(`${title} (${year})`, "Verified Search", stream, item.overview);
+            saveEntry(`${title} (${year})`, "Verified Search", stream, `https://www.themoviedb.org/${type}/${selection.id}`, desc);
             document.getElementById('m-input').value = '';
-        } catch(e) { alert("Search Error: Check connection."); }
+        } catch(e) { alert("Search Error: Check API Connection"); }
     }
 
-    function addToLibrary(title, source, streaming, desc = "") {
-        let currentQueue = JSON.parse(localStorage.getItem('myQueue')) || [];
-        if(!currentQueue.some(e => e.title === title)) {
-            currentQueue.push({ 
-                title, 
-                source, 
-                streaming, 
-                desc: desc ? desc.substring(0, 140) + "..." : "", 
-                date: new Date().toLocaleDateString() 
-            });
-            localStorage.setItem('myQueue', JSON.stringify(currentQueue));
-            alert("SAVED TO LIBRARY");
+    function saveEntry(title, source, streaming, url, desc = "") {
+        let q = JSON.parse(localStorage.getItem('myQueue')) || [];
+        if(!q.some(e => e.title === title)) {
+            q.push({ title, source, streaming, url, desc, date: new Date().toLocaleDateString() });
+            localStorage.setItem('myQueue', JSON.stringify(q));
+            alert(`${title} SAVED`);
+            // Trigger refresh immediately if user is already on the Library tab
+            if(document.getElementById('queue').classList.contains('active')) renderQ();
         }
     }
 
-    function renderLibrary() {
-        const libraryData = JSON.parse(localStorage.getItem('myQueue')) || [];
-        const container = document.getElementById('q-list');
-        
-        container.innerHTML = libraryData.map(i => `
+    function renderQ() {
+        const q = JSON.parse(localStorage.getItem('myQueue')) || [];
+        document.getElementById('q-list').innerHTML = q.map(i => `
             <div class="row">
                 <div class="info-block">
                     <span class="meta">${i.source} | ADDED ${i.date}</span>
-                    <strong style="font-size: 18px;">${i.title}</strong>
-                    ${i.desc ? `<div class="description">${i.desc}</div>` : ''}
+                    <a href="${i.url || '#'}" target="_blank" style="font-weight: 800; font-size: 19px;">${i.title}</a>
+                    <div class="description">${i.desc || ''}</div>
                     <span class="stream-tag">STREAMING: ${i.streaming}</span>
                 </div>
-                <button class="add-btn" style="background:#ccc; color:#000" onclick="removeFromLibrary('${i.title.replace(/'/g, "\\'")}')">×</button>
-            </div>`).reverse().join('') || '<div class="row">LIBRARY IS EMPTY</div>';
+                <button class="add-btn" style="background:#ccc; color:#000" onclick="removeEntry('${i.title.replace(/'/g, "\\'")}')">×</button>
+            </div>`).reverse().join('') || '<div class="row">LIBRARY EMPTY</div>';
     }
 
-    function removeFromLibrary(t) {
-        let currentQueue = JSON.parse(localStorage.getItem('myQueue')) || [];
-        currentQueue = currentQueue.filter(e => e.title !== t);
-        localStorage.setItem('myQueue', JSON.stringify(currentQueue));
-        renderLibrary();
+    function removeEntry(t) {
+        let q = JSON.parse(localStorage.getItem('myQueue')) || [];
+        localStorage.setItem('myQueue', JSON.stringify(q.filter(e => e.title !== t)));
+        renderQ();
     }
 
-    switchTab('cinema');
+    tab('cinema');
 </script>
+
 </body>
 </html>
