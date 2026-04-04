@@ -1,142 +1,997 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>THE QUEUE</title>
-    <style>
-        :root { --bg: #E6E6E6; --text: #1A1A1A; --grey: #CCCCCC; --accent: #195DDC; --white: #FFFFFF; }
-        body { background: var(--bg); color: var(--text); font-family: "Helvetica Neue", Helvetica, sans-serif; margin: 0; padding: 25px; -webkit-font-smoothing: antialiased; }
-        header { border-bottom: 3px solid var(--text); padding-bottom: 12px; margin-bottom: 30px; display: flex; justify-content: space-between; align-items: flex-end; }
-        .logo { font-weight: 900; font-size: 24px; letter-spacing: -1.5px; }
-        nav { display: flex; gap: 20px; margin-bottom: 30px; border-bottom: 1px solid var(--grey); overflow-x: auto; }
-        nav button { background: none; border: none; color: #999; padding: 10px 0; cursor: pointer; font-family: inherit; font-size: 12px; font-weight: 700; text-transform: uppercase; white-space: nowrap; }
-        nav button.active { color: var(--text); border-bottom: 3px solid var(--accent); }
-        .tab-content { display: none; max-width: 800px; }
-        .tab-content.active { display: block; }
-        .row { border-bottom: 1px solid var(--grey); padding: 18px 0; display: flex; justify-content: space-between; align-items: center; }
-        .row.watched { opacity: 0.4; text-decoration: line-through; }
-        .info-block { flex-grow: 1; padding-right: 15px; }
-        .row a { color: var(--text); text-decoration: none; font-weight: 600; font-size: 16px; display: block; margin-bottom: 4px; }
-        .meta { font-size: 10px; color: #666; text-transform: uppercase; font-weight: 700; margin-bottom: 4px; display: block; }
-        .times { font-size: 11px; color: var(--accent); font-weight: bold; margin-top: 4px; }
-        .action-btn { background: var(--text); color: var(--white); border: none; width: 32px; height: 32px; font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
-        .search-container { display: flex; gap: 10px; margin-bottom: 20px; background: var(--white); padding: 5px; border: 1px solid var(--grey); }
-        input { background: transparent; border: none; padding: 10px; font-family: inherit; flex-grow: 1; outline: none; font-size: 13px; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>THE QUEUE</title>
+<style>
+:root {
+  --bg:#E8E6E0; --bg2:#DEDAD2; --bg3:#D0CCC2;
+  --ink:#1A1814; --ink2:#4A4740; --ink3:#8A877F;
+  --rule:#C0BDB5; --rule2:#A8A49C;
+  --acc:#1A3A6C; --red:#8B2010; --green:#1A5C30; --gold:#7A5C10;
+  --white:#F5F2EC;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
+body{background:var(--bg);color:var(--ink);font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:14px;min-height:100vh;}
+
+/* HEADER */
+header{background:var(--ink);padding:14px 16px 10px;display:flex;align-items:flex-end;gap:12px;border-bottom:3px solid var(--white);}
+.logo{font-size:1.1rem;font-weight:900;color:var(--white);letter-spacing:-.5px;}
+.subhead{font-size:.55rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--ink3);padding-bottom:2px;}
+.who-toggle{margin-left:auto;display:flex;border:1px solid #3A3830;}
+.wb{font-size:.65rem;font-weight:700;letter-spacing:.08em;padding:6px 14px;background:none;border:none;color:var(--ink3);cursor:pointer;}
+.wb.on{background:var(--white);color:var(--ink);}
+.wb:not(:last-child){border-right:1px solid #3A3830;}
+.sync-btn{font-size:.58rem;font-weight:700;letter-spacing:.06em;padding:6px 11px;background:none;border:1px solid #3A3830;color:var(--ink3);cursor:pointer;margin-left:6px;}
+.sync-btn:hover{color:var(--white);border-color:var(--white);}
+
+/* TABS */
+.tabbar{background:var(--bg2);display:flex;border-bottom:1px solid var(--rule2);overflow-x:auto;scrollbar-width:none;}
+.tabbar::-webkit-scrollbar{display:none;}
+.tabitem{font-size:.6rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:10px 15px;background:none;border:none;border-bottom:3px solid transparent;border-right:1px solid var(--rule);color:var(--ink3);cursor:pointer;white-space:nowrap;flex-shrink:0;}
+.tabitem.on{color:var(--ink);background:var(--bg);border-bottom-color:var(--acc);}
+
+/* MAIN */
+main{padding:14px 14px 80px;}
+.sec{display:none;}.sec.on{display:block;}
+
+/* FORMS */
+.add-form{background:var(--bg2);border:1px solid var(--rule2);padding:10px;margin-bottom:12px;display:flex;flex-direction:column;gap:6px;}
+.add-form input,.add-form select,.add-form textarea{font-family:inherit;font-size:.78rem;padding:8px;border:1px solid var(--rule2);background:var(--white);color:var(--ink);width:100%;border-radius:0;-webkit-appearance:none;}
+.add-form input:focus,.add-form select:focus,.add-form textarea:focus{outline:none;border-color:var(--acc);}
+.form-row{display:flex;gap:6px;}
+.form-row>*{flex:1;min-width:0;}
+.yr{max-width:78px;flex:none!important;}
+.add-btn{background:var(--ink);color:var(--white);border:none;padding:10px;font-size:.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;width:100%;}
+.add-btn:active{opacity:.85;}
+
+/* FILTERS */
+.filters{display:flex;gap:3px;margin-bottom:10px;flex-wrap:wrap;padding-bottom:10px;border-bottom:1px solid var(--rule);}
+.flbl{font-size:.5rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);align-self:center;margin-right:1px;white-space:nowrap;}
+.chip{font-size:.52rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:4px 8px;border:1px solid var(--rule2);background:transparent;color:var(--ink3);cursor:pointer;}
+.chip.on{background:var(--ink);color:var(--white);border-color:var(--ink);}
+.chip.hi{border-color:var(--green);color:var(--green);}
+.chip.hi.on{background:var(--green);color:var(--white);border-color:var(--green);}
+.fsep{width:100%;height:0;margin:0;}
+
+/* STATS */
+.statsrow{display:flex;gap:14px;margin-bottom:10px;padding-bottom:9px;border-bottom:1px solid var(--rule);flex-wrap:wrap;}
+.st{font-size:.56rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--ink3);}
+.st b{color:var(--ink);}
+
+/* CARDS */
+.cardlist{display:flex;flex-direction:column;gap:1px;}
+.qcard{background:var(--white);border:1px solid var(--rule);padding:10px 12px;border-left:3px solid var(--rule2);position:relative;}
+.qcard.acc{border-left-color:var(--green);}
+.qcard.watching{border-left-color:var(--gold);}
+.qcard.done{border-left-color:var(--rule2);opacity:.5;}
+.card-num{position:absolute;top:10px;right:12px;font-size:.55rem;font-weight:700;color:var(--rule2);}
+.card-title{font-size:.9rem;font-weight:700;margin-bottom:4px;padding-right:28px;}
+.card-meta{display:flex;gap:5px;align-items:center;flex-wrap:wrap;margin-bottom:5px;}
+.card-yr{font-size:.6rem;color:var(--ink3);font-weight:700;}
+.tag{font-size:.5rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:1px 5px;border:1px solid currentColor;white-space:nowrap;}
+.t-stream{color:var(--green)!important;border-color:var(--green)!important;}
+.t-owned{color:var(--acc)!important;border-color:var(--acc)!important;}
+.t-cinema{color:var(--red)!important;border-color:var(--red)!important;}
+.t-b{color:var(--red)!important;}
+.t-k{color:var(--gold)!important;}
+.t-bk{color:var(--green)!important;}
+.card-note{font-size:.7rem;color:var(--ink3);font-style:italic;margin-top:3px;}
+.card-actions{display:flex;gap:5px;align-items:center;margin-top:8px;padding-top:7px;border-top:1px solid var(--rule);}
+.who-btn{font-size:.55rem;font-weight:700;padding:3px 8px;border:1px solid currentColor;cursor:pointer;background:none;letter-spacing:.04em;}
+.who-btn.b{color:var(--red);}
+.who-btn.k{color:var(--gold);}
+.who-btn.bk{color:var(--green);}
+.st-btn{font-size:.52rem;font-weight:700;padding:3px 8px;border:1px solid var(--rule2);cursor:pointer;background:none;color:var(--ink3);letter-spacing:.04em;text-transform:uppercase;}
+.st-btn.watching{border-color:var(--gold);color:var(--gold);}
+.st-btn.watched{border-color:var(--green);color:var(--green);}
+.mv-btn{font-size:.7rem;font-weight:700;padding:2px 6px;border:none;background:var(--bg3);color:var(--ink2);cursor:pointer;}
+.del-btn{margin-left:auto;font-size:.7rem;font-weight:700;padding:2px 6px;border:none;background:none;color:var(--rule2);cursor:pointer;}
+.del-btn:hover{color:var(--red);}
+.empty{text-align:center;padding:36px 16px;color:var(--ink3);font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;}
+
+/* ACCESS BAR */
+.accessbar{background:var(--bg2);border:1px solid var(--rule2);padding:7px 10px;margin-bottom:12px;display:flex;align-items:center;gap:4px;flex-wrap:wrap;}
+.ablbl{font-size:.5rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);}
+.svc-pill{font-size:.5rem;font-weight:700;padding:1px 5px;border:1px solid var(--rule2);color:var(--ink2);background:var(--white);letter-spacing:.03em;}
+.edit-btn{font-size:.5rem;font-weight:700;padding:1px 6px;background:none;border:1px solid var(--rule2);color:var(--ink3);cursor:pointer;margin-left:3px;}
+
+/* SECTIONS */
+.sec-intro{font-size:.68rem;color:var(--ink3);margin-bottom:12px;line-height:1.6;}
+.ctrl-row{display:flex;flex-direction:column;gap:6px;margin-bottom:12px;}
+.ctrl-row select,.ctrl-row input{font-family:inherit;font-size:.75rem;padding:8px;border:1px solid var(--rule2);background:var(--white);color:var(--ink);border-radius:0;-webkit-appearance:none;width:100%;}
+.go-btn{background:var(--acc);color:var(--white);border:none;padding:10px;font-size:.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;width:100%;}
+.go-btn.red{background:var(--red);}
+.go-btn:disabled{opacity:.4;}
+
+/* CINEMA */
+.venue-block{margin-bottom:16px;}
+.venue-name{font-size:.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--acc);padding:6px 0;border-bottom:2px solid var(--acc);margin-bottom:8px;}
+.film-row{padding:8px 0;border-bottom:1px solid var(--rule);display:flex;justify-content:space-between;align-items:flex-start;gap:8px;}
+.film-info{flex:1;}
+.film-title{font-size:.85rem;font-weight:700;margin-bottom:3px;}
+.film-times{font-size:.7rem;color:var(--acc);font-weight:700;margin-top:2px;}
+.film-tags{display:flex;gap:4px;flex-wrap:wrap;margin-top:3px;}
+.film-add{background:var(--ink);color:var(--white);border:none;width:30px;height:30px;font-size:1.1rem;cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center;}
+
+/* RECS */
+.recs-controls{background:var(--bg2);border:1px solid var(--rule2);padding:10px;margin-bottom:12px;}
+.recs-label{font-size:.55rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3);margin-bottom:6px;}
+.tag-grid{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:8px;}
+.criteria-row{display:flex;gap:6px;margin-top:6px;}
+.criteria-row input{font-family:inherit;font-size:.75rem;padding:7px;border:1px solid var(--rule2);background:var(--white);color:var(--ink);flex:1;border-radius:0;-webkit-appearance:none;}
+.criteria-row input:focus{outline:none;border-color:var(--acc);}
+.small-btn{font-size:.58rem;font-weight:700;letter-spacing:.04em;padding:7px 12px;background:var(--ink);color:var(--white);border:none;cursor:pointer;white-space:nowrap;}
+.rec-source-row{display:flex;gap:4px;flex-wrap:wrap;margin-top:6px;}
+.src-chip{font-size:.5rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:3px 7px;border:1px solid var(--rule2);background:transparent;color:var(--ink3);cursor:pointer;}
+.src-chip.on{background:var(--acc);color:var(--white);border-color:var(--acc);}
+.rec-card{background:var(--white);border:1px solid var(--rule);padding:10px 12px;margin-bottom:6px;border-left:3px solid var(--rule2);}
+.rec-card.canon{border-left-color:var(--gold);}
+.rec-card.live{border-left-color:var(--acc);}
+.rec-title{font-size:.88rem;font-weight:700;margin-bottom:3px;}
+.rec-meta{font-size:.6rem;color:var(--ink3);margin-bottom:4px;}
+.rec-tags{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:5px;}
+.rec-source{font-size:.6rem;font-weight:700;color:var(--acc);}
+.rec-desc{font-size:.7rem;color:var(--ink2);margin-top:3px;line-height:1.4;}
+.rec-actions{display:flex;gap:6px;margin-top:7px;padding-top:7px;border-top:1px solid var(--rule);}
+
+/* OWNED */
+.owned-card{background:var(--white);border:1px solid var(--rule);padding:10px 12px;margin-bottom:4px;border-left:3px solid var(--acc);}
+.import-section{background:var(--bg2);border:1px solid var(--rule2);padding:10px;margin-bottom:12px;}
+.import-label{font-size:.6rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3);margin-bottom:6px;}
+
+/* OVERLAYS */
+.overlay{display:none;position:fixed;inset:0;background:rgba(26,24,20,.8);z-index:200;overflow-y:auto;padding:20px 14px;}
+.overlay.open{display:block;}
+.modal{background:var(--white);border:1px solid var(--rule2);border-top:3px solid var(--ink);padding:18px;max-width:500px;margin:0 auto;}
+.modal h3{font-size:.85rem;font-weight:900;letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px;}
+.modal p{font-size:.78rem;color:var(--ink2);margin-bottom:10px;line-height:1.5;}
+.modal textarea{width:100%;height:68px;font-family:inherit;font-size:.65rem;padding:6px;border:1px solid var(--rule2);background:var(--bg2);color:var(--ink);resize:none;margin-bottom:8px;border-radius:0;}
+.mbtns{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px;}
+.mbtn{font-size:.62rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:8px 14px;cursor:pointer;border:none;flex:1;}
+.mb-dark{background:var(--ink);color:var(--white);}
+.mb-acc{background:var(--acc);color:var(--white);}
+.mb-light{background:transparent;border:1px solid var(--rule2);color:var(--ink3);}
+.modal-note{font-size:.6rem;font-weight:700;color:var(--green);margin-top:6px;display:none;}
+.svc-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:12px;}
+.svc-lbl{display:flex;align-items:center;gap:6px;font-size:.65rem;font-weight:700;cursor:pointer;}
+
+/* TOAST */
+.toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%) translateY(60px);background:var(--ink);color:var(--white);padding:8px 16px;font-size:.65rem;font-weight:700;letter-spacing:.06em;border-left:3px solid var(--green);opacity:0;transition:all .25s;z-index:300;white-space:nowrap;}
+.toast.show{transform:translateX(-50%) translateY(0);opacity:1;}
+
+/* LOADING */
+.loading-msg{background:var(--bg2);border:1px solid var(--rule2);padding:14px;font-size:.68rem;font-weight:700;color:var(--ink3);letter-spacing:.06em;text-transform:uppercase;display:none;align-items:center;gap:10px;}
+.loading-msg.vis{display:flex;}
+.spin{width:14px;height:14px;border:2px solid var(--rule2);border-top-color:var(--acc);border-radius:50%;animation:spin .8s linear infinite;flex-shrink:0;}
+@keyframes spin{to{transform:rotate(360deg);}}
+</style>
 </head>
 <body>
 
 <header>
-    <div><div class="logo">THE QUEUE</div><div style="font-size: 10px; font-weight: 700; text-transform: uppercase;">EDINBURGH / 2026</div></div>
-    <div id="status-dot" style="color: var(--accent); font-size: 20px;">●</div>
+  <div>
+    <div class="logo">THE QUEUE</div>
+    <div class="subhead">Edinburgh &mdash; B &amp; K &mdash; 2026</div>
+  </div>
+  <div class="who-toggle">
+    <button class="wb on" id="btn-b">B</button>
+    <button class="wb" id="btn-k">K</button>
+  </div>
+  <button class="sync-btn" id="sync-btn">&#x21C4; SYNC</button>
 </header>
 
-<nav>
-    <button onclick="tab('cinema')" id="btn-cinema" class="active">Cinema</button>
-    <button onclick="tab('recs')" id="btn-recs">Recs</button>
-    <button onclick="tab('queue')" id="btn-queue">Queue</button>
-    <button onclick="tab('library')" id="btn-library">Owned</button>
-</nav>
+<div class="tabbar" id="tabbar">
+  <button class="tabitem on" data-tab="queue">Queue</button>
+  <button class="tabitem" data-tab="cinema">Cinema</button>
+  <button class="tabitem" data-tab="recs">Recs</button>
+  <button class="tabitem" data-tab="owned">Owned</button>
+</div>
 
-<div id="cinema" class="tab-content active"></div>
-<div id="recs" class="tab-content"></div>
-<div id="queue" class="tab-content"><div class="search-container"><input type="text" id="q-in" placeholder="SEARCH TMDB..."><button onclick="verify('queue')" style="background:var(--text);color:#fff;border:none;padding:10px;">ADD</button></div><div id="q-list"></div></div>
-<div id="library" class="tab-content"><div class="search-container"><input type="text" id="l-in" placeholder="ADD OWNED..."><button onclick="verify('library')" style="background:var(--text);color:#fff;border:none;padding:10px;">ADD</button></div><div id="l-list"></div></div>
+<main>
+
+<!-- QUEUE -->
+<div id="sec-queue" class="sec on">
+  <div class="accessbar">
+    <span class="ablbl">Access:</span>
+    <span id="pill-area"></span>
+    <button class="edit-btn" id="edit-svcs">Edit</button>
+  </div>
+
+  <div class="add-form">
+    <input type="text" id="q-title" placeholder="Title...">
+    <div class="form-row">
+      <input type="number" class="yr" id="q-year" placeholder="Year">
+      <select id="q-genre">
+        <option value="">Genre</option>
+        <optgroup label="Arthouse / Criterion">
+          <option value="French New Wave">French New Wave</option>
+          <option value="Italian Cinema">Italian Cinema</option>
+          <option value="German Expressionism">German Expressionism</option>
+          <option value="British (Powell &amp; Pressburger)">British / P&amp;P</option>
+          <option value="Nordic / Bergman">Nordic / Bergman</option>
+          <option value="Criterion">Criterion</option>
+          <option value="World Cinema">World Cinema</option>
+          <option value="Arthouse">Arthouse</option>
+          <option value="Silent Era">Silent Era</option>
+          <option value="Film Noir">Film Noir</option>
+        </optgroup>
+        <optgroup label="Genre">
+          <option value="Anti-Nazi / WWII">Anti-Nazi / WWII</option>
+          <option value="Spy">Spy</option>
+          <option value="Drama">Drama</option>
+          <option value="Thriller">Thriller</option>
+          <option value="Comedy">Comedy</option>
+          <option value="Sci-Fi">Sci-Fi</option>
+          <option value="Documentary">Documentary</option>
+          <option value="Horror">Horror</option>
+          <option value="TV">TV Series</option>
+          <option value="Other">Other</option>
+        </optgroup>
+      </select>
+    </div>
+    <select id="q-access">
+      <option value="">Where to watch</option>
+      <optgroup label="Streaming">
+        <option value="iPlayer">BBC iPlayer</option>
+        <option value="Netflix">Netflix</option>
+        <option value="Apple TV+">Apple TV+</option>
+        <option value="Disney+">Disney+</option>
+        <option value="Prime Video">Prime Video</option>
+        <option value="Channel 4">Channel 4</option>
+        <option value="ITVX">ITVX</option>
+        <option value="Edinburgh Library">Edinburgh Library</option>
+        <option value="MUBI">MUBI</option>
+        <option value="BFI Player">BFI Player</option>
+      </optgroup>
+      <optgroup label="Owned">
+        <option value="DVD">DVD / Blu-ray</option>
+        <option value="Amazon (purchased)">Amazon (purchased)</option>
+        <option value="Google Play">Google Play</option>
+        <option value="Apple TV (purchased)">Apple TV (purchased)</option>
+      </optgroup>
+      <optgroup label="Other">
+        <option value="In cinema">In cinema now</option>
+        <option value="Rent/Buy">Rent / buy digitally</option>
+        <option value="Unknown">Unknown</option>
+      </optgroup>
+    </select>
+    <input type="text" id="q-note" placeholder="Note (optional)...">
+    <button class="add-btn" id="q-add-btn">+ ADD TO QUEUE</button>
+  </div>
+
+  <div class="filters" id="q-filters">
+    <span class="flbl">Status</span>
+    <button class="chip on" data-fk="status" data-fv="all">All</button>
+    <button class="chip" data-fk="status" data-fv="queued">Queued</button>
+    <button class="chip" data-fk="status" data-fv="watching">Watching</button>
+    <button class="chip" data-fk="status" data-fv="watched">Watched</button>
+    <div class="fsep"></div>
+    <span class="flbl">Access</span>
+    <button class="chip hi on" data-fk="access" data-fv="all">All</button>
+    <button class="chip hi" data-fk="access" data-fv="canwatch">Can watch now</button>
+    <button class="chip hi" data-fk="access" data-fv="streaming">Streaming</button>
+    <button class="chip hi" data-fk="access" data-fv="owned">Owned</button>
+    <button class="chip hi" data-fk="access" data-fv="cinema">In cinema</button>
+    <div class="fsep"></div>
+    <span class="flbl">Who</span>
+    <button class="chip on" data-fk="who" data-fv="all">All</button>
+    <button class="chip" data-fk="who" data-fv="B">B</button>
+    <button class="chip" data-fk="who" data-fv="K">K</button>
+    <button class="chip" data-fk="who" data-fv="B+K">B+K</button>
+    <div class="fsep"></div>
+    <span class="flbl">Genre</span>
+    <button class="chip on" data-fk="genre" data-fv="all">All</button>
+    <button class="chip" data-fk="genre" data-fv="Anti-Nazi / WWII">Anti-Nazi</button>
+    <button class="chip" data-fk="genre" data-fv="Spy">Spy</button>
+    <button class="chip" data-fk="genre" data-fv="Film Noir">Noir</button>
+    <button class="chip" data-fk="genre" data-fv="Criterion">Criterion</button>
+    <button class="chip" data-fk="genre" data-fv="TV">TV</button>
+  </div>
+
+  <div class="statsrow" id="q-stats"></div>
+  <div class="cardlist" id="q-cards"></div>
+  <div class="empty" id="q-empty" style="display:none">Queue empty — add above</div>
+</div>
+
+<!-- CINEMA -->
+<div id="sec-cinema" class="sec">
+  <p class="sec-intro">Edinburgh screenings updated daily by GitHub Actions. Tap + to add to queue.</p>
+  <div id="cinema-loading" class="loading-msg"><div class="spin"></div>Loading listings...</div>
+  <div id="cinema-body"></div>
+</div>
+
+<!-- RECS -->
+<div id="sec-recs" class="sec">
+  <div class="recs-controls">
+    <div class="recs-label">Filter by genre / theme</div>
+    <div class="tag-grid" id="rec-tag-grid">
+      <button class="chip on" data-rtag="all">All</button>
+      <button class="chip" data-rtag="Anti-Nazi">Anti-Nazi</button>
+      <button class="chip" data-rtag="Spy">Spy</button>
+      <button class="chip" data-rtag="Film Noir">Noir</button>
+      <button class="chip" data-rtag="Criterion">Criterion</button>
+      <button class="chip" data-rtag="Bergman">Bergman</button>
+      <button class="chip" data-rtag="Powell & Pressburger">P&amp;P</button>
+      <button class="chip" data-rtag="Italian Cinema">Italian</button>
+      <button class="chip" data-rtag="French New Wave">New Wave</button>
+      <button class="chip" data-rtag="Jacques Tati">Tati</button>
+      <button class="chip" data-rtag="Synthesizers">Synths</button>
+      <button class="chip" data-rtag="Prestige TV">Prestige TV</button>
+      <button class="chip" data-rtag="Contemporary">Contemporary</button>
+      <button class="chip" data-rtag="World Cinema">World</button>
+      <button class="chip" data-rtag="S&S">Sight &amp; Sound</button>
+      <button class="chip" data-rtag="New Yorker">New Yorker</button>
+      <button class="chip" data-rtag="Streaming">On streaming</button>
+    </div>
+    <div class="recs-label" style="margin-top:8px">Custom search (director, theme, keyword)</div>
+    <div class="criteria-row">
+      <input type="text" id="rec-custom" placeholder="e.g. synthesizers / Jacques Tati / Chekhov...">
+      <button class="small-btn" id="rec-custom-add">Apply</button>
+    </div>
+    <div class="recs-label" style="margin-top:8px">Live rec sources</div>
+    <div class="rec-source-row" id="rec-sources">
+      <button class="src-chip on" data-src="all">All</button>
+      <button class="src-chip" data-src="Guardian">Guardian</button>
+      <button class="src-chip" data-src="BFI">BFI</button>
+      <button class="src-chip" data-src="New Yorker">New Yorker</button>
+      <button class="src-chip" data-src="LRB">LRB</button>
+      <button class="src-chip" data-src="Variety">Variety</button>
+      <button class="src-chip" data-src="S&S">Sight &amp; Sound</button>
+    </div>
+  </div>
+  <div id="recs-body"></div>
+</div>
+
+<!-- OWNED -->
+<div id="sec-owned" class="sec">
+  <div class="import-section">
+    <div class="import-label">Add from library</div>
+    <div class="add-form" style="background:transparent;border:none;padding:0;">
+      <input type="text" id="o-title" placeholder="Title...">
+      <div class="form-row">
+        <input type="number" class="yr" id="o-year" placeholder="Year">
+        <select id="o-source">
+          <option value="DVD">DVD / Blu-ray</option>
+          <option value="B's Amazon">B's Amazon</option>
+          <option value="K's Amazon">K's Amazon</option>
+          <option value="B's Apple TV">B's Apple TV</option>
+          <option value="K's Apple TV">K's Apple TV</option>
+          <option value="Google Play">Google Play</option>
+          <option value="B's Google Play">B's Google Play</option>
+          <option value="K's Google Play">K's Google Play</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+      <input type="text" id="o-note" placeholder="Note...">
+      <button class="add-btn" id="o-add-btn">+ ADD TO LIBRARY</button>
+    </div>
+    <div style="margin-top:10px;padding-top:10px;border-top:1px solid var(--rule);">
+      <div class="import-label">Bulk import (paste list of titles, one per line)</div>
+      <textarea id="o-bulk" placeholder="Paste titles here, one per line..." style="font-family:inherit;font-size:.75rem;padding:8px;border:1px solid var(--rule2);background:var(--white);width:100%;height:80px;resize:none;border-radius:0;margin-top:5px;"></textarea>
+      <div class="form-row" style="margin-top:5px;">
+        <select id="o-bulk-source" style="font-family:inherit;font-size:.75rem;padding:8px;border:1px solid var(--rule2);background:var(--white);border-radius:0;-webkit-appearance:none;">
+          <option value="DVD">DVD / Blu-ray</option>
+          <option value="B's Amazon">B's Amazon</option>
+          <option value="K's Amazon">K's Amazon</option>
+          <option value="B's Apple TV">B's Apple TV</option>
+          <option value="K's Apple TV">K's Apple TV</option>
+          <option value="Google Play">Google Play</option>
+        </select>
+        <button class="add-btn" id="o-bulk-btn" style="flex:1">IMPORT LIST</button>
+      </div>
+      <div style="margin-top:8px;font-size:.62rem;color:var(--ink3);line-height:1.5;">
+        <strong>To import from Amazon/Apple/Google:</strong> Go to your purchase history, copy-paste the titles here. For DVDs: type or photograph a shelf — use your phone's camera app text recognition (iOS: tap the scan text icon in any text field) to copy a list, then paste here.
+      </div>
+    </div>
+  </div>
+
+  <div class="filters" id="o-filters">
+    <span class="flbl">Source</span>
+    <button class="chip on" data-ofv="all">All</button>
+    <button class="chip" data-ofv="DVD">DVD</button>
+    <button class="chip" data-ofv="B's Amazon">B Amazon</button>
+    <button class="chip" data-ofv="K's Amazon">K Amazon</button>
+    <button class="chip" data-ofv="B's Apple TV">B Apple</button>
+    <button class="chip" data-ofv="K's Apple TV">K Apple</button>
+    <button class="chip" data-ofv="Google Play">Google</button>
+  </div>
+
+  <div class="cardlist" id="o-cards"></div>
+  <div class="empty" id="o-empty" style="display:none">Library empty</div>
+</div>
+
+</main>
+
+<!-- SYNC MODAL -->
+<div class="overlay" id="sync-overlay">
+  <div class="modal">
+    <h3>Sync Between Devices</h3>
+    <p>Copy this link. Open it on any device to load your queue. Paste K's link to merge.</p>
+    <textarea id="sync-url" readonly></textarea>
+    <div class="mbtns">
+      <button class="mbtn mb-dark" id="copy-btn">Copy link</button>
+      <button class="mbtn mb-light" id="close-sync">Close</button>
+    </div>
+    <div style="padding-top:8px;border-top:1px solid var(--rule);">
+      <p style="margin-bottom:6px">Paste K's link to merge:</p>
+      <textarea id="import-url" placeholder="Paste here..."></textarea>
+      <div class="mbtns"><button class="mbtn mb-acc" id="do-import">Import &amp; Merge</button></div>
+    </div>
+    <div class="modal-note" id="sync-note"></div>
+  </div>
+</div>
+
+<!-- SERVICES MODAL -->
+<div class="overlay" id="svc-overlay">
+  <div class="modal">
+    <h3>Your Streaming Services</h3>
+    <p>Tick services you subscribe to. Updates the "can watch now" filter.</p>
+    <div class="svc-grid">
+      <label class="svc-lbl"><input type="checkbox" id="se-iplayer" checked> BBC iPlayer</label>
+      <label class="svc-lbl"><input type="checkbox" id="se-netflix" checked> Netflix</label>
+      <label class="svc-lbl"><input type="checkbox" id="se-apple" checked> Apple TV+</label>
+      <label class="svc-lbl"><input type="checkbox" id="se-disney" checked> Disney+</label>
+      <label class="svc-lbl"><input type="checkbox" id="se-prime" checked> Prime Video</label>
+      <label class="svc-lbl"><input type="checkbox" id="se-ch4" checked> Channel 4</label>
+      <label class="svc-lbl"><input type="checkbox" id="se-itvx" checked> ITVX</label>
+      <label class="svc-lbl"><input type="checkbox" id="se-lib" checked> Edinburgh Library</label>
+      <label class="svc-lbl"><input type="checkbox" id="se-mubi"> MUBI</label>
+      <label class="svc-lbl"><input type="checkbox" id="se-bfi"> BFI Player</label>
+    </div>
+    <div class="mbtns">
+      <button class="mbtn mb-dark" id="save-svc">Save</button>
+      <button class="mbtn mb-light" id="cancel-svc">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
 
 <script>
-    const KEY = "eb7044678f7a620007e3d11387ccb51f";
-    let activePool = []; // Global pool for safety
+// ── CONSTANTS ─────────────────────────────────────────────────────────────
+var LSQ='tq_q9', LSO='tq_o9', LSS='tq_s9';
+var MAX_Q = 100;
+var WHO = 'B';
+var QF = {status:'all', access:'all', who:'all', genre:'all'};
+var OF = 'all';
+var REC_TAG = 'all';
+var REC_SRC = 'all';
+var REC_CUSTOM = '';
+var MY_SVCS = ['iPlayer','Netflix','Apple TV+','Disney+','Prime Video','Channel 4','ITVX','Edinburgh Library'];
+var OWNED_SVCS = ['DVD','Amazon (purchased)','Google Play','Apple TV (purchased)',
+                  "B's Amazon","K's Amazon","B's Apple TV","K's Apple TV",
+                  "B's Google Play","K's Google Play"];
+var CANON = [];
 
-    function tab(id) {
-        document.querySelectorAll('.tab-content, nav button').forEach(el => el.classList.remove('active'));
-        document.getElementById(id).classList.add('active');
-        document.getElementById('btn-' + id).classList.add('active');
-        
-        if (id === 'cinema' || id === 'recs') {
-            const file = (id === 'cinema') ? 'listings.json' : 'recommendations.json';
-            const meta = (id === 'cinema') ? 'venue' : 'source';
-            fetch(file + '?t=' + Date.now()).then(r => r.json()).then(d => { 
-                activePool = d; 
-                renderList(d, id, meta); 
-            });
-        } else {
-            renderStored(id);
-        }
-    }
+// ── DATA ──────────────────────────────────────────────────────────────────
+function ld(){return{q:JSON.parse(localStorage.getItem(LSQ)||'[]'),o:JSON.parse(localStorage.getItem(LSO)||'[]')};}
+function svd(d){localStorage.setItem(LSQ,JSON.stringify(d.q));localStorage.setItem(LSO,JSON.stringify(d.o));}
+function ldSvcs(){var s=localStorage.getItem(LSS);if(s){try{MY_SVCS=JSON.parse(s);}catch(e){}}}
+function svSvcs(a){localStorage.setItem(LSS,JSON.stringify(a));MY_SVCS=a;}
 
-    function renderList(data, containerId, metaKey) {
-        const container = document.getElementById(containerId);
-        if (!data || data.length === 0) {
-            container.innerHTML = '<div class="row">NO DATA. RUN WORKFLOW.</div>';
-            return;
-        }
-        container.innerHTML = data.map((item, index) => `
-            <div class="row">
-                <div class="info-block">
-                    <span class="meta">${item[metaKey]} | ${item.tag || 'NEW'}</span>
-                    <a href="${item.url || '#'}" target="_blank">${item.title}</a>
-                    ${item.times ? `<div class="times">${item.times}</div>` : ''}
-                </div>
-                <button class="action-btn" onclick="saveFromPool(${index}, '${metaKey}')">+</button>
-            </div>`).join('');
-    }
+function canWatch(item){
+  var a=item.access||'';
+  return MY_SVCS.indexOf(a)>-1 || OWNED_SVCS.indexOf(a)>-1 || a==='In cinema';
+}
+function isStream(item){return MY_SVCS.indexOf(item.access||'')>-1;}
+function isOwned(item){return OWNED_SVCS.indexOf(item.access||'')>-1;}
 
-    function saveFromPool(idx, metaKey) {
-        const i = activePool[idx];
-        save(i.title, i[metaKey], 'Cinema', i.url, i.desc || '', 'queue');
-    }
+// ── UTILS ─────────────────────────────────────────────────────────────────
+function esc(s){if(!s)return'';return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function v(id){return document.getElementById(id).value.trim();}
+function clr(){for(var i=0;i<arguments.length;i++)document.getElementById(arguments[i]).value='';}
+function toast(msg){var t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(function(){t.classList.remove('show');},2400);}
 
-    async function verify(store) {
-        const input = document.getElementById(store === 'queue' ? 'q-in' : 'l-in');
-        try {
-            const res = await fetch(`https://api.themoviedb.org/3/search/multi?api_key=${KEY}&query=${encodeURIComponent(input.value)}&region=GB`);
-            const d = await res.json();
-            const p = d.results[0];
-            save(`${p.title || p.name} (${(p.release_date || p.first_air_date || "").split('-')[0]})`, store === 'queue' ? 'Manual' : 'Owned', '', `https://tmdb.org/${p.id}`, p.overview, store);
-            input.value = '';
-        } catch(e) { alert("Not found"); }
-    }
+// ── ACCESS PILLS ──────────────────────────────────────────────────────────
+function renderPills(){
+  var pa=document.getElementById('pill-area');
+  pa.innerHTML=MY_SVCS.slice(0,5).map(function(s){return'<span class="svc-pill">'+s+'</span>';}).join(' ')
+    +(MY_SVCS.length>5?'<span class="svc-pill">+'+( MY_SVCS.length-5)+'</span>':'');
+}
 
-    function save(title, source, streaming, url, desc, store) {
-        let db = JSON.parse(localStorage.getItem(store)) || [];
-        if(!db.some(e => e.title === title)) {
-            db.push({ id: Date.now(), title, source, streaming, url, desc: (desc||"").substring(0,120), watched: false });
-            localStorage.setItem(store, JSON.stringify(db));
-            alert("SAVED");
-            if(document.getElementById(store).classList.contains('active')) renderStored(store);
-        }
-    }
+// ── RENDER QUEUE ──────────────────────────────────────────────────────────
+function renderQ(){
+  var d=ld(), items=d.q.slice();
+  if(QF.status!=='all') items=items.filter(function(i){return i.status===QF.status;});
+  if(QF.access==='canwatch') items=items.filter(canWatch);
+  else if(QF.access==='streaming') items=items.filter(isStream);
+  else if(QF.access==='owned') items=items.filter(isOwned);
+  else if(QF.access==='cinema') items=items.filter(function(i){return i.access==='In cinema';});
+  if(QF.who!=='all') items=items.filter(function(i){return i.who===QF.who;});
+  if(QF.genre!=='all') items=items.filter(function(i){return i.genre===QF.genre;});
 
-    function renderStored(store) {
-        const db = JSON.parse(localStorage.getItem(store)) || [];
-        const listId = store === 'queue' ? 'q-list' : 'l-list';
-        document.getElementById(listId).innerHTML = db.map(i => `
-            <div class="row ${i.watched ? 'watched' : ''}">
-                <div class="info-block">
-                    <span class="meta">${i.source}</span>
-                    <strong>${i.title}</strong>
-                </div>
-                <div style="display:flex; gap:8px;">
-                    <button class="action-btn" style="background:#ccc;color:#000" onclick="toggle('${store}', ${i.id})">✓</button>
-                    <button class="action-btn" style="background:#999;color:#fff" onclick="remove('${store}', ${i.id})">×</button>
-                </div>
-            </div>`).reverse().join('') || '<div class="row">EMPTY</div>';
-    }
+  var all=d.q;
+  var cw=all.filter(function(i){return canWatch(i)&&i.status!=='watched';}).length;
+  document.getElementById('q-stats').innerHTML=
+    '<span class="st">Total <b>'+all.length+'/'+MAX_Q+'</b></span>'+
+    '<span class="st">Can watch <b>'+cw+'</b></span>'+
+    '<span class="st">Queued <b>'+all.filter(function(i){return i.status==='queued';}).length+'</b></span>'+
+    '<span class="st">Watched <b>'+all.filter(function(i){return i.status==='watched';}).length+'</b></span>'+
+    '<span class="st">B <b>'+all.filter(function(i){return i.who==='B';}).length+'</b></span>'+
+    '<span class="st">K <b>'+all.filter(function(i){return i.who==='K';}).length+'</b></span>';
 
-    function toggle(store, id) {
-        let db = JSON.parse(localStorage.getItem(store));
-        db = db.map(i => i.id === id ? {...i, watched: !i.watched} : i);
-        localStorage.setItem(store, JSON.stringify(db));
-        renderStored(store);
-    }
+  var el=document.getElementById('q-cards');
+  document.getElementById('q-empty').style.display=items.length?'none':'block';
+  if(!items.length){el.innerHTML='';return;}
 
-    function remove(store, id) {
-        let db = JSON.parse(localStorage.getItem(store));
-        localStorage.setItem(store, JSON.stringify(db.filter(i => i.id !== id)));
-        renderStored(store);
-    }
+  el.innerHTML=items.map(function(item,idx){
+    var a=item.access||'';
+    var atCls=isStream(item)?'t-stream':isOwned(item)?'t-owned':a==='In cinema'?'t-cinema':'';
+    var atLbl=a&&atCls?'<span class="tag '+atCls+'">'+esc(a)+'</span>':'';
+    var genreLbl=item.genre?'<span class="tag">'+esc(item.genre)+'</span>':'';
+    var whoCls=item.who==='B'?'b':item.who==='K'?'k':'bk';
+    var cardCls='qcard'+(canWatch(item)&&item.status!=='watched'?' acc':'')+(item.status==='watching'?' watching':'')+(item.status==='watched'?' done':'');
+    // find real index in full array for move operations
+    var realIdx=d.q.findIndex(function(x){return x.id===item.id;});
+    return '<div class="'+cardCls+'">'
+      +'<div class="card-num">#'+(idx+1)+'</div>'
+      +'<div class="card-title">'+esc(item.title)+'</div>'
+      +'<div class="card-meta">'
+        +(item.year?'<span class="card-yr">'+esc(item.year)+'</span>':'')+genreLbl+atLbl
+      +'</div>'
+      +(item.note?'<div class="card-note">'+esc(item.note)+'</div>':'')
+      +'<div class="card-actions">'
+        +'<button class="who-btn '+whoCls+'" data-cycwho="'+item.id+'">'+esc(item.who)+'</button>'
+        +'<button class="st-btn '+item.status+'" data-cycst="'+item.id+'">'+item.status+'</button>'
+        +(realIdx>0?'<button class="mv-btn" data-mvup="'+item.id+'">&#x2191;</button>':'')
+        +(realIdx<d.q.length-1?'<button class="mv-btn" data-mvdn="'+item.id+'">&#x2193;</button>':'')
+        +'<button class="del-btn" data-delq="'+item.id+'">remove</button>'
+      +'</div>'
+    +'</div>';
+  }).join('');
+}
 
-    tab('cinema');
+// ── ADD TO QUEUE ──────────────────────────────────────────────────────────
+function addQ(title, year, genre, access, note, who){
+  var d=ld();
+  if(d.q.length>=MAX_Q){toast('Queue full (100 items). Remove something first.');return false;}
+  title=title||v('q-title');
+  if(!title){toast('Enter a title');return false;}
+  year=year||v('q-year');
+  genre=genre||document.getElementById('q-genre').value;
+  access=access||document.getElementById('q-access').value;
+  note=note||v('q-note');
+  who=who||WHO;
+  if(d.q.some(function(i){return i.title.toLowerCase()===title.toLowerCase();})){
+    toast(title+' already in queue'); return false;
+  }
+  d.q.unshift({id:Date.now(),title:title,year:year,genre:genre,access:access,note:note,who:who,status:'queued',added:new Date().toISOString()});
+  svd(d);
+  clr('q-title','q-year','q-note');
+  document.getElementById('q-genre').value='';
+  document.getElementById('q-access').value='';
+  renderQ(); toast('Added: '+title); return true;
+}
+
+// ── QUEUE OPERATIONS ──────────────────────────────────────────────────────
+document.addEventListener('click', function(e){
+  var d=ld();
+
+  // Queue card actions
+  var delQ=e.target.closest('[data-delq]');
+  if(delQ){var id=parseInt(delQ.dataset.delq);d.q=d.q.filter(function(i){return i.id!==id;});svd(d);renderQ();return;}
+
+  var cycSt=e.target.closest('[data-cycst]');
+  if(cycSt){
+    var id=parseInt(cycSt.dataset.cycst);
+    var item=d.q.find(function(i){return i.id===id;});
+    if(item){var c=['queued','watching','watched'];item.status=c[(c.indexOf(item.status)+1)%c.length];svd(d);renderQ();}
+    return;
+  }
+
+  var cycWho=e.target.closest('[data-cycwho]');
+  if(cycWho){
+    var id=parseInt(cycWho.dataset.cycwho);
+    var item=d.q.find(function(i){return i.id===id;});
+    if(item){var c=['B','K','B+K'];item.who=c[(c.indexOf(item.who)+1)%c.length];svd(d);renderQ();}
+    return;
+  }
+
+  var mvUp=e.target.closest('[data-mvup]');
+  if(mvUp){
+    var id=parseInt(mvUp.dataset.mvup);
+    var idx=d.q.findIndex(function(i){return i.id===id;});
+    if(idx>0){var tmp=d.q[idx];d.q[idx]=d.q[idx-1];d.q[idx-1]=tmp;svd(d);renderQ();}
+    return;
+  }
+
+  var mvDn=e.target.closest('[data-mvdn]');
+  if(mvDn){
+    var id=parseInt(mvDn.dataset.mvdn);
+    var idx=d.q.findIndex(function(i){return i.id===id;});
+    if(idx<d.q.length-1){var tmp=d.q[idx];d.q[idx]=d.q[idx+1];d.q[idx+1]=tmp;svd(d);renderQ();}
+    return;
+  }
+
+  // Owned card actions
+  var delO=e.target.closest('[data-delo]');
+  if(delO){var id=parseInt(delO.dataset.delo);d.o=d.o.filter(function(i){return i.id!==id;});svd(d);renderO();return;}
+
+  var moveQ=e.target.closest('[data-moveq]');
+  if(moveQ){
+    var id=parseInt(moveQ.dataset.moveq);
+    var own=d.o.find(function(i){return i.id===id;});
+    if(own)addQ(own.title,own.year,'','DVD','from library',WHO);
+    return;
+  }
+});
+
+// ── RENDER OWNED ──────────────────────────────────────────────────────────
+function renderO(){
+  var d=ld();
+  var items=OF==='all'?d.o.slice():d.o.filter(function(i){return i.source===OF;});
+  var el=document.getElementById('o-cards');
+  document.getElementById('o-empty').style.display=items.length?'none':'block';
+  if(!items.length){el.innerHTML='';return;}
+  el.innerHTML=items.map(function(item){
+    return '<div class="owned-card">'
+      +'<div class="card-title">'+esc(item.title)+'</div>'
+      +'<div class="card-meta">'
+        +(item.year?'<span class="card-yr">'+esc(item.year)+'</span>':'')
+        +'<span class="tag t-owned">'+esc(item.source)+'</span>'
+      +'</div>'
+      +(item.note?'<div class="card-note">'+esc(item.note)+'</div>':'')
+      +'<div class="card-actions">'
+        +'<button class="st-btn" data-moveq="'+item.id+'">+ queue</button>'
+        +'<button class="del-btn" data-delo="'+item.id+'">remove</button>'
+      +'</div>'
+    +'</div>';
+  }).join('');
+}
+
+function addO(title,year,source,note){
+  var d=ld();
+  if(!title){toast('Enter a title');return;}
+  if(d.o.some(function(i){return i.title.toLowerCase()===title.toLowerCase()&&i.source===source;})){toast(title+' already in library');return;}
+  d.o.unshift({id:Date.now(),title:title,year:year||'',source:source,note:note||''});
+  svd(d);renderO();
+}
+
+// ── CINEMA ────────────────────────────────────────────────────────────────
+function loadCinema(){
+  var el=document.getElementById('cinema-body');
+  var loading=document.getElementById('cinema-loading');
+  loading.classList.add('vis');
+  el.innerHTML='';
+  fetch('listings.json?t='+Date.now())
+    .then(function(r){return r.json();})
+    .then(function(data){
+      loading.classList.remove('vis');
+      if(!data||data.length===0){
+        el.innerHTML='<div class="empty">No listings. Run the GitHub Actions workflow to refresh.</div>';
+        return;
+      }
+      // Group by venue
+      var venues={};
+      data.forEach(function(item){
+        var v=item.venue||'UNKNOWN';
+        if(!venues[v])venues[v]=[];
+        venues[v].push(item);
+      });
+      // Sort each venue's films, render
+      el.innerHTML=Object.keys(venues).sort().map(function(vname){
+        var films=venues[vname];
+        return '<div class="venue-block">'
+          +'<div class="venue-name">'+esc(vname)+'</div>'
+          +films.map(function(film){
+            var tags=(film.tags||[]).concat(film.tag?[film.tag]:[]);
+            return '<div class="film-row">'
+              +'<div class="film-info">'
+                +'<div class="film-title">'+esc(film.title)+'</div>'
+                +(film.times?'<div class="film-times">'+esc(film.times)+'</div>':'')
+                +(tags.length?'<div class="film-tags">'+tags.map(function(t){return'<span class="tag">'+esc(t)+'</span>';}).join('')+'</div>':'')
+              +'</div>'
+              +'<button class="film-add" data-cinema-title="'+esc(film.title)+'" data-cinema-year="'+(film.year||'')+'" title="Add to queue">+</button>'
+            +'</div>';
+          }).join('')
+        +'</div>';
+      }).join('');
+
+      // Add to queue from cinema
+      el.querySelectorAll('[data-cinema-title]').forEach(function(btn){
+        btn.addEventListener('click',function(){
+          addQ(btn.dataset.cinemaTitle,btn.dataset.cinemaYear,'','In cinema','from cinema listings',WHO);
+        });
+      });
+    })
+    .catch(function(){
+      loading.classList.remove('vis');
+      el.innerHTML='<div class="empty">Could not load listings.json</div>';
+    });
+}
+
+// ── RECS ──────────────────────────────────────────────────────────────────
+function loadCanon(){
+  fetch('canonical.json?t='+Date.now())
+    .then(function(r){return r.json();})
+    .then(function(data){CANON=data;renderRecs();})
+    .catch(function(){CANON=[];renderRecs();});
+}
+
+function matchesTag(item, tag){
+  if(tag==='all') return true;
+  var tags=(item.tags||[]).join(' ').toLowerCase();
+  var title=(item.title||'').toLowerCase();
+  var dir=(item.director||'').toLowerCase();
+  var desc=(item.desc||'').toLowerCase();
+  var src=(item.source||'').toLowerCase();
+  var needle=tag.toLowerCase();
+  // Special mappings
+  if(tag==='S&S') return tags.indexOf('s&s')>-1||src.indexOf('sight')>-1;
+  if(tag==='New Yorker') return tags.indexOf('new yorker')>-1||src.indexOf('new yorker')>-1;
+  if(tag==='LRB') return src.indexOf('lrb')>-1||src.indexOf('london review')>-1;
+  if(tag==='Streaming') return !!(item.streaming);
+  return tags.indexOf(needle)>-1||title.indexOf(needle)>-1||dir.indexOf(needle)>-1||desc.indexOf(needle)>-1;
+}
+
+function matchesCustom(item, custom){
+  if(!custom) return true;
+  var needle=custom.toLowerCase();
+  var haystack=[item.title,item.director,item.desc,(item.tags||[]).join(' '),item.source].join(' ').toLowerCase();
+  return haystack.indexOf(needle)>-1;
+}
+
+function matchesSrc(item, src){
+  if(src==='all') return true;
+  return (item.source||'').toLowerCase().indexOf(src.toLowerCase())>-1;
+}
+
+function renderRecs(){
+  var el=document.getElementById('recs-body');
+  // Canon items
+  var canon=CANON.filter(function(i){
+    return matchesTag(i,REC_TAG) && matchesCustom(i,REC_CUSTOM) && matchesSrc(i,REC_SRC);
+  });
+  // Live recs from recommendations.json
+  var liveHtml='';
+  fetch('recommendations.json?t='+Date.now())
+    .then(function(r){return r.json();})
+    .then(function(live){
+      var filtered=live.filter(function(i){
+        return matchesTag(i,REC_TAG) && matchesCustom(i,REC_CUSTOM) && matchesSrc(i,REC_SRC);
+      });
+      renderRecsFull(canon, filtered);
+    })
+    .catch(function(){renderRecsFull(canon,[]);});
+}
+
+function renderRecsFull(canon, live){
+  var el=document.getElementById('recs-body');
+  var d=ld();
+  var inQ=d.q.map(function(i){return i.title.toLowerCase();});
+
+  function recCard(item, type){
+    var tags=(item.tags||[]).slice(0,4);
+    var alreadyIn=inQ.indexOf(item.title.toLowerCase())>-1;
+    return '<div class="rec-card '+type+'">'
+      +'<div class="rec-title">'+esc(item.title)+(item.year?' <span style="font-size:.7rem;font-weight:400;color:var(--ink3)">('+item.year+')</span>':'')+'</div>'
+      +(item.director?'<div class="rec-meta">'+esc(item.director)+'</div>':'')
+      +(tags.length?'<div class="rec-tags">'+tags.map(function(t){
+          var cls=t.indexOf('Anti-Nazi')>-1||t.indexOf('WWII')>-1?'t-cinema':t.indexOf('Spy')>-1||t.indexOf('Cold War')>-1?'t-owned':t.indexOf('Streaming')>-1||item.streaming?'t-stream':'';
+          return'<span class="tag '+cls+'">'+esc(t)+'</span>';
+        }).join('')+'</div>':'')
+      +(item.desc?'<div class="rec-desc">'+esc(item.desc)+'</div>':'')
+      +'<div class="rec-actions">'
+        +'<span class="rec-source">'+esc(item.source||'')+(item.streaming?' &middot; On '+esc(item.streaming):'')+'</span>'
+        +(alreadyIn
+          ?'<button class="st-btn watched" style="margin-left:auto">In queue ✓</button>'
+          :'<button class="small-btn" style="margin-left:auto;font-size:.55rem" data-rec-title="'+esc(item.title)+'" data-rec-year="'+(item.year||'')+'" data-rec-genre="'+(item.tags&&item.tags[0]?esc(item.tags[0]):'')+'" data-rec-access="'+(item.streaming?esc(item.streaming):'')+'">+ Queue</button>'
+        )
+      +'</div>'
+    +'</div>';
+  }
+
+  var html='';
+  if(live.length){
+    html+='<div style="font-size:.58rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--acc);margin-bottom:6px;padding-bottom:4px;border-bottom:1px solid var(--rule)">Live picks &mdash; from RSS</div>';
+    html+=live.map(function(i){return recCard(i,'live');}).join('');
+  }
+  if(canon.length){
+    html+='<div style="font-size:.58rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);margin-bottom:6px;padding-top:10px;padding-bottom:4px;border-bottom:1px solid var(--rule)">Canonical pool &mdash; '+(REC_TAG==='all'?'all ':REC_TAG+' ')+'('+canon.length+')</div>';
+    html+=canon.map(function(i){return recCard(i,'canon');}).join('');
+  }
+  if(!html) html='<div class="empty">No matches. Try a different filter or custom search.</div>';
+  el.innerHTML=html;
+
+  // Add to queue from recs
+  el.querySelectorAll('[data-rec-title]').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      addQ(btn.dataset.recTitle,btn.dataset.recYear,btn.dataset.recGenre,btn.dataset.recAccess,'from recs',WHO);
+      renderRecs();
+    });
+  });
+}
+
+// ── INIT ──────────────────────────────────────────────────────────────────
+window.addEventListener('load', function(){
+  ldSvcs(); renderPills(); renderQ();
+
+  // WHO buttons
+  document.getElementById('btn-b').addEventListener('click',function(){
+    WHO='B';
+    document.getElementById('btn-b').classList.add('on');
+    document.getElementById('btn-k').classList.remove('on');
+    toast('Adding as B');
+  });
+  document.getElementById('btn-k').addEventListener('click',function(){
+    WHO='K';
+    document.getElementById('btn-k').classList.add('on');
+    document.getElementById('btn-b').classList.remove('on');
+    toast('Adding as K');
+  });
+
+  // TABS
+  document.getElementById('tabbar').addEventListener('click',function(e){
+    var btn=e.target.closest('.tabitem');
+    if(!btn)return;
+    document.querySelectorAll('.tabitem').forEach(function(t){t.classList.remove('on');});
+    document.querySelectorAll('.sec').forEach(function(s){s.classList.remove('on');});
+    btn.classList.add('on');
+    var sec=document.getElementById('sec-'+btn.dataset.tab);
+    if(sec)sec.classList.add('on');
+    if(btn.dataset.tab==='queue') renderQ();
+    if(btn.dataset.tab==='cinema') loadCinema();
+    if(btn.dataset.tab==='recs') loadCanon();
+    if(btn.dataset.tab==='owned') renderO();
+  });
+
+  // QUEUE ADD
+  document.getElementById('q-add-btn').addEventListener('click',function(){addQ();});
+  document.getElementById('q-title').addEventListener('keydown',function(e){if(e.key==='Enter')addQ();});
+
+  // QUEUE FILTERS
+  document.getElementById('q-filters').addEventListener('click',function(e){
+    var btn=e.target.closest('.chip[data-fk]');
+    if(!btn)return;
+    var k=btn.dataset.fk, v=btn.dataset.fv;
+    QF[k]=v;
+    document.querySelectorAll('#q-filters .chip[data-fk="'+k+'"]').forEach(function(c){c.classList.remove('on');});
+    btn.classList.add('on');
+    renderQ();
+  });
+
+  // RECS TAG FILTERS
+  document.getElementById('rec-tag-grid').addEventListener('click',function(e){
+    var btn=e.target.closest('.chip[data-rtag]');
+    if(!btn)return;
+    REC_TAG=btn.dataset.rtag;
+    document.querySelectorAll('#rec-tag-grid .chip').forEach(function(c){c.classList.remove('on');});
+    btn.classList.add('on');
+    renderRecs();
+  });
+
+  // RECS SOURCE FILTER
+  document.getElementById('rec-sources').addEventListener('click',function(e){
+    var btn=e.target.closest('.src-chip[data-src]');
+    if(!btn)return;
+    REC_SRC=btn.dataset.src;
+    document.querySelectorAll('#rec-sources .src-chip').forEach(function(c){c.classList.remove('on');});
+    btn.classList.add('on');
+    renderRecs();
+  });
+
+  // RECS CUSTOM SEARCH
+  document.getElementById('rec-custom-add').addEventListener('click',function(){
+    REC_CUSTOM=document.getElementById('rec-custom').value.trim();
+    renderRecs();
+  });
+  document.getElementById('rec-custom').addEventListener('keydown',function(e){
+    if(e.key==='Enter'){REC_CUSTOM=e.target.value.trim();renderRecs();}
+  });
+
+  // OWNED ADD
+  document.getElementById('o-add-btn').addEventListener('click',function(){
+    var t=v('o-title');
+    if(!t)return;
+    addO(t,v('o-year'),document.getElementById('o-source').value,v('o-note'));
+    clr('o-title','o-year','o-note');
+    toast('Added to library: '+t);
+  });
+  document.getElementById('o-title').addEventListener('keydown',function(e){if(e.key==='Enter')document.getElementById('o-add-btn').click();});
+
+  // OWNED BULK IMPORT
+  document.getElementById('o-bulk-btn').addEventListener('click',function(){
+    var raw=document.getElementById('o-bulk').value.trim();
+    if(!raw)return;
+    var source=document.getElementById('o-bulk-source').value;
+    var lines=raw.split('\n').map(function(l){return l.trim();}).filter(function(l){return l.length>0;});
+    var added=0;
+    lines.forEach(function(line){
+      // Try to extract year from end of title e.g. "Some Film (1999)"
+      var m=line.match(/^(.*?)\s*\((\d{4})\)\s*$/);
+      var title=m?m[1].trim():line;
+      var year=m?m[2]:'';
+      var d=ld();
+      if(!d.o.some(function(i){return i.title.toLowerCase()===title.toLowerCase()&&i.source===source;})){
+        addO(title,year,source,''); added++;
+      }
+    });
+    document.getElementById('o-bulk').value='';
+    toast('Imported '+added+' titles to library');
+    renderO();
+  });
+
+  // OWNED FILTERS
+  document.getElementById('o-filters').addEventListener('click',function(e){
+    var btn=e.target.closest('.chip[data-ofv]');
+    if(!btn)return;
+    OF=btn.dataset.ofv;
+    document.querySelectorAll('#o-filters .chip').forEach(function(c){c.classList.remove('on');});
+    btn.classList.add('on');
+    renderO();
+  });
+
+  // SERVICES
+  document.getElementById('edit-svcs').addEventListener('click',function(){
+    var map=[['se-iplayer','iPlayer'],['se-netflix','Netflix'],['se-apple','Apple TV+'],
+      ['se-disney','Disney+'],['se-prime','Prime Video'],['se-ch4','Channel 4'],
+      ['se-itvx','ITVX'],['se-lib','Edinburgh Library'],['se-mubi','MUBI'],['se-bfi','BFI Player']];
+    map.forEach(function(p){document.getElementById(p[0]).checked=MY_SVCS.indexOf(p[1])>-1;});
+    document.getElementById('svc-overlay').classList.add('open');
+  });
+  document.getElementById('save-svc').addEventListener('click',function(){
+    var map=[['se-iplayer','iPlayer'],['se-netflix','Netflix'],['se-apple','Apple TV+'],
+      ['se-disney','Disney+'],['se-prime','Prime Video'],['se-ch4','Channel 4'],
+      ['se-itvx','ITVX'],['se-lib','Edinburgh Library'],['se-mubi','MUBI'],['se-bfi','BFI Player']];
+    var arr=[];
+    map.forEach(function(p){if(document.getElementById(p[0]).checked)arr.push(p[1]);});
+    svSvcs(arr);
+    document.getElementById('svc-overlay').classList.remove('open');
+    renderPills(); renderQ(); toast('Services updated');
+  });
+  document.getElementById('cancel-svc').addEventListener('click',function(){document.getElementById('svc-overlay').classList.remove('open');});
+
+  // SYNC
+  document.getElementById('sync-btn').addEventListener('click',function(){
+    var b64=btoa(unescape(encodeURIComponent(JSON.stringify(ld()))));
+    var base=window.location.href.split('#')[0].split('?')[0];
+    document.getElementById('sync-url').value=base+'#q='+b64;
+    document.getElementById('sync-overlay').classList.add('open');
+    document.getElementById('sync-note').style.display='none';
+  });
+  document.getElementById('close-sync').addEventListener('click',function(){document.getElementById('sync-overlay').classList.remove('open');});
+  document.getElementById('copy-btn').addEventListener('click',function(){
+    var ta=document.getElementById('sync-url');ta.select();
+    try{document.execCommand('copy');}catch(e){}
+    if(navigator.clipboard)navigator.clipboard.writeText(ta.value).catch(function(){});
+    var n=document.getElementById('sync-note');n.textContent='Copied to clipboard';n.style.display='block';
+  });
+  document.getElementById('do-import').addEventListener('click',function(){
+    var url=document.getElementById('import-url').value.trim();
+    var hash=url.indexOf('#q=')>-1?url.split('#q=')[1]:url;
+    var n=document.getElementById('sync-note');
+    if(!hash){n.textContent='No data found';n.style.display='block';return;}
+    try{
+      var data=JSON.parse(decodeURIComponent(escape(atob(hash))));
+      var local=ld(), added=0;
+      (data.q||[]).forEach(function(inc){
+        if(!local.q.some(function(i){return i.title.toLowerCase()===inc.title.toLowerCase()&&i.year===inc.year;})){local.q.push(inc);added++;}
+      });
+      (data.o||[]).forEach(function(inc){
+        if(!local.o.some(function(i){return i.title.toLowerCase()===inc.title.toLowerCase();})){local.o.push(inc);added++;}
+      });
+      svd(local);renderQ();renderO();
+      n.textContent='Merged — '+added+' new item'+(added===1?'':'s')+' added';
+      n.style.display='block';
+    }catch(e){n.textContent='Could not parse that link';n.style.display='block';}
+  });
+
+  // URL IMPORT ON LOAD
+  var hash=window.location.hash;
+  if(hash.indexOf('#q=')===0){
+    try{
+      var data=JSON.parse(decodeURIComponent(escape(atob(hash.slice(3)))));
+      var local=ld(),added=0;
+      (data.q||[]).forEach(function(inc){if(!local.q.some(function(i){return i.title.toLowerCase()===inc.title.toLowerCase()&&i.year===inc.year;})){local.q.push(inc);added++;}});
+      (data.o||[]).forEach(function(inc){if(!local.o.some(function(i){return i.title.toLowerCase()===inc.title.toLowerCase();})){local.o.push(inc);added++;}});
+      svd(local);if(added>0)toast('Synced — '+added+' item'+(added===1?'':'s')+' added');
+      history.replaceState(null,'',window.location.pathname);
+    }catch(e){}
+  }
+});
 </script>
 </body>
 </html>
