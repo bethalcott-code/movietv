@@ -1,22 +1,17 @@
-[
-  {
-    "title": "Am\u00e9lie (25th Anniv)",
-    "venue": "Filmhouse"
-  },
-  {
-    "title": "The Drama",
-    "venue": "Cameo/Filmhouse"
-  },
-  {
-    "title": "Akira (4K)",
-    "venue": "Cameo"
-  },
-  {
-    "title": "Project Hail Mary",
-    "venue": "Dominion"
-  },
-  {
-    "title": "Wuthering Heights",
-    "venue": "Vue / Dominion"
-  }
-]
+function renderList(data, containerId, metaKey) {
+    const container = document.getElementById(containerId);
+    container.innerHTML = data.map((item, index) => {
+        // Cleaning title for safer indexing
+        const cleanTitle = item.title.replace(/'/g, "\\'");
+        return `
+        <div class="row">
+            <div class="info-block">
+                <span class="meta">${item[metaKey]} ${item.tag ? `| ${item.tag}` : ''}</span>
+                <a href="${item.url || '#'}" target="_blank">${item.title}</a>
+                ${item.times ? `<div style="font-size: 11px; margin-top: 5px; color: #555; font-weight: bold;">${item.times}</div>` : ''}
+                ${item.streaming ? `<span class="stream-tag">WATCH: ${item.streaming}</span>` : ''}
+            </div>
+            <button class="add-btn" onclick="saveFromList(${index}, '${metaKey}')">+</button>
+        </div>`;
+    }).join('');
+}
