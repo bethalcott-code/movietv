@@ -1,14 +1,18 @@
+
 name: Daily Cinema Update
+
 on:
   schedule:
-    - cron: '0 3 * * *' # Runs at 3 AM daily
-  workflow_dispatch: # Allows you to run it manually
+    - cron: '0 3 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
-  update-data:
+  build:
     runs-on: ubuntu-latest
-   
-       steps:
+    steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
@@ -20,16 +24,15 @@ jobs:
       - name: Install dependencies
         run: pip install requests
 
-      - name: Run Cinema Scraper
-        run: python scrape_cinema.py
-
-      - name: Run Smart Recs Scraper
-        run: python scrape_recs.py
-
-      - name: Commit and Push changes
+      - name: Run Scrapers
         run: |
-          git config --global user.name "GitHub Action"
-          git config --global user.email "action@github.com"
+          python scrape_cinema.py
+          python scrape_recs.py
+
+      - name: Save Data
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add listings.json recommendations.json
-          git commit -m "Automated update: Cinema & Recs" || echo "No changes to commit"
+          git commit -m "Robot update: Cinema & Recs" || echo "No changes"
           git push
