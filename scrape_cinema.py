@@ -1,19 +1,16 @@
 """
 scrape_cinema.py — Edinburgh cinema listings via film.datathistle.com
-Structure confirmed from live HTML April 2026:
-  - Film titles in <h4><a href="/listing/...">Title</a></h4>
-  - Day headings in <h5>
-  - Times in <li><a title="3:25pm"> or <li><a>15:25</a>
-  - Strikethrough <li><del> = past screenings (skip)
-  - Description in <p> after film metadata
+HTML structure confirmed from live fetch April 2026:
+  Film titles: <h4><a href="/listing/...">Title</a></h4>
+  Times: <li><a title="3:25pm"> (title attr) or <li><a>15:25</a>
+  Past screenings: <li><del>...</del> — skip these
+  Year: <ul><li>2026</li>... metadata block
+  Description: <p> sibling after metadata ul
 """
 
 import requests
 from bs4 import BeautifulSoup
-import json
-import re
-import os
-import time
+import json, re, os, time, sys
 from datetime import datetime
 
 HEADERS = {
@@ -21,6 +18,7 @@ HEADERS = {
                   "AppleWebKit/537.36 Chrome/120.0.0.0 Safari/537.36",
     "Accept": "text/html,application/xhtml+xml,*/*;q=0.8",
     "Accept-Language": "en-GB,en;q=0.9",
+    "Cache-Control": "no-cache",
 }
 
 TMDB_KEY = os.getenv("TMDB_KEY")
@@ -28,7 +26,7 @@ TMDB_KEY = os.getenv("TMDB_KEY")
 VENUES = [
     ("524-cameo-cinema-edinburgh",            "Cameo Picturehouse"),
     ("794-filmhouse-edinburgh",               "Edinburgh Filmhouse"),
-    ("12758-cineworld-fountainpark-edinburgh", "Cineworld Edinburgh"),
+    ("12758-cineworld-fountainpark-edinburgh","Cineworld Edinburgh"),
     ("16405-odeon-lothian-road-edinburgh",    "Odeon Lothian Road"),
     ("15902-vue-omni-centre-edinburgh",       "Vue Edinburgh Omni"),
     ("15006-vue-ocean-terminal-edinburgh",    "Vue Ocean Terminal"),
@@ -36,158 +34,173 @@ VENUES = [
 ]
 
 PROVIDER_MAP = {
-    "BBC iPlayer": "iPlayer", "Netflix": "Netflix",
-    "Apple TV Plus": "Apple TV+", "Apple TV+": "Apple TV+",
-    "Disney Plus": "Disney+", "Disney+": "Disney+",
-    "Amazon Prime Video": "Prime Video", "Amazon Video": "Prime Video",
-    "Channel 4": "Channel 4", "ITVX": "ITVX",
-    "MUBI": "MUBI", "BFI Player": "BFI Player",
-    "Paramount Plus": "Paramount+", "NOW": "NOW",
+    "BBC iPlayer":"iPlayer","Netflix":"Netflix",
+    "Apple TV Plus":"Apple TV+","Apple TV+":"Apple TV+",
+    "Disney Plus":"Disney+","Disney+":"Disney+",
+    "Amazon Prime Video":"Prime Video","Amazon Video":"Prime Video",
+    "Channel 4":"Channel 4","ITVX":"ITVX",
+    "MUBI":"MUBI","BFI Player":"BFI Player",
+    "Paramount Plus":"Paramount+","NOW":"NOW",
 }
 
 INTEREST_TAGS = {
-    "nazi": "Anti-Nazi", "resistance": "Anti-Nazi", "gestapo": "Anti-Nazi",
-    "holocaust": "Anti-Nazi", "spy": "Spy", "espionage": "Spy",
-    "cold war": "Spy", "wwii": "WWII", "world war": "WWII",
-    "documentary": "Documentary", "criterion": "Criterion",
-    "arthouse": "Arthouse", "scottish": "Scottish", "scotland": "Scottish",
-    "bergman": "Bergman", "tati": "Tati", "powell": "Powell & Pressburger",
+    "nazi":"Anti-Nazi","resistance":"Anti-Nazi","gestapo":"Anti-Nazi",
+    "holocaust":"Anti-Nazi","spy":"Spy","espionage":"Spy","cold war":"Spy",
+    "wwii":"WWII","world war":"WWII","documentary":"Documentary",
+    "scottish":"Scottish","scotland":"Scottish","arthouse":"Arthouse",
+    "criterion":"Criterion","bergman":"Bergman",
 }
 
+def log(msg): print(msg, flush=True)
+
 def tag_film(title, synopsis=""):
-    text = (title + " " + (synopsis or "")).lower()
-    return list({tag for kw, tag in INTEREST_TAGS.items() if kw in text})
+    text = (title+" "+(synopsis or "")).lower()
+    return list({tag for kw,tag in INTEREST_TAGS.items() if kw in text})
 
 def get_streaming_uk(title):
-    if not TMDB_KEY:
-        return "", ""
+    if not TMDB_KEY: return "",""
     try:
         res = requests.get(
-            "https://api.themoviedb.org/3/search/multi"
-            f"?api_key={TMDB_KEY}&query={requests.utils.quote(title)}&region=GB",
-            timeout=8).json()
-        results = res.get("results", [])
-        if not results:
-            return "", ""
+            f"https://api.themoviedb.org/3/search/multi?api_key={TMDB_KEY}"
+            f"&query={requests.utils.quote(title)}&region=GB", timeout=8).json()
+        results = res.get("results",[])
+        if not results: return "",""
         item = results[0]
-        i_id, i_type = item["id"], item.get("media_type", "movie")
-        if i_type not in ("movie", "tv"):
-            i_type = "movie"
+        i_id,i_type = item["id"],item.get("media_type","movie")
+        if i_type not in ("movie","tv"): i_type="movie"
         pres = requests.get(
             f"https://api.themoviedb.org/3/{i_type}/{i_id}/watch/providers"
             f"?api_key={TMDB_KEY}", timeout=8).json()
-        uk = pres.get("results", {}).get("GB", {})
-        all_p = uk.get("flatrate", []) + uk.get("free", []) + uk.get("ads", [])
-        jw = uk.get("link", "")
+        uk = pres.get("results",{}).get("GB",{})
+        all_p = uk.get("flatrate",[])+uk.get("free",[])+uk.get("ads",[])
+        jw = uk.get("link","")
         for p in all_p:
-            short = PROVIDER_MAP.get(p.get("provider_name", ""), "")
-            if short:
-                return short, jw
-        return (all_p[0].get("provider_name", "") if all_p else ""), jw
-    except:
-        return "", ""
+            short = PROVIDER_MAP.get(p.get("provider_name",""),"")
+            if short: return short,jw
+        return (all_p[0].get("provider_name","") if all_p else ""),jw
+    except: return "",""
 
-def parse_time(el):
-    """Extract HH:MM from an <a> element — check title attr first, then text."""
-    title_attr = el.get("title", "")
-    # title attr like "3:25pm" or "11am"
-    m = re.search(r'(\d{1,2}):(\d{2})\s*(am|pm)?', title_attr, re.I)
-    if m:
-        h, mi = int(m.group(1)), int(m.group(2))
-        if m.group(3) and m.group(3).lower() == "pm" and h != 12:
-            h += 12
-        return f"{h:02d}:{mi:02d}"
-    # fallback: link text like "15:25"
-    txt = el.get_text(strip=True)
-    m2 = re.search(r'(\d{1,2})[:.:](\d{2})', txt)
-    if m2:
-        return f"{int(m2.group(1)):02d}:{m2.group(2)}"
+def parse_time_from_a(a_tag):
+    """Extract HH:MM from <a title='3:25pm'> or <a>15:25</a>."""
+    # Try title attribute first: "3:25pm", "11am", "11:30"
+    for src in [a_tag.get("title",""), a_tag.get_text(strip=True)]:
+        m = re.search(r'(\d{1,2}):(\d{2})\s*(am|pm)?', src, re.I)
+        if m:
+            h,mi = int(m.group(1)),int(m.group(2))
+            if m.group(3) and m.group(3).lower()=="pm" and h!=12: h+=12
+            if m.group(3) and m.group(3).lower()=="am" and h==12: h=0
+            return f"{h:02d}:{mi:02d}"
+        # "11am" without minutes
+        m2 = re.search(r'(\d{1,2})\s*(am|pm)', src, re.I)
+        if m2:
+            h = int(m2.group(1))
+            if m2.group(2).lower()=="pm" and h!=12: h+=12
+            if m2.group(2).lower()=="am" and h==12: h=0
+            return f"{h:02d}:00"
     return None
 
 def scrape_venue(slug, venue_name):
     films = []
     url = f"https://film.datathistle.com/cinema/{slug}/"
+    log(f"  Fetching {url}")
     try:
-        r = requests.get(url, headers=HEADERS, timeout=20)
-        r.raise_for_status()
+        r = requests.get(url, headers=HEADERS, timeout=25)
+        log(f"  HTTP {r.status_code}, {len(r.text)} bytes")
+        if r.status_code != 200:
+            log(f"  Non-200 response, skipping")
+            return films
+
         soup = BeautifulSoup(r.text, "html.parser")
 
-        # Find the times section — it starts after the <a id="times"> anchor
-        times_anchor = soup.find("a", id="times") or soup.find("h2", string=re.compile("This week", re.I))
+        # DEBUG: show first few h4s to confirm structure
+        all_h4 = soup.find_all("h4")
+        log(f"  Found {len(all_h4)} h4 elements")
+        for h in all_h4[:3]:
+            log(f"    h4: {repr(h.get_text(strip=True)[:50])}")
 
-        # Get all h4 elements that are film titles (contain /listing/ links)
-        film_headers = []
-        for h4 in soup.find_all("h4"):
-            link = h4.find("a", href=re.compile(r"/listing/|/event/"))
-            if link:
-                film_headers.append((h4, link))
+        # Each film is in a <h4> containing <a href="/listing/...">
+        film_h4s = [(h, h.find("a", href=re.compile(r"/(listing|event)/")))
+                    for h in all_h4
+                    if h.find("a", href=re.compile(r"/(listing|event)/"))]
+        log(f"  Film h4s with /listing/ links: {len(film_h4s)}")
 
-        for h4, link in film_headers:
+        for h4, link in film_h4s:
             title = link.get_text(strip=True)
-            href = link.get("href", "")
-            film_url = ("https://film.datathistle.com" + href
+            href  = link.get("href","")
+            film_url = ("https://film.datathistle.com"+href
                         if href.startswith("/") else href)
-
-            # Get description: find the <p> sibling after this h4
-            desc = ""
             year = ""
-            # Walk siblings until next h4
+            desc = ""
+            all_times = []
+
+            # Walk all siblings after this h4 until the next h4
             sib = h4.find_next_sibling()
             while sib and sib.name != "h4":
+                # Year from metadata ul (first ul after h4, contains 4-digit year)
+                if sib.name == "ul" and not year:
+                    for li in sib.find_all("li", recursive=False):
+                        txt = li.get_text(strip=True)
+                        if re.match(r'^(19|20)\d{2}$', txt):
+                            year = txt
+                            break
+
+                # Description: <p> with substantial text, no times
                 if sib.name == "p" and not desc:
                     txt = sib.get_text(strip=True)
-                    if len(txt) > 20 and not re.search(r'\d{1,2}[:.]\d{2}', txt):
+                    if len(txt) > 30 and not re.search(r'\d{1,2}[:.]\d{2}', txt):
                         desc = txt[:200]
-                # Year: look in metadata lists
-                if sib.name == "ul":
-                    for li in sib.find_all("li"):
-                        m = re.match(r'^(19|20)\d{2}$', li.get_text(strip=True))
-                        if m:
-                            year = li.get_text(strip=True)
-                            break
-                sib = sib.find_next_sibling()
 
-            # Collect times from all h5+list sections after this h4, until next h4
-            all_times = []
-            sib = h4.find_next_sibling()
-            while sib and sib.name != "h4":
-                if sib.name in ("h5", "h6", "ul", "ol", "div"):
-                    # Find all <li> items — skip strikethrough (<del> = past)
+                # Times from h5 day-sections: <h5>Sat 21 Mar</h5><ul><li><a...>
+                if sib.name in ("h5","h6"):
+                    # Collect <ul>/<ol> immediately after this heading
+                    nxt = sib.find_next_sibling()
+                    while nxt and nxt.name in ("ul","ol","h6","div"):
+                        if nxt.name in ("ul","ol"):
+                            for li in nxt.find_all("li"):
+                                # Skip past/struck-through screenings
+                                if li.find(["del","s"]):
+                                    continue
+                                a = li.find("a")
+                                if a:
+                                    t = parse_time_from_a(a)
+                                    if t:
+                                        all_times.append(t)
+                        if nxt.name in ("h5","h6"):
+                            break
+                        nxt = nxt.find_next_sibling()
+
+                # Also catch bare <ul> with times (some venues format differently)
+                if sib.name in ("ul","ol"):
                     for li in sib.find_all("li"):
-                        if li.find("del") or li.find("s"):
-                            continue  # past screening
+                        if li.find(["del","s"]):
+                            continue
                         a = li.find("a")
                         if a:
-                            t = parse_time(a)
+                            t = parse_time_from_a(a)
                             if t:
                                 all_times.append(t)
-                        else:
-                            # plain <li> with time text
-                            txt = li.get_text(strip=True)
-                            m = re.search(r'(\d{1,2})[:.:](\d{2})', txt)
-                            if m and not li.find("del"):
-                                all_times.append(f"{int(m.group(1)):02d}:{m.group(2)}")
+
                 sib = sib.find_next_sibling()
 
-            if all_times or True:  # include even if no current times (film exists this week)
-                films.append({
-                    "venue": venue_name,
-                    "title": title,
-                    "times": ", ".join(sorted(set(all_times))[:10]),
-                    "tags": tag_film(title, desc),
-                    "desc": desc[:150],
-                    "url": film_url,
-                    "year": year,
-                })
+            films.append({
+                "venue":  venue_name,
+                "title":  title,
+                "times":  ", ".join(sorted(set(all_times))[:10]),
+                "tags":   tag_film(title, desc),
+                "desc":   desc[:150],
+                "url":    film_url,
+                "year":   year,
+            })
+            log(f"    + {title} ({year}) — {len(all_times)} times")
 
-        print(f"  {venue_name}: {len(films)} films")
+        log(f"  {venue_name}: {len(films)} films total")
     except Exception as e:
-        print(f"  {venue_name} error: {e}")
+        log(f"  {venue_name} ERROR: {type(e).__name__}: {e}")
     return films
 
 
 def get_cinema():
-    print(f"Scraping Edinburgh cinemas — {datetime.now().strftime('%Y-%m-%d %H:%M')}")
+    log(f"=== Edinburgh cinema scraper {datetime.now().strftime('%Y-%m-%d %H:%M')} ===")
     all_listings = []
     seen = set()
 
@@ -200,31 +213,29 @@ def get_cinema():
                     seen.add(key)
                     all_listings.append(film)
         except Exception as e:
-            print(f"  {venue_name} failed: {e}")
-        time.sleep(0.5)
+            log(f"  {venue_name} FAILED: {e}")
+        time.sleep(0.75)
 
     all_listings.sort(key=lambda x: (x["venue"], x["title"]))
-    print(f"\nTotal: {len(all_listings)} entries")
+    log(f"\n=== Total: {len(all_listings)} entries ===")
 
     if TMDB_KEY and all_listings:
-        print("Looking up UK streaming via TMDB...")
+        log("Looking up UK streaming via TMDB...")
         cache = {}
         for item in all_listings:
             t = item["title"].lower()
             if t not in cache:
                 cache[t] = get_streaming_uk(item["title"])
                 time.sleep(0.2)
-            item["streaming"], item["jw_url"] = cache[t]
-        print("Done.")
+            item["streaming"],item["jw_url"] = cache[t]
     else:
         for item in all_listings:
-            item.setdefault("streaming", "")
-            item.setdefault("jw_url", "")
+            item.setdefault("streaming","")
+            item.setdefault("jw_url","")
 
-    with open("listings.json", "w", encoding="utf-8") as f:
+    with open("listings.json","w",encoding="utf-8") as f:
         json.dump(all_listings, f, indent=2, ensure_ascii=False)
-    print(f"Saved listings.json — {len(all_listings)} entries")
-
+    log(f"Saved listings.json")
 
 if __name__ == "__main__":
     get_cinema()
