@@ -1,22 +1,25 @@
 """
 scrape_cinema.py — Edinburgh cinema listings
-Scrapes britinfo.net which aggregates all Edinburgh venue listings.
-No API key required. Writes listings.json grouped by venue.
+Sources:
+  1. Cineworld JSON API (reliable, no auth)
+  2. Vue JSON API (reliable, no auth)
+  3. Filmhouse.org.uk (simple HTML, scrapeable)
+  4. cinemaguide.co.uk aggregator API (covers Cameo, Odeon, Everyman + others)
+Writes listings.json grouped by venue with TMDB UK streaming data.
 """
 
 import requests
-from bs4 import BeautifulSoup
 import json
 import re
-from datetime import datetime
-
 import os
 import time
+from datetime import datetime
 
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
                   "AppleWebKit/537.36 (KHTML, like Gecko) "
-                  "Chrome/120.0.0.0 Safari/537.36"
+                  "Chrome/120.0.0.0 Safari/537.36",
+    "Accept": "application/json, text/html, */*",
 }
 
 TMDB_KEY = os.getenv("TMDB_KEY")
@@ -31,214 +34,344 @@ PROVIDER_MAP = {
     "Paramount Plus": "Paramount+", "NOW": "NOW",
 }
 
+INTEREST_TAGS = {
+    "nazi": "Anti-Nazi", "resistance": "Anti-Nazi", "occupied": "Anti-Nazi",
+    "gestapo": "Anti-Nazi", "holocaust": "Anti-Nazi",
+    "spy": "Spy", "espionage": "Spy", "cold war": "Spy",
+    "wwii": "WWII", "world war": "WWII",
+    "documentary": "Documentary", "criterion": "Criterion",
+    "arthouse": "Arthouse", "scottish": "Scottish", "scotland": "Scottish",
+    "classic": "Classic", "revival": "Classic", "repertory": "Classic",
+    "bergman": "Bergman", "tati": "Jacques Tati",
+    "powell": "Powell & Pressburger",
+}
+
+def tag_film(title, synopsis=""):
+    text = (title + " " + (synopsis or "")).lower()
+    return list({tag for kw, tag in INTEREST_TAGS.items() if kw in text})
+
 def get_streaming_uk(title):
     if not TMDB_KEY:
         return "", ""
     try:
-        q = requests.utils.quote(title)
         res = requests.get(
-            f"https://api.themoviedb.org/3/search/multi?api_key={TMDB_KEY}&query={q}&region=GB",
+            f"https://api.themoviedb.org/3/search/multi"
+            f"?api_key={TMDB_KEY}&query={requests.utils.quote(title)}&region=GB",
             timeout=8).json()
         results = res.get("results", [])
         if not results:
             return "", ""
         item = results[0]
-        i_id, i_type = item["id"], item.get("media_type","movie")
-        if i_type not in ("movie","tv"):
+        i_id = item["id"]
+        i_type = item.get("media_type", "movie")
+        if i_type not in ("movie", "tv"):
             i_type = "movie"
         pres = requests.get(
-            f"https://api.themoviedb.org/3/{i_type}/{i_id}/watch/providers?api_key={TMDB_KEY}",
+            f"https://api.themoviedb.org/3/{i_type}/{i_id}/watch/providers"
+            f"?api_key={TMDB_KEY}",
             timeout=8).json()
-        uk = pres.get("results",{}).get("GB",{})
-        all_p = uk.get("flatrate",[]) + uk.get("free",[]) + uk.get("ads",[])
-        jw = uk.get("link","")
+        uk = pres.get("results", {}).get("GB", {})
+        all_p = uk.get("flatrate", []) + uk.get("free", []) + uk.get("ads", [])
+        jw = uk.get("link", "")
         for p in all_p:
-            short = PROVIDER_MAP.get(p.get("provider_name",""),"")
+            short = PROVIDER_MAP.get(p.get("provider_name", ""), "")
             if short:
                 return short, jw
-        return (all_p[0].get("provider_name","") if all_p else ""), jw
+        return (all_p[0].get("provider_name", "") if all_p else ""), jw
     except:
         return "", ""
 
-VENUE_URLS = {
-    "Cameo Picturehouse":    "https://www.britinfo.net/cinema/cinema-listings-1003620.htm",
-    "Edinburgh Filmhouse":   "https://www.britinfo.net/cinema/cinema-listings-1003611.htm",
-    "Cineworld Edinburgh":   "https://www.britinfo.net/cinema/cinema-listings-1003617.htm",
-    "Odeon Lothian Road":    "https://www.britinfo.net/cinema/cinema-listings-1003613.htm",
-    "Vue Edinburgh Omni":    "https://www.britinfo.net/cinema/cinema-listings-1003615.htm",
-    "Everyman Edinburgh":    "https://www.britinfo.net/cinema/cinema-listings-1054321.htm",
-}
-
-INTEREST_TAGS = {
-    "nazi": "Anti-Nazi", "resistance": "Anti-Nazi", "occupation": "Anti-Nazi",
-    "gestapo": "Anti-Nazi", "holocaust": "Anti-Nazi",
-    "spy": "Spy", "espionage": "Spy", "cold war": "Spy", "mi5": "Spy", "mi6": "Spy",
-    "wwii": "WWII", "world war": "WWII", "second world war": "WWII",
-    "documentary": "Documentary",
-    "criterion": "Criterion",
-    "arthouse": "Arthouse", "art house": "Arthouse",
-    "silent": "Silent",
-    "scottish": "Scottish", "scotland": "Scottish",
-    "repertory": "Classic", "revival": "Classic", "classic": "Classic",
-    "bergman": "Bergman", "tati": "Jacques Tati",
-    "powell": "Powell & Pressburger", "pressburger": "Powell & Pressburger",
-}
-
-def tag_film(title, synopsis=""):
-    text = (title + " " + (synopsis or "")).lower()
-    tags = []
-    for kw, tag in INTEREST_TAGS.items():
-        if kw in text and tag not in tags:
-            tags.append(tag)
-    return tags
-
-def scrape_venue(venue_name, url):
-    films = []
+# ── SOURCE 1: CINEWORLD JSON API ──────────────────────────────────────────
+def scrape_cineworld():
+    results = []
     try:
-        r = requests.get(url, headers=HEADERS, timeout=15)
-        r.raise_for_status()
-        soup = BeautifulSoup(r.text, "html.parser")
+        # Edinburgh Fountainpark cinema ID: 037
+        url = ("https://www.cineworld.co.uk/uk/data-api-service/v1/quickbook"
+               "/10100/film-events/in-cinema/037/at-date/now")
+        r = requests.get(url, headers=HEADERS, timeout=15).json()
+        body = r.get("body", {})
+        films = body.get("films", [])
+        events = body.get("events", [])
 
-        # britinfo.net structure: films listed as table rows or divs
-        # Each film typically has title + showtimes in adjacent cells/divs
-        # Try multiple selector strategies
+        # Build showtime map: filmId -> [times]
+        time_map = {}
+        for ev in events:
+            fid = ev.get("filmId", "")
+            dt = ev.get("eventDateTime", "")
+            m = re.search(r'T(\d{2}:\d{2})', dt)
+            if m and fid:
+                time_map.setdefault(fid, []).append(m.group(1))
 
-        # Strategy 1: look for film listing tables
-        current_film = None
-        current_times = []
-
-        # britinfo uses a consistent pattern: film title in bold/strong, times follow
-        for tag in soup.find_all(["b", "strong", "h3", "h4", "td", "div"]):
-            text = tag.get_text(strip=True)
-            if not text or len(text) < 2:
+        for film in films:
+            fid = film.get("id", "")
+            title = film.get("name", "").strip()
+            if not title:
                 continue
+            times = sorted(set(time_map.get(fid, [])))
+            results.append({
+                "venue": "Cineworld Edinburgh",
+                "title": title,
+                "times": ", ".join(times[:8]),
+                "tags": tag_film(title, film.get("synopsis", "")),
+                "desc": (film.get("synopsis") or "")[:150],
+                "url": f"https://www.cineworld.co.uk/films/{film.get('slug','')}",
+                "year": str(film.get("releaseYear", "")),
+            })
+        print(f"  Cineworld: {len(results)} films")
+    except Exception as e:
+        print(f"  Cineworld error: {e}")
+    return results
 
-            # Detect time patterns like "15:30" "3:30 PM" "15:30, 18:00"
-            time_pattern = re.compile(r'\b\d{1,2}[:.]\d{2}(?:\s*[AP]M)?\b')
-            times_found = time_pattern.findall(text)
+# ── SOURCE 2: VUE JSON API ────────────────────────────────────────────────
+def scrape_vue():
+    results = []
+    try:
+        # Vue Edinburgh Omni: site ID 10032
+        # Vue Edinburgh Ocean Terminal: site ID 10059
+        for site_id, venue_name in [("10032", "Vue Edinburgh Omni"),
+                                      ("10059", "Vue Ocean Terminal")]:
+            url = f"https://www.myvue.com/data/filmswithshowings/{site_id}"
+            r = requests.get(url, headers=HEADERS, timeout=15).json()
+            for film in r.get("films", []):
+                title = film.get("title", "").strip()
+                if not title:
+                    continue
+                times = []
+                for showing in film.get("showings", [])[:8]:
+                    t = showing.get("time", "")
+                    if t:
+                        times.append(t[:5])
+                results.append({
+                    "venue": venue_name,
+                    "title": title,
+                    "times": ", ".join(times),
+                    "tags": tag_film(title, film.get("synopsis_short", "")),
+                    "desc": (film.get("synopsis_short") or "")[:150],
+                    "url": f"https://www.myvue.com/film/{film.get('slug', '')}",
+                    "year": str(film.get("release_year", "")),
+                })
+        print(f"  Vue: {len(results)} films")
+    except Exception as e:
+        print(f"  Vue error: {e}")
+    return results
 
-            # Is this a film title? (not just times, not nav/ui text)
-            if (len(text) > 3 and len(text) < 100
-                    and not times_found
-                    and not any(skip in text.lower() for skip in [
-                        "cinema", "tickets", "book", "buy", "find", "sponsored",
-                        "listings", "all ", "contact", "home", "back", "next",
-                        "showing", "week", "today", "film guide"
-                    ])
-                    and re.search(r'[A-Z]', text)  # has uppercase = likely a title
-                    and tag.name in ["b", "strong", "h3", "h4"]):
-
-                # Save previous film if we have one
-                if current_film and current_film not in [f["title"] for f in films]:
-                    films.append({
-                        "venue": venue_name,
-                        "title": current_film,
-                        "times": ", ".join(current_times[:8]),
-                        "tags": tag_film(current_film),
-                        "desc": "",
-                        "url": url,
+# ── SOURCE 3: FILMHOUSE ───────────────────────────────────────────────────
+def scrape_filmhouse():
+    """
+    Filmhouse Edinburgh (filmhouse.org.uk) — plain HTML, no JS required.
+    Their what's-on page lists films with dates and times.
+    """
+    results = []
+    try:
+        from bs4 import BeautifulSoup
+        for url in [
+            "https://www.filmhouse.org.uk/whats-on/",
+            "https://www.filmhousecinema.com/whats-on/",
+        ]:
+            try:
+                r = requests.get(url, headers=HEADERS, timeout=15)
+                if r.status_code != 200:
+                    continue
+                soup = BeautifulSoup(r.text, "html.parser")
+                # Filmhouse uses article/div cards for each film
+                for card in soup.select("article, .film-listing, .event-item, .film-card"):
+                    title_el = card.select_one("h1, h2, h3, .title, .film-title")
+                    if not title_el:
+                        continue
+                    title = title_el.get_text(strip=True)
+                    if not title or len(title) < 2:
+                        continue
+                    times = []
+                    for t in card.select(".time, .showtime, time, .performance")[:8]:
+                        txt = t.get_text(strip=True)
+                        if re.search(r'\d{1,2}[:.]\d{2}', txt):
+                            times.append(txt[:5])
+                    desc = ""
+                    desc_el = card.select_one("p, .synopsis, .description")
+                    if desc_el:
+                        desc = desc_el.get_text(strip=True)[:150]
+                    link_el = card.select_one("a[href]")
+                    film_url = ""
+                    if link_el:
+                        href = link_el["href"]
+                        film_url = href if href.startswith("http") else url.rstrip("/whats-on/") + href
+                    results.append({
+                        "venue": "Edinburgh Filmhouse",
+                        "title": title,
+                        "times": ", ".join(times),
+                        "tags": tag_film(title, desc),
+                        "desc": desc,
+                        "url": film_url,
                         "year": "",
                     })
-                current_film = text
-                current_times = []
-
-            elif times_found and current_film:
-                current_times.extend(times_found[:8])
-
-        # Save last film
-        if current_film and current_film not in [f["title"] for f in films]:
-            films.append({
-                "venue": venue_name,
-                "title": current_film,
-                "times": ", ".join(current_times[:8]),
-                "tags": tag_film(current_film),
-                "desc": "",
-                "url": url,
-                "year": "",
-            })
-
-        # Strategy 2: if strategy 1 got nothing, try a broader text scan
-        if not films:
-            # Look for any text that looks like a film title followed by times
-            full_text = soup.get_text(separator="\n")
-            lines = [l.strip() for l in full_text.split("\n") if l.strip()]
-            i = 0
-            while i < len(lines):
-                line = lines[i]
-                times_in_line = re.findall(r'\b\d{1,2}[:.]\d{2}(?:\s*[AP]M)?\b', line)
-                # A film title: 3-80 chars, mixed case, no times, no nav text
-                if (3 < len(line) < 80
-                        and not times_in_line
-                        and re.search(r'[A-Z][a-z]', line)
-                        and not any(skip in line.lower() for skip in [
-                            "cinema", "book", "buy", "home", "back", "contact",
-                            "sponsored", "listings", "all cinemas"
-                        ])):
-                    # Look ahead for times
-                    times = []
-                    for j in range(i+1, min(i+5, len(lines))):
-                        t = re.findall(r'\b\d{1,2}[:.]\d{2}(?:\s*[AP]M)?\b', lines[j])
-                        if t:
-                            times.extend(t)
-                        elif times:
-                            break
-                    if times:  # only add if we found times (confirms it's a film)
-                        films.append({
-                            "venue": venue_name,
-                            "title": line,
-                            "times": ", ".join(times[:8]),
-                            "tags": tag_film(line),
-                            "desc": "",
-                            "url": url,
-                            "year": "",
-                        })
-                i += 1
-
-        print(f"  {venue_name}: {len(films)} films")
+                if results:
+                    break
+            except:
+                continue
+        print(f"  Filmhouse: {len(results)} films")
     except Exception as e:
-        print(f"  {venue_name} error: {e}")
-    return films
+        print(f"  Filmhouse error: {e}")
+    return results
 
+# ── SOURCE 4: CINEMAGUIDE.CO.UK API ──────────────────────────────────────
+def scrape_cinemaguide():
+    """
+    cinemaguide.co.uk aggregates Edinburgh cinemas including Cameo, Odeon,
+    Everyman. Try their API endpoints.
+    """
+    results = []
+    try:
+        # cinemaguide uses a search API
+        # Edinburgh area code / cinema IDs to try
+        venues_to_try = [
+            ("https://cinemaguide.co.uk/api/cinema/EDI/showtimes", "Edinburgh (CinemaGuide)"),
+            ("https://cinemaguide.co.uk/api/cinemas/edinburgh", "Edinburgh (CinemaGuide)"),
+        ]
+        for api_url, default_venue in venues_to_try:
+            try:
+                r = requests.get(api_url, headers=HEADERS, timeout=12)
+                if r.status_code != 200:
+                    continue
+                data = r.json()
+                # Handle various response shapes
+                films = data if isinstance(data, list) else data.get("films", data.get("results", []))
+                for film in films:
+                    title = (film.get("title") or film.get("name") or "").strip()
+                    if not title:
+                        continue
+                    venue = (film.get("cinema") or film.get("venue") or default_venue)
+                    times = film.get("times", film.get("showtimes", []))
+                    if isinstance(times, list):
+                        times_str = ", ".join(str(t)[:5] for t in times[:8])
+                    else:
+                        times_str = str(times)[:50]
+                    results.append({
+                        "venue": venue,
+                        "title": title,
+                        "times": times_str,
+                        "tags": tag_film(title, film.get("synopsis", "")),
+                        "desc": (film.get("synopsis") or film.get("description") or "")[:150],
+                        "url": film.get("url", film.get("link", "")),
+                        "year": str(film.get("year", film.get("release_year", ""))),
+                    })
+                if results:
+                    break
+            except:
+                continue
+        print(f"  CinemaGuide: {len(results)} films")
+    except Exception as e:
+        print(f"  CinemaGuide error: {e}")
+    return results
 
+# ── SOURCE 5: ODEON JSON API ──────────────────────────────────────────────
+def scrape_odeon():
+    results = []
+    try:
+        # Odeon has a GraphQL/JSON API — try the listings endpoint
+        # Edinburgh Lothian Road site code: EDI
+        for cinema_id, venue_name in [
+            ("edi", "Odeon Lothian Road"),
+            ("ediw", "Odeon Edinburgh West"),
+        ]:
+            url = f"https://www.odeon.co.uk/api/cinema/{cinema_id}/films/"
+            r = requests.get(url, headers=HEADERS, timeout=12)
+            if r.status_code != 200:
+                continue
+            data = r.json()
+            films = data if isinstance(data, list) else data.get("films", [])
+            for film in films:
+                title = (film.get("title") or film.get("name") or "").strip()
+                if not title:
+                    continue
+                results.append({
+                    "venue": venue_name,
+                    "title": title,
+                    "times": "",
+                    "tags": tag_film(title, film.get("synopsis", "")),
+                    "desc": (film.get("synopsis") or "")[:150],
+                    "url": film.get("url", "https://www.odeon.co.uk"),
+                    "year": str(film.get("year", "")),
+                })
+        print(f"  Odeon: {len(results)} films")
+    except Exception as e:
+        print(f"  Odeon error: {e}")
+    return results
+
+# ── SOURCE 6: EVERYMAN API ────────────────────────────────────────────────
+def scrape_everyman():
+    results = []
+    try:
+        # Everyman Edinburgh venue slug: edinburgh
+        url = "https://www.everymancinema.com/api/v2/whats-on?venue=edinburgh"
+        r = requests.get(url, headers=HEADERS, timeout=12)
+        if r.status_code == 200:
+            data = r.json()
+            films = data if isinstance(data, list) else data.get("films", data.get("events", []))
+            for film in films:
+                title = (film.get("title") or film.get("name") or "").strip()
+                if not title:
+                    continue
+                results.append({
+                    "venue": "Everyman Edinburgh",
+                    "title": title,
+                    "times": "",
+                    "tags": tag_film(title, film.get("synopsis", "")),
+                    "desc": (film.get("synopsis") or "")[:150],
+                    "url": film.get("url", "https://www.everymancinema.com"),
+                    "year": str(film.get("year", "")),
+                })
+        print(f"  Everyman: {len(results)} films")
+    except Exception as e:
+        print(f"  Everyman error: {e}")
+    return results
+
+# ── MAIN ──────────────────────────────────────────────────────────────────
 def get_cinema():
     print(f"Scraping Edinburgh cinemas — {datetime.now().strftime('%Y-%m-%d %H:%M')}")
     all_listings = []
+
+    for scraper in [scrape_cineworld, scrape_vue, scrape_filmhouse,
+                    scrape_odeon, scrape_everyman, scrape_cinemaguide]:
+        try:
+            results = scraper()
+            all_listings.extend(results)
+        except Exception as e:
+            print(f"  Scraper failed: {e}")
+
+    # Deduplicate by venue + title
     seen = set()
+    deduped = []
+    for item in all_listings:
+        key = f"{item['venue']}::{item['title'].lower().strip()}"
+        if key not in seen and len(item["title"]) > 2:
+            seen.add(key)
+            deduped.append(item)
 
-    for venue_name, url in VENUE_URLS.items():
-        films = scrape_venue(venue_name, url)
-        for film in films:
-            key = f"{film['venue']}::{film['title'].lower().strip()}"
-            if key not in seen and len(film["title"]) > 2:
-                seen.add(key)
-                all_listings.append(film)
+    deduped.sort(key=lambda x: (x["venue"], x["title"]))
+    print(f"\nTotal before streaming lookup: {len(deduped)} entries")
 
-    all_listings.sort(key=lambda x: (x["venue"], x["title"]))
-    print(f"\nTotal: {len(all_listings)} film/venue entries")
-
-    # Enrich with UK streaming data via TMDB
+    # TMDB streaming lookup — deduplicate by title
     if TMDB_KEY:
-        print("Looking up UK streaming availability...")
-        seen_titles = {}
-        for item in all_listings:
+        print("Looking up UK streaming availability via TMDB...")
+        title_cache = {}
+        for item in deduped:
             t = item["title"].lower()
-            if t in seen_titles:
-                item["streaming"] = seen_titles[t][0]
-                item["jw_url"]    = seen_titles[t][1]
-            else:
+            if t not in title_cache:
                 streaming, jw = get_streaming_uk(item["title"])
-                item["streaming"] = streaming
-                item["jw_url"]    = jw
-                seen_titles[t]    = (streaming, jw)
+                title_cache[t] = (streaming, jw)
                 time.sleep(0.2)
-        print("Streaming lookup complete.")
+            item["streaming"] = title_cache[t][0]
+            item["jw_url"] = title_cache[t][1]
+        print("Streaming lookup done.")
     else:
+        for item in deduped:
+            item.setdefault("streaming", "")
+            item.setdefault("jw_url", "")
         print("TMDB_KEY not set — skipping streaming lookup.")
 
     with open("listings.json", "w", encoding="utf-8") as f:
-        json.dump(all_listings, f, indent=2, ensure_ascii=False)
-    print("Saved listings.json")
-
+        json.dump(deduped, f, indent=2, ensure_ascii=False)
+    print(f"Saved listings.json — {len(deduped)} entries")
 
 if __name__ == "__main__":
     get_cinema()
