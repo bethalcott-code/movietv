@@ -1,81 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>THE QUEUE | Edinburgh 2026</title>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE QUEUE</title>
     <style>
-        :root { --bg: #121212; --text: #e0e0e0; --accent: #f5f5f5; --box: #1e1e1e; }
-        body { background: var(--bg); color: var(--text); font-family: 'Courier New', Courier, monospace; margin: 0; padding: 20px; text-transform: uppercase; }
-        header { border-bottom: 2px solid var(--accent); padding-bottom: 10px; margin-bottom: 20px; }
-        nav { display: flex; gap: 10px; margin-bottom: 20px; }
-        button { background: none; border: 1px solid var(--accent); color: var(--text); padding: 10px 20px; cursor: pointer; font-family: inherit; }
-        button.active { background: var(--accent); color: var(--bg); }
-        .tab-content { display: none; background: var(--box); padding: 20px; border-left: 4px solid var(--accent); }
-        .tab-content.active { display: block; }
-        ul { list-style: none; padding: 0; }
-        li { margin-bottom: 15px; border-bottom: 1px solid #333; padding-bottom: 10px; }
-        .venue-tag { font-size: 0.8em; color: #888; display: block; }
+        :root { --bg: #000; --text: #fff; --grey: #1a1a1a; --dim: #888; }
+        body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica; margin: 0; padding: 20px; text-transform: uppercase; letter-spacing: 0.5px; }
+        header { border-bottom: 1px solid var(--grey); padding-bottom: 15px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: flex-end; }
+        nav { display: flex; border-bottom: 1px solid var(--grey); margin-bottom: 25px; gap: 20px; }
+        nav button { background: none; border: none; color: var(--dim); padding: 10px 0; cursor: pointer; font-family: inherit; font-size: 11px; font-weight: bold; }
+        nav button.active { color: #fff; border-bottom: 2px solid #fff; }
+        .tab-content { display: none; } .tab-content.active { display: block; }
+        .row { border-bottom: 1px solid var(--grey); padding: 18px 0; display: flex; justify-content: space-between; align-items: center; }
+        .row a { color: #fff; text-decoration: none; font-weight: bold; font-size: 14px; line-height: 1.4; }
+        .row span { font-size: 9px; color: var(--dim); display: block; margin-bottom: 6px; }
+        .tag-pill { color: #fff; border: 1px solid var(--dim); padding: 2px 6px; border-radius: 10px; margin-left: 8px; font-size: 8px; vertical-align: middle; }
+        .add-btn { background: #fff; border: none; width: 28px; height: 28px; border-radius: 50%; font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
     </style>
 </head>
 <body>
-
-<header>
-    <h1>The Queue</h1>
-    <div>B & K — Edinburgh — 2026</div>
-</header>
-
-<nav id="top-nav">
-    <button onclick="showTab('cinema')" id="btn-cinema">Cinema</button>
-    <button onclick="showTab('recs')" id="btn-recs">Recs</button>
+<header><div><strong>THE QUEUE</strong><br><small>EDINBURGH / 2026</small></div><div id="status-dot" style="color: #0f0;">●</div></header>
+<nav>
+    <button onclick="tab('cinema')" id="b-cinema" class="active">Cinema</button>
+    <button onclick="tab('recs')" id="b-recs">Recs</button>
+    <button onclick="tab('queue')" id="b-queue">Queue</button>
 </nav>
 
-<div id="cinema" class="tab-content">
-    <h3>Edinburgh Listings (Automated)</h3>
-    <ul id="cinema-list">Loading today's showtimes...</ul>
-</div>
-
-<div id="recs" class="tab-content">
-    <h3>Smart Picks (Critic Feed)</h3>
-    <ul id="recs-list">Loading smart recommendations...</ul>
+<div id="cinema" class="tab-content active"></div>
+<div id="recs" class="tab-content"></div>
+<div id="queue" class="tab-content">
+    <div style="margin-bottom: 20px;">
+        <input type="text" id="manual-add" placeholder="ADD TO LIBRARY..." style="background:#1a1a1a; border:none; color:#fff; padding:10px; width:70%; font-family:inherit;">
+        <button onclick="add(document.getElementById('manual-add').value)" style="background:#fff; border:none; padding:10px;">ADD</button>
+    </div>
+    <div id="queue-list"></div>
 </div>
 
 <script>
-    function showTab(tabId) {
-        // 1. Logic: Update Buttons
-        document.querySelectorAll('nav button').forEach(btn => btn.classList.remove('active'));
-        document.getElementById('btn-' + tabId).classList.add('active');
-
-        // 2. Logic: Update Content
-        document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
-        document.getElementById(tabId).classList.add('active');
-
-        // 3. Logic: Data Fetch
-        if (tabId === 'cinema') fetchCinema();
-        if (tabId === 'recs') fetchRecs();
+    let myQueue = JSON.parse(localStorage.getItem('myQueue')) || [];
+    function tab(id) {
+        document.querySelectorAll('.tab-content, nav button').forEach(el => el.classList.remove('active'));
+        document.getElementById(id).classList.add('active');
+        document.getElementById('b-' + id).classList.add('active');
+        if(id === 'cinema') fetch('listings.json').then(r=>r.json()).then(d=>render(d, 'cinema', 'venue'));
+        if(id === 'recs') fetch('recommendations.json').then(r=>r.json()).then(d=>render(d, 'recs', 'source'));
+        if(id === 'queue') renderQueue();
     }
-
-    async function fetchCinema() {
-        const list = document.getElementById('cinema-list');
-        try {
-            const res = await fetch('listings.json');
-            const data = await res.json();
-            list.innerHTML = data.map(m => `<li><strong>${m.title}</strong><span class="venue-tag">${m.venue}</span></li>`).join('');
-        } catch (e) { list.innerHTML = "<li>Cinema data pending robot run.</li>"; }
+    function render(data, id, metaKey) {
+        document.getElementById(id).innerHTML = data.map(i => `
+            <div class="row">
+                <div>
+                    <span>${i[metaKey]} ${i.tag ? `<span class="tag-pill">${i.tag}</span>` : ''}</span>
+                    ${i.url ? `<a href="${i.url}" target="_blank">${i.title}</a>` : `<a href="#">${i.title}</a>`}
+                </div>
+                <button class="add-btn" onclick="add('${i.title.replace(/'/g, "\\'")}')">+</button>
+            </div>`).join('');
     }
-
-    async function fetchRecs() {
-        const list = document.getElementById('recs-list');
-        try {
-            const res = await fetch('recommendations.json');
-            const data = await res.json();
-            list.innerHTML = data.map(r => `<li><strong>${r.title}</strong><span class="venue-tag">Source: ${r.source}</span></li>`).join('');
-        } catch (e) { list.innerHTML = "<li>Recs data pending robot run.</li>"; }
+    function add(t) { 
+        if(t && !myQueue.includes(t)) { 
+            myQueue.push(t); 
+            localStorage.setItem('myQueue', JSON.stringify(myQueue)); 
+            if(document.getElementById('manual-add')) document.getElementById('manual-add').value = '';
+            alert('Added to Queue');
+            if(document.getElementById('queue').classList.contains('active')) renderQueue();
+        } 
     }
-
-    // Default to Cinema on load
-    showTab('cinema');
+    function renderQueue() {
+        document.getElementById('queue-list').innerHTML = myQueue.map(q => `<div class="row"><div>${q}</div></div>`).reverse().join('');
+    }
+    tab('cinema');
 </script>
-
 </body>
 </html>
