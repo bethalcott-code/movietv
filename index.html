@@ -305,6 +305,32 @@ async function removeItem(id) {
     renderQ();
 }
 
+  steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Run Cinema Scraper
+        run: python scrape_cinema.py
+
+      - name: Run Smart Recs Scraper
+        run: python scrape_recs.py
+
+      - name: Commit and Push changes
+        run: |
+          git config --global user.name "GitHub Action"
+          git config --global user.email "action@github.com"
+          git add listings.json recommendations.json
+          git commit -m "Automated update: Cinema & Recs" || echo "No changes to commit"
+          git push
+
 // ── CINEMA AUTOMATION ──
 document.getElementById('cinbtn').addEventListener('click', async function() {
     const box = document.getElementById('cinres');
