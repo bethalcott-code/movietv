@@ -2,52 +2,55 @@ import requests
 import json
 import xml.etree.ElementTree as ET
 
+TMDB_KEY = "eb7044678f7a620007e3d11387ccb51f"
+
+def get_streaming(title):
+    try:
+        # Step 1: Search for the movie/show ID
+        search_url = f"https://api.themoviedb.org/3/search/multi?api_key={TMDB_KEY}&query={title}&region=GB"
+        res = requests.get(search_url).json()
+        if not res.get('results'): return "NOT ON STREAMING"
+        
+        item = res['results'][0]
+        i_id, i_type = item['id'], item['media_type']
+        
+        # Step 2: Get UK Watch Providers
+        prov_url = f"https://api.themoviedb.org/3/{i_type}/{i_id}/watch/providers?api_key={TMDB_KEY}"
+        p_res = requests.get(prov_url).json()
+        uk = p_res.get('results', {}).get('GB', {})
+        
+        # Combine Subscription (flatrate) and Free options [ASSUMPTION]
+        found = [p['provider_name'] for p in uk.get('flatrate', []) + uk.get('free', [])]
+        return ", ".join(found[:2]) if found else "RENT/CINEMA ONLY"
+    except: return "CHECK JUSTWATCH"
+
 def get_smart_recs():
-    # Sources: High-brow culture, industry awards, and global news
     feeds = {
         "The Guardian": "https://www.theguardian.com/film/rss",
         "BFI": "https://www.bfi.org.uk/rss.xml",
-        "Variety": "https://variety.com/feed/",
-        "Space.com": "https://www.space.com/feeds/all"
+        "Variety": "https://variety.com/feed/"
     }
-    
-    # Logic Tags: Why are we pulling this? [ASSUMPTION]
-    filters = {
-        "WWII/History": ["nazi", "spy", "spitfire", "resistance", "historical", "holocaust", "churchill"],
-        "Awards": ["oscar", "sundance", "winner", "golden globe", "bafta", "nominee"],
-        "Space/Science": ["artemis", "nasa", "moon", "spacex", "mars", "galaxy"],
-        "Legacy/News": ["died", "passed away", "tribute", "obituary", "remembers"]
-    }
+    interests = ["nazi", "spy", "wwii", "espionage", "historical", "awards", "space", "moon", "nasa"]
+    results = []
 
-    recs = []
-    for source_name, url in feeds.items():
+    for source, url in feeds.items():
         try:
-            response = requests.get(url, timeout=10)
-            root = ET.fromstring(response.content)
+            r = requests.get(url, timeout=10)
+            root = ET.fromstring(r.content)
             for item in root.findall('.//item')[:15]:
-                title = item.find('title').text
-                link = item.find('link').text
-                desc = item.find('description').text.lower() if item.find('description') is not None else ""
-                
-                # Logic: Check for a match in our filter categories
-                found_tag = None
-                for category, keywords in filters.items():
-                    if any(word in title.lower() or word in desc for word in keywords):
-                        found_tag = category
-                        break
-                
-                # If it's a "Smart" match, add it
-                if found_tag:
-                    recs.append({
-                        "title": title.split(" review")[0],
-                        "source": source_name,
-                        "url": link,
-                        "tag": found_tag
+                t = item.find('title').text
+                d = item.find('description').text.lower() if item.find('description') is not None else ""
+                if any(w in d or w in t.lower() for w in interests) or "review" in t.lower():
+                    clean_t = t.split(" review")[0].replace('“', '').replace('”', '')
+                    results.append({
+                        "title": clean_t,
+                        "source": source,
+                        "url": item.find('link').text,
+                        "tag": "CRITIC PICK",
+                        "streaming": get_streaming(clean_t) # The new logic call
                     })
         except: continue
-        
-    # Logic: Ensure at least 10 items by taking top 'Variety' hits if list is short
-    return recs[:12] if len(recs) >= 10 else recs
+    return results[:12]
 
 if __name__ == "__main__":
     data = get_smart_recs()
