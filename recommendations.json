@@ -1,65 +1,277 @@
 [
   {
-    "title": "Ghost Killer",
+    "title": "Mary Beth Hurt obituary",
+    "source": "The Guardian",
+    "url": "https://www.theguardian.com/film/2026/apr/04/mary-beth-hurt-obituary",
+    "tags": [
+      "Award"
+    ],
+    "desc": "Actor who made her name in The World According to Garp and was nominated for a Bafta for Woody Allen’s InteriorsThe thoughtful, understated actor Mary Beth Hurt, who has died aged 79, enjoyed the good",
+    "streaming": ""
+  },
+  {
+    "title": "Justin Baldoni’s lawyer says defendants are ‘very good people’ as Blake Lively lawsuit narrows",
+    "source": "The Guardian",
+    "url": "https://www.theguardian.com/film/2026/apr/03/justin-baldoni-blake-lively-lawsuit-lawyers",
+    "tags": [],
+    "desc": "Judge threw out 10 of Lively’s 13 claims against her It Ends With Us director and co-star on Thursday as trial nearsJustin Baldoni’s lawyers have responded after most of Blake Lively’s claims against",
+    "streaming": ""
+  },
+  {
+    "title": "‘It’s the year of gay Brazilian cruising!’ The makers of Night Stage on public sex and their ‘deranged erotic thriller’",
+    "source": "The Guardian",
+    "url": "https://www.theguardian.com/film/2026/apr/03/interview-marcio-reolon-filip-matzembacher-night-stage-gay-brazilian",
+    "tags": [],
+    "desc": "Writer-directors Marcio Reolon and Filipe Matzembacher talk about the ‘assimilation myth’, why Wim Wenders is wrong and how they’re developing queer western and horror moviesYou wait for ever for a vi",
+    "streaming": ""
+  },
+  {
+    "title": "Killer rabbits, bunny boilers and the holy hand grenade of Antioch: Easter bunny movies – ranked!",
+    "source": "The Guardian",
+    "url": "https://www.theguardian.com/film/2026/apr/02/easter-bunny-movies-ranked",
+    "tags": [],
+    "desc": "From Watership Down and Fatal Attraction to Bambi and Python’s Holy Grail, rabbits are an unlikely constant in film – and often with sinister intentions. Here are the 20 best leporine movie momentsThe",
+    "streaming": ""
+  },
+  {
+    "title": "Why do this spring’s blockbusters feel so smug?",
+    "source": "The Guardian",
+    "url": "https://www.theguardian.com/film/2026/apr/01/blockbusters-smug-humor-ready-or-not-2-mike-nick-nick-alice-project-hail-mary",
+    "tags": [],
+    "desc": "From action thrillers to sci-fi flicks, a deluge of recent releases are riddled with self-satisfied smarmThe new Hulu movie Mike &amp; Nick &amp; Nick &amp; Alice has been marketed as a genre-mashing",
+    "streaming": ""
+  },
+  {
+    "title": "Ghost Killer review – fantastic karate chopping and gunslinging in in supernatural action-comedy",
     "source": "The Guardian",
     "url": "https://www.theguardian.com/film/2026/mar/31/ghost-killer-review-fantastic-karate-chopping-and-gunslinging-in-in-supernatural-action-comedy",
-    "tag": "CRITIC PICK",
-    "streaming": "RENT/CINEMA ONLY"
+    "tags": [
+      "Critic Pick"
+    ],
+    "desc": "Top notch choreography features heavily in tale of a student who is inhabited by an assassin’s spirit determined to wreak revengeOn her way home from a bad day at work and a disappointing drinks date",
+    "streaming": ""
   },
   {
-    "title": "They Will Kill You",
+    "title": "They Will Kill You review – satanic beat-’em-up offers gore, bad jokes and deja vu",
     "source": "The Guardian",
     "url": "https://www.theguardian.com/film/2026/mar/26/they-will-kill-you-movie-review",
-    "tag": "CRITIC PICK",
-    "streaming": "RENT/CINEMA ONLY"
+    "tags": [
+      "Critic Pick"
+    ],
+    "desc": "A housekeeping role turns into a fight for survival in a derivative cocktail of action, comedy and horror that doesn’t go down all that well Come find your new home at the Virgil, one of New York’s ol",
+    "streaming": ""
   },
   {
-    "title": "Pretty Lethal",
+    "title": "Pretty Lethal review – Amazon’s ballerina action thriller puts on a decent enough show",
     "source": "The Guardian",
     "url": "https://www.theguardian.com/film/2026/mar/25/pretty-lethal-review-ballerina-action-thriller",
-    "tag": "CRITIC PICK",
-    "streaming": "Amazon Prime Video, Amazon Prime Video with Ads"
+    "tags": [
+      "Critic Pick"
+    ],
+    "desc": "A group of American dancers face off against Hungarian gangsters, and a hammy Uma Thurman, in a cheap and cheerful Friday night adventureLast year’s Ballerina, or as Lionsgate’s marketing team would p",
+    "streaming": ""
   },
   {
-    "title": "Mike & Nick & Nick & Alice",
+    "title": "Mike & Nick & Nick & Alice review – double the Vince Vaughn in middling time travel comedy",
     "source": "The Guardian",
     "url": "https://www.theguardian.com/film/2026/mar/24/mike-nick-nick-alice-review-vince-vaughn-comedy",
-    "tag": "CRITIC PICK",
-    "streaming": "Disney Plus"
+    "tags": [
+      "Critic Pick"
+    ],
+    "desc": "Another run-of-the-mill streaming caper that fails to offer anything we haven’t seen done better many times beforeBack in his 2000s studio comedy heyday, there would have been something commercially g",
+    "streaming": ""
   },
   {
-    "title": "Project Hail Mary",
+    "title": "Project Hail Mary review – Ryan Gosling’s charm carries unserious last-ditch space mission",
     "source": "The Guardian",
     "url": "https://www.theguardian.com/film/2026/mar/10/project-hail-mary-review-ryan-goslings-charm-carries-unserious-last-ditch-space-mission",
-    "tag": "CRITIC PICK",
-    "streaming": "RENT/CINEMA ONLY"
+    "tags": [
+      "Critic Pick"
+    ],
+    "desc": "Tale of a brilliant molecular biologist cast into outer space with only a helpful alien for company is a bit silly, but Gosling’s charisma keeps it watchableThis is a movie, adapted from Andy Weir’s s",
+    "streaming": ""
   },
   {
-    "title": "Ready or Not 2: Here I Come",
+    "title": "Ready or Not 2: Here I Come review – comedy horror sequel goes big and you should stay home",
     "source": "The Guardian",
     "url": "https://www.theguardian.com/film/2026/mar/19/ready-or-not-2-here-i-come-review",
-    "tag": "CRITIC PICK",
-    "streaming": "RENT/CINEMA ONLY"
+    "tags": [
+      "Critic Pick"
+    ],
+    "desc": "There’s even more screaming, running, swearing and exploding rich people in a follow-up to the 2019 sleeper hit that expands mythology we didn’t need expandedTo give 2019’s grating comedy horror Ready",
+    "streaming": ""
   },
   {
-    "title": "Reminders of Him",
+    "title": "Reminders of Him review – contrived Colleen Hoover romance has its charms",
     "source": "The Guardian",
     "url": "https://www.theguardian.com/film/2026/mar/11/reminders-of-him-review-colleen-hoover-movie",
-    "tag": "CRITIC PICK",
-    "streaming": "RENT/CINEMA ONLY"
+    "tags": [
+      "Jacques Tati",
+      "Critic Pick"
+    ],
+    "desc": "The third big screen adaptation of the BookTok-loved author’s novels is ludicrously plotted yet slickly made and easily consumedNearly two years on, it seems we’re still futilely chasing the high of s",
+    "streaming": ""
   },
   {
-    "title": "Undertone",
+    "title": "Undertone review – disappointing podcast horror is mostly skippable",
     "source": "The Guardian",
     "url": "https://www.theguardian.com/film/2026/jan/29/undertone-movie-review-podcast-horror",
-    "tag": "CRITIC PICK",
-    "streaming": "RENT/CINEMA ONLY"
+    "tags": [
+      "Critic Pick"
+    ],
+    "desc": "Sundance film festival: there are some effective early moments in this ultra low-budget, audio-first horror but deja vu soon replaces intrigueThere’s a swirl of creepy noises in A24’s new hyped-up hor",
+    "streaming": ""
   },
   {
-    "title": "\u2018Spaceballs\u2019 Sequel Set for April 2027 Release Date",
+    "title": "Hoppers review – fun Pixar flick about a teen trying to talk to the animals and save them from an evil developer",
+    "source": "The Guardian",
+    "url": "https://www.theguardian.com/film/2026/mar/02/hoppers-review-family-animation-nature",
+    "tags": [
+      "Critic Pick"
+    ],
+    "desc": "Sprightly animation about a student’s attempt to stop the destruction of a woodland leans into Disney’s love of anthropomorphism and riffs amusingly on AvatarWriter-director Daniel Chong brings us a w",
+    "streaming": ""
+  },
+  {
+    "title": "The Bride! review – Jessie Buckley is electrifying as frizzy-haired, black-tongued monster’s wife",
+    "source": "The Guardian",
+    "url": "https://www.theguardian.com/film/2026/mar/04/the-bride-review-jessie-buckley-christian-bale-frankenstein",
+    "tags": [
+      "Critic Pick"
+    ],
+    "desc": "The actor has a blast as bride to Christian Bale’s lonely creature in Maggie Gyllenhaal’s darkly comic and gleefully bizarre reimagining of the 1935 filmDid you know that “Frankenstein” isn’t the name",
+    "streaming": ""
+  },
+  {
+    "title": "Mary Beth Hurt, star of Interiors and The World According to Garp, dies aged 79",
+    "source": "The Guardian",
+    "url": "https://www.theguardian.com/film/2026/mar/30/mary-beth-hurt-interiors-world-according-to-garp-dies-aged-79",
+    "tags": [
+      "Award"
+    ],
+    "desc": "The actor, who was nominated for three Tony awards, made her film debut in Woody Allen’s Interiors and worked into the 2010s including in films made by her second husband, Paul SchraderMary Beth Hurt",
+    "streaming": ""
+  },
+  {
+    "title": "Rob Schneider calls on US to restore military draft",
+    "source": "The Guardian",
+    "url": "https://www.theguardian.com/film/2026/mar/30/rob-schneider-calls-on-us-to-restore-military-draft",
+    "tags": [],
+    "desc": "The actor and comedian, posting on X, said that ‘unlike in today’s universities’ the military would teach young people ‘how truly great their country is’The actor and comedian Rob Schneider has urged",
+    "streaming": ""
+  },
+  {
+    "title": "Netflix’s ‘Love on the Spectrum’ Renewed for Season 5, Fan Favorite Cast Member Connor Tomlinson Exits: ‘I’ve Chosen to Pass the Torch’ (EXCLUSIVE)",
+    "source": "Variety",
+    "url": "https://variety.com/2026/tv/awards/love-on-the-spectrum-renewed-season-5-connor-tomlinson-exits-1236705978/",
+    "tags": [],
+    "desc": "Netflix is still in love with &#8220;Love on the Spectrum.&#8221; The streaming giant has renewed the U.S. version of “Love on the Spectrum” for a fifth season following the successful debut of its fo",
+    "streaming": ""
+  },
+  {
+    "title": "‘Spaceballs’ Sequel Set for April 2027 Release Date",
     "source": "Variety",
     "url": "https://variety.com/2026/film/news/spaceballs-sequel-april-2027-release-date-1236706690/",
-    "tag": "CRITIC PICK",
-    "streaming": "NOT ON STREAMING"
+    "tags": [],
+    "desc": "Amazon MGM Studios has set Mel Brooks&#8217; long-awaited &#8220;Spaceballs&#8221; sequel to debut next spring. The sci-fi spoof movie, which marks a return to acting for star Rick Moranis, will be re",
+    "streaming": ""
+  },
+  {
+    "title": "‘Company Retreat’ Bosses Explain the Finale Reveal, Landing Sia for the Talent Show and How a Loose Script Nearly Ruined Everything",
+    "source": "Variety",
+    "url": "https://variety.com/2026/tv/news/company-retreat-finale-sia-anthony-ending-1236703015/",
+    "tags": [],
+    "desc": "SPOILER ALERT: This article contains spoilers for the ending of &#8220;Jury Duty Presents: Company Retreat,&#8221; now streaming on Prime Video. The &#8220;Jury Duty&#8221; executive producers have do",
+    "streaming": ""
+  },
+  {
+    "title": "Zach Bryan Cancels Tulsa Concert Due to ‘Extreme and Dangerous Weather’: ‘If I Had Any Say in This, Things Would Be Different’",
+    "source": "Variety",
+    "url": "https://variety.com/2026/music/news/zach-bryan-cancels-tulsa-concert-extreme-dangerous-weather-1236706662/",
+    "tags": [
+      "Jacques Tati"
+    ],
+    "desc": "Zach Bryan has canceled tonight&#8217;s show in Tulsa, OK, due to &#8220;extreme and dangerous weather,&#8221; stating that he&#8217;s being &#8220;forced&#8221; to call off the performance and that h",
+    "streaming": ""
+  },
+  {
+    "title": "23 Best New Movies Streaming in April: ‘Marty Supreme,’ ‘Sirāt,’ ‘No Other Choice,’ ‘Crime 101’ and More",
+    "source": "Variety",
+    "url": "https://variety.com/lists/best-movies-streaming-april-2026/",
+    "tags": [],
+    "desc": "Timothée Chalamet is set to dominate the streaming charts this April as &#8220;Marty Supreme&#8221; makes its streaming premiere on HBO Max after earning $178 million worldwide to become A24&#8217;s h",
+    "streaming": ""
+  },
+  {
+    "title": "James Marsden Breaks Down ‘Your Friends & Neighbors’ Season 2 Premiere and Reveals the Secret to Playing a Charming Douchebag",
+    "source": "Variety",
+    "url": "https://variety.com/2026/tv/news/james-marsden-your-friends-and-neighbors-season-2-premiere-1236706333/",
+    "tags": [],
+    "desc": "SPOILER ALERT: This article contains spoilers for the season premiere of &#8220;Your Friends &#38; Neighbors,&#8221; now streaming on Apple TV. Just as Coop starts to glue his life back together, a ne",
+    "streaming": ""
+  },
+  {
+    "title": "‘Fantasy Life’s’ Matthew Shear on His Directorial Debut and Drawing on His Experience as a New York City Manny",
+    "source": "Variety",
+    "url": "https://variety.com/2026/film/features/fantasy-life-matthew-shear-1236706441/",
+    "tags": [],
+    "desc": "Matthew Shear’s “Fantasy Life” is, for all intents and purposes, his first real screenplay. “I had dabbled,” Shear says. “[But] I&#8217;d never completed anything.”&#160; So it’s all the more impressi",
+    "streaming": ""
+  },
+  {
+    "title": "My Unrequited Love Story with J.F.K., Jr.",
+    "source": "New Yorker",
+    "url": "https://www.newyorker.com/culture/the-weekend-essay/my-unrequited-love-story-with-jfk-jr",
+    "tags": [
+      "Jacques Tati"
+    ],
+    "desc": "I knew John F. Kennedy, Jr., not that well and not that long, but enough to have experienced the gravitational pull he exerted, like some great big moon.",
+    "streaming": ""
+  },
+  {
+    "title": "The Best Books of 2026 So Far",
+    "source": "New Yorker",
+    "url": "https://www.newyorker.com/best-books-2026",
+    "tags": [
+      "Critic Pick"
+    ],
+    "desc": "Our editors and critics review notable new fiction, nonfiction, and poetry.",
+    "streaming": ""
+  },
+  {
+    "title": "Briefly Noted Book Reviews",
+    "source": "New Yorker",
+    "url": "https://www.newyorker.com/magazine/2026/04/06/kids-wait-till-you-hear-this-money-beyond-borders-a-beautiful-loan-spoiled-milk",
+    "tags": [
+      "Critic Pick"
+    ],
+    "desc": "Short reviews of recent releases.",
+    "streaming": ""
+  },
+  {
+    "title": "The Christophers”: A Review of Steven Soderbergh’s New Drama",
+    "source": "New Yorker",
+    "url": "https://www.newyorker.com/magazine/2026/04/13/the-christophers-movie-review",
+    "tags": [
+      "Critic Pick"
+    ],
+    "desc": "In Steven Soderbergh’s film, Ian McKellen and Michaela Coel are superbly matched as two skilled painters who find their way from slippery deception to common ground.",
+    "streaming": ""
+  },
+  {
+    "title": "In “Yes,” an Israeli Filmmaker Charges Israel with Self-Satisfied Brutality",
+    "source": "New Yorker",
+    "url": "https://www.newyorker.com/culture/the-front-row/in-yes-an-israeli-filmmaker-charges-israel-with-self-satisfied-brutality",
+    "tags": [],
+    "desc": "Nadav Lapid’s furiously satirical drama, about a musician’s willful complicity in a war he reviles, tells a vast story of personal and national degradation.",
+    "streaming": ""
+  },
+  {
+    "title": "Jury Duty Presents: Company Retreat” and the Age of the Prestige Prank Show",
+    "source": "New Yorker",
+    "url": "https://www.newyorker.com/magazine/2026/04/06/jury-duty-presents-company-retreat-tv-review",
+    "tags": [],
+    "desc": "The series, returning for a second season, is the latest example of a new breed—one that relies on elaborate, full-immersion experiments rather than on one-off stunts.",
+    "streaming": ""
   }
 ]
