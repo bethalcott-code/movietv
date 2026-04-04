@@ -1,56 +1,74 @@
 [
   {
-    "title": "\u2018Taking my clothes off is my whole life!\u2019 Bryan Cranston on the glorious gross-out return of Malcolm in the Middle",
+    "title": "\u2018It\u2019s the year of gay Brazilian cruising!\u2019 The makers of Night Stage on public sex and their \u2018deranged erotic thriller\u2019",
     "source": "The Guardian",
-    "url": "https://www.theguardian.com/tv-and-radio/2026/apr/03/bryan-cranston-malcolm-in-the-middle-return-breaking-bad",
-    "type": "TV"
+    "url": "https://www.theguardian.com/film/2026/apr/03/interview-marcio-reolon-filip-matzembacher-night-stage-gay-brazilian",
+    "tag": "Awards"
   },
   {
-    "title": "\u2018We got cancelled and we\u2019re still here!\u2019 Michael Patrick King on The Comeback \u2013 and why And Just Like That will age well",
+    "title": "Mike & Nick & Nick & Alice",
     "source": "The Guardian",
-    "url": "https://www.theguardian.com/tv-and-radio/2026/apr/01/michael-patrick-king-the-comeback-ai-twist-lisa-kudrow",
-    "type": "TV"
+    "url": "https://www.theguardian.com/film/2026/mar/24/mike-nick-nick-alice-review-vince-vaughn-comedy",
+    "tag": "Awards"
   },
   {
-    "title": "HBO to air standalone special on the making of new Harry Potter series",
+    "title": "Project Hail Mary",
     "source": "The Guardian",
-    "url": "https://www.theguardian.com/tv-and-radio/2026/apr/02/hbo-finding-harry-potter-making-of-special",
-    "type": "TV"
+    "url": "https://www.theguardian.com/film/2026/mar/10/project-hail-mary-review-ryan-goslings-charm-carries-unserious-last-ditch-space-mission",
+    "tag": "Space/Science"
   },
   {
-    "title": "Love on the Spectrum proves that we still crave wholesome reality TV",
+    "title": "Undertone",
     "source": "The Guardian",
-    "url": "https://www.theguardian.com/tv-and-radio/2026/mar/31/love-on-the-spectrum-netflix",
-    "type": "TV"
+    "url": "https://www.theguardian.com/film/2026/jan/29/undertone-movie-review-podcast-horror",
+    "tag": "Awards"
   },
   {
-    "title": "John Oliver on Maga\u2019s love for Viktor Orb\u00e1n: \u2018For them, Orb\u00e1n is a blueprint\u2019",
-    "source": "The Guardian",
-    "url": "https://www.theguardian.com/tv-and-radio/2026/mar/30/john-oliver-maga-viktor-orban",
-    "type": "TV"
+    "title": "Leonard Cohen\u2019s Manager Cleared of Financial Wrongdoing After 10-Day Trial",
+    "source": "Variety",
+    "url": "https://variety.com/2026/music/news/leonard-cohen-manager-cleared-financial-wrongdoing-1236706419/",
+    "tag": "Legacy/News"
   },
   {
-    "title": "Jury Duty Presents: Company Retreat",
-    "source": "The Guardian",
-    "url": "https://www.theguardian.com/tv-and-radio/2026/mar/20/jury-duty-presents-company-retreat-review-hoax-reality-season-2-prime-video",
-    "type": "TV"
+    "title": "23 Best New Movies Streaming in April: \u2018Marty Supreme,\u2019 \u2018Sir\u0101t,\u2019 \u2018No Other Choice,\u2019 \u2018Crime 101\u2019 and More",
+    "source": "Variety",
+    "url": "https://variety.com/lists/best-movies-streaming-april-2026/",
+    "tag": "Awards"
   },
   {
-    "title": "The Comeback",
-    "source": "The Guardian",
-    "url": "https://www.theguardian.com/tv-and-radio/2026/mar/25/the-comeback-review-lisa-kudrow-is-alan-partridge-but-with-no-laughs",
-    "type": "TV"
+    "title": "James Marsden Breaks Down \u2018Your Friends & Neighbors\u2019 Season 2 Premiere and Reveals the Secret to Playing a Charming Douchebag",
+    "source": "Variety",
+    "url": "https://variety.com/2026/tv/news/james-marsden-your-friends-and-neighbors-season-2-premiere-1236706333/",
+    "tag": "Space/Science"
   },
   {
-    "title": "Dynasty: The Murdochs",
-    "source": "The Guardian",
-    "url": "https://www.theguardian.com/tv-and-radio/2026/mar/13/dynasty-the-murdochs-review-rupert-children-netflix-documentary",
-    "type": "Movie"
+    "title": " It's official: NASA's Artemis 2 moon mission will break humanity's all-time distance record ",
+    "source": "Space.com",
+    "url": "https://www.space.com/space-exploration/artemis/its-official-nasas-artemis-2-moon-mission-will-break-humanitys-all-time-distance-record",
+    "tag": "Space/Science"
   },
   {
-    "title": "Scarpetta",
-    "source": "The Guardian",
-    "url": "https://www.theguardian.com/tv-and-radio/2026/mar/11/scarpetta-review-nicole-kidman-dire-mess-ai-chatbot",
-    "type": "Movie"
+    "title": " Astronauts on the ISS watched NASA's historic Artemis 2 launch from space ",
+    "source": "Space.com",
+    "url": "https://www.space.com/space-exploration/missions/astronauts-on-the-iss-watched-nasas-historic-artemis-2-launch-from-space",
+    "tag": "Space/Science"
+  },
+  {
+    "title": " 1st results from Blue Ghost lunar lander reveal how much we still don't know about the moon ",
+    "source": "Space.com",
+    "url": "https://www.space.com/space-exploration/launches-spacecraft/blue-ghost-lunar-lander-reveals-how-much-we-still-dont-know-about-the-moon",
+    "tag": "Space/Science"
+  },
+  {
+    "title": " Artemis 2 astronauts see Earth in the rear-view mirror | Space photo of the day for April 3, 2026 ",
+    "source": "Space.com",
+    "url": "https://www.space.com/space-exploration/artemis/artemis-2-astronauts-see-earth-in-the-rear-view-mirror-space-photo-of-the-day-for-april-3-2026",
+    "tag": "Space/Science"
+  },
+  {
+    "title": " NASA is sending astronauts back to the moon. Can you see the Artemis 4 landing sites from Earth? ",
+    "source": "Space.com",
+    "url": "https://www.space.com/stargazing/nasa-is-sending-astronauts-back-to-the-moon-can-you-see-the-artemis-4-landing-sites-from-earth",
+    "tag": "Space/Science"
   }
 ]
