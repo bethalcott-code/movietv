@@ -3,17 +3,24 @@ import json
 import xml.etree.ElementTree as ET
 
 def get_smart_recs():
-    # Expanded feeds to include TV and more depth
+    # Sources: High-brow culture, industry awards, and global news
     feeds = {
-        "The Guardian": "https://www.theguardian.com/tv-and-radio/rss",
+        "The Guardian": "https://www.theguardian.com/film/rss",
         "BFI": "https://www.bfi.org.uk/rss.xml",
-        "Empire": "https://www.empireonline.com/global/rss/"
+        "Variety": "https://variety.com/feed/",
+        "Space.com": "https://www.space.com/feeds/all"
     }
     
-    keywords = ["nazi", "spy", "wwii", "espionage", "thriller", "historical", "series", "season"]
-    smart_recs = []
+    # Logic Tags: Why are we pulling this? [ASSUMPTION]
+    filters = {
+        "WWII/History": ["nazi", "spy", "spitfire", "resistance", "historical", "holocaust", "churchill"],
+        "Awards": ["oscar", "sundance", "winner", "golden globe", "bafta", "nominee"],
+        "Space/Science": ["artemis", "nasa", "moon", "spacex", "mars", "galaxy"],
+        "Legacy/News": ["died", "passed away", "tribute", "obituary", "remembers"]
+    }
 
-    for name, url in feeds.items():
+    recs = []
+    for source_name, url in feeds.items():
         try:
             response = requests.get(url, timeout=10)
             root = ET.fromstring(response.content)
@@ -22,17 +29,27 @@ def get_smart_recs():
                 link = item.find('link').text
                 desc = item.find('description').text.lower() if item.find('description') is not None else ""
                 
-                if any(word in desc or word in title.lower() for word in keywords):
-                    smart_recs.append({
+                # Logic: Check for a match in our filter categories
+                found_tag = None
+                for category, keywords in filters.items():
+                    if any(word in title.lower() or word in desc for word in keywords):
+                        found_tag = category
+                        break
+                
+                # If it's a "Smart" match, add it
+                if found_tag:
+                    recs.append({
                         "title": title.split(" review")[0],
-                        "source": name,
+                        "source": source_name,
                         "url": link,
-                        "type": "TV" if "season" in desc or "episode" in desc else "Movie"
+                        "tag": found_tag
                     })
         except: continue
-    return smart_recs
+        
+    # Logic: Ensure at least 10 items by taking top 'Variety' hits if list is short
+    return recs[:12] if len(recs) >= 10 else recs
 
 if __name__ == "__main__":
-    recs = get_smart_recs()
+    data = get_smart_recs()
     with open('recommendations.json', 'w') as f:
-        json.dump(recs, f, indent=2)
+        json.dump(data, f, indent=2)
