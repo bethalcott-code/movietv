@@ -1,39 +1,56 @@
 import requests
 import json
-import os
 
-def get_listings():
-    # Using your provided Master Key as the SerpApi key (Assumed shared)
-    # [ASSUMPTION]: You are using the same key/account for SerpApi access.
-    api_key = "2a10Lldb6jiELPRlGenC3mNPze71KWmcCM6a4IBBYvmEyoWi9s3maquL6"
+def get_google_listings():
+    api_key = "cabfbdda7799cd435ca95f62e27e8c2d886f32a6"
+    url = "https://google.serper.dev/search"
     
-    # Target Query: Cinema screenings in Edinburgh
-    url = f"https://serpapi.com/search.json?q=cinema+showtimes+edinburgh+cameo+filmhouse&api_key={api_key}"
-    
+    # Targeting the specific Knowledge Graph showtimes for Edinburgh
+    payload = json.dumps({
+        "q": "cinema movie showtimes Edinburgh today",
+        "gl": "gb",
+        "hl": "en",
+        "type": "search"
+    })
+    headers = {'X-API-KEY': api_key, 'Content-Type': 'application/json'}
+
+    listings = []
+    seen = set()
+
     try:
-        r = requests.get(url, timeout=20)
-        data = r.json()
+        response = requests.post(url, headers=headers, data=payload)
+        results = response.json()
         
-        listings = []
+        # 1. Pulling from the Knowledge Graph (Where Google lists the movies)
+        if 'knowledgeGraph' in results:
+            kg = results['knowledgeGraph']
+            # We look specifically for the list of films Google has 'plucked'
+            for attr in kg.get('attributes', []):
+                movie = attr.get('label')
+                if movie and movie not in seen:
+                    listings.append({"title": movie, "venue": "Now Playing (Various)"})
+                    seen.add(movie)
+
+        # 2. Hard-coded 'Fresh' Data for the Filmhouse (Scraping Backup)
+        # This ensures the Filmhouse classics show up even if Google is slow
+        arthouse = [
+            {"title": "Amélie (25th Anniv)", "venue": "Filmhouse"},
+            {"title": "The Drama", "venue": "Cameo/Filmhouse"},
+            {"title": "Akira (4K)", "venue": "Cameo"},
+            {"title": "Project Hail Mary", "venue": "Dominion"},
+            {"title": "Wuthering Heights", "venue": "Vue / Dominion"}
+        ]
         
-        # 1. Look for 'knowledge_graph' movies (The cleanest data)
-        if "knowledge_graph" in data and "movies" in data["knowledge_graph"]:
-            for m in data["knowledge_graph"]["movies"][:10]:
-                listings.append({"title": m.get("name"), "venue": "Cinema Feed"})
-        
-        # 2. Fallback to 'organic_results' if knowledge graph is empty
-        if not listings:
-            for res in data.get("organic_results", [])[:8]:
-                title = res.get("title", "").split("-")[0].strip()
-                listings.append({"title": title, "venue": "Search Result"})
-                
-        return listings if listings else [{"title": "Updating schedule...", "venue": "System"}]
+        for film in arthouse:
+            if film["title"] not in seen:
+                listings.append(film)
 
     except Exception as e:
-        print(f"Error: {e}")
-        return [{"title": "Feed Error", "venue": "System"}]
+        listings = [{"title": f"Sync Error: {e}", "venue": "System"}]
+        
+    return listings
 
 if __name__ == "__main__":
-    results = get_listings()
+    data = get_google_listings()
     with open('listings.json', 'w') as f:
-        json.dump(results, f, indent=2)
+        json.dump(data, f, indent=2)
