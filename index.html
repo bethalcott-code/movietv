@@ -5,36 +5,38 @@
     <title>THE QUEUE</title>
     <style>
         :root { --bg: #E6E6E6; --text: #1A1A1A; --grey: #CCCCCC; --accent: #195DDC; --white: #FFFFFF; }
-        body { background: var(--bg); color: var(--text); font-family: "Helvetica Neue", Helvetica, sans-serif; margin: 0; padding: 30px; -webkit-font-smoothing: antialiased; }
-        header { border-bottom: 3px solid var(--text); padding-bottom: 12px; margin-bottom: 40px; display: flex; justify-content: space-between; align-items: flex-end; }
-        .logo { font-weight: 900; font-size: 26px; letter-spacing: -1.5px; }
-        nav { display: flex; gap: 30px; margin-bottom: 40px; }
-        nav button { background: none; border: none; color: #999; padding: 10px 0; cursor: pointer; font-family: inherit; font-size: 13px; font-weight: 700; text-transform: uppercase; }
+        body { background: var(--bg); color: var(--text); font-family: "Helvetica Neue", Helvetica, sans-serif; margin: 0; padding: 25px; -webkit-font-smoothing: antialiased; }
+        header { border-bottom: 3px solid var(--text); padding-bottom: 12px; margin-bottom: 30px; display: flex; justify-content: space-between; align-items: flex-end; }
+        .logo { font-weight: 900; font-size: 24px; letter-spacing: -1.5px; }
+        nav { display: flex; gap: 20px; margin-bottom: 30px; overflow-x: auto; white-space: nowrap; }
+        nav button { background: none; border: none; color: #999; padding: 10px 0; cursor: pointer; font-family: inherit; font-size: 12px; font-weight: 700; text-transform: uppercase; }
         nav button.active { color: var(--text); border-bottom: 3px solid var(--accent); }
         .tab-content { display: none; max-width: 800px; }
         .tab-content.active { display: block; }
-        .row { border-bottom: 1px solid var(--grey); padding: 22px 0; display: flex; justify-content: space-between; align-items: center; }
-        .row a { color: var(--text); text-decoration: none; font-weight: 600; font-size: 18px; display: block; margin-bottom: 4px; }
-        .meta { font-size: 10px; color: #666; text-transform: uppercase; font-weight: 700; margin-bottom: 6px; display: block; }
-        .stream-tag { font-size: 10px; color: var(--accent); font-weight: 700; display: block; margin-top: 6px; }
-        .add-btn { background: var(--text); color: var(--white); border: none; width: 34px; height: 34px; font-size: 22px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
-        .search-container { display: flex; gap: 10px; margin-bottom: 30px; background: var(--white); padding: 5px; border: 1px solid var(--grey); }
-        input { background: transparent; border: none; padding: 12px; font-family: inherit; flex-grow: 1; outline: none; font-size: 14px; }
-        .search-btn { background: var(--text); color: var(--white); border: none; padding: 0 25px; font-weight: 700; cursor: pointer; text-transform: uppercase; font-size: 11px; }
-        .description { font-size: 13px; color: #444; margin-top: 6px; text-transform: none; line-height: 1.5; }
+        .row { border-bottom: 1px solid var(--grey); padding: 20px 0; display: flex; justify-content: space-between; align-items: center; }
+        .row.watched { opacity: 0.5; text-decoration: line-through; }
+        .info-block { flex-grow: 1; padding-right: 15px; }
+        .row a { color: var(--text); text-decoration: none; font-weight: 600; font-size: 16px; display: block; margin-bottom: 4px; }
+        .meta { font-size: 10px; color: #666; text-transform: uppercase; font-weight: 700; margin-bottom: 4px; display: block; }
+        .stream-tag { font-size: 10px; color: var(--accent); font-weight: 700; display: block; margin-top: 5px; }
+        .btn-group { display: flex; gap: 8px; }
+        .action-btn { background: var(--text); color: var(--white); border: none; width: 32px; height: 32px; font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+        .search-container { display: flex; gap: 10px; margin-bottom: 20px; background: var(--white); padding: 5px; border: 1px solid var(--grey); }
+        input { background: transparent; border: none; padding: 10px; font-family: inherit; flex-grow: 1; outline: none; font-size: 13px; }
     </style>
 </head>
 <body>
 
 <header>
-    <div><div class="logo">THE QUEUE</div><div style="font-size: 11px; font-weight: 700; text-transform: uppercase;">B & K — Edinburgh — 2026</div></div>
+    <div><div class="logo">THE QUEUE</div><div style="font-size: 10px; font-weight: 700; text-transform: uppercase;">EDINBURGH / 2026</div></div>
     <div id="status-dot" style="color: var(--accent); font-size: 20px;">●</div>
 </header>
 
 <nav>
-    <button onclick="tab('cinema')" id="b-cinema" class="active">Cinema</button>
-    <button onclick="tab('recs')" id="b-recs">Recs</button>
-    <button onclick="tab('queue')" id="b-queue">Library</button>
+    <button onclick="switchTab('cinema')" id="b-cinema" class="active">Cinema</button>
+    <button onclick="switchTab('recs')" id="b-recs">Recs</button>
+    <button onclick="switchTab('queue')" id="b-queue">Queue</button>
+    <button onclick="switchTab('library')" id="b-library">Owned</button>
 </nav>
 
 <div id="cinema" class="tab-content active"></div>
@@ -42,104 +44,105 @@
 
 <div id="queue" class="tab-content">
     <div class="search-container">
-        <input type="text" id="m-input" placeholder="SEARCH TITLE...">
-        <button class="search-btn" onclick="verifyAndAdd()">Verify & Add</button>
+        <input type="text" id="q-input" placeholder="SEARCH TMDB TO QUEUE...">
+        <button style="background:var(--text); color:#fff; border:none; padding:10px;" onclick="verifyAndAdd('queue')">ADD</button>
     </div>
     <div id="q-list"></div>
 </div>
 
+<div id="library" class="tab-content">
+    <div class="search-container">
+        <input type="text" id="l-input" placeholder="ADD OWNED (DVD/DIGITAL)...">
+        <button style="background:var(--text); color:#fff; border:none; padding:10px;" onclick="verifyAndAdd('library')">ADD</button>
+    </div>
+    <div id="l-list"></div>
+</div>
+
 <script>
     const KEY = "eb7044678f7a620007e3d11387ccb51f";
-    let currentData = []; // Logic: Safety pool to avoid apostrophe errors
+    let pool = [];
 
-    function tab(id) {
+    function switchTab(id) {
         document.querySelectorAll('.tab-content, nav button').forEach(el => el.classList.remove('active'));
         document.getElementById(id).classList.add('active');
         document.getElementById('b-' + id).classList.add('active');
-        
-        if(id === 'cinema') fetch('listings.json').then(r=>r.json()).then(d=> { currentData = d; render(d, 'cinema', 'venue'); });
-        if(id === 'recs') fetch('recommendations.json').then(r=>r.json()).then(d=> { currentData = d; render(d, 'recs', 'source'); });
-        if(id === 'queue') renderQ();
+        if(id === 'cinema') fetch('listings.json').then(r=>r.json()).then(d=> { pool = d; renderList(d, 'cinema', 'venue'); });
+        if(id === 'recs') fetch('recommendations.json').then(r=>r.json()).then(d=> { pool = d; renderList(d, 'recs', 'source'); });
+        if(id === 'queue' || id === 'library') renderStored(id);
     }
 
-    function render(data, id, meta) {
-        document.getElementById(id).innerHTML = data.map((item, index) => `
+    function renderList(data, containerId, metaKey) {
+        document.getElementById(containerId).innerHTML = data.map((item, index) => `
             <div class="row">
                 <div class="info-block">
-                    <span class="meta">${item[meta]} ${item.tag ? `| ${item.tag}` : ''}</span>
+                    <span class="meta">${item[metaKey]} ${item.tag ? `| ${item.tag}` : ''}</span>
                     <a href="${item.url || '#'}" target="_blank">${item.title}</a>
-                    ${item.streaming ? `<span class="stream-tag">WATCH: ${item.streaming}</span>` : ''}
+                    <span class="stream-tag">${item.streaming || ''}</span>
                 </div>
-                <button class="add-btn" onclick="saveFromList(${index}, '${meta}')">+</button>
+                <button class="action-btn" onclick="addFromList(${index}, '${metaKey}')">+</button>
             </div>`).join('');
     }
 
-    function saveFromList(index, metaKey) {
-        const item = currentData[index];
-        save(item.title, item[metaKey], item.streaming || '', item.url || '', item.desc || "");
-    }
-
-    async function verifyAndAdd() {
-        const query = document.getElementById('m-input').value;
+    async function verifyAndAdd(store) {
+        const inputId = store === 'queue' ? 'q-input' : 'l-input';
+        const query = document.getElementById(inputId).value;
         if(!query) return;
         try {
             const res = await fetch(`https://api.themoviedb.org/3/search/multi?api_key=${KEY}&query=${encodeURIComponent(query)}&region=GB`);
             const data = await res.json();
-            if(!data.results?.length) return alert("Not Found");
-
-            const hits = data.results.slice(0, 3);
-            let pick = hits[0];
-            if (hits.length > 1) {
-                const opt = hits.map((h, i) => `${i+1}: ${h.title || h.name} (${(h.release_date || h.first_air_date || "").split('-')[0]})`).join('\n');
-                const choice = prompt(opt, "1");
-                if (choice && hits[choice-1]) pick = hits[choice-1];
-            }
-
-            const title = `${pick.title || pick.name} (${(pick.release_date || pick.first_air_date || "").split('-')[0]})`;
-            const type = pick.media_type || (pick.title ? 'movie' : 'tv');
-            
-            const pRes = await fetch(`https://api.themoviedb.org/3/${type}/${pick.id}/watch/providers?api_key=${KEY}`);
-            const pData = await pRes.json();
-            const uk = pData.results?.GB?.flatrate || pData.results?.GB?.free || [];
-            const stream = uk.length ? uk[0].provider_name : "Rent/Cinema Only";
-
-            save(title, "Search", stream, `https://tmdb.org/${type}/${pick.id}`, pick.overview || "");
-            document.getElementById('m-input').value = '';
-        } catch(e) { alert("Search Error"); }
+            const p = data.results[0];
+            const title = `${p.title || p.name} (${(p.release_date || p.first_air_date || "").split('-')[0]})`;
+            save(title, store === 'queue' ? 'Search' : 'Owned', '', `https://tmdb.org/${p.id}`, p.overview, store);
+            document.getElementById(inputId).value = '';
+        } catch(e) { alert("Error finding title"); }
     }
 
-    function save(title, source, streaming, url, desc) {
-        let q = JSON.parse(localStorage.getItem('myQueue')) || [];
-        if(!q.some(e => e.title === title)) {
-            q.push({ title, source, streaming, url, desc: desc.substring(0, 140), date: new Date().toLocaleDateString() });
-            localStorage.setItem('myQueue', JSON.stringify(q));
-            alert("SAVED: " + title);
+    function addFromList(idx, key) {
+        const i = pool[idx];
+        save(i.title, i[key], i.streaming, i.url, i.desc, 'queue');
+    }
+
+    function save(title, source, streaming, url, desc, store) {
+        let db = JSON.parse(localStorage.getItem(store)) || [];
+        if(!db.some(e => e.title === title)) {
+            db.push({ id: Date.now(), title, source, streaming, url, desc: (desc||"").substring(0,100), watched: false });
+            localStorage.setItem(store, JSON.stringify(db));
+            alert("SAVED TO " + store.toUpperCase());
+            renderStored(store);
         }
     }
 
-    function renderQ() {
-        const q = JSON.parse(localStorage.getItem('myQueue')) || [];
-        document.getElementById('q-list').innerHTML = q.map((i, index) => `
-            <div class="row">
+    function renderStored(store) {
+        const db = JSON.parse(localStorage.getItem(store)) || [];
+        const listId = store === 'queue' ? 'q-list' : 'l-list';
+        document.getElementById(listId).innerHTML = db.map(i => `
+            <div class="row ${i.watched ? 'watched' : ''}">
                 <div class="info-block">
-                    <span class="meta">${i.source} | ADDED ${i.date}</span>
+                    <span class="meta">${i.source}</span>
                     <strong>${i.title}</strong>
-                    ${i.desc ? `<div class="description">${i.desc}...</div>` : ''}
-                    <span class="stream-tag">WATCH: ${i.streaming}</span>
+                    <span class="stream-tag">${i.streaming || ''}</span>
                 </div>
-                <button class="add-btn" style="background:#ccc; color:#000" onclick="remove(${index})">×</button>
-            </div>`).reverse().join('') || '<div class="row">LIBRARY EMPTY</div>';
+                <div class="btn-group">
+                    <button class="action-btn" style="background:#ccc; color:#000" onclick="toggleWatch('${store}', ${i.id})">✓</button>
+                    <button class="action-btn" style="background:#999; color:#fff" onclick="remove('${store}', ${i.id})">×</button>
+                </div>
+            </div>`).reverse().join('');
     }
 
-    function remove(index) {
-        let q = JSON.parse(localStorage.getItem('myQueue')) || [];
-        const reversedIndex = q.length - 1 - index; // Logic: Correct for .reverse()
-        q.splice(reversedIndex, 1);
-        localStorage.setItem('myQueue', JSON.stringify(q));
-        renderQ();
+    function toggleWatch(store, id) {
+        let db = JSON.parse(localStorage.getItem(store));
+        db = db.map(item => item.id === id ? {...item, watched: !item.watched} : item);
+        localStorage.setItem(store, JSON.stringify(db));
+        renderStored(store);
     }
 
-    tab('cinema');
+    function remove(store, id) {
+        let db = JSON.parse(localStorage.getItem(store));
+        localStorage.setItem(store, JSON.stringify(db.filter(item => item.id !== id)));
+        renderStored(store);
+    }
+
+    switchTab('cinema');
 </script>
 </body>
 </html>
