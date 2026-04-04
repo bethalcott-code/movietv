@@ -1,68 +1,233 @@
-<style>
-    :root { --bg: #E6E6E6; --text: #1A1A1A; --grey: #CCCCCC; --accent: #D12F2F; --white: #FFFFFF; }
-    body { background: var(--bg); color: var(--text); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; margin: 0; padding: 25px; letter-spacing: 0px; text-transform: none; }
-    header { border-bottom: 2px solid var(--text); padding-bottom: 10px; margin-bottom: 30px; display: flex; justify-content: space-between; align-items: flex-end; }
-    nav { display: flex; gap: 30px; margin-bottom: 30px; }
-    nav button { background: none; border: none; color: #999; padding: 5px 0; cursor: pointer; font-family: inherit; font-size: 14px; font-weight: 700; text-transform: uppercase; }
-    nav button.active { color: var(--text); border-bottom: 3px solid var(--accent); }
-    .row { border-bottom: 1px solid var(--grey); padding: 20px 0; display: flex; justify-content: space-between; align-items: center; }
-    .row a { color: var(--text); text-decoration: none; font-weight: 500; font-size: 16px; }
-    .meta { font-size: 11px; color: #666; text-transform: uppercase; margin-bottom: 4px; display: block; font-weight: 700; }
-    .add-btn { background: var(--text); color: var(--white); border: none; width: 32px; height: 32px; font-size: 20px; cursor: pointer; }
-    input { background: var(--white); border: 1px solid var(--grey); padding: 12px; font-family: inherit; width: 70%; }
-</style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE QUEUE | 2026</title>
+    <style>
+        /* Dieter Rams Inspired Palette */
+        :root { 
+            --bg: #E6E6E6;      /* Warm functional grey */
+            --text: #1A1A1A;    /* Deep charcoal */
+            --grey: #CCCCCC;    /* Mid-tone border */
+            --accent: #D12F2F;  /* Signal Red */
+            --white: #FFFFFF; 
+        }
+
+        body { 
+            background: var(--bg); 
+            color: var(--text); 
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; 
+            margin: 0; 
+            padding: 30px; 
+            line-height: 1.4;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        header { 
+            border-bottom: 3px solid var(--text); 
+            padding-bottom: 15px; 
+            margin-bottom: 40px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: flex-end; 
+        }
+
+        .logo { font-weight: 900; font-size: 24px; letter-spacing: -1px; }
+        .sub-head { font-size: 11px; font-weight: 700; text-transform: uppercase; }
+
+        nav { display: flex; gap: 35px; margin-bottom: 40px; }
+        nav button { 
+            background: none; 
+            border: none; 
+            color: #999; 
+            padding: 8px 0; 
+            cursor: pointer; 
+            font-family: inherit; 
+            font-size: 13px; 
+            font-weight: 700; 
+            text-transform: uppercase; 
+            transition: color 0.2s;
+        }
+        nav button.active { color: var(--text); border-bottom: 3px solid var(--accent); }
+
+        .tab-content { display: none; max-width: 800px; }
+        .tab-content.active { display: block; }
+
+        .row { 
+            border-bottom: 1px solid var(--grey); 
+            padding: 24px 0; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+        }
+
+        .info-block { flex-grow: 1; padding-right: 20px; }
+        .row a { 
+            color: var(--text); 
+            text-decoration: none; 
+            font-weight: 600; 
+            font-size: 18px; 
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .meta { 
+            font-size: 10px; 
+            color: #666; 
+            text-transform: uppercase; 
+            font-weight: 700; 
+            margin-bottom: 6px; 
+            display: flex;
+            gap: 10px;
+        }
+
+        .stream-tag { 
+            font-size: 10px; 
+            color: var(--accent); 
+            font-weight: 700; 
+            display: block; 
+            margin-top: 6px; 
+        }
+
+        .add-btn { 
+            background: var(--text); 
+            color: var(--white); 
+            border: none; 
+            width: 36px; 
+            height: 36px; 
+            font-size: 22px; 
+            cursor: pointer; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.2s;
+        }
+        .add-btn:active { opacity: 0.6; }
+
+        /* Manual Add Section */
+        .manual-box { display: flex; gap: 10px; margin-bottom: 40px; background: var(--white); padding: 4px; border: 1px solid var(--grey); }
+        input { 
+            background: transparent; 
+            border: none; 
+            padding: 12px; 
+            font-family: inherit; 
+            flex-grow: 1; 
+            font-size: 14px; 
+            outline: none;
+        }
+        .manual-btn { background: var(--text); color: var(--white); border: none; padding: 0 20px; font-weight: 700; cursor: pointer; text-transform: uppercase; font-size: 11px; }
+
+        @media (max-width: 600px) {
+            body { padding: 20px; }
+            nav { gap: 15px; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div>
+        <div class="logo">THE QUEUE</div>
+        <div class="sub-head">EDINBURGH — B & K — 2026</div>
+    </div>
+    <div id="status-dot" style="color: var(--accent); font-size: 18px;">●</div>
+</header>
+
+<nav>
+    <button onclick="tab('cinema')" id="b-cinema" class="active">Cinema</button>
+    <button onclick="tab('recs')" id="b-recs">Recs</button>
+    <button onclick="tab('queue')" id="b-queue">Library</button>
+</nav>
+
+<div id="cinema" class="tab-content active"></div>
+<div id="recs" class="tab-content"></div>
+
+<div id="queue" class="tab-content">
+    <div class="manual-box">
+        <input type="text" id="manual-input" placeholder="MANUAL ENTRY (TITLE)...">
+        <button class="manual-btn" onclick="addManual()">Add</button>
+    </div>
+    <div id="queue-list"></div>
+</div>
 
 <script>
+    // Logic: Persistent Storage & Data Matching
     let myQueue = JSON.parse(localStorage.getItem('myQueue')) || [];
-    let currentData = []; // Logic: Temporarily store all fetched data for auto-matching
+    let currentPool = []; // Logic: Cache for cross-referencing sources
 
     function tab(id) {
         document.querySelectorAll('.tab-content, nav button').forEach(el => el.classList.remove('active'));
         document.getElementById(id).classList.add('active');
         document.getElementById('b-' + id).classList.add('active');
-        
-        if(id === 'cinema') fetch('listings.json').then(r=>r.json()).then(d=> { currentData = d; render(d, 'cinema', 'venue'); });
-        if(id === 'recs') fetch('recommendations.json').then(r=>r.json()).then(d=> { currentData = d; render(d, 'recs', 'source'); });
+
+        if(id === 'cinema') fetch('listings.json').then(r=>r.json()).then(d=> { currentPool = d; render(d, 'cinema', 'venue'); });
+        if(id === 'recs') fetch('recommendations.json').then(r=>r.json()).then(d=> { currentPool = d; render(d, 'recs', 'source'); });
         if(id === 'queue') renderQ();
     }
 
     function render(data, id, metaKey) {
         document.getElementById(id).innerHTML = data.map(i => `
             <div class="row">
-                <div>
-                    <span class="meta">${i[metaKey]} ${i.tag ? `| ${i.tag}` : ''}</span>
+                <div class="info-block">
+                    <span class="meta">
+                        <span>${i[metaKey]}</span>
+                        ${i.tag ? `<span style="color:var(--accent)">/ ${i.tag}</span>` : ''}
+                    </span>
                     <a href="${i.url || '#'}" target="_blank">${i.title}</a>
+                    ${i.streaming ? `<span class="stream-tag">WATCH: ${i.streaming}</span>` : ''}
                 </div>
-                <button class="add-btn" onclick="add('${i.title.replace(/'/g, "\\'")}', '${i[metaKey] || ''}', '${i.tag || ''}')">+</button>
+                <button class="add-btn" onclick="addEntry('${i.title.replace(/'/g, "\\'")}', '${i[metaKey]}', '${i.tag || ''}')">+</button>
             </div>`).join('');
     }
 
-    // Logic: Capture source/tag during add
-    function add(title, source = '', tag = '') {
-        if(!title) return;
-        
-        // Hard Fix: Auto-match manual entries against current data
-        if(!source) {
-            const match = currentData.find(item => item.title.toLowerCase() === title.toLowerCase());
-            source = match ? (match.source || match.venue) : 'Personal Entry';
-            tag = match ? (match.tag || '') : 'Manual';
-        }
-
-        const entry = { title, source, tag, added: new Date().toLocaleDateString() };
+    // Easy Logic: Add with metadata
+    function addEntry(title, source, tag) {
         if(!myQueue.some(e => e.title === title)) {
-            myQueue.push(entry);
-            localStorage.setItem('myQueue', JSON.stringify(myQueue));
-            alert('Added to Library');
+            myQueue.push({ title, source, tag, date: new Date().toLocaleDateString() });
+            save();
         }
+    }
+
+    // Hard Logic: Auto-match manual entry against Scraped Data
+    function addManual() {
+        const title = document.getElementById('manual-input').value;
+        if(!title) return;
+
+        // Logic: Search existing pool for a source match
+        const match = currentPool.find(item => item.title.toLowerCase().includes(title.toLowerCase()));
+        const source = match ? (match.source || match.venue) : "PERSONAL";
+        const tag = match ? (match.tag || "MATCHED") : "MANUAL";
+
+        addEntry(title, source, tag);
+        document.getElementById('manual-input').value = '';
     }
 
     function renderQ() {
-        document.getElementById('q-list').innerHTML = myQueue.map(item => `
+        document.getElementById('queue-list').innerHTML = myQueue.map(item => `
             <div class="row">
-                <div>
-                    <span class="meta">${item.source} ${item.tag ? `| ${item.tag}` : ''} — Added ${item.added}</span>
+                <div class="info-block">
+                    <span class="meta">${item.source} | ${item.tag} — ${item.date}</span>
                     <a href="#">${item.title}</a>
                 </div>
-            </div>`).reverse().join('') || '<div class="row">Library Empty</div>';
+                <button class="add-btn" style="background:#ccc" onclick="remove('${item.title}')">×</button>
+            </div>`).reverse().join('') || '<div class="row">LIBRARY EMPTY</div>';
     }
+
+    function remove(t) {
+        myQueue = myQueue.filter(e => e.title !== t);
+        save();
+        renderQ();
+    }
+
+    function save() {
+        localStorage.setItem('myQueue', JSON.stringify(myQueue));
+        alert('SAVED TO LIBRARY');
+    }
+
+    // Initialize
+    tab('cinema');
 </script>
+
+</body>
+</html>
