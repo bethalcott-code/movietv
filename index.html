@@ -1,79 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>THE QUEUE</title>
-    <style>
-        :root { --bg: #E6E6E6; --text: #1A1A1A; --grey: #CCCCCC; --accent: #195DDC; --white: #FFFFFF; }
-        body { background: var(--bg); color: var(--text); font-family: "Helvetica Neue", Helvetica, sans-serif; margin: 0; padding: 25px; -webkit-font-smoothing: antialiased; }
-        header { border-bottom: 3px solid var(--text); padding-bottom: 12px; margin-bottom: 30px; display: flex; justify-content: space-between; align-items: flex-end; }
-        .logo { font-weight: 900; font-size: 24px; letter-spacing: -1.5px; }
-        nav { display: flex; gap: 20px; margin-bottom: 30px; border-bottom: 1px solid var(--grey); }
-        nav button { background: none; border: none; color: #999; padding: 10px 0; cursor: pointer; font-family: inherit; font-size: 12px; font-weight: 700; text-transform: uppercase; }
-        nav button.active { color: var(--text); border-bottom: 3px solid var(--accent); }
-        .tab-content { display: none; max-width: 800px; }
-        .tab-content.active { display: block; }
-        .row { border-bottom: 1px solid var(--grey); padding: 18px 0; display: flex; justify-content: space-between; align-items: center; }
-        .row.watched { opacity: 0.4; text-decoration: line-through; }
-        .info-block { flex-grow: 1; padding-right: 15px; }
-        .row a { color: var(--text); text-decoration: none; font-weight: 600; font-size: 16px; display: block; margin-bottom: 4px; }
-        .meta { font-size: 10px; color: #666; text-transform: uppercase; font-weight: 700; margin-bottom: 4px; display: block; }
-        .times { font-size: 11px; color: var(--accent); font-weight: bold; margin-top: 4px; letter-spacing: 0.5px; }
-        .action-btn { background: var(--text); color: var(--white); border: none; width: 32px; height: 32px; font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
-        .search-container { display: flex; gap: 10px; margin-bottom: 20px; background: var(--white); padding: 5px; border: 1px solid var(--grey); }
-        input { background: transparent; border: none; padding: 10px; font-family: inherit; flex-grow: 1; outline: none; font-size: 13px; }
-    </style>
-</head>
-<body>
-
-<header>
-    <div><div class="logo">THE QUEUE</div><div style="font-size: 10px; font-weight: 700; text-transform: uppercase;">EDINBURGH / 2026</div></div>
-    <div id="status-dot" style="color: var(--accent); font-size: 20px;">●</div>
-</header>
-
-<nav>
-    <button onclick="switchTab('cinema')" id="btn-cinema" class="active">Cinema</button>
-    <button onclick="switchTab('recs')" id="btn-recs">Recs</button>
-    <button onclick="switchTab('queue')" id="btn-queue">Queue</button>
-    <button onclick="switchTab('library')" id="btn-library">Owned</button>
-</nav>
-
-<div id="cinema" class="tab-content active"></div>
-<div id="recs" class="tab-content"></div>
-<div id="queue" class="tab-content">
-    <div class="search-container"><input type="text" id="q-in" placeholder="SEARCH TMDB..."><button onclick="verify('queue')" style="background:var(--text);color:#fff;border:none;padding:10px;">ADD</button></div>
-    <div id="q-list"></div>
-</div>
-<div id="library" class="tab-content">
-    <div class="search-container"><input type="text" id="l-in" placeholder="ADD OWNED DVD/PLAY..."><button onclick="verify('library')" style="background:var(--text);color:#fff;border:none;padding:10px;">ADD</button></div>
-    <div id="l-list"></div>
-</div>
-
 <script>
-    const TMDB_KEY = "eb7044678f7a620007e3d11387ccb51f";
+    const KEY = "eb7044678f7a620007e3d11387ccb51f";
     let activePool = []; // Logic: Prevents button crashes on special characters
 
-    function switchTab(id) {
+    function tab(id) {
         document.querySelectorAll('.tab-content, nav button').forEach(el => el.classList.remove('active'));
         document.getElementById(id).classList.add('active');
         document.getElementById('btn-' + id).classList.add('active');
         
-        if (id === 'cinema' || id === 'recs') {
-            const file = id === 'cinema' ? 'listings.json' : 'recommendations.json';
-            const meta = id === 'cinema' ? 'venue' : 'source';
-            fetch(file).then(r => r.json()).then(d => { activePool = d; renderData(d, id, meta); });
-        } else {
+        const file = (id === 'cinema') ? 'listings.json' : 'recommendations.json';
+        const meta = (id === 'cinema') ? 'venue' : 'source';
+        
+        if (id === 'queue' || id === 'library') {
             renderStored(id);
+        } else {
+            fetch(file).then(r => r.json()).then(d => { 
+                activePool = d; 
+                renderList(d, id, meta); 
+            });
         }
     }
 
-    function renderData(data, containerId, metaKey) {
+    function renderList(data, containerId, metaKey) {
         document.getElementById(containerId).innerHTML = data.map((item, index) => `
             <div class="row">
                 <div class="info-block">
                     <span class="meta">${item[metaKey]} | ${item.tag || 'NEW'}</span>
                     <a href="${item.url || '#'}" target="_blank">${item.title}</a>
                     ${item.times ? `<div class="times">${item.times}</div>` : ''}
+                    ${item.streaming ? `<span class="stream-tag">STREAM: ${item.streaming}</span>` : ''}
                 </div>
                 <button class="action-btn" onclick="saveFromPool(${index}, '${metaKey}')">+</button>
             </div>`).join('');
@@ -81,60 +35,17 @@
 
     function saveFromPool(idx, metaKey) {
         const item = activePool[idx];
-        saveEntry(item.title, item[metaKey], 'Cinema', item.url, item.desc || '', 'queue');
+        // Logic: Packaging all metadata for the Library
+        saveEntry(item.title, item[metaKey], item.streaming || 'Cinema', item.url, item.tag || 'REC', 'queue');
     }
 
-    async function verify(store) {
-        const input = document.getElementById(store === 'queue' ? 'q-in' : 'l-in');
-        try {
-            const res = await fetch(`https://api.themoviedb.org/3/search/multi?api_key=${TMDB_KEY}&query=${encodeURIComponent(input.value)}&region=GB`);
-            const d = await res.json();
-            const p = d.results[0];
-            saveEntry(`${p.title || p.name} (${(p.release_date || p.first_air_date || "").split('-')[0]})`, store === 'queue' ? 'Manual' : 'Owned', '', `https://tmdb.org/${p.id}`, p.overview, store);
-            input.value = '';
-        } catch(e) { alert("Not found"); }
-    }
-
-    function saveEntry(title, source, streaming, url, desc, store) {
+    function saveEntry(title, source, streaming, url, tag, store) {
         let db = JSON.parse(localStorage.getItem(store)) || [];
         if(!db.some(e => e.title === title)) {
-            db.push({ id: Date.now(), title, source, streaming, url, desc: (desc||"").substring(0,100), watched: false });
+            db.push({ id: Date.now(), title, source, streaming, url, tag, watched: false });
             localStorage.setItem(store, JSON.stringify(db));
             alert("SAVED");
             if(document.getElementById(store).classList.contains('active')) renderStored(store);
         }
     }
-
-    function renderStored(store) {
-        const db = JSON.parse(localStorage.getItem(store)) || [];
-        const listId = store === 'queue' ? 'q-list' : 'l-list';
-        document.getElementById(listId).innerHTML = db.map(i => `
-            <div class="row ${i.watched ? 'watched' : ''}">
-                <div class="info-block">
-                    <span class="meta">${i.source}</span>
-                    <strong>${i.title}</strong>
-                </div>
-                <div style="display:flex; gap:8px;">
-                    <button class="action-btn" style="background:#ccc;color:#000" onclick="toggle('${store}', ${i.id})">✓</button>
-                    <button class="action-btn" style="background:#999;color:#fff" onclick="remove('${store}', ${i.id})">×</button>
-                </div>
-            </div>`).reverse().join('') || '<div class="row">EMPTY</div>';
-    }
-
-    function toggle(store, id) {
-        let db = JSON.parse(localStorage.getItem(store));
-        db = db.map(i => i.id === id ? {...i, watched: !i.watched} : i);
-        localStorage.setItem(store, JSON.stringify(db));
-        renderStored(store);
-    }
-
-    function remove(store, id) {
-        let db = JSON.parse(localStorage.getItem(store));
-        localStorage.setItem(store, JSON.stringify(db.filter(i => i.id !== id)));
-        renderStored(store);
-    }
-
-    switchTab('cinema');
 </script>
-</body>
-</html>
