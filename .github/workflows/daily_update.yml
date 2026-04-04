@@ -1,35 +1,64 @@
+daily update 
+
 name: Daily Cinema & Recs Update
 on:
   schedule:
     - cron: '0 7 * * *' # Runs at 07:00 UTC every day
   workflow_dispatch: # Allows you to run it manually with a button click
-
 jobs:
   update-data:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
-
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.10'
-
       - name: Install Dependencies
         run: pip install requests
-
       - name: Run Cinema Scraper
         env:
           SERPER_KEY: ${{ secrets.SERPER_KEY }} # Securely pulls your API key
         run: python scrape_cinema.py
-
       - name: Run Recommendations Scraper
         run: python scrape_recs.py
-
       - name: Commit and Push Changes
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add listings.json recommendations.json
           git diff-index --quiet HEAD || (git commit -m "Robot: Updated movie times and recs" && git push)
+
+main 
+
+name: Daily Cinema Update
+on:
+  schedule:
+    - cron: '0 3 * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+      - name: Install dependencies
+        run: pip install requests
+      - name: Run Scrapers
+        run: |
+          python scrape_cinema.py
+          python scrape_recs.py
+      - name: Save Data
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add listings.json recommendations.json
+          git commit -m "Robot update: Cinema & Recs" || echo "No changes"
+          git push
