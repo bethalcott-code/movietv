@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>THE QUEUE</title>
     <style>
         :root { --bg: #E6E6E6; --text: #1A1A1A; --grey: #CCCCCC; --accent: #195DDC; --white: #FFFFFF; }
-        body { background: var(--bg); color: var(--text); font-family: "Helvetica Neue", Helvetica, sans-serif; margin: 0; padding: 30px; -webkit-font-smoothing: antialiased; }
+        body { background: var(--bg); color: var(--text); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; margin: 0; padding: 30px; -webkit-font-smoothing: antialiased; }
         header { border-bottom: 3px solid var(--text); padding-bottom: 10px; margin-bottom: 40px; display: flex; justify-content: space-between; align-items: flex-end; }
         .logo { font-weight: 900; font-size: 24px; letter-spacing: -1px; }
         nav { display: flex; gap: 30px; margin-bottom: 40px; }
@@ -22,7 +21,7 @@
         .manual-box { display: flex; gap: 10px; margin-bottom: 30px; background: var(--white); padding: 5px; border: 1px solid var(--grey); }
         input { background: transparent; border: none; padding: 10px; font-family: inherit; flex-grow: 1; outline: none; }
         .add-manual-btn { background: var(--text); color: var(--white); border: none; padding: 0 20px; cursor: pointer; font-weight: 700; text-transform: uppercase; font-size: 11px; }
-        .desc { font-size: 12px; color: #444; text-transform: none; margin-top: 5px; max-width: 90%; }
+        .desc { font-size: 12px; color: #444; text-transform: none; margin-top: 5px; max-width: 95%; line-height: 1.4; }
     </style>
 </head>
 <body>
@@ -42,7 +41,7 @@
 <div id="recs" class="tab-content"></div>
 <div id="queue" class="tab-content">
     <div class="manual-box">
-        <input type="text" id="m-input" placeholder="MANUAL SEARCH (E.G. THE MARTIAN)">
+        <input type="text" id="m-input" placeholder="SEARCH TMDB (E.G. THE THOMAS CROWN AFFAIR)">
         <button class="add-manual-btn" onclick="verifyAndAdd()">Verify & Add</button>
     </div>
     <div id="q-list"></div>
@@ -69,43 +68,57 @@
                     <a href="${i.url || '#'}" target="_blank">${i.title}</a>
                     ${i.streaming ? `<span class="stream-tag">WATCH: ${i.streaming}</span>` : ''}
                 </div>
-                <button class="add-btn" onclick="directAdd('${i.title.replace(/'/g, "\\'")}', '${i[metaKey]}', '${i.streaming || ''}')">+</button>
+                <button class="add-btn" onclick="directAdd('${i.title.replace(/'/g, "\\'")}', '${i[metaKey]}', '${i.streaming || ''}', '${i.url || ''}')">+</button>
             </div>`).join('');
     }
 
-    // Hard Fix Logic: Verify manual titles against TMDB
+    // Logic: Verify manual titles against TMDB
     async function verifyAndAdd() {
         const query = document.getElementById('m-input').value;
         if(!query) return;
         
         try {
-            const sRes = await fetch(`https://api.themoviedb.org/3/search/multi?api_key=${TMDB_KEY}&query=${query}&region=GB`);
+            const sRes = await fetch(`https://api.themoviedb.org/3/search/multi?api_key=${TMDB_KEY}&query=${encodeURIComponent(query)}&region=GB`);
             const sData = await sRes.json();
-            if(!sData.results.length) return alert("Not Found");
+            if(!sData.results || !sData.results.length) return alert("Title Not Found");
 
             const item = sData.results[0];
             const title = item.title || item.name;
-            const year = (item.release_date || item.first_air_date || "").split('-')[0];
-            const desc = item.overview ? item.overview.substring(0, 120) + "..." : "";
+            const year = (item.release_date || item.first_air_date || "TBC").split('-')[0];
+            const desc = item.overview ? item.overview.substring(0, 140) + "..." : "No description available.";
+            const type = item.media_type; // Logic: Essential for provider check
             
-            // Get streaming
-            const pRes = await fetch(`https://api.themoviedb.org/3/${item.media_type}/${item.id}/watch/providers?api_key=${TMDB_KEY}`);
+            // Get streaming providers
+            const pRes = await fetch(`https://api.themoviedb.org/3/${type}/${item.id}/watch/providers?api_key=${TMDB_KEY}`);
             const pData = await pRes.json();
             const uk = pData.results?.GB?.flatrate || [];
-            const stream = uk.length ? uk[0].provider_name : "Rent/Cinema";
+            const stream = uk.length ? uk.map(p => p.provider_name).slice(0, 2).join(", ") : "Rent/Cinema Only";
 
-            const entry = { title: `${title} (${year})`, source: "Personal Search", streaming: stream, desc: desc, date: new Date().toLocaleDateString() };
-            myQueue.push(entry);
-            localStorage.setItem('myQueue', JSON.stringify(myQueue));
+            const entry = { 
+                title: `${title} (${year})`, 
+                source: "TMDB verified", 
+                streaming: stream, 
+                desc: desc, 
+                url: `https://www.themoviedb.org/${type}/${item.id}`,
+                date: new Date().toLocaleDateString() 
+            };
+            
+            saveToQueue(entry);
             document.getElementById('m-input').value = '';
-            renderQ();
-        } catch(e) { alert("Verification Failed"); }
+        } catch(e) { alert("Search Error: Check API Key"); }
     }
 
-    function directAdd(t, s, stream) {
-        myQueue.push({ title: t, source: s, streaming: stream, date: new Date().toLocaleDateString() });
-        localStorage.setItem('myQueue', JSON.stringify(myQueue));
-        alert("Added");
+    function directAdd(t, s, stream, url) {
+        saveToQueue({ title: t, source: s, streaming: stream, url: url, date: new Date().toLocaleDateString(), desc: "" });
+    }
+
+    function saveToQueue(entry) {
+        if(!myQueue.some(e => e.title === entry.title)) {
+            myQueue.push(entry);
+            localStorage.setItem('myQueue', JSON.stringify(myQueue));
+            alert("Added to Library");
+            if(document.getElementById('queue').classList.contains('active')) renderQ();
+        }
     }
 
     function renderQ() {
@@ -113,12 +126,12 @@
             <div class="row">
                 <div style="flex-grow:1">
                     <span class="meta">${i.source} | ADDED ${i.date}</span>
-                    <strong>${i.title}</strong>
+                    <a href="${i.url || '#'}" target="_blank">${i.title}</a>
                     <div class="desc">${i.desc || ''}</div>
-                    <span class="stream-tag">WATCH: ${i.streaming}</span>
+                    <span class="stream-tag">STREAMING: ${i.streaming}</span>
                 </div>
-                <button class="add-btn" style="background:#ccc" onclick="remove('${i.title.replace(/'/g, "\\'")}')">×</button>
-            </div>`).reverse().join('') || '<div class="row">Library Empty</div>';
+                <button class="add-btn" style="background:#ccc; color:#000" onclick="remove('${i.title.replace(/'/g, "\\'")}')">×</button>
+            </div>`).reverse().join('') || '<div class="row">LIBRARY EMPTY</div>';
     }
 
     function remove(t) { myQueue = myQueue.filter(e => e.title !== t); localStorage.setItem('myQueue', JSON.stringify(myQueue)); renderQ(); }
