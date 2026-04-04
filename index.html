@@ -366,6 +366,9 @@ main{padding:14px 14px 80px;}
       <button class="srchip" data-src="Sight">Sight &amp; Sound</button>
       <button class="srchip" data-src="Variety">Variety</button>
     </div>
+    <div style="margin-top:8px">
+      <button class="srchip" id="clear-dismissed" style="border-color:var(--red);color:var(--red)">Restore dismissed</button>
+    </div>
   </div>
   <div class="loader" id="rec-loader"><div class="spin"></div><span class="loader-txt">Loading recommendations...</span></div>
   <div id="rec-body"></div>
@@ -493,7 +496,7 @@ main{padding:14px 14px 80px;}
 <div class="toast" id="toast"></div>
 
 <script>
-var LSQ='tq_q10', LSO='tq_o10', LSF='tq_f10', LSS='tq_s10';
+var LSQ='tq_q10', LSO='tq_o10', LSF='tq_f10', LSS='tq_s10', LSD='tq_d10';
 var MAX_Q=100, MAX_F=50;
 var WHO='B';
 var QF={status:'all',access:'all',who:'all',genre:'all'};
@@ -502,6 +505,8 @@ var MY_S=['iPlayer','Netflix','Apple TV+','Disney+','Prime Video','Channel 4','I
 var OWN_S=['DVD','Amazon (purchased)','Google Play','Apple TV (purchased)',
            "B's Amazon","K's Amazon","B's Apple TV","K's Apple TV","B's Google Play","K's Google Play"];
 var CANON=[];
+var DISMISSED=JSON.parse(localStorage.getItem(LSD)||'[]');
+var LIVE_RECS=[];
 
 function ld(){return{q:JSON.parse(localStorage.getItem(LSQ)||'[]'),o:JSON.parse(localStorage.getItem(LSO)||'[]'),f:JSON.parse(localStorage.getItem(LSF)||'[]')};}
 function svd(d){localStorage.setItem(LSQ,JSON.stringify(d.q));localStorage.setItem(LSO,JSON.stringify(d.o));localStorage.setItem(LSF,JSON.stringify(d.f));}
@@ -515,8 +520,39 @@ function v(id){return document.getElementById(id).value.trim();}
 function clr(){for(var i=0;i<arguments.length;i++)document.getElementById(arguments[i]).value='';}
 function toast(msg){var t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(function(){t.classList.remove('show');},2400);}
 
-// JustWatch search URL
-function jwUrl(title,year){return'https://www.justwatch.com/uk/search?q='+encodeURIComponent(title)+(year?'&release_year_from='+year:'');}
+// Streaming service badge colours
+var SVC_COLORS={
+  'iPlayer':   {bg:'#FF0000',fg:'#fff'},
+  'Netflix':   {bg:'#E50914',fg:'#fff'},
+  'Apple TV+': {bg:'#1c1c1e',fg:'#fff'},
+  'Disney+':   {bg:'#113CCF',fg:'#fff'},
+  'Prime Video':{bg:'#00A8E0',fg:'#fff'},
+  'Channel 4': {bg:'#6700B4',fg:'#fff'},
+  'ITVX':      {bg:'#004B9B',fg:'#fff'},
+  'MUBI':      {bg:'#001B2E',fg:'#fff'},
+  'BFI Player':{bg:'#E4002B',fg:'#fff'},
+  'Paramount+':{bg:'#0064FF',fg:'#fff'},
+  'NOW':       {bg:'#00A86B',fg:'#fff'},
+};
+
+function streamBadge(svc,jw_url){
+  if(!svc)return'';
+  var c=SVC_COLORS[svc]||{bg:'var(--green)',fg:'#fff'};
+  var s='display:inline-block;padding:3px 8px;border-radius:3px;font-size:.56rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;background:'+c.bg+';color:'+c.fg+';text-decoration:none;white-space:nowrap;';
+  return jw_url
+    ?'<a href="'+esc(jw_url)+'" target="_blank" style="'+s+'">'+esc(svc)+'</a>'
+    :'<span style="'+s+'">'+esc(svc)+'</span>';
+}
+
+// Fallback JustWatch search URL when we have no direct data
+function jwUrl(title,year){
+  return'https://www.justwatch.com/uk/search?q='+encodeURIComponent(title)+(year?'&release_year_from='+year:'');
+}
+
+function streamOrJW(item){
+  if(item.streaming)return streamBadge(item.streaming,item.jw_url||'');
+  return'<a class="jw-link" href="'+jwUrl(item.title,item.year)+'" target="_blank">Check streaming &rarr;</a>';
+}
 
 function renderPills(){
   var pa=document.getElementById('pill-area');
@@ -590,20 +626,40 @@ function renderO(){
   var el=document.getElementById('o-cards');
   document.getElementById('o-empty').style.display=items.length?'none':'block';
   if(!items.length){el.innerHTML='';return;}
+  var inF=d.f.map(function(i){return i.title.toLowerCase();});
   el.innerHTML=items.map(function(item){
-    var jw='<a class="jw-link" href="'+jwUrl(item.title,item.year)+'" target="_blank">Check streaming &rarr;</a>';
-    return'<div class="owned-card">'
-      +'<div class="card-title">'+esc(item.title)+'</div>'
-      +'<div class="card-meta">'
-        +(item.year?'<span class="card-yr">'+esc(item.year)+'</span>':'')
-        +'<span class="tag t-owned">'+esc(item.source)+'</span>'
+    var sid=String(item.id);
+    var jw=streamOrJW(item);
+      ?'<span class="stbadge" style="color:var(--gold);border-color:var(--gold)">In favs &#9733;</span>'
+      :'<button class="stbadge" data-addofav="'+sid+'" style="color:var(--gold);border-color:var(--gold)">&#9733; Fav</button>';
+    return'<div class="owned-card" id="ocard-'+sid+'">'
+      +'<div id="oview-'+sid+'">'
+        +'<div class="card-title">'+esc(item.title)+'</div>'
+        +'<div class="card-meta">'
+          +(item.year?'<span class="card-yr">'+esc(item.year)+'</span>':'')
+          +'<span class="tag t-owned">'+esc(item.source)+'</span>'
+        +'</div>'
+        +(item.edition?'<div class="owned-edition">'+esc(item.edition)+'</div>':'')
+        +(item.note?'<div class="card-note">'+esc(item.note)+'</div>':'')
+        +jw
+        +'<div class="card-actions" style="margin-top:6px">'
+          +'<button class="stbadge" data-moveq="'+sid+'">+ Queue</button>'
+          +favBtn
+          +'<button class="stbadge" data-editowned="'+sid+'" style="color:var(--acc);border-color:var(--acc)">Edit</button>'
+          +'<button class="del-btn" data-delo="'+sid+'">remove</button>'
+        +'</div>'
       +'</div>'
-      +(item.edition?'<div class="owned-edition">'+esc(item.edition)+'</div>':'')
-      +(item.note?'<div class="card-note">'+esc(item.note)+'</div>':'')
-      +jw
-      +'<div class="card-actions" style="margin-top:6px">'
-        +'<button class="stbadge" data-moveq="'+item.id+'">+ Queue</button>'
-        +'<button class="del-btn" data-delo="'+item.id+'">remove</button>'
+      +'<div id="oedit-'+sid+'" style="display:none">'
+        +'<input type="text" class="oedit-title" data-oid="'+sid+'" placeholder="Title" value="'+esc(item.title)+'" style="font-family:inherit;font-size:.8rem;padding:7px;border:1px solid var(--rule);background:var(--bg);width:100%;margin-bottom:5px;border-radius:3px;">'
+        +'<div style="display:flex;gap:5px;margin-bottom:5px">'
+          +'<input type="number" class="oedit-year" data-oid="'+sid+'" placeholder="Year" value="'+esc(item.year||'')+'" style="font-family:inherit;font-size:.8rem;padding:7px;border:1px solid var(--rule);background:var(--bg);width:80px;border-radius:3px;">'
+          +'<input type="text" class="oedit-edition" data-oid="'+sid+'" placeholder="Edition/version" value="'+esc(item.edition||'')+'" style="font-family:inherit;font-size:.8rem;padding:7px;border:1px solid var(--rule);background:var(--bg);flex:1;border-radius:3px;">'
+        +'</div>'
+        +'<input type="text" class="oedit-note" data-oid="'+sid+'" placeholder="Note" value="'+esc(item.note||'')+'" style="font-family:inherit;font-size:.8rem;padding:7px;border:1px solid var(--rule);background:var(--bg);width:100%;margin-bottom:5px;border-radius:3px;">'
+        +'<div style="display:flex;gap:5px">'
+          +'<button class="addbtn" data-saveowned="'+sid+'" style="width:auto;flex:1;padding:7px">Save</button>'
+          +'<button class="stbadge" data-canceledit="'+sid+'">Cancel</button>'
+        +'</div>'
       +'</div>'
     +'</div>';
   }).join('');
@@ -624,8 +680,7 @@ function renderF(){
   document.getElementById('f-empty').style.display=d.f.length?'none':'block';
   if(!d.f.length){el.innerHTML='';return;}
   el.innerHTML=d.f.map(function(item){
-    var jw='<a class="jw-link" href="'+jwUrl(item.title,item.year)+'" target="_blank">Check streaming &rarr;</a>';
-    return'<div class="hf-card">'
+    var jw=streamOrJW(item);
       +'<div class="card-title">'+esc(item.title)+'</div>'
       +'<div class="card-meta">'+(item.year?'<span class="card-yr">'+esc(item.year)+'</span>':'')+'</div>'
       +(item.edition?'<div class="owned-edition">Version: '+esc(item.edition)+'</div>':'')
@@ -667,21 +722,22 @@ function loadCinema(){
           +'<div class="venue-name">'+esc(vname)+'</div>'
           +venues[vname].map(function(film){
             var tags=(film.tags||[]);
+            var svc=film.streaming?streamBadge(film.streaming,film.jw_url||''):'';
             return'<div class="film-row">'
               +'<div class="film-info">'
-                +'<div class="film-title">'+esc(film.title)+'</div>'
+                +'<div class="film-title">'+esc(film.title)+(svc?' '+svc:'')+'</div>'
                 +(film.year?'<div class="film-yr">'+esc(film.year)+'</div>':'')
                 +(film.times?'<div class="film-times">'+esc(film.times)+'</div>':'')
                 +(film.desc?'<div class="film-desc">'+esc(film.desc)+'</div>':'')
                 +(tags.length?'<div class="film-tags">'+tags.map(function(t){return'<span class="tag t-genre">'+esc(t)+'</span>';}).join('')+'</div>':'')
               +'</div>'
-              +'<button class="film-addbtn" data-ct="'+esc(film.title)+'" data-cy="'+(film.year||'')+'" title="Add to queue">+</button>'
+              +'<button class="film-addbtn" data-ct="'+esc(film.title)+'" data-cy="'+(film.year||'')+'" data-ca="'+(film.streaming||'')+'" title="Add to queue">+</button>'
             +'</div>';
           }).join('')
         +'</div>';
       }).join('');
       el.querySelectorAll('[data-ct]').forEach(function(btn){
-        btn.addEventListener('click',function(){addQ(btn.dataset.ct,btn.dataset.cy,'','In cinema','from cinema',WHO);});
+        btn.addEventListener('click',function(){addQ(btn.dataset.ct,btn.dataset.cy,'',btn.dataset.ca||'In cinema','from cinema',WHO);});
       });
     })
     .catch(function(){loader.classList.remove('vis');el.innerHTML='<div class="empty">Could not load listings.json</div>';});
@@ -718,8 +774,8 @@ function loadRecs(){
   loader.classList.add('vis');
   fetch('recommendations.json?t='+Date.now())
     .then(function(r){return r.json();})
-    .then(function(live){loader.classList.remove('vis');renderRecs(live);})
-    .catch(function(){loader.classList.remove('vis');renderRecs([]);});
+    .then(function(live){LIVE_RECS=live;loader.classList.remove('vis');renderRecs(live);})
+    .catch(function(){LIVE_RECS=[];loader.classList.remove('vis');renderRecs([]);});
 }
 
 function renderRecs(live){
@@ -742,13 +798,15 @@ function renderRecs(live){
   function card(item,type){
     var tags=(item.tags||[]).slice(0,5);
     var already=inQ.indexOf(item.title.toLowerCase())>-1;
+    var dismissed=DISMISSED.indexOf(item.title.toLowerCase())>-1;
+    if(dismissed)return'';
     var yr=item.year?'<span style="font-size:.7rem;font-weight:400;color:var(--ink3)"> ('+item.year+')</span>':'';
-    var streamBadge=item.streaming?'<span class="rec-stream">'+esc(item.streaming)+'</span>':'';
-    var jwBadge=item.jw_url?'<a class="rec-link" href="'+esc(item.jw_url)+'" target="_blank">Streaming info</a>':'<a class="rec-link" href="'+jwUrl(item.title,item.year)+'" target="_blank">JustWatch</a>';
-    var articleLink=item.url&&item.url!=='#'?'<a class="rec-link" href="'+esc(item.url)+'" target="_blank">Read article</a>':'';
+    var svcBadge=streamOrJW(item);
+    var articleLink=(item.url&&item.url!=='#'&&item.url!=='')?'<a class="rec-link" href="'+esc(item.url)+'" target="_blank">Read article &rarr;</a>':'';
     var addBtn=already
-      ?'<span class="in-queue">In queue ✓</span>'
+      ?'<span class="in-queue">In queue &#10003;</span>'
       :'<button class="rec-addbtn" data-rt="'+esc(item.title)+'" data-ry="'+(item.year||'')+'" data-rg="'+(item.tags&&item.tags[0]?esc(item.tags[0]):'')+'" data-ra="'+(item.streaming?esc(item.streaming):'')+'">+ Queue</button>';
+    var dismissBtn='<button class="del-btn" data-dismiss="'+esc(item.title)+'" style="margin-left:0;font-size:.6rem;color:var(--rule2)" title="Dismiss">&#215; Dismiss</button>';
     return'<div class="rec-card '+type+'">'
       +'<div class="rec-title">'+esc(item.title)+yr+'</div>'
       +(item.director?'<div class="rec-meta">'+esc(item.director)+'</div>':'')
@@ -756,7 +814,7 @@ function renderRecs(live){
       +(item.desc?'<div class="rec-desc">'+esc(item.desc)+'</div>':'')
       +'<div class="rec-footer">'
         +'<span class="rec-src">'+esc(item.source||'')+'</span>'
-        +streamBadge+articleLink+jwBadge+addBtn
+        +svcBadge+articleLink+addBtn+dismissBtn
       +'</div>'
     +'</div>';
   }
@@ -774,7 +832,14 @@ function renderRecs(live){
   document.getElementById('rec-body').innerHTML=html;
 
   document.getElementById('rec-body').querySelectorAll('[data-rt]').forEach(function(btn){
-    btn.addEventListener('click',function(){addQ(btn.dataset.rt,btn.dataset.ry,btn.dataset.rg,btn.dataset.ra,'from recs',WHO);renderRecs(live);});
+    btn.addEventListener('click',function(){addQ(btn.dataset.rt,btn.dataset.ry,btn.dataset.rg,btn.dataset.ra,'from recs',WHO);renderRecs(LIVE_RECS);});
+  });
+  document.getElementById('rec-body').querySelectorAll('[data-dismiss]').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var title=btn.dataset.dismiss.toLowerCase();
+      if(DISMISSED.indexOf(title)===-1){DISMISSED.push(title);localStorage.setItem(LSD,JSON.stringify(DISMISSED));}
+      renderRecs(LIVE_RECS);
+    });
   });
 }
 
@@ -783,31 +848,74 @@ document.addEventListener('click',function(e){
   var d=ld();
 
   var el=e.target.closest('[data-delq]');
-  if(el){var id=parseInt(el.dataset.delq);d.q=d.q.filter(function(i){return i.id!==id;});svd(d);renderQ();return;}
+  if(el){var sid=el.dataset.delq;d.q=d.q.filter(function(i){return String(i.id)!==sid;});svd(d);renderQ();return;}
 
   el=e.target.closest('[data-cycst]');
-  if(el){var item=d.q.find(function(i){return i.id===parseInt(el.dataset.cycst);});if(item){var c=['queued','watching','watched'];item.status=c[(c.indexOf(item.status)+1)%c.length];svd(d);renderQ();}return;}
+  if(el){var item=d.q.find(function(i){return String(i.id)===el.dataset.cycst;});if(item){var c=['queued','watching','watched'];item.status=c[(c.indexOf(item.status)+1)%c.length];svd(d);renderQ();}return;}
 
   el=e.target.closest('[data-cycwho]');
-  if(el){var item=d.q.find(function(i){return i.id===parseInt(el.dataset.cycwho);});if(item){var c=['B','K','B+K'];item.who=c[(c.indexOf(item.who)+1)%c.length];svd(d);renderQ();}return;}
+  if(el){var item=d.q.find(function(i){return String(i.id)===el.dataset.cycwho;});if(item){var c=['B','K','B+K'];item.who=c[(c.indexOf(item.who)+1)%c.length];svd(d);renderQ();}return;}
 
   el=e.target.closest('[data-mvup]');
-  if(el){var id=parseInt(el.dataset.mvup),idx=d.q.findIndex(function(i){return i.id===id;});if(idx>0){var t=d.q[idx];d.q[idx]=d.q[idx-1];d.q[idx-1]=t;svd(d);renderQ();}return;}
+  if(el){var sid=el.dataset.mvup,idx=d.q.findIndex(function(i){return String(i.id)===sid;});if(idx>0){var t=d.q[idx];d.q[idx]=d.q[idx-1];d.q[idx-1]=t;svd(d);renderQ();}return;}
 
   el=e.target.closest('[data-mvdn]');
-  if(el){var id=parseInt(el.dataset.mvdn),idx=d.q.findIndex(function(i){return i.id===id;});if(idx<d.q.length-1){var t=d.q[idx];d.q[idx]=d.q[idx+1];d.q[idx+1]=t;svd(d);renderQ();}return;}
+  if(el){var sid=el.dataset.mvdn,idx=d.q.findIndex(function(i){return String(i.id)===sid;});if(idx<d.q.length-1){var t=d.q[idx];d.q[idx]=d.q[idx+1];d.q[idx+1]=t;svd(d);renderQ();}return;}
 
-  el=e.target.closest('[data-delo]');
-  if(el){var id=parseInt(el.dataset.delo);d.o=d.o.filter(function(i){return i.id!==id;});svd(d);renderO();return;}
+  el=e.target.closest('[data-editowned]');
+  if(el){
+    var sid=el.dataset.editowned;
+    document.getElementById('oview-'+sid).style.display='none';
+    document.getElementById('oedit-'+sid).style.display='block';
+    return;
+  }
+
+  el=e.target.closest('[data-canceledit]');
+  if(el){
+    var sid=el.dataset.canceledit;
+    document.getElementById('oview-'+sid).style.display='block';
+    document.getElementById('oedit-'+sid).style.display='none';
+    return;
+  }
+
+  el=e.target.closest('[data-saveowned]');
+  if(el){
+    var sid=el.dataset.saveowned;
+    var card=document.getElementById('ocard-'+sid);
+    var newTitle=card.querySelector('.oedit-title').value.trim();
+    var newYear=card.querySelector('.oedit-year').value.trim();
+    var newEdition=card.querySelector('.oedit-edition').value.trim();
+    var newNote=card.querySelector('.oedit-note').value.trim();
+    if(!newTitle){toast('Title cannot be empty');return;}
+    var item=d.o.find(function(i){return String(i.id)===sid;});
+    if(item){item.title=newTitle;item.year=newYear;item.edition=newEdition;item.note=newNote;svd(d);renderO();toast('Updated: '+newTitle);}
+    return;
+  }
+
+  if(el){var sid=el.dataset.delo;d.o=d.o.filter(function(i){return String(i.id)!==sid;});svd(d);renderO();return;}
 
   el=e.target.closest('[data-moveq]');
-  if(el){var own=d.o.find(function(i){return i.id===parseInt(el.dataset.moveq);});if(own)addQ(own.title,own.year,'',own.source,'from library',WHO);return;}
+  if(el){var sid=el.dataset.moveq;var own=d.o.find(function(i){return String(i.id)===sid;});if(own)addQ(own.title,own.year,'',own.source,'from library',WHO);return;}
+
+  el=e.target.closest('[data-addofav]');
+  if(el){
+    var sid=el.dataset.addofav;
+    var own=d.o.find(function(i){return String(i.id)===sid;});
+    if(own){
+      if(d.f.length>=MAX_F){toast('Favourites full (50)');return;}
+      if(!d.f.some(function(i){return i.title.toLowerCase()===own.title.toLowerCase();})){
+        d.f.unshift({id:Date.now(),title:own.title,year:own.year,edition:own.edition||'',where:own.source,note:own.note||''});
+        svd(d);renderO();toast(own.title+' added to favourites');
+      } else {toast(own.title+' already in favourites');}
+    }
+    return;
+  }
 
   el=e.target.closest('[data-delf]');
-  if(el){var id=parseInt(el.dataset.delf);d.f=d.f.filter(function(i){return i.id!==id;});svd(d);renderF();return;}
+  if(el){var sid=el.dataset.delf;d.f=d.f.filter(function(i){return String(i.id)!==sid;});svd(d);renderF();return;}
 
   el=e.target.closest('[data-moveqf]');
-  if(el){var fav=d.f.find(function(i){return i.id===parseInt(el.dataset.moveqf);});if(fav)addQ(fav.title,fav.year,'','','from favourites',WHO);return;}
+  if(el){var fav=d.f.find(function(i){return String(i.id)===el.dataset.moveqf;});if(fav)addQ(fav.title,fav.year,'','','from favourites',WHO);return;}
 });
 
 // ── INIT ─────────────────────────────────────────────────────────────────
@@ -843,16 +951,17 @@ window.addEventListener('load',function(){
     var btn=e.target.closest('.chip[data-rtag]');if(!btn)return;
     REC_TAG=btn.dataset.rtag;
     document.querySelectorAll('#rec-tags .chip').forEach(function(c){c.classList.remove('on');});
-    btn.classList.add('on');if(CANON.length)renderRecs();
+    btn.classList.add('on');renderRecs(LIVE_RECS);
   });
   document.getElementById('rec-srcs').addEventListener('click',function(e){
     var btn=e.target.closest('.srchip[data-src]');if(!btn)return;
     REC_SRC=btn.dataset.src;
     document.querySelectorAll('#rec-srcs .srchip').forEach(function(c){c.classList.remove('on');});
-    btn.classList.add('on');if(CANON.length)renderRecs();
+    btn.classList.add('on');renderRecs(LIVE_RECS);
   });
-  document.getElementById('rec-custom-btn').addEventListener('click',function(){REC_CUSTOM=v('rec-custom');if(CANON.length||true)renderRecs();});
-  document.getElementById('rec-custom').addEventListener('keydown',function(e){if(e.key==='Enter'){REC_CUSTOM=e.target.value.trim();renderRecs();}});
+  document.getElementById('rec-custom-btn').addEventListener('click',function(){REC_CUSTOM=v('rec-custom');renderRecs(LIVE_RECS);});
+  document.getElementById('rec-custom').addEventListener('keydown',function(e){if(e.key==='Enter'){REC_CUSTOM=e.target.value.trim();renderRecs(LIVE_RECS);}});
+  document.getElementById('clear-dismissed').addEventListener('click',function(){DISMISSED=[];localStorage.removeItem(LSD);renderRecs(LIVE_RECS);toast('Dismissed items restored');});
 
   document.getElementById('o-add-btn').addEventListener('click',function(){
     var t=v('o-title');if(!t)return;
