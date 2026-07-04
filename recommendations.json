@@ -1,5 +1,35 @@
 [
   {
+    "title": "‘There’s excitement in the air’: how America fell back in love with indie cinemas",
+    "source": "The Guardian",
+    "url": "https://www.theguardian.com/film/2026/jul/04/america-indie-cinemas-revival",
+    "tags": [],
+    "desc": "With unexpected programming and a community ethos, independent cinemas across the US are giving multiplexes a run for their moneyOn a quiet street in New York City’s Ridgewood neighborhood stands an unassuming, windowless white building. Its lone doo",
+    "streaming": "",
+    "jw_url": "",
+    "pub_date": "2026-07-04T09:00:10Z"
+  },
+  {
+    "title": "Supergirl is a box office catastrophe. How can Marvel and DC save the superhero movie?",
+    "source": "The Guardian",
+    "url": "https://www.theguardian.com/film/2026/jul/03/supergirl-box-office-catastrophe-marvel-dc-superhero-movies",
+    "tags": [],
+    "desc": "Cinematic universes rely on audiences investing in minor characters – but as that interest wanes, it may be up to the big guns to keep the genre afloatIt’s sometimes hard to believe that modern Superman movies existed for nearly four decades before t",
+    "streaming": "",
+    "jw_url": "",
+    "pub_date": "2026-07-03T15:18:35Z"
+  },
+  {
+    "title": "‘If you see one movie this year’: Christopher Nolan’s The Odyssey set to storm the box office",
+    "source": "The Guardian",
+    "url": "https://www.theguardian.com/film/2026/jul/03/christopher-nolan-the-odyssey",
+    "tags": [],
+    "desc": "The summer’s most anticipated film will raise epic questions about culture wars, classics and the nature of film-makingIn a plot twist worthy of the ancient bards themselves, the hottest movie of the summer isn’t a superhero flick, or an alien-invasi",
+    "streaming": "",
+    "jw_url": "",
+    "pub_date": "2026-07-03T14:19:03Z"
+  },
+  {
     "title": "The making of Independence Day at 30: ‘I panicked and raced to set to rewrite’",
     "source": "The Guardian",
     "url": "https://www.theguardian.com/film/2026/jul/03/independence-day-film-30th-anniversary",
@@ -30,19 +60,6 @@
     "pub_date": "2026-07-02T11:05:10Z"
   },
   {
-    "title": "Birds of War review – war journalists find love among the ruins",
-    "source": "The Guardian",
-    "url": "https://www.theguardian.com/film/2026/jul/02/birds-of-war-review-war-journalists-find-love-among-the-ruins",
-    "tags": [
-      "Documentary",
-      "Critic Pick"
-    ],
-    "desc": "This documentary tells the story of the long-distance relationship between a BBC correspondent in London and a photographer on the ground in Syria with charm and humanityPolitics is to some degree set aside here in favour of matters of the heart; thi",
-    "streaming": "",
-    "jw_url": "",
-    "pub_date": "2026-07-02T06:00:05Z"
-  },
-  {
     "title": "Lethal Weapon star Danny Glover reveals Alzheimer’s diagnosis",
     "source": "The Guardian",
     "url": "https://www.theguardian.com/film/2026/jul/01/lethal-weapon-star-danny-glover-reveals-alzheimers-diagnosis",
@@ -51,28 +68,6 @@
     "streaming": "",
     "jw_url": "",
     "pub_date": "2026-07-01T16:34:17Z"
-  },
-  {
-    "title": "Shrinks on the verge of a nervous breakdown: how horror movies came for therapists",
-    "source": "The Guardian",
-    "url": "https://www.theguardian.com/film/2026/jul/01/flawed-film-therapists-rose-byrne-if-i-had-legs-id-kick-you-jodie-foster-a-private-life",
-    "tags": [],
-    "desc": "From Rose Byrne in If I Had Legs I’d Kick You to Jodie Foster in A Private Life, an onscreen parade of psychoanalysts are unravelling before us, tapping into our worst fearsThere is an old adage that “every therapist needs a therapist”. Even while th",
-    "streaming": "",
-    "jw_url": "",
-    "pub_date": "2026-07-01T09:11:05Z"
-  },
-  {
-    "title": "Nirvanna the Band the Show the Movie review – two goofballs in search of a gig roll back the years",
-    "source": "The Guardian",
-    "url": "https://www.theguardian.com/film/2026/jul/01/nirvanna-the-band-the-show-the-movie-review",
-    "tags": [
-      "Critic Pick"
-    ],
-    "desc": "Channelling Bill and Ted, slacker buddies accidentally travel back to 2008, but open up a psychic wound which threatens their band’s existenceWith its sheer goofball silliness, and unexpectedly great visual effects work, this ridiculous hellzapoppin’",
-    "streaming": "",
-    "jw_url": "",
-    "pub_date": "2026-07-01T08:00:30Z"
   },
   {
     "title": "Blake Lively files to receive $8m in legal fees from Justin Baldoni and his studio",
@@ -159,18 +154,6 @@
     "streaming": "",
     "jw_url": "",
     "pub_date": "2026-06-25T13:00:29Z"
-  },
-  {
-    "title": "Jacob Elordi, Jenna Ortega and Stephen Fry among new invited Oscar voters",
-    "source": "The Guardian",
-    "url": "https://www.theguardian.com/film/2026/jun/24/new-academy-members-oscars-voters",
-    "tags": [
-      "Award"
-    ],
-    "desc": "Annual list of creatives invited to join the Academy also includes Josh O’Connor, Teyana Taylor and Jon BernthalJacob Elordi, Jenna Ortega and Stephen Fry are among the 529 creatives invited to join this year’s member class of the Academy of Motion P",
-    "streaming": "",
-    "jw_url": "",
-    "pub_date": "2026-06-24T20:14:26Z"
   },
   {
     "title": "Supergirl review – sprightly and sparkling superhero yarn without the usual baffling DC backstory",
@@ -299,87 +282,95 @@
     "pub_date": "2026-01-24T20:13:28Z"
   },
   {
-    "title": "‘My Indian Boyfriend: The Golden Mile’ Lands RFT Films for U.K. and Ireland Theatrical Distribution (EXCLUSIVE)",
+    "title": "Šimon Holý Turns Drag, Family and Small-Town Life Into a Tender Political Statement in ‘Chica Checa’",
     "source": "Variety",
-    "url": "https://variety.com/2026/film/news/my-indian-boyfriend-golden-mile-uk-ireland-rft-films-1236801248/",
+    "url": "https://variety.com/2026/film/global/simon-holy-chica-checa-1236793680/",
     "tags": [],
-    "desc": "&#8220;My Indian Boyfriend: The Golden Mile,&#8221; a British romantic drama set against Leicester&#8217;s Diwali celebrations, has landed U.K. and Ireland theatrical distribution through RFT Films, ahead of the film&#8217;s principal photography thi",
+    "desc": "A drag queen comes out to his small-town mother but all hell doesn’t break loose in Šimon Holý’s heartfelt and crowd-pleasing feature “Chica Checa.” The film screens on Saturday in the Crystal Globe Competition at the Karlovy Vary Film Festival. Holý",
     "streaming": "",
     "jw_url": "",
     "pub_date": ""
   },
   {
-    "title": "‘Brothers for Life,’ ‘Thousand Dollar Baby’ Lead Skyline Media, Galaxy Play’s International Sales Slate (EXCLUSIVE)",
+    "title": "Celina Vikram Jaitly Returns to the Big Screen as Sister Nibedita, the Irish-Born Disciple of Swami Vivekananda (EXCLUSIVE)",
     "source": "Variety",
-    "url": "https://variety.com/2026/tv/news/brothers-for-life-thousand-dollar-baby-skyline-galaxy-play-1236801240/",
+    "url": "https://variety.com/2026/film/news/celina-jaitly-sister-nibedita-ram-kamal-mukherjee-1236801458/",
     "tags": [],
-    "desc": "Vietnam-based sales agent Skyline Media and streaming platform Galaxy Play have struck a partnership that will send Galaxy Play Originals into international markets for the first time, with Skyline Media named exclusive international sales agent for",
+    "desc": "Indian actor Celina Vikram Jaitly is returning to feature films as Sister Nibedita, the Irish-born disciple of Swami Vivekananda, in director Ram Kamal Mukherjee&#8217;s next biographical drama, after the two last collaborated on his film &#8220;Seas",
     "streaming": "",
     "jw_url": "",
     "pub_date": ""
   },
   {
-    "title": "AI-Created Indian Musical Microdrama ‘Mohini – Khud Se Pyaar’ Unveils Debut Track ‘Angaat Aalay Ka’ (EXCLUSIVE)",
+    "title": "Rob Reiner Gets the ‘Last Laugh’ Against Trump in Secret Final Role as George Washington in Larry David’s HBO Show",
     "source": "Variety",
-    "url": "https://variety.com/2026/tv/news/ai-indian-musical-microdrama-mohini-debut-track-1236800841/",
+    "url": "https://variety.com/2026/tv/news/rob-reiner-trump-george-washington-larry-david-hbo-show-1236801101/",
     "tags": [],
-    "desc": "&#8220;Angaat Aalay Ka,&#8221; the opening song from the AI-created musical microdrama &#8220;Mohini – Khud Se Pyaar,&#8221; has been released by India&#8217;s Equinox Virtual, the company conceived by producer and storyteller Amita Madhvani. Rooted",
+    "desc": "SPOILER ALERT: This interview contains spoilers for Episode 2 of “Life, Larry, and the Pursuit of Unhappiness: An Almost History of America,” now streaming on HBO Max. A month before he died, Rob Reiner filmed his final role as George Washington in L",
     "streaming": "",
     "jw_url": "",
     "pub_date": ""
   },
   {
-    "title": "Madonna’s Dance Floor-Dominating ‘Confessions II’ Is Her Best Album in Decades: Album",
+    "title": "‘Dutton Ranch’ Star Juan Pablo Raba Has a Wild Theory About [SPOILER]’s Murder: ‘There’s a Lot of Questions to Be Answered’",
     "source": "Variety",
-    "url": "https://variety.com/2026/music/album-reviews/madonna-confessions-ii-album-review-1236801149/",
+    "url": "https://variety.com/2026/tv/features/dutton-ranch-joaquin-didnt-shoot-rob-will-1236801208/",
+    "tags": [],
+    "desc": "SPOILER ALERT:&#160;This post contains spoilers from the ninth episode of “Dutton Ranch,” “El Padrino,” which is now streaming on Paramount+. The season finale of “Dutton Ranch” ends with a bang when Rob-Will (Jai Courtney) is gunned down at his fron",
+    "streaming": "",
+    "jw_url": "",
+    "pub_date": ""
+  },
+  {
+    "title": "Adam Sandler Officiated Taylor Swift and Travis Kelce’s Wedding",
+    "source": "Variety",
+    "url": "https://variety.com/2026/film/news/adam-sandler-officiated-taylor-swift-travis-kelces-wedding-1236801628/",
+    "tags": [
+      "Spy"
+    ],
+    "desc": "Adam Sandler officiated Taylor Swift and Travis Kelce&#8217;s star-studded Madison Square Garden wedding. The reveal came via a press release obtained by Variety in the minutes following Swift and Kelce&#8217;s official marriage announcement. It also",
+    "streaming": "",
+    "jw_url": "",
+    "pub_date": ""
+  },
+  {
+    "title": "Sienna Spiro’s ‘The Visitor’ Introduces an Electrifying Voice That’s Here to Stay: Album",
+    "source": "Variety",
+    "url": "https://variety.com/2026/music/album-reviews/sienna-spiro-visitor-album-review-1236801598/",
     "tags": [
       "Critic Pick"
     ],
-    "desc": "&#8220;Sometimes I like to just hide in the shadows,&#8221; mutters Madonna at the start of &#8220;I Feel So Free,&#8221; the opening track on her 15th album &#8220;Confessions II.&#8221; &#8220;Create a new persona. A different identity. I can be wh",
+    "desc": "Only a very few performers put out their debut album having already established themselves as frontrunners for the Grammy for best new artist. Sienna Spiro is in that category, and let&#8217;s just say that &#8220;The Visitor,&#8221; her first full-l",
     "streaming": "",
     "jw_url": "",
     "pub_date": ""
   },
   {
-    "title": "War Drama ‘Peluru Senja: The Ghost & the Gun’ Locks Malaysia Theatrical Date, Drops Trailer (EXCLUSIVE)",
+    "title": "‘Dutton Ranch’ Season 1 Finale: [SPOILER] Is Murdered, [SPOILER] Is a Fentanyl Tycoon and [SPOILER] Is Kidnapped by the Cartel in Wild Cliffhanger",
     "source": "Variety",
-    "url": "https://variety.com/2026/film/news/peluru-senja-malaysia-release-date-trailer-1236800826/",
+    "url": "https://variety.com/2026/tv/recaps/dutton-ranch-season-finale-recap-rob-will-killed-1236796018/",
     "tags": [],
-    "desc": "The first trailer for &#8220;Peluru Senja: The Ghost &#38; the Gun&#8221; has arrived alongside confirmation of a nationwide Malaysian theatrical release on Aug. 28, timed to the country&#8217;s Independence Day weekend. Local distributor MSK Cinemas",
+    "desc": "SPOILER ALERT:&#160;This post contains spoilers from the ninth episode of “Dutton Ranch,” “El Padrino,” which is now streaming on Paramount+. This season of “Dutton Ranch” flew by at warp speed. Sure, it was only nine episodes long, but they packed a",
     "streaming": "",
     "jw_url": "",
     "pub_date": ""
   },
   {
-    "title": "Jodie Foster Says Brad Pitt’s ‘F1’ Seemed Like It Was Made by AI and Written by a Computer: ‘Wasn’t It?’",
+    "title": "‘Solo Leveling’ Movie ‘Beyond the System’ From Crunchyroll and Aniplex Now in Production",
     "source": "Variety",
-    "url": "https://variety.com/2026/film/news/jodie-foster-brad-pitt-f1-ai-written-by-computer-1236801120/",
-    "tags": [
-      "Ebert Pick"
-    ],
-    "desc": "Jodie Foster was discussing great movies and how Hollywood has changed in a talk this week, and she brought up Apple&#8217;s &#8220;F1&#8221; as an example of how machines may be altering creativity. During a Tuesday talk called &#8220;Who Owns the F",
-    "streaming": "",
-    "jw_url": "",
-    "pub_date": ""
-  },
-  {
-    "title": "Moritz Borman, Producer of ‘Terminator’ Movies and Oliver Stone Films, Dies at 71",
-    "source": "Variety",
-    "url": "https://variety.com/2026/film/news/moritz-borman-dead-terminator-1236801160/",
-    "tags": [
-      "Award"
-    ],
-    "desc": "Moritz Borman, the producer of Oscar-nominated films such as &#8220;The Quiet American&#8221; and &#8220;Under the Volcano&#8221; as well a frequent collaborator of Oliver Stone, died Wednesday in Munich. He was 71. Borman&#8217;s death of natural ca",
-    "streaming": "",
-    "jw_url": "",
-    "pub_date": ""
-  },
-  {
-    "title": "The Best Horror Movies of 2026 (So Far), Ranked: ‘Obsession,’ ‘Backrooms,’ ‘Hokum’ and More",
-    "source": "Variety",
-    "url": "https://variety.com/lists/best-horror-movies-2026-ranked/",
+    "url": "https://variety.com/2026/film/news/solo-leveling-movie-beyond-the-system-in-production-1236801606/",
     "tags": [],
-    "desc": "2026 has already been a wild year for horror, from low-budget box office hits (“Backrooms,” “Obsession”) to sequels the world could have lived without (“Scream 7,” “The Strangers – Chapter 3”). In a year loaded with scary movies, many of them were go",
+    "desc": "Crunchyroll and Aniplex have unveiled that the new theatrical anime film “Solo Leveling: Beyond the System,” based on the popular Korean novel and webtoon series, is now in production. “Solo Leveling: Beyond the System” pick ups directly after the ev",
+    "streaming": "",
+    "jw_url": "",
+    "pub_date": ""
+  },
+  {
+    "title": "Prince William Joins ‘New Heights’ Podcast on Taylor Swift and Travis Kelce’s Wedding Day",
+    "source": "Variety",
+    "url": "https://variety.com/2026/music/news/prince-william-new-heights-taylor-swift-travis-kelce-1236801557/",
+    "tags": [],
+    "desc": "Travis Kelce posted a surprise “New Heights” interview with Prince William on Friday, the day he’s set to get married to his popstar fiancé Taylor Swift at New York’s Madison Square Garden. “We thought were gonna be talking to, like, fat offensive li",
     "streaming": "",
     "jw_url": "",
     "pub_date": ""
@@ -539,6 +530,50 @@
     "pub_date": ""
   },
   {
+    "title": "Fifty Years After the Bicentennial, A Declaration of Independence for American Filmmakers",
+    "source": "RogerEbert.com",
+    "url": "https://www.rogerebert.com/features/fifty-years-after-the-bicentennial-a-declaration-of-independence-for-american-filmmakers",
+    "tags": [],
+    "desc": "Fifty years after the bicentennial and New Hollywood, there's still hope for the future of movies.",
+    "streaming": "",
+    "jw_url": "",
+    "pub_date": ""
+  },
+  {
+    "title": "2026 Karlovy Vary International Film Festival Preview: 10 Films We Can’t Wait to See",
+    "source": "RogerEbert.com",
+    "url": "https://www.rogerebert.com/festivals/2026-karlovy-vary-international-film-festival-preview-10-films-we-cant-wait-to-see",
+    "tags": [
+      "Critic Pick"
+    ],
+    "desc": "It’s the 60th edition of Karlovy Vary International Film Festival, a cinematic event, running from July 3-11, that combines world premieres from across Eastern Europe, with festival highlights from Sundance, Berlinale, and Cannes, along with rare res",
+    "streaming": "",
+    "jw_url": "",
+    "pub_date": ""
+  },
+  {
+    "title": "10 of Roger Ebert’s Favorite Movies About America",
+    "source": "RogerEbert.com",
+    "url": "https://www.rogerebert.com/roger-ebert/10-of-roger-eberts-favorite-movies-about-america",
+    "tags": [
+      "Ebert Pick"
+    ],
+    "desc": "For America's 250th birthday, we look back on Roger's thoughts about some of the most significant movies about the American experience, for good or ill.",
+    "streaming": "",
+    "jw_url": "",
+    "pub_date": ""
+  },
+  {
+    "title": "Through the Window: 10 Times That Foreign Directors Have Looked at America",
+    "source": "RogerEbert.com",
+    "url": "https://www.rogerebert.com/features/through-the-window-10-times-that-foreign-directors-have-looked-at-america",
+    "tags": [],
+    "desc": "10 films by foreign-born directors about the country celebrating its 250th birthday this weekend.",
+    "streaming": "",
+    "jw_url": "",
+    "pub_date": ""
+  },
+  {
     "title": "Apple TV’s “Silo” Falters in Transitional Third Season",
     "source": "RogerEbert.com",
     "url": "https://www.rogerebert.com/streaming/silo-season-3-rebecca-ferguson-apple-tv-review-2026",
@@ -589,45 +624,13 @@
     "pub_date": ""
   },
   {
-    "title": "Home Entertainment Guide June 2026: Hoppers, Crime 101, The Mastermind, More",
-    "source": "RogerEbert.com",
-    "url": "https://www.rogerebert.com/dvd-blu-ray/home-entertainment-guide-june-2026-hoppers-crime-101-the-mastermind-more",
-    "tags": [],
-    "desc": "The latest on Blu-ray and streaming include a Pixar original, a few of our best movies of the year so far, and Arrow editions of Audition and Wake in Fright.",
-    "streaming": "",
-    "jw_url": "",
-    "pub_date": ""
-  },
-  {
-    "title": "Retreating From The Elephant: The Perpetually Impending Demise of Indie Cinema",
-    "source": "RogerEbert.com",
-    "url": "https://www.rogerebert.com/features/retreating-from-the-elephant-the-perpetually-impending-demise-of-indie-cinema",
-    "tags": [],
-    "desc": "Breaking down the existential limbo that independent filmmakers face, no matter how good their last feature was.",
-    "streaming": "",
-    "jw_url": "",
-    "pub_date": ""
-  },
-  {
-    "title": "A French-Language “Zorro” Offers a Charmingly Offbeat Interpretation of the Famous Vigilante",
-    "source": "RogerEbert.com",
-    "url": "https://www.rogerebert.com/streaming/zorro-jean-dujardin-tv-review-2026",
+    "title": "Local musician Maria Elena Silva creates spaces for centuries of songs",
+    "source": "Chicago Reader",
+    "url": "https://chicagoreader.com/music/concert-preview/maria-elena-silva-constellation/",
     "tags": [
-      "Jacques Tati"
+      "Spy"
     ],
-    "desc": "A pleasant throwback to when adventure-themed television was something major networks still made.",
-    "streaming": "",
-    "jw_url": "",
-    "pub_date": ""
-  },
-  {
-    "title": "The Honor of an Absolute Lifetime: Rod Lurie on “Lucky Strike",
-    "source": "RogerEbert.com",
-    "url": "https://www.rogerebert.com/interviews/the-honor-of-an-absolute-lifetime-rod-lurie-on-lucky-strike",
-    "tags": [
-      "WWII"
-    ],
-    "desc": "An interview with writer/director Rod Lurie about his newest WWII drama.",
+    "desc": "Maria Elena Silva Sun 7/19 at Constellation\nThe post Local musician Maria Elena Silva creates spaces for centuries of songs  appeared first on Chicago Reader.",
     "streaming": "",
     "jw_url": "",
     "pub_date": ""
@@ -738,28 +741,6 @@
       "Spy"
     ],
     "desc": "Watson and Watson Association8325 S. Stony Island Ave, Mon, Tue, Wed, and Fri, 10 AM–6 PM, Thu closed, Sat 8:30 AM–1 PM once per month (773) 768-3100, watsonandwatsondental.com, Instagram @watsonwastondental A trip to the dentist should never feel l",
-    "streaming": "",
-    "jw_url": "",
-    "pub_date": ""
-  },
-  {
-    "title": "What ‘don’t drop the soap’ gets wrong",
-    "source": "Chicago Reader",
-    "url": "https://chicagoreader.com/city-life/inside-voices/dont-drop-the-soap/",
-    "tags": [],
-    "desc": "“Don&#8217;t drop the soap.” We’ve all heard it. It&#8217;s been said in so many movies, TV shows, and comedy skits that mention prison. Before I was incarcerated, everything I knew about prison was from movies like The Shawshank Redemption and Half",
-    "streaming": "",
-    "jw_url": "",
-    "pub_date": ""
-  },
-  {
-    "title": "Review: Supergirl",
-    "source": "Chicago Reader",
-    "url": "https://chicagoreader.com/film-tv/movie-review/review-supergirl/",
-    "tags": [
-      "Critic Pick"
-    ],
-    "desc": "Supergirl in wide release in theaters\nThe post Review: &lt;i&gt;Supergirl&lt;/i&gt; appeared first on Chicago Reader.",
     "streaming": "",
     "jw_url": "",
     "pub_date": ""
