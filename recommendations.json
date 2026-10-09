@@ -1,5 +1,51 @@
 [
   {
+    "title": "The new Darth Vader: how tech execs became the film villains of our age",
+    "source": "The Guardian",
+    "url": "https://www.theguardian.com/film/2026/oct/09/the-new-darth-vader-how-tech-execs-became-the-film-villains-of-our-age",
+    "tags": [
+      "Spy"
+    ],
+    "desc": "Jeremy Strong’s portrayal of Mark Zuckerberg in The Social Reckoning shows how public opinion has changed around billionaire CEOs since The Social Network’s releaseWhen The Social Network came out, Mark Zuckerberg organised a staff viewing of a film",
+    "streaming": "",
+    "jw_url": "",
+    "pub_date": "2026-10-09T11:05:42Z"
+  },
+  {
+    "title": "‘Is death necessary?’: why Peter Greenaway’s assisted dying drama is stuck in post-production hell",
+    "source": "The Guardian",
+    "url": "https://www.theguardian.com/film/2026/oct/09/is-death-necessary-why-peter-greenaways-assisted-dying-drama-is-stuck-in-post-production-hell",
+    "tags": [],
+    "desc": "Exclusive: Three years after filming began on the contentious Lucca Mortis, starring Dustin Hoffman, the British director is still in dispute with producers over which version to release, and a battle over rights rumbles on Peter Greenaway’s new movi",
+    "streaming": "",
+    "jw_url": "",
+    "pub_date": "2026-10-09T08:00:42Z"
+  },
+  {
+    "title": "‘Old-timey fascism was kept secret. Now you don’t have to hide it’: Martin McDonagh, John Malkovich and Sam Rockwell on Wild Horse Nine",
+    "source": "The Guardian",
+    "url": "https://www.theguardian.com/film/2026/oct/09/martin-mcdonagh-john-malkovich-sam-rockwell-interview-wild-horse-nine",
+    "tags": [
+      "Spy"
+    ],
+    "desc": "McDonagh’s latest film has Malkovich and Rockwell shooting the breeze as CIA agents in 1973 on Easter Island. They discuss grandchildren, swimming with turtles and who shot JFK‘Earmuffs!” says Sam Rockwell, pausing his gushing tribute mid-flow and tu",
+    "streaming": "",
+    "jw_url": "",
+    "pub_date": "2026-10-09T04:00:38Z"
+  },
+  {
+    "title": "Animals review – Ben Affleck’s dull Netflix thriller is lacking in bark and bite",
+    "source": "The Guardian",
+    "url": "https://www.theguardian.com/film/2026/oct/08/animals-movie-review-ben-affleck",
+    "tags": [
+      "Critic Pick"
+    ],
+    "desc": "Actor-director’s listless LA-set crime thriller makes for a surprisingly anonymous effort and one that feels very similar to many other, better filmsBen Affleck has pushed through multiple Hollywood comebacks, at least one predicated on his facility",
+    "streaming": "",
+    "jw_url": "",
+    "pub_date": "2026-10-08T23:00:32Z"
+  },
+  {
     "title": "Sofia Coppola: ‘I’m glad we weren’t kicked out of Tokyo making Lost in Translation’",
     "source": "The Guardian",
     "url": "https://www.theguardian.com/film/2026/oct/08/sofia-coppola-director-lost-in-translation-interview",
@@ -43,55 +89,6 @@
     "streaming": "",
     "jw_url": "",
     "pub_date": "2026-10-08T09:00:15Z"
-  },
-  {
-    "title": "Big Girls Don’t Cry review – a New Zealand teenager finds herself in tender coming-of-age tale",
-    "source": "The Guardian",
-    "url": "https://www.theguardian.com/film/2026/oct/08/new-zealand-movie-teenager-chat-room-big-girls-dont-cry-review",
-    "tags": [
-      "Critic Pick"
-    ],
-    "desc": "Writer-director Paloma Schneideman’s wonderful film follows a 14-year-old in 2006 who pretends to be someone else in a chat room, with real-world consequencesGet our weekend culture and lifestyle emailAll coming-of-age films face the challenge of how",
-    "streaming": "",
-    "jw_url": "",
-    "pub_date": "2026-10-08T02:23:47Z"
-  },
-  {
-    "title": "The Uprising review – Paul Greengrass turns revolutionary rage into a Robin Hood origin myth",
-    "source": "The Guardian",
-    "url": "https://www.theguardian.com/film/2026/oct/07/the-uprising-review-paul-greengrass-andrew-garfield-peasants-revolt",
-    "tags": [
-      "Critic Pick"
-    ],
-    "desc": "Andrew Garfield’s fictional ploughman joins the historical heroes of the 1381 Peasants’ Revolt in a dirt-caked, docudrama-style film with disconcertingly silly momentsPaul Greengrass has in fact already made his “uprising” film: United 93, the gut-wr",
-    "streaming": "",
-    "jw_url": "",
-    "pub_date": "2026-10-07T14:00:56Z"
-  },
-  {
-    "title": "Will the Zuckerberg, Musk and Altman movies make a dent on tech giant evangelism?",
-    "source": "The Guardian",
-    "url": "https://www.theguardian.com/film/2026/oct/07/the-social-reckoning-musk-and-artificial-zuckerberg-musk-and-altman-movies-tech",
-    "tags": [
-      "Spy"
-    ],
-    "desc": "The triple release of The Social Reckoning, Musk and Artificial is less a clear political stance, more like movie studio opportunismHollywood is sending a clear message: it’s a friend of tech. Netflix is no longer a lone disruptor: historic studio MG",
-    "streaming": "",
-    "jw_url": "",
-    "pub_date": "2026-10-07T13:43:43Z"
-  },
-  {
-    "title": "The Social Reckoning review – Aaron Sorkin’s jittery sequel with all-new evil puppet Zuckerberg",
-    "source": "The Guardian",
-    "url": "https://www.theguardian.com/film/2026/oct/07/the-social-reckoning-review-aaron-sorkin-jeremy-strong-mikey-madison",
-    "tags": [
-      "Spy",
-      "Critic Pick"
-    ],
-    "desc": "Jeremy Strong’s slow-talking Facebook founder turns into a cameo, background to a thriller about a whistleblower that somehow never mentions TrumpHere is a film for all those people who solemnly deplore social media in conversation but haven’t quite",
-    "streaming": "",
-    "jw_url": "",
-    "pub_date": "2026-10-07T13:00:04Z"
   },
   {
     "title": "Eva Marie Saint, star of North by Northwest and On the Waterfront, dies aged 102",
@@ -154,18 +151,6 @@
     "streaming": "",
     "jw_url": "",
     "pub_date": "2026-10-04T09:00:24Z"
-  },
-  {
-    "title": "NAZA film-makers say they spoke to more than 100 sources about Israeli actions in Gaza",
-    "source": "The Guardian",
-    "url": "https://www.theguardian.com/film/2026/oct/01/makers-naza-film-spoke-more-than-100-sources-israeli-actions-gaza",
-    "tags": [
-      "Documentary"
-    ],
-    "desc": "Team behind documentary push back against IDF attempt to discredit its exposure of military systemsThe team behind the award-winning film NAZA, which details the Israeli military’s targeting policies in Gaza and its alleged acceptance of high numbers",
-    "streaming": "",
-    "jw_url": "",
-    "pub_date": "2026-10-01T17:45:09Z"
   },
   {
     "title": "Don’t hate the movie, hate the critic! Digger’s new PR push is a risky bet for film that was never meant to be divisive",
@@ -316,88 +301,107 @@
     "pub_date": "2024-09-09T22:49:12Z"
   },
   {
-    "title": "CBS Vampire Sitcom ‘Eternally Yours’ Is a Genial Riff on ‘Ghosts’: TV",
+    "title": "Nintendo of America Chief Breaks Down Her First Year: ‘Zelda’ Live-Action Movie, ‘GTA 6,’ Third-Party Game Goals and More",
     "source": "Variety",
-    "url": "https://variety.com/2026/tv/reviews/eternally-yours-review-cbs-ghosts-1236904662/",
+    "url": "https://variety.com/2026/gaming/news/legend-of-zelda-movie-gta-6-nintendo-devon-pritchard-interview-1236906466/",
+    "tags": [],
+    "desc": "After just under a year in her new role as president of Nintendo of America, Devon Pritchard is ready to share elements of her master plan for the beloved Japanese gaming company. At the center of her strategy is the relative youth of Nintendo’s Swit",
+    "streaming": "",
+    "jw_url": "",
+    "pub_date": ""
+  },
+  {
+    "title": "‘The Handmaid’s Tale’ Cinematographer Bérénice Eveno to Direct Paris Thriller ‘Sleepless Nights,’ Starring Sawsan Abes, as SND Boards Sales (EXCLUSIVE)",
+    "source": "Variety",
+    "url": "https://variety.com/2026/tv/global/handmaids-tale-cinematographer-direct-sleepless-nights-1236906444/",
     "tags": [
-      "Spy",
-      "Critic Pick"
+      "Spy"
     ],
-    "desc": "The CBS sitcom “Eternally Yours” is not officially a spinoff of the network’s hit series “Ghosts.” But, functionally, that’s the pitch. Another story of supernatural roommates from the same creative team, “Eternally Yours” swaps out specters for vamp",
+    "desc": "“The Handmaid’s Tale” cinematographer Bérénice Eveno is directing “Sleepless Nights,” a female-led spy thriller set in Paris’ nightlife scene. Commissioned by NBCUniversal for France, Spain, Poland, Belgium, Switzerland and the former Yugoslavia, the",
     "streaming": "",
     "jw_url": "",
     "pub_date": ""
   },
   {
-    "title": "Variety to Honor John Turturro With the Creative Vanguard Award at Miami Film Festival",
+    "title": "The Lumière Festival’s Classic Film Market Gains International Reach, Honors Greece and Spotlights Taiwan as Heritage Films Grow in Market Value",
     "source": "Variety",
-    "url": "https://variety.com/2026/film/news/john-turturro-creative-vanguard-award-miami-film-festival-1236905133/",
+    "url": "https://variety.com/2026/film/global/lumiere-mifc-classic-film-catalogue-1236905356/",
     "tags": [],
-    "desc": "Emmy Award-winning actor, writer and director John Turturro will be honored with the Variety Creative Vanguard Award at Miami Dade College’s (MDC) Miami Film Festival GEMS on Monday, Nov. 2. The event will take place at Miami Dade College Wolfson Aud",
+    "desc": "LYON, France — Classic film markets are ever more international and so is the International Classic Film Market (MIFC), part of Lyon’s Lumière Festival and one of the world’s very rare business meets and marts for the heritage film business. Equally,",
     "streaming": "",
     "jw_url": "",
     "pub_date": ""
   },
   {
-    "title": "Shudder Acquires Supernatural Horror Film ‘Split Rock’ Ahead of World Premiere at Sitges (EXCLUSIVE)",
+    "title": "Australian Classic ‘Caddie,’ Considered a Landmark Film of Australia’s New Wave, Acquired by Potential Films Ahead of Lumière Film Festival Premiere",
     "source": "Variety",
-    "url": "https://variety.com/2026/film/news/split-rock-shudder-horror-film-sitges-1236905157/",
+    "url": "https://variety.com/2026/film/global/australia-classic-caddie-potential-films-lumiere-mifc-1236906437/",
     "tags": [],
-    "desc": "A fresh batch of supernatural frights is headed to Shudder. The horror streamer announced the acquisition of “Split Rock,” writer and director Ryan Glover&#8217;s sophomore feature, following 2021&#8217;s “The Strings.” “Split Rock” is set to debut a",
+    "desc": "Potential Films, one of Australia’s leading independent distributors, has acquired worldwide rights to the newly restored 1976 drama “Caddie,” by Donald Crombie. Considered a landmark film of Australia’s New Wave, the film is screening at the Lumière",
     "streaming": "",
     "jw_url": "",
     "pub_date": ""
   },
   {
-    "title": "Lucio Fulci’s ‘The Beyond’ Set for Remake; Hangtime International Pictures and Severin Films Forge Partnership for More Genre Reboots (EXCLUSIVE)",
+    "title": "Mipcom Buzz Titles: Global Market Offers Eveything From ‘Baywatch’ to ‘Murder’ to ‘Cupertino’ to a New Angle on Princess Di and More",
     "source": "Variety",
-    "url": "https://variety.com/2026/film/news/lucio-fulci-the-beyond-remake-1236905192/",
+    "url": "https://variety.com/2026/tv/focus/mipcom-buzz-titles-1236904724/",
     "tags": [],
-    "desc": "An Italian horror classic is set to get a remake. Lucio Fulci’s 1981 film “The Beyond” was announced as the first remake from a strategic partnership between Hangtime International Pictures and Severin Films, which aims to “secure remake rights to ge",
+    "desc": "While the movers and shakers of global television, streaming and all manner of digital platforms descend on the Croisette, Variety looks at 21 projects that could go viral with buyers. BaywatchShowrunner: Matt Nix; International distributor: Fremantl",
     "streaming": "",
     "jw_url": "",
     "pub_date": ""
   },
   {
-    "title": "‘The Altruists’ Trailer: Anthony Boyle and Julia Garner Star as Sam Bankman-Fried and Caroline Ellison in Netflix Drama Series",
+    "title": "Glauber Rocha’s Long-Forgotten 1970 Anti-Fascist Work ‘Cabezas Cortadas,’ Undergoing 6K Restoration, Set to be Presented at Lyon’s Classic Film Market",
     "source": "Variety",
-    "url": "https://variety.com/2026/tv/news/the-altruists-trailer-netflix-sam-bankman-fried-caroline-ellison-1236905223/",
+    "url": "https://variety.com/2026/film/global/glauber-rocha-cabezas-cortadas-lumiere-festival-1236902906/",
+    "tags": [],
+    "desc": "Glauber Rocha’s 1970 work “Cabezas Cortadas” (&#8220;Cutting Heads&#8221;) will be among the anticpated restorations in progress presented at this year’s International Classic Film Market (MIFC), taking place during the Lumière Film Festival in Lyon.",
+    "streaming": "",
+    "jw_url": "",
+    "pub_date": ""
+  },
+  {
+    "title": "‘The Brothers Garcia’ and ‘The Garcias’ Land at Tubi",
+    "source": "Variety",
+    "url": "https://variety.com/2026/tv/news/brothers-garcia-the-garcias-streaming-tubi-jeff-valdez-1236906457/",
     "tags": [
-      "TV"
+      "Spy"
     ],
-    "desc": "Netflix has released the trailer for “The Altruists,” the Anthony Boyle and Julia Garner-led drama inspired by the real-life story of “Gen Z&#8217;s own Bonnie &#38; Clyde,” Sam Bankman-Fried and Caroline Ellison. The eight-episode limited series hit",
+    "desc": "“The Brothers Garcia” and “The Garcias” are together at last on Tubi. New Cadence Productions, which owns both series, has set a deal with Fox&#8217;s free streaming platform to carry all episodes of the original Nickelodeon series from the early 200",
     "streaming": "",
     "jw_url": "",
     "pub_date": ""
   },
   {
-    "title": "‘Talk to Me’ Spinoff Titled ‘I Let You In’; Meta Debuts First Look at Immersive Horror Series (EXCLUSIVE)",
+    "title": "AI-Assisted Animated K-Drama ‘The Painted Soul’ From ‘Mouse’ Director Sets Rakuten Viki Launch (EXCLUSIVE)",
     "source": "Variety",
-    "url": "https://variety.com/2026/film/news/i-let-you-in-talk-to-me-spinoff-series-first-look-1236905254/",
+    "url": "https://variety.com/2026/tv/news/ai-assisted-animated-kdrama-the-painted-soul-rakuten-viki-launch-1236906258/",
     "tags": [],
-    "desc": "“I Let You In,” a new immersive horror series from the “Talk to Me” universe, is coming to Meta. The six-episode project will be available exclusively on — and was designed specifically for — the company’s Quest headsets and VR glasses, the latter of",
+    "desc": "“The Painted Soul,” an original animated K-drama from “Mouse” director Choi Junbae, will launch exclusively on Rakuten Viki on Oct. 21 across the Americas, Europe, the Middle East, Oceania, India and Southeast Asia. The fantasy romance is co-produced",
     "streaming": "",
     "jw_url": "",
     "pub_date": ""
   },
   {
-    "title": "Oscars: Rwanda Selects ‘Ben’Imana’ as First-Ever Entry to International Feature Race",
+    "title": "Skydance-Owned Channel 5 Profits Dropped by $32 Million Last Year Due to Ad Market and Inward Streaming Investment",
     "source": "Variety",
-    "url": "https://variety.com/2026/film/awards/oscars-rwanda-benimana-first-entry-intl-feature-race-1236905375/",
+    "url": "https://variety.com/2026/tv/global/channel-5-profits-ad-market-streaming-1236906434/",
+    "tags": [],
+    "desc": "Skydance-owned U.K. network Channel 5 has reported a £24.5 million ($32 million) drop in profits for 2025, citing inward investment in streaming and a tough ad market. The network recorded a profit of £8.3 million for the year ending Dec. 31, 2025 af",
+    "streaming": "",
+    "jw_url": "",
+    "pub_date": ""
+  },
+  {
+    "title": "In “Musk,” Alex Gibney Punctures Elon’s Self-Mythology",
+    "source": "New Yorker",
+    "url": "https://www.newyorker.com/culture/the-lede/in-musk-alex-gibney-punctures-elons-self-mythology",
     "tags": [
-      "Award"
+      "Documentary"
     ],
-    "desc": "Rwanda is entering the Oscars international feature race for the first time, submitting Marie-Clementine Dusabejambo&#8217;s &#8220;Ben&#8217;Imana&#8221; for consideration at the 99th Academy Awards. Dusabejambo&#8217;s acclaimed debut feature, told",
-    "streaming": "",
-    "jw_url": "",
-    "pub_date": ""
-  },
-  {
-    "title": "‘The Smurfs’ Season 4 Gets First Look as Peyo Productions Reunites With Nickelodeon, RTBF, Ketnet, KiKA and TF1 (EXCLUSIVE)",
-    "source": "Variety",
-    "url": "https://variety.com/2026/tv/markets-festivals/smurfs-season-4-nickelodeon-kika-rtbf-tf1-ketnet-mipcom-1236905310/",
-    "tags": [],
-    "desc": "Peyo Productions, the production arm of Peyo Company, home of the beloved Smurfs characters, has confirmed that the fourth season of its 2021 global hit CG-animated series &#8220;The Smurfs&#8221; is currently in production, sharing a first-look at a",
+    "desc": "“To make this film, I set out to solve a mystery,” Gibney says in the documentary. “How could Musk assume so much power, and why had we given it to him?”",
     "streaming": "",
     "jw_url": "",
     "pub_date": ""
@@ -428,6 +432,18 @@
     "pub_date": ""
   },
   {
+    "title": "Anne Carson’s Ecstatic Minimalism",
+    "source": "New Yorker",
+    "url": "https://www.newyorker.com/books/page-turner/anne-carsons-ecstatic-minimalism",
+    "tags": [
+      "Jacques Tati"
+    ],
+    "desc": "The new Nobel laureate uses finely wrought forms to constrain a terrible excess of feeling.",
+    "streaming": "",
+    "jw_url": "",
+    "pub_date": ""
+  },
+  {
     "title": "What to Read if You Loved “East of Eden",
     "source": "New Yorker",
     "url": "https://www.newyorker.com/books/what-were-reading/what-to-read-if-you-loved-east-of-eden",
@@ -435,18 +451,6 @@
       "Jacques Tati"
     ],
     "desc": "Our TV critic on how the original compares to the adaptation.",
-    "streaming": "",
-    "jw_url": "",
-    "pub_date": ""
-  },
-  {
-    "title": "Briefly Noted Book Reviews",
-    "source": "New Yorker",
-    "url": "https://www.newyorker.com/magazine/2026/10/12/the-vanishing-family-the-jews-of-italy-i-made-you-up-inside-my-head-days-and-chances",
-    "tags": [
-      "Critic Pick"
-    ],
-    "desc": "“The Vanishing Family,” “The Jews of Italy,” “I Made You Up Inside My Head,” and “Days & Chances.”",
     "streaming": "",
     "jw_url": "",
     "pub_date": ""
@@ -499,16 +503,6 @@
     "pub_date": ""
   },
   {
-    "title": "Sharon Horgan, Autofiction Auteur",
-    "source": "New Yorker",
-    "url": "https://www.newyorker.com/culture/the-new-yorker-interview/sharon-horgan-autofiction-auteur",
-    "tags": [],
-    "desc": "The TV writer-actor on the sandwich generation, finding love onscreen, and growing older with her shows.",
-    "streaming": "",
-    "jw_url": "",
-    "pub_date": ""
-  },
-  {
     "title": "Gut Renos of Ionesco and Chekhov",
     "source": "New Yorker",
     "url": "https://www.newyorker.com/magazine/2026/10/05/gut-renos-of-ionesco-and-chekhov",
@@ -543,6 +537,18 @@
     "pub_date": ""
   },
   {
+    "title": "Lincoln in the Bardo” Gets an Opera at the Met",
+    "source": "New Yorker",
+    "url": "https://www.newyorker.com/culture/goings-on/lincoln-in-the-bardo-gets-an-opera-at-the-met",
+    "tags": [
+      "Documentary"
+    ],
+    "desc": "Also: an Animal Collective reunion, the reverent art of Malcolm Peacock, a new jazz documentary from 1972, and more.",
+    "streaming": "",
+    "jw_url": "",
+    "pub_date": ""
+  },
+  {
     "title": "Arthur Jafa’s “I Am Tony,” Reviewed",
     "source": "New Yorker",
     "url": "https://www.newyorker.com/magazine/2026/10/12/arthur-jafas-odyssey-of-appropriation",
@@ -550,6 +556,18 @@
       "Critic Pick"
     ],
     "desc": "In “I Am Tony,” a retrospective at the New Museum, the artist takes his remixing of the past to its outer limits.",
+    "streaming": "",
+    "jw_url": "",
+    "pub_date": ""
+  },
+  {
+    "title": "Briefly Noted Book Reviews",
+    "source": "New Yorker",
+    "url": "https://www.newyorker.com/magazine/2026/10/12/the-vanishing-family-the-jews-of-italy-i-made-you-up-inside-my-head-days-and-chances",
+    "tags": [
+      "Critic Pick"
+    ],
+    "desc": "“The Vanishing Family,” “The Jews of Italy,” “I Made You Up Inside My Head,” and “Days & Chances.”",
     "streaming": "",
     "jw_url": "",
     "pub_date": ""
@@ -565,13 +583,21 @@
     "pub_date": ""
   },
   {
-    "title": "Justine Kurland’s Photographs Keep Us on Edge",
-    "source": "New Yorker",
-    "url": "https://www.newyorker.com/culture/goings-on/justine-kurlands-photographs-keep-us-on-edge",
-    "tags": [
-      "Award"
-    ],
-    "desc": "Also: the progressive R. & B. of Kelela, the art of Jessica Lange, the Australian Ballet on Oscar Wilde, and more.",
+    "title": "Busan 2026: Satoko Always, The First Taste of Loneliness, Shaving",
+    "source": "RogerEbert.com",
+    "url": "https://www.rogerebert.com/festivals/busan-international-film-festival-2026-satoko-always-the-first-taste-of-loneliness-shaving",
+    "tags": [],
+    "desc": "Trios of women and beleaguered screenwriters stud this first dispatch from South Korea's film festival.",
+    "streaming": "",
+    "jw_url": "",
+    "pub_date": ""
+  },
+  {
+    "title": "Chicago History Museum to Premiere “Christian Holder: My Life is Dance",
+    "source": "RogerEbert.com",
+    "url": "https://www.rogerebert.com/news/chicago-history-museum-to-premiere-christian-holder-my-life-is-dance",
+    "tags": [],
+    "desc": "The Chicago History Museum, in partnership with The Joffrey Ballet, the Chicago International Film Festival, and the Gerald Arpino Foundation, presents the premiere of Christian Holder: My Life Is Dance on Friday, October 30, 2026, from 5:30 to 8 p.m",
     "streaming": "",
     "jw_url": "",
     "pub_date": ""
@@ -619,23 +645,35 @@
     "pub_date": ""
   },
   {
-    "title": "2026 Busan Preview: 10 Films We Can’t Wait to See",
-    "source": "RogerEbert.com",
-    "url": "https://www.rogerebert.com/festivals/2026-busan-preview-10-films-we-cant-wait-to-see",
+    "title": "Taper’s Choice are the perfect gateway drug for the jam-band curious",
+    "source": "Chicago Reader",
+    "url": "https://chicagoreader.com/music/concert-preview/tapers-choice-garcias/",
     "tags": [
-      "Critic Pick"
+      "Spy"
     ],
-    "desc": "A preview of this year's Busan International Film Festival",
+    "desc": "Taper's Choice Fri 10/30 at Garcia's\nThe post Taper’s Choice are the perfect gateway drug for the jam-band curious appeared first on Chicago Reader.",
     "streaming": "",
     "jw_url": "",
     "pub_date": ""
   },
   {
-    "title": "The Possibility of Forgiveness: Reed Van Dyk, Boyd Holbrook, Hiam Abbass, and Kenneth Branagh on “Atonement",
-    "source": "RogerEbert.com",
-    "url": "https://www.rogerebert.com/interviews/boyd-holbrook-kenneth-branagh-hiam-abbass-atonement-interviews",
+    "title": "A plethora of places",
+    "source": "Chicago Reader",
+    "url": "https://chicagoreader.com/film-tv/the-cinema-scrapbook/blknws-terms-conditions-documentary-open-house-chicago/",
+    "tags": [
+      "Spy"
+    ],
+    "desc": "The Cinema Scrapbook places film screenings in conversation with other local creative happenings, illuminating Chicago’s rich cultural connectivity. Spooky season is quite special for unearthing things unseen. Being in on the secret is all a part of",
+    "streaming": "",
+    "jw_url": "",
+    "pub_date": ""
+  },
+  {
+    "title": "TV on the cinema",
+    "source": "Chicago Reader",
+    "url": "https://chicagoreader.com/film-tv/the-moviegoer/twin-peaks-series-music-box-theatre/",
     "tags": [],
-    "desc": "Director Reed Van Dyk and stars Boyd Holbrook, Hiam Abbass, and Kenneth Branagh on Atonement.",
+    "desc": "The Moviegoer is the diary of a local film buff, collecting the best of what Chicago’s independent and underground film scene has to offer. I think one of my earliest memories is of my parents watching Twin Peaks. I’m unsure as to how it fits into t",
     "streaming": "",
     "jw_url": "",
     "pub_date": ""
@@ -714,42 +752,6 @@
     "url": "https://chicagoreader.com/film-tv/the-moviegoer/chicago-underground-film-festival-2026/",
     "tags": [],
     "desc": "The Moviegoer is the diary of a local film buff, collecting the best of what Chicago’s independent and underground film scene has to offer. I’ve had business cards only once in my career thus far, when I worked for Music Box Films in 2018. I don’t t",
-    "streaming": "",
-    "jw_url": "",
-    "pub_date": ""
-  },
-  {
-    "title": "Best NSFW AI Chat Sites of 2026",
-    "source": "Chicago Reader",
-    "url": "https://chicagoreader.com/adult/nsfw-ai-chat/",
-    "tags": [
-      "Spy"
-    ],
-    "desc": "The rise of NSFW AI character chat sites in the last several years, especially those designed to simulate romantic or erotic connections, signals more than just a shift in how we relate to technology, it touches on something deeply human: the desire",
-    "streaming": "",
-    "jw_url": "",
-    "pub_date": ""
-  },
-  {
-    "title": "Review: Digger",
-    "source": "Chicago Reader",
-    "url": "https://chicagoreader.com/film-tv/movie-review/review-digger/",
-    "tags": [
-      "Critic Pick"
-    ],
-    "desc": "Alejandro González Iñárritu’s latest epic comedy Digger, starring Tom Cruise as the demented oilman Digger Rockwell, is not for everyone. It’s puerile, operatic, and pretty indelicate in its critiques of American boneheadedness. But choosing not to",
-    "streaming": "",
-    "jw_url": "",
-    "pub_date": ""
-  },
-  {
-    "title": "Review: Primetime",
-    "source": "Chicago Reader",
-    "url": "https://chicagoreader.com/film-tv/movie-review/review-primetime/",
-    "tags": [
-      "Critic Pick"
-    ],
-    "desc": "Primetime screening through 10/8 at the Davis Theater\nThe post Review: &lt;I&gt;Primetime&lt;/I&gt; appeared first on Chicago Reader.",
     "streaming": "",
     "jw_url": "",
     "pub_date": ""
