@@ -1,16 +1,94 @@
 [
   {
-    "title": "One in a Million review – deeply moving film about displacement, freedom and the upheaval of starting again",
+    "title": "China’s first AI-generated film is a flop. Some still see it as the future of cinema",
     "source": "The Guardian",
-    "url": "https://www.theguardian.com/film/2026/nov/02/one-in-a-million-review-itab-azzam-jack-macinnes",
+    "url": "https://www.theguardian.com/film/2026/nov/03/china-first-ai-generated-film-flops-cinema-future",
+    "tags": [],
+    "desc": "Chinese investors placing high value on AI despite unpopularity of Sanxingdui: Future PastChina’s first fully AI-generated movie has flopped, earning just 1.7m yuan (£191,000) at the box office despite costing “tens of millions” to make, according to",
+    "streaming": "",
+    "jw_url": "",
+    "pub_date": "2026-11-03T14:32:54Z"
+  },
+  {
+    "title": "Mum, I’m Alien Pregnant review – slime and silliness in amusing New Zealand comedy horror",
+    "source": "The Guardian",
+    "url": "https://www.theguardian.com/film/2026/nov/03/mum-im-alien-pregnant-review-slime-and-silliness-in-amusing-new-zealand-comedy-horror",
+    "tags": [
+      "Critic Pick"
+    ],
+    "desc": "Mucus, alien gristle, a tentacle-bearing penis and, of course, the pregnancy of the title are all borne with deadpan calmness in this underplayed comedyIn this amusingly silly exercise in gross-out body horror and bathos from New Zealand, thirtysomet",
+    "streaming": "",
+    "jw_url": "",
+    "pub_date": "2026-11-03T13:00:07Z"
+  },
+  {
+    "title": "Andrew Scott drama Elsinore leads British independent film award nominations",
+    "source": "The Guardian",
+    "url": "https://www.theguardian.com/film/2026/nov/03/andrew-scott-elsinore-shakespeare-bifas-british-independent-film-award-nominations",
+    "tags": [],
+    "desc": "Elsinore is in contention for 12 Bifas, including for Scott’s highly praised performance, while Clio Barnard’s I See Buildings Fall Like Lightning, Ashley Walters’ Animol and Mike Leigh’s Tender Loving Care are also recognisedElsinore, the drama in w",
+    "streaming": "",
+    "jw_url": "",
+    "pub_date": "2026-11-03T12:49:40Z"
+  },
+  {
+    "title": "Ghost Town review – the phantoms and lost souls haunting a Japanese city after the 2011 earthquake",
+    "source": "The Guardian",
+    "url": "https://www.theguardian.com/film/2026/nov/03/ghost-town-review-the-phantoms-and-lost-souls-haunting-a-japanese-city-after-the-2011-earthquake",
     "tags": [
       "Documentary",
       "Critic Pick"
     ],
-    "desc": "Following a Syrian mother and daughter over a decade, Itab Azzam and Jack MacInnes capture a family transformedThere’s a startling moment in this BBC refugee documentary when Syrian mother Nisreen – in the apparently miserable situation of hiking acr",
+    "desc": "Katharine Round’s documentary puts cameras in taxis where drivers and fares reflect on the disaster’s impact and talk of crowds of spectres and disappearing passengers In a manner similar to Ryūsuke Hamaguchi’s Drive My Car, in which journeying lulls",
     "streaming": "",
     "jw_url": "",
-    "pub_date": "2026-11-02T13:00:41Z"
+    "pub_date": "2026-11-03T11:00:57Z"
+  },
+  {
+    "title": "Carrie at 50: Brian De Palma’s fiery masterpiece still has the power",
+    "source": "The Guardian",
+    "url": "https://www.theguardian.com/film/2026/nov/03/carrie-movie-anniversary-stephen-king",
+    "tags": [
+      "Jacques Tati",
+      "Award"
+    ],
+    "desc": "The Oscar-nominated 1976 adaptation of Stephen King’s high school horror remains heartbreaking and horrifying in equal measureOften when a pop culture figure, whether real or fictional or somewhere in between, is described as an eternal teenager, it",
+    "streaming": "",
+    "jw_url": "",
+    "pub_date": "2026-11-03T10:00:45Z"
+  },
+  {
+    "title": "Manipulation review – preposterous Da Vinci Code-esque thriller like being trapped in a Ferrero Rocher ad",
+    "source": "The Guardian",
+    "url": "https://www.theguardian.com/film/2026/nov/03/manipulation-review-preposterous-da-vinci-code-thriller-david-balda",
+    "tags": [
+      "Spy",
+      "Critic Pick"
+    ],
+    "desc": "Conspiracies and espionage abound as a secret society’s young initiate is sent to infiltrate the Catholic church for inexplicable reasons. Who knows what’s going on?With its candle-lit occult settings and ersatz Europudding of performers all speaking",
+    "streaming": "",
+    "jw_url": "",
+    "pub_date": "2026-11-03T09:00:43Z"
+  },
+  {
+    "title": "Dustin Hoffman says filming The Graduate was ‘a terrible experience’ due to Mike Nichols’ ‘sadism’",
+    "source": "The Guardian",
+    "url": "https://www.theguardian.com/film/2026/nov/03/dustin-hoffman-memoir-look-at-me-the-graduate-mike-nichols",
+    "tags": [],
+    "desc": "In his new memoir, the actor reveals he was slapped 27 times until he was dizzy for a scene director Nichols ‘didn’t even use’Almost 60 years after The Graduate was released, Dustin Hoffman has revealed that making the 1967 film that launched his car",
+    "streaming": "",
+    "jw_url": "",
+    "pub_date": "2026-11-03T00:54:16Z"
+  },
+  {
+    "title": "‘Screams on the level of a Taylor Swift concert’: horny romp Wicker gets the 4DX treatment",
+    "source": "The Guardian",
+    "url": "https://www.theguardian.com/tv-and-radio/2026/nov/02/wicker-4dx-olivia-colman-movie",
+    "tags": [],
+    "desc": "Olivia Colman’s steamy romance, where she plays a woman in love with a wicker man, becomes an unlikely pick for the theme park-like cinema experienceWhat does Olivia Colman’s hot sex with a basket tell us about heteropessimism?‘I saw the script and w",
+    "streaming": "",
+    "jw_url": "",
+    "pub_date": "2026-11-02T18:29:37Z"
   },
   {
     "title": "‘Sad lost souls’: Taika Waititi lambasts critics after Klara and the Sun box-office disaster",
@@ -23,54 +101,6 @@
     "streaming": "",
     "jw_url": "",
     "pub_date": "2026-11-02T11:38:35Z"
-  },
-  {
-    "title": "‘It still preys on my mind’: readers on their scariest non-horror movies",
-    "source": "The Guardian",
-    "url": "https://www.theguardian.com/film/2026/nov/02/scary-non-horror-movies",
-    "tags": [
-      "Spy"
-    ],
-    "desc": "After Guardian writers picked their choices for Halloween, readers have responded with films that send chills down their spines – from Never Let Me Go to The Truman ShowThe murder of the taxi driver is utterly excruciating and the hanging at the end",
-    "streaming": "",
-    "jw_url": "",
-    "pub_date": "2026-11-02T11:00:41Z"
-  },
-  {
-    "title": "Blockhead review – struggling novelist embraces his inner monster in comic thriller of literary machismo",
-    "source": "The Guardian",
-    "url": "https://www.theguardian.com/film/2026/nov/02/blockhead-review-joe-sims-danny-horn-matt-harlock",
-    "tags": [
-      "Critic Pick"
-    ],
-    "desc": "Writer-director Matt Harlock looks into ego and insecurity in a smart film about a BritLit bad boy who goes down a grisly roadThis has nothing to do with Ian Dury; rather, it is a brisk, effective British indie thriller informed by the legend of Robe",
-    "streaming": "",
-    "jw_url": "",
-    "pub_date": "2026-11-02T11:00:38Z"
-  },
-  {
-    "title": "‘Funny and self-aware’: why (500) Days of Summer is my feelgood movie",
-    "source": "The Guardian",
-    "url": "https://www.theguardian.com/film/2026/nov/02/funny-and-self-aware-why-500-days-of-summer-is-my-feelgood-movie",
-    "tags": [
-      "Spy"
-    ],
-    "desc": "The latest in our ongoing series of writers detailing their most rewatched comfort films carries special romantic meaningIt is September 2009. Barack Obama is settling into the White House. The global economy is hauling itself gingerly out of the fin",
-    "streaming": "",
-    "jw_url": "",
-    "pub_date": "2026-11-02T10:00:37Z"
-  },
-  {
-    "title": "Dead Howling review – werewolf hunts zombies in tough-love apocalypse horror",
-    "source": "The Guardian",
-    "url": "https://www.theguardian.com/film/2026/nov/02/dead-howling-review-werewolf-hunts-zombies-in-tough-love-apocalypse-horror",
-    "tags": [
-      "Critic Pick"
-    ],
-    "desc": "Every bog-standard cliche is employed – and fails – in this moribund Aussie thiller, which entirely lacks both bite and barkWhen talk here turns to what would happen if the film’s werewolf hero were bitten by a zombie, the term coined is “wombie”. Sa",
-    "streaming": "",
-    "jw_url": "",
-    "pub_date": "2026-11-02T09:00:36Z"
   },
   {
     "title": "‘We both know how we feel about death and dying’: Rhys Ifans and Laura Linney on their brutally honest Parkinson’s drama",
@@ -91,7 +121,7 @@
     "tags": [
       "Spy"
     ],
-    "desc": "Mann taken to hospital with superficial injury after weapon accidentally discharged while holsteredHollywood director Michael Mann has been taken to the hospital following an apparently accidental shooting at a Los Angeles gun range, according to the",
+    "desc": "Mann taken to hospital with superficial injury after weapon accidentally discharged while holsteredThe Hollywood director Michael Mann has been taken to the hospital following an apparently accidental shooting at a Los Angeles gun range, according to",
     "streaming": "",
     "jw_url": "",
     "pub_date": "2026-11-01T16:39:37Z"
@@ -127,16 +157,6 @@
     "pub_date": "2026-10-30T01:25:43Z"
   },
   {
-    "title": "Elke Sommer, prolific German star of A Shot in the Dark and And Then There Were None, dies aged 85",
-    "source": "The Guardian",
-    "url": "https://www.theguardian.com/film/2026/oct/29/elke-sommer-prolific-german-star-of-a-shot-in-the-dark-and-and-then-there-were-none-dies",
-    "tags": [],
-    "desc": "The Berlin-born performer had a gift for languages that took her to Hollywood, landing roles alongside Peter Sellers, Dick Van Dyke and Paul NewmanElke Sommer, the prolific German star of the Pink Panther film A Shot in the Dark, early 70s Agatha Chr",
-    "streaming": "",
-    "jw_url": "",
-    "pub_date": "2026-10-29T16:36:52Z"
-  },
-  {
     "title": "How did a fishmonger who starred in an adult movie make Rocky? The film about Sylvester Stallone’s amazing triumph",
     "source": "The Guardian",
     "url": "https://www.theguardian.com/film/2026/oct/29/rocky-sylvester-stallone-anthony-ippolita",
@@ -145,16 +165,6 @@
     "streaming": "",
     "jw_url": "",
     "pub_date": "2026-10-29T05:00:25Z"
-  },
-  {
-    "title": "Peter Medak, veteran director of The Krays and The Changeling, dies aged 88",
-    "source": "The Guardian",
-    "url": "https://www.theguardian.com/film/2026/oct/28/peter-medak-veteran-director-of-the-krays-and-the-changeling-dies-aged-88",
-    "tags": [],
-    "desc": "The film-maker enjoyed a long and varied film and TV career, from horror movies and true-crime thrillers to Cannibal and Breaking BadPeter Medak, the British-Hungarian director of The Changeling, The Krays and Let Him Have It, has died aged 88. Medak",
-    "streaming": "",
-    "jw_url": "",
-    "pub_date": "2026-10-28T17:43:26Z"
   },
   {
     "title": "‘It’s the gay Titanic!’ Inside La Bola Negra, the maximalist queer spectacular bound for Oscars glory",
@@ -167,16 +177,6 @@
     "streaming": "",
     "jw_url": "",
     "pub_date": "2026-10-28T05:00:53Z"
-  },
-  {
-    "title": "‘How on earth is this man not sweating?’ Director Brett Morgen’s painstaking 10-year remaster Bowie’s ‘greatest filmed performance’",
-    "source": "The Guardian",
-    "url": "https://www.theguardian.com/music/2026/oct/27/david-bowie-stage-isolar-brett-morgen-interview-film-arena",
-    "tags": [],
-    "desc": "Moonage Daydream director Brett Morgan has turned lost footage of two 1978 concerts into an arena spectacular. ‘You can feel the danger and excitement’, he says• ‘Lost’ 1978 David Bowie tour film to play arenas in 2027, remastered by Moonage Daydream",
-    "streaming": "",
-    "jw_url": "",
-    "pub_date": "2026-10-27T14:00:36Z"
   },
   {
     "title": "Taika Waititi’s Star Wars film is the latest to hit the buffers. At some point Lucasfilm is going to have to actually make a movie",
@@ -334,53 +334,41 @@
     "pub_date": "2026-01-25T16:27:33Z"
   },
   {
-    "title": "Benjamín Vicuña, Star of Netflix Hit Series ‘Envious,’ Joins ‘My Last Stand’ by Goya-Winner Matías Bize",
+    "title": "‘Blue Eye Samurai’ Sets Season 2 Release Date at Netflix",
     "source": "Variety",
-    "url": "https://variety.com/2026/film/global/envious-benjamin-vicuna-matias-bize-my-last-stand-1236932650/",
+    "url": "https://variety.com/2026/tv/news/blue-eye-samurai-season-2-release-date-netflix-1236938383/",
     "tags": [],
-    "desc": "Benjamín Vicuña, best known for his star turn in Netflix hit series “Envious” (Envidiosa”), has joined the cast of Goya-winner Matías Bize’s latest pic, “My Last Stand” (“Aquí me bajo yo”), which began filming Oct. 19. Vicuña plays alongside 91-year-",
+    "desc": "Netflix has announced the Season 2 premiere date for &#8220;Blue Eye Samurai.&#8221; The second season of the popular adult animated series will debut on the streamer on Jan. 19, 2027. That is more than three years since the first season aired in Nov",
     "streaming": "",
     "jw_url": "",
     "pub_date": ""
   },
   {
-    "title": "Bill Murray Asks Trump’s Top Economic Adviser to Say ‘My Dog Just Died’ to Wipe Smile Off His Face in Bizarre Exchange on CNBC",
+    "title": "Jason Statham and Guy Ritchie Reunite — Again — for Netflix Revenge Action Movie ‘Dogfight’",
     "source": "Variety",
-    "url": "https://variety.com/2026/tv/news/bill-murray-kevin-hassett-cnbc-say-my-dog-just-died-1236937613/",
+    "url": "https://variety.com/2026/film/global/jason-statham-guy-ritchie-dogfight-netflix-action-film-1236938327/",
     "tags": [],
-    "desc": "Actor and comedian Bill Murray apparently had had enough of the grinning mug of Kevin Hassett, Trump&#8217;s top economic adviser, in a weird impromptu exchange on CNBC&#8217;s &#8220;Squawk Box&#8221; program. Murray unexpectedly inserted himself in",
+    "desc": "The Jason Statham-Guy Ritchie partnership is set to extend into a seventh film. &#8220;Dogfight&#8221; —&#160;announced by Netflix —&#160;is described as a &#8220;stylish revenge actioner&#8221; set in the London criminal underworld. No other plot de",
     "streaming": "",
     "jw_url": "",
     "pub_date": ""
   },
   {
-    "title": "Daddy Yankee Partners with aTwist and Visa for Original Microseries to Promote His Album ‘La Postal’",
+    "title": "Pierce Brosnan Approves of Callum Turner as James Bond: He’s ‘So Strong’ and I’m ‘Eager to See’ Who Becomes the Next 007",
     "source": "Variety",
-    "url": "https://variety.com/2026/music/news/daddy-yankee-la-postal-atwist-visa-youtube-microseries-1236936398/",
+    "url": "https://variety.com/2026/film/global/pierce-brosnan-callum-turner-james-bond-1236938354/",
     "tags": [],
-    "desc": "Global reggaeton star Daddy Yankee has joined forces with vertical media studio aTwist and Visa to launch an original microseries “La Postal: Written in the Dance” to promote his latest album. The microseries will be released on Daddy Yankee’s YouTub",
+    "desc": "Pierce Brosnan has given his James Bond seal of approval to Callum Turner. The Irish actor — who played 007 across four films from 1995 to 2002 — told Vanity Fair in a new interview that he is &#8220;eagerly&#8221; awaiting the announcement of the ne",
     "streaming": "",
     "jw_url": "",
     "pub_date": ""
   },
   {
-    "title": "Gavin Newsom Proposes Expanding California’s Movie and TV Tax Credit to at Least $1 Billion",
+    "title": "‘Thirteen in Gaza’ Acquired by Koudéta Films for France Ahead of Doha Film Festival",
     "source": "Variety",
-    "url": "https://variety.com/2026/film/news/gavin-newsom-california-movie-tv-tax-credit-billion-dollars-1236937395/",
+    "url": "https://variety.com/2026/film/global/thirteen-in-gaza-koudeta-films-france-doha-1236938307/",
     "tags": [],
-    "desc": "California Gov. Gavin Newsom, on the eve of the 2026 midterm elections, is calling for another major expansion of the state&#8217;s film and TV tax credit program. Newsom is proposing an increase to California&#8217;s entertainment production incenti",
-    "streaming": "",
-    "jw_url": "",
-    "pub_date": ""
-  },
-  {
-    "title": "Stage Adaptation of Amanda Seyfried, Sydney Sweeney-Starrer ‘The Housemaid’ Sets London Premiere",
-    "source": "Variety",
-    "url": "https://variety.com/2026/theater/global/the-housemaid-stage-adaptation-london-premiere-1236937534/",
-    "tags": [
-      "Jacques Tati"
-    ],
-    "desc": "Lionsgate is bringing “The Housemaid” to the London stage, with an adaptation of the Amanda Seyfriend/Sydney Sweeney-starrer set to bow next fall in Richmond. Described as a “seductive psychological thriller,” it will be based on the novel by Freida",
+    "desc": "Paris and New York-based impact studio Koudéta Films has acquired French distribution rights to Palestinian director Hosam Abu Dan’s &#8220;Thirteen in Gaza.&#8221; The father-daughter drama is the first film shot on the Gaza Strip since the Israel-H",
     "streaming": "",
     "jw_url": "",
     "pub_date": ""
@@ -438,16 +426,6 @@
       "Jacques Tati"
     ],
     "desc": "In Lee Chang-dong’s brilliantly acted film, a community’s devastation plays out through a documentary lens—and through a tale of two very different couples.",
-    "streaming": "",
-    "jw_url": "",
-    "pub_date": ""
-  },
-  {
-    "title": "Fatherland” Cleans Up the Rough Edges of History",
-    "source": "New Yorker",
-    "url": "https://www.newyorker.com/culture/the-front-row/fatherland-cleans-up-the-rough-edges-of-history",
-    "tags": [],
-    "desc": "In this dramatization of the novelist Thomas Mann’s 1949 return to Germany, the filmmaker Paweł Pawlikowski tweaks the facts to fit his style.",
     "streaming": "",
     "jw_url": "",
     "pub_date": ""
@@ -631,6 +609,18 @@
     "pub_date": ""
   },
   {
+    "title": "A year of rap from #NewChicago",
+    "source": "Chicago Reader",
+    "url": "https://chicagoreader.com/music/music-feature/newchicago-rap-hiphop-okdeazy-thirteendegrees-kioracks-kels-xella-c4y-burlodavirgo-your-stepdad/",
+    "tags": [
+      "Synthesizers"
+    ],
+    "desc": "On “Last Call,” Chicago rapper Lil2Posh talks about his come-up in underground hip-hop and the #NewChicago movement of which he’s arguably a part. The marathon ten-minute track, built from icy synth stabs and mushroom clouds of bass, describes his f",
+    "streaming": "",
+    "jw_url": "",
+    "pub_date": ""
+  },
+  {
     "title": "Review: La bola negra",
     "source": "Chicago Reader",
     "url": "https://chicagoreader.com/film-tv/movie-review/review-la-bola-negra/",
@@ -767,26 +757,6 @@
       "Spy"
     ],
     "desc": "Dani Robles (they/them) teaches private music lessons, works as an audio engineer and a Harper College adjunct instructor, and runs the DIY venue and recording space Ericka’s House out of the home they own in Albany Park. Ericka’s House threw its fi",
-    "streaming": "",
-    "jw_url": "",
-    "pub_date": ""
-  },
-  {
-    "title": "You can perceive everything",
-    "source": "Chicago Reader",
-    "url": "https://chicagoreader.com/film-tv/the-moviegoer/eight-bridges-titicut-follies-you-can-see-everything/",
-    "tags": [],
-    "desc": "The Moviegoer is the diary of a local film buff, collecting the best of what Chicago’s independent and underground film scene has to offer. As part of the 62nd Chicago International Film Festival, I saw Eight Bridges (2026), with director James Benn",
-    "streaming": "",
-    "jw_url": "",
-    "pub_date": ""
-  },
-  {
-    "title": "Dance Theatre of Harlem returns to the Auditorium after a ten-year hiatus",
-    "source": "Chicago Reader",
-    "url": "https://chicagoreader.com/performing-arts/dance/dance-theatre-of-harlem-2026/",
-    "tags": [],
-    "desc": "On October 17, Dance Theatre of Harlem (DTH) returned to Chicago for the first time in a decade, with a mixed bill featuring artistic director Robert Garland’s Return, George Balanchine’s Donizetti Variations, and John Taras’s Firebird. Founded in 1",
     "streaming": "",
     "jw_url": "",
     "pub_date": ""
